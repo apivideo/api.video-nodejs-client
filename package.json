@@ -1,0 +1,32 @@
+{
+  "name": "@api.video/typescript-sdk",
+  "version": "1.0.0",
+  "description": "api.video java API client",
+  "author": "api.video ecosystem team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ApiVideo/nodejs-sdk"
+  },
+  "bugs:": "https://github.com/ApiVideo/nodejs-sdk/issues",
+  "keywords": [
+    "fetch",
+    "typescript",
+    "openapi-client",
+    "openapi-generator"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "got": "^11.8.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.3",
+    "@types/got": "^9.6.11",
+    "@types/node": "^14.14.28"
+  }
+}
