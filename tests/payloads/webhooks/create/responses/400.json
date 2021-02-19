@@ -1,0 +1,19 @@
+{
+  "type" : "https://docs.api.video/docs/attributerequired",
+  "events" : "This attribute is required.",
+  "name" : "events",
+  "status" : 400,
+  "problems" : [ {
+    "type" : "https://docs.api.video/docs/attributerequired",
+    "title" : "This attribute is required.",
+    "name" : "events"
+  }, {
+    "type" : "https://docs.api.video/docs/attributerequired",
+    "title" : "This attribute is required.",
+    "name" : "url"
+  }, {
+    "type" : "https://docs.api.video/docs/attributeinvalid",
+    "title" : "This attribute must be an array.",
+    "name" : "events"
+  } ]
+}

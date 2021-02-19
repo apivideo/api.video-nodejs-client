@@ -1,0 +1,16 @@
+{
+  "liveStreamId" : "li400mYKSgQ6xs7taUeSaEKr",
+  "createdAt" : "2020-01-31T10:17:47+00:00",
+  "updatedAt" : "2020-03-09T13:19:43+00:00",
+  "streamKey" : "30087931-229e-42cf-b5f9-e91bcc1f7332",
+  "name" : "Live Stream From the browser",
+  "public" : true,
+  "record" : true,
+  "broadcasting" : false,
+  "assets" : {
+    "iframe" : "<iframe src=\"https://embed.api.video/live/li400mYKSgQ6xs7taUeSaEKr\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
+    "player" : "https://embed.api.video/live/li400mYKSgQ6xs7taUeSaEKr",
+    "hls" : "https://live.api.video/li400mYKSgQ6xs7taUeSaEKr.m3u8",
+    "thumbnail" : "https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg"
+  }
+}

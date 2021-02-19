@@ -1,0 +1,49 @@
+{
+  "ingest" : {
+    "status" : "uploaded",
+    "filesize" : 273579401,
+    "receivedBytes" : [ {
+      "to" : 134217727,
+      "from" : 0,
+      "total" : 273579401
+    }, {
+      "to" : 268435455,
+      "from" : 134217728,
+      "total" : 273579401
+    }, {
+      "to" : 273579400,
+      "from" : 268435456,
+      "total" : 273579401
+    } ]
+  },
+  "encoding" : {
+    "playable" : true,
+    "qualities" : [ {
+      "quality" : "360p",
+      "status" : "encoded"
+    }, {
+      "quality" : "480p",
+      "status" : "encoded"
+    }, {
+      "quality" : "720p",
+      "status" : "encoded"
+    }, {
+      "quality" : "1080p",
+      "status" : "encoding"
+    }, {
+      "quality" : "2160p",
+      "status" : "waiting"
+    } ],
+    "metadata" : {
+      "width" : 424,
+      "height" : 240,
+      "bitrate" : 411.218,
+      "duration" : 4176,
+      "framerate" : 24,
+      "samplerate" : 48000,
+      "videoCodec" : "h264",
+      "audioCodec" : "aac",
+      "aspectRatio" : "16/9"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "videoId" : "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+  "playerId" : "pl45KFKdlddgk654dspkze",
+  "title" : "Maths video",
+  "description" : "An amazing video explaining the string theory",
+  "public" : false,
+  "panoramic" : false,
+  "tags" : [ "maths", "string theory", "video" ],
+  "metadata" : [ {
+    "key" : "Author",
+    "value" : "John Doe"
+  }, {
+    "key" : "Format",
+    "value" : "Tutorial"
+  } ],
+  "publishedAt" : "4665-07-14T23:36:18.598Z",
+  "source" : {
+    "uri" : "/videos/vi4k0jvEUuaTdRAEjQ4Jfrgz/source"
+  },
+  "assets" : {
+    "iframe" : "<iframe src=\"//embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
+    "player" : "https://embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae",
+    "hls" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8",
+    "thumbnail" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg"
+  }
+}

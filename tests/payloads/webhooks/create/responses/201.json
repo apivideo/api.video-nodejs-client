@@ -1,0 +1,6 @@
+{
+  "webhookId" : "webhook_XXXXXXXXXXXXXXX",
+  "createdAt" : "2021-01-08T14:12:18.000+00:00",
+  "events" : [ "video.encoding.quality.completed" ],
+  "url" : "http://clientnotificationserver.com/notif?myquery=query"
+}

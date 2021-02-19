@@ -1,0 +1,30 @@
+{
+  "data" : [ {
+    "webhookId" : "webhook_XXXXXXXXXXXXXXX",
+    "createdAt" : "2021-01-08T14:12:18.000+00:00",
+    "events" : [ "video.encoding.quality.completed" ],
+    "url" : "http://clientnotificationserver.com/notif?myquery=query"
+  }, {
+    "webhookId" : "webhook_XXXXXXXXXYYYYYY",
+    "createdAt" : "2021-01-12T12:12:12.000+00:00",
+    "events" : [ "video.encoding.quality.completed" ],
+    "url" : "http://clientnotificationserver.com/notif?myquery=query2"
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 11,
+    "currentPageItems" : 11,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "https://ws.api.video/webhooks?currentPage=1"
+    }, {
+      "rel" : "first",
+      "uri" : "https://ws.api.video/webhooks?currentPage=1"
+    }, {
+      "rel" : "last",
+      "uri" : "https://ws.api.video/webhooks?currentPage=1"
+    } ]
+  }
+}

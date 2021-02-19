@@ -1,0 +1,29 @@
+{
+  "data" : [ {
+    "token" : "to37YfoPDRR2pcDKa6LsUE0M",
+    "ttl" : 3600,
+    "createdAt" : "2020-12-02T10:26:46+00:00",
+    "expiresAt" : "2020-12-02T11:26:46+00:00"
+  }, {
+    "token" : "to1W3ZS9PdUBZWzzTEZr1B79",
+    "ttl" : 0,
+    "createdAt" : "2020-12-02T10:26:28+00:00"
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "currentPageItems" : 2,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 2,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "/upload-tokens?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "first",
+      "uri" : "/upload-tokens?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "last",
+      "uri" : "/upload-tokens?currentPage=1&pageSize=25"
+    } ]
+  }
+}

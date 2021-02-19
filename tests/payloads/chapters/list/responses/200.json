@@ -1,0 +1,28 @@
+{
+  "data" : [ {
+    "uri" : "/videos/vi3N6cDinStg3oBbN79GklWS/chapters/fr",
+    "src" : "https://cdn.api.video/vod/vi3N6cDinStg3oBbN79GklWS/chapters/fr.vtt",
+    "language" : "fr"
+  }, {
+    "uri" : "/videos/vi3N6cDinStg3oBbN79GklWS/chapters/en",
+    "src" : "https://cdn.api.video/vod/vi3N6cDinStg3oBbN79GklWS/chapters/en.vtt",
+    "language" : "en"
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "currentPageItems" : 2,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 2,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "/videos/vi3N6cDinStg3oBbN79GklWS/chapters?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "first",
+      "uri" : "/videos/vi3N6cDinStg3oBbN79GklWS/chapters?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "last",
+      "uri" : "/videos/vi3N6cDinStg3oBbN79GklWS/chapters?currentPage=1&pageSize=25"
+    } ]
+  }
+}

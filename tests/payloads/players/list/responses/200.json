@@ -1,0 +1,68 @@
+{
+  "data" : [ {
+    "playerId" : "pl4fgtjy4tjyKDK545DRdfg",
+    "createdAt" : "2020-01-13T10:09:17+00:00",
+    "updatedAt" : "2020-01-13T10:09:17+00:00",
+    "shapeMargin" : 10,
+    "shapeRadius" : 3,
+    "shapeAspect" : "flat",
+    "shapeBackgroundTop" : "rgba(50, 50, 50, .7)",
+    "shapeBackgroundBottom" : "rgba(50, 50, 50, .8)",
+    "text" : "rgba(255, 255, 255, .95)",
+    "link" : "rgba(255, 0, 0, .95)",
+    "linkHover" : "rgba(255, 255, 255, .75)",
+    "linkActive" : "rgba(255, 0, 0, .75)",
+    "trackPlayed" : "rgba(255, 255, 255, .95)",
+    "trackUnplayed" : "rgba(255, 255, 255, .1)",
+    "trackBackground" : "rgba(0, 0, 0, 0)",
+    "backgroundTop" : "rgba(72, 4, 45, 1)",
+    "backgroundBottom" : "rgba(94, 95, 89, 1)",
+    "backgroundText" : "rgba(255, 255, 255, .95)",
+    "enableApi" : false,
+    "enableControls" : false,
+    "forceAutoplay" : false,
+    "hideTitle" : false,
+    "forceLoop" : false
+  }, {
+    "playerId" : "pl54fgtjy4tjyKDK45DRdfg",
+    "createdAt" : "2020-01-13T10:09:17+00:00",
+    "updatedAt" : "2020-01-13T10:09:17+00:00",
+    "shapeMargin" : 10,
+    "shapeRadius" : 3,
+    "shapeAspect" : "flat",
+    "shapeBackgroundTop" : "rgba(50, 50, 50, .7)",
+    "shapeBackgroundBottom" : "rgba(50, 50, 50, .8)",
+    "text" : "rgba(255, 255, 255, .95)",
+    "link" : "rgba(255, 0, 0, .95)",
+    "linkHover" : "rgba(255, 255, 255, .75)",
+    "linkActive" : "rgba(255, 0, 0, .75)",
+    "trackPlayed" : "rgba(255, 255, 255, .95)",
+    "trackUnplayed" : "rgba(255, 255, 255, .1)",
+    "trackBackground" : "rgba(0, 0, 0, 0)",
+    "backgroundTop" : "rgba(72, 4, 45, 1)",
+    "backgroundBottom" : "rgba(94, 95, 89, 1)",
+    "backgroundText" : "rgba(255, 255, 255, .95)",
+    "enableApi" : true,
+    "enableControls" : true,
+    "forceAutoplay" : true,
+    "hideTitle" : false,
+    "forceLoop" : false
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 4,
+    "currentPageItems" : 4,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "https://ws.api.video/players?currentPage=1"
+    }, {
+      "rel" : "first",
+      "uri" : "https://ws.api.video/players?currentPage=1"
+    }, {
+      "rel" : "last",
+      "uri" : "https://ws.api.video/players?currentPage=1"
+    } ]
+  }
+}

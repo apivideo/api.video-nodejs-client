@@ -1,0 +1,9 @@
+{
+  "quota" : {
+    "quotaUsed" : 6,
+    "quotaRemaining" : 54,
+    "quotaTotal" : 60
+  },
+  "environment" : "production",
+  "features" : [ "app.dynamic_metadata", "app.event_log", "player.white_label", "stats.player_events", "transcode.mp4_support" ]
+}

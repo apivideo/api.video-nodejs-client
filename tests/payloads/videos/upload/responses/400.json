@@ -1,0 +1,23 @@
+{
+  "type" : "https://docs.api.video/docs/filealreadyuploaded",
+  "title" : "The source of the video is already uploaded.",
+  "name" : "file",
+  "status" : 400,
+  "problems" : [ {
+    "type" : "https://docs.api.video/docs/filealreadyuploaded",
+    "title" : "The source of the video is already uploaded.",
+    "name" : "file"
+  }, {
+    "type" : "https://docs.api.video/docs/filealreadyuploaded",
+    "title" : "The video xxxx has already been uploaded.",
+    "name" : "video"
+  }, {
+    "type" : "https://docs.api.video/docs/filemissing",
+    "title" : "There is no uploaded file in the request.",
+    "name" : "file"
+  }, {
+    "type" : "https://docs.api.video/docs/multiplefilesuploaded",
+    "title" : "There is more than one uploaded file in the request.",
+    "name" : "file"
+  } ]
+}

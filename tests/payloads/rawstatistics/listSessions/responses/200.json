@@ -1,0 +1,51 @@
+{
+  "data" : [ {
+    "session" : {
+      "sessionId" : "psEmFwGQUAXR2lFHj5nDOpy",
+      "loadedAt" : "2019-06-24T11:45:01.109+00",
+      "endedAt" : "2019-06-24T11:49:19.243+00"
+    },
+    "location" : {
+      "country" : "France",
+      "city" : "Paris"
+    },
+    "referrer" : {
+      "url" : "https://api.video",
+      "medium" : "organic",
+      "source" : "https://google.com",
+      "searchTerm" : "video encoding hosting and delivery"
+    },
+    "device" : {
+      "type" : "desktop",
+      "vendor" : "Dell",
+      "model" : "unknown"
+    },
+    "os" : {
+      "name" : "Microsoft Windows",
+      "shortname" : "W10",
+      "version" : "Windows10"
+    },
+    "client" : {
+      "type" : "browser",
+      "name" : "Firefox",
+      "version" : "67.0"
+    }
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "currentPageItems" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 1,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "/analytics/sessions/psEmFwGQUAXR2lFHj5nDOpy?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "first",
+      "uri" : "/analytics/sessions/psEmFwGQUAXR2lFHj5nDOpy?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "last",
+      "uri" : "/analytics/sessions/psEmFwGQUAXR2lFHj5nDOpy?currentPage=1&pageSize=25"
+    } ]
+  }
+}

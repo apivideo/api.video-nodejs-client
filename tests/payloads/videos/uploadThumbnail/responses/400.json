@@ -1,0 +1,6 @@
+{
+  "status" : 400,
+  "type" : "https://docs.api.video/docs/fileextension",
+  "title" : "Only [jpeg, jpg, JPG, JPEG] extensions are supported.",
+  "name" : "file"
+}

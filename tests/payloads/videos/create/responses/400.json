@@ -1,0 +1,23 @@
+{
+  "type" : "https://docs.api.video/docs/attributerequired",
+  "title" : "This attribute is required.",
+  "name" : "title",
+  "status" : 400,
+  "problems" : [ {
+    "type" : "https://docs.api.video/docs/attributerequired",
+    "title" : "This attribute is required.",
+    "name" : "title"
+  }, {
+    "type" : "https://docs.api.video/docs/attributeinvalid",
+    "title" : "This attribute must be a ISO8601 date.",
+    "name" : "scheduledAt"
+  }, {
+    "type" : "https://docs.api.video/docs/attributeinvalid",
+    "title" : "This attribute must be an array.",
+    "name" : "tags"
+  }, {
+    "type" : "https://docs.api.video/docs/attributeinvalid",
+    "title" : "This attribute must be an array.",
+    "name" : "metadata"
+  } ]
+}

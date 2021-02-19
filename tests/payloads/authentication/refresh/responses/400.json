@@ -1,0 +1,6 @@
+{
+  "status" : 400,
+  "type" : "https://docs.api.video/docs/authenticationinvalid_credentials",
+  "title" : "The user credentials were incorrect.",
+  "name" : ""
+}

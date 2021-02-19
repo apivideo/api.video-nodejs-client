@@ -1,0 +1,51 @@
+{
+  "data" : [ {
+    "session" : {
+      "sessionId" : "ps4zRWVOv2If2vzKJLMr3jQo",
+      "loadedAt" : "2018-09-11T13:04:37.89+00",
+      "endedAt" : "2018-09-11T14:47:22.186+00"
+    },
+    "location" : {
+      "country" : "France",
+      "city" : "Paris"
+    },
+    "referrer" : {
+      "url" : "unknown",
+      "medium" : "unknown",
+      "source" : "unknown",
+      "searchTerm" : "unknown"
+    },
+    "device" : {
+      "type" : "desktop",
+      "vendor" : "unknown",
+      "model" : "unknown"
+    },
+    "os" : {
+      "name" : "unknown",
+      "shortname" : "unknown",
+      "version" : "unknown"
+    },
+    "client" : {
+      "type" : "browser",
+      "name" : "Firefox",
+      "version" : "61.0"
+    }
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "currentPageItems" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 1,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "/analytics/sessions/ps4zRWVOv2If2vzKJLMr3jQo?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "first",
+      "uri" : "/analytics/sessions/ps4zRWVOv2If2vzKJLMr3jQo?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "last",
+      "uri" : "/analytics/sessions/ps4zRWVOv2If2vzKJLMr3jQo?currentPage=1&pageSize=25"
+    } ]
+  }
+}

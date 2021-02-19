@@ -1,0 +1,101 @@
+{
+  "data" : [ {
+    "videoId" : "vi4k0jvEUuaTdRAEjQ4Prklg",
+    "playerId" : "pl45KFKdlddgk654dspkze",
+    "title" : "Maths video",
+    "description" : "An amazing video explaining the string theory",
+    "public" : false,
+    "panoramic" : false,
+    "mp4Support" : true,
+    "tags" : [ "maths", "string theory", "video" ],
+    "metadata" : [ {
+      "key" : "Author",
+      "value" : "John Doe"
+    }, {
+      "key" : "Format",
+      "value" : "Tutorial"
+    } ],
+    "publishedAt" : "2019-12-16T08:25:51+00:00",
+    "updateddAt" : "2019-12-16T08:48:49+00:00",
+    "source" : {
+      "uri" : "/videos/c188ed58-3403-46a2-b91b-44603d10b2c9/source"
+    },
+    "assets" : {
+      "iframe" : "<iframe src=\"//embed.api.video/c188ed58-3403-46a2-b91b-44603d10b2c9?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
+      "player" : "https://embed.api.video/c188ed58-3403-46a2-b91b-44603d10b2c9?token=831a9bd9-9f50-464c-a369-8e9d914371ae",
+      "hls" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8",
+      "thumbnail" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg",
+      "mp4" : "https://cdn.api.video/vod/vi4k0jvEUuaTdRAEjQ4Jfrgz/token/8fd70443-d9f0-45d2-b01c-12c8cfc707c9/mp4/720/source.mp4"
+    }
+  }, {
+    "videoId" : "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+    "title" : "Video Title",
+    "description" : "A description for your video.",
+    "public" : false,
+    "panoramic" : false,
+    "mp4Support" : true,
+    "tags" : [ "books", "short stories" ],
+    "metadata" : [ {
+      "key" : "Author",
+      "value" : "John Doe"
+    }, {
+      "key" : "Science Fiction",
+      "value" : "Cyberpunk"
+    }, {
+      "key" : "Technology",
+      "value" : "Computers"
+    } ],
+    "publishedAt" : "2019-12-16T08:25:51+00:00",
+    "updateddAt" : "2019-12-16T08:48:49+00:00",
+    "source" : {
+      "uri" : "/videos/1b9d6ae8-8f57-4b6d-8552-d636926b4f5f/source"
+    },
+    "assets" : {
+      "iframe" : "<iframe src=\"//embed.api.video/1b9d6ae8-8f57-4b6d-8552-d636926b4f5f?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
+      "player" : "https://embed.api.video/1b9d6ae8-8f57-4b6d-8552-d636926b4f5f?token=831a9bd9-9f50-464c-a369-8e9d914371ae",
+      "hls" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8",
+      "thumbnail" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg"
+    }
+  }, {
+    "videoId" : "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+    "playerId" : "pl45KFKdlddgk654dspkze",
+    "title" : "My Video Title",
+    "description" : "A brief description of the video.",
+    "public" : false,
+    "panoramic" : false,
+    "mp4Support" : true,
+    "tags" : [ "General", "Videos" ],
+    "metadata" : [ {
+      "key" : "Length",
+      "value" : "Short"
+    } ],
+    "publishedAt" : "2019-12-16T08:25:51+00:00",
+    "updateddAt" : "2019-12-16T08:48:49+00:00",
+    "source" : {
+      "uri" : "/videos/73129412-e320-4b93-99f6-59a85e3cedcd/source"
+    },
+    "assets" : {
+      "iframe" : "<iframe src=\"//embed.api.video/73129412-e320-4b93-99f6-59a85e3cedcd?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
+      "player" : "https://embed.api.video/73129412-e320-4b93-99f6-59a85e3cedcd?token=831a9bd9-9f50-464c-a369-8e9d914371ae",
+      "hls" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8",
+      "thumbnail" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg"
+    }
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 11,
+    "currentPageItems" : 11,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "https://ws.api.video/videos?currentPage=1"
+    }, {
+      "rel" : "first",
+      "uri" : "https://ws.api.video/videos?currentPage=1"
+    }, {
+      "rel" : "last",
+      "uri" : "https://ws.api.video/videos?currentPage=1"
+    } ]
+  }
+}
