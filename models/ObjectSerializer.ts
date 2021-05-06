@@ -4,6 +4,7 @@ export * from './AccountQuota';
 export * from './AuthenticatePayload';
 export * from './BadRequest';
 export * from './BytesRange';
+export * from './Caption';
 export * from './CaptionsListResponse';
 export * from './CaptionsUpdatePayload';
 export * from './Chapter';
@@ -11,7 +12,7 @@ export * from './ChaptersListResponse';
 export * from './Link';
 export * from './LiveStream';
 export * from './LiveStreamAssets';
-export * from './LiveStreamCreatePayload';
+export * from './LiveStreamCreationPayload';
 export * from './LiveStreamListResponse';
 export * from './LiveStreamSession';
 export * from './LiveStreamSessionClient';
@@ -24,26 +25,23 @@ export * from './Metadata';
 export * from './NotFound';
 export * from './Pagination';
 export * from './PaginationLink';
-export * from './Player';
-export * from './PlayerAllOf';
-export * from './PlayerAllOfAssets';
-export * from './PlayerCreationPayload';
 export * from './PlayerSessionEvent';
-export * from './PlayerUpdatePayload';
-export * from './Playerinput';
-export * from './PlayersListResponse';
+export * from './PlayerTheme';
+export * from './PlayerThemeAssets';
+export * from './PlayerThemeCreationPayload';
+export * from './PlayerThemeUpdatePayload';
+export * from './PlayerThemesListResponse';
 export * from './Quality';
 export * from './RawStatisticsListLiveStreamAnalyticsResponse';
 export * from './RawStatisticsListPlayerSessionEventsResponse';
 export * from './RawStatisticsListSessionsResponse';
 export * from './RefreshTokenPayload';
-export * from './Subtitle';
-export * from './TokenCreatePayload';
+export * from './TokenCreationPayload';
 export * from './TokenListResponse';
 export * from './UploadToken';
 export * from './Video';
 export * from './VideoAssets';
-export * from './VideoCreatePayload';
+export * from './VideoCreationPayload';
 export * from './VideoSession';
 export * from './VideoSessionClient';
 export * from './VideoSessionDevice';
@@ -54,15 +52,15 @@ export * from './VideoSessionSession';
 export * from './VideoSource';
 export * from './VideoSourceLiveStream';
 export * from './VideoSourceLiveStreamLink';
+export * from './VideoStatus';
+export * from './VideoStatusEncoding';
+export * from './VideoStatusEncodingMetadata';
+export * from './VideoStatusIngest';
 export * from './VideoThumbnailPickPayload';
 export * from './VideoUpdatePayload';
 export * from './VideosListResponse';
-export * from './Videostatus';
-export * from './VideostatusEncoding';
-export * from './VideostatusEncodingMetadata';
-export * from './VideostatusIngest';
 export * from './Webhook';
-export * from './WebhooksCreatePayload';
+export * from './WebhooksCreationPayload';
 export * from './WebhooksListResponse';
 
 import { AccessToken } from './AccessToken';
@@ -71,6 +69,7 @@ import { AccountQuota } from './AccountQuota';
 import { AuthenticatePayload } from './AuthenticatePayload';
 import { BadRequest } from './BadRequest';
 import { BytesRange } from './BytesRange';
+import { Caption } from './Caption';
 import { CaptionsListResponse } from './CaptionsListResponse';
 import { CaptionsUpdatePayload } from './CaptionsUpdatePayload';
 import { Chapter } from './Chapter';
@@ -78,7 +77,7 @@ import { ChaptersListResponse } from './ChaptersListResponse';
 import { Link } from './Link';
 import { LiveStream } from './LiveStream';
 import { LiveStreamAssets } from './LiveStreamAssets';
-import { LiveStreamCreatePayload } from './LiveStreamCreatePayload';
+import { LiveStreamCreationPayload } from './LiveStreamCreationPayload';
 import { LiveStreamListResponse } from './LiveStreamListResponse';
 import { LiveStreamSession } from './LiveStreamSession';
 import { LiveStreamSessionClient } from './LiveStreamSessionClient';
@@ -91,26 +90,23 @@ import { Metadata } from './Metadata';
 import { NotFound } from './NotFound';
 import { Pagination } from './Pagination';
 import { PaginationLink } from './PaginationLink';
-import { Player } from './Player';
-import { PlayerAllOf } from './PlayerAllOf';
-import { PlayerAllOfAssets } from './PlayerAllOfAssets';
-import { PlayerCreationPayload } from './PlayerCreationPayload';
 import { PlayerSessionEvent } from './PlayerSessionEvent';
-import { PlayerUpdatePayload } from './PlayerUpdatePayload';
-import { Playerinput } from './Playerinput';
-import { PlayersListResponse } from './PlayersListResponse';
+import { PlayerTheme } from './PlayerTheme';
+import { PlayerThemeAssets } from './PlayerThemeAssets';
+import { PlayerThemeCreationPayload } from './PlayerThemeCreationPayload';
+import { PlayerThemeUpdatePayload } from './PlayerThemeUpdatePayload';
+import { PlayerThemesListResponse } from './PlayerThemesListResponse';
 import { Quality, QualityQualityEnum  , QualityStatusEnum   } from './Quality';
 import { RawStatisticsListLiveStreamAnalyticsResponse } from './RawStatisticsListLiveStreamAnalyticsResponse';
 import { RawStatisticsListPlayerSessionEventsResponse } from './RawStatisticsListPlayerSessionEventsResponse';
 import { RawStatisticsListSessionsResponse } from './RawStatisticsListSessionsResponse';
 import { RefreshTokenPayload } from './RefreshTokenPayload';
-import { Subtitle } from './Subtitle';
-import { TokenCreatePayload } from './TokenCreatePayload';
+import { TokenCreationPayload } from './TokenCreationPayload';
 import { TokenListResponse } from './TokenListResponse';
 import { UploadToken } from './UploadToken';
 import { Video } from './Video';
 import { VideoAssets } from './VideoAssets';
-import { VideoCreatePayload } from './VideoCreatePayload';
+import { VideoCreationPayload } from './VideoCreationPayload';
 import { VideoSession } from './VideoSession';
 import { VideoSessionClient } from './VideoSessionClient';
 import { VideoSessionDevice } from './VideoSessionDevice';
@@ -121,15 +117,15 @@ import { VideoSessionSession } from './VideoSessionSession';
 import { VideoSource } from './VideoSource';
 import { VideoSourceLiveStream } from './VideoSourceLiveStream';
 import { VideoSourceLiveStreamLink } from './VideoSourceLiveStreamLink';
+import { VideoStatus } from './VideoStatus';
+import { VideoStatusEncoding } from './VideoStatusEncoding';
+import { VideoStatusEncodingMetadata } from './VideoStatusEncodingMetadata';
+import { VideoStatusIngest, VideoStatusIngestStatusEnum     } from './VideoStatusIngest';
 import { VideoThumbnailPickPayload } from './VideoThumbnailPickPayload';
 import { VideoUpdatePayload } from './VideoUpdatePayload';
 import { VideosListResponse } from './VideosListResponse';
-import { Videostatus } from './Videostatus';
-import { VideostatusEncoding } from './VideostatusEncoding';
-import { VideostatusEncodingMetadata } from './VideostatusEncodingMetadata';
-import { VideostatusIngest, VideostatusIngestStatusEnum     } from './VideostatusIngest';
 import { Webhook } from './Webhook';
-import { WebhooksCreatePayload } from './WebhooksCreatePayload';
+import { WebhooksCreationPayload } from './WebhooksCreationPayload';
 import { WebhooksListResponse } from './WebhooksListResponse';
 
 /* tslint:disable:no-unused-variable */
@@ -153,7 +149,7 @@ const supportedMediaTypes: { [mediaType: string]: number } = {
 let enumsMap: Set<string> = new Set<string>([
     "QualityQualityEnum",
     "QualityStatusEnum",
-    "VideostatusIngestStatusEnum",
+    "VideoStatusIngestStatusEnum",
 ]);
 
 let typeMap: {[index: string]: any} = {
@@ -163,6 +159,7 @@ let typeMap: {[index: string]: any} = {
     "AuthenticatePayload": AuthenticatePayload,
     "BadRequest": BadRequest,
     "BytesRange": BytesRange,
+    "Caption": Caption,
     "CaptionsListResponse": CaptionsListResponse,
     "CaptionsUpdatePayload": CaptionsUpdatePayload,
     "Chapter": Chapter,
@@ -170,7 +167,7 @@ let typeMap: {[index: string]: any} = {
     "Link": Link,
     "LiveStream": LiveStream,
     "LiveStreamAssets": LiveStreamAssets,
-    "LiveStreamCreatePayload": LiveStreamCreatePayload,
+    "LiveStreamCreationPayload": LiveStreamCreationPayload,
     "LiveStreamListResponse": LiveStreamListResponse,
     "LiveStreamSession": LiveStreamSession,
     "LiveStreamSessionClient": LiveStreamSessionClient,
@@ -183,26 +180,23 @@ let typeMap: {[index: string]: any} = {
     "NotFound": NotFound,
     "Pagination": Pagination,
     "PaginationLink": PaginationLink,
-    "Player": Player,
-    "PlayerAllOf": PlayerAllOf,
-    "PlayerAllOfAssets": PlayerAllOfAssets,
-    "PlayerCreationPayload": PlayerCreationPayload,
     "PlayerSessionEvent": PlayerSessionEvent,
-    "PlayerUpdatePayload": PlayerUpdatePayload,
-    "Playerinput": Playerinput,
-    "PlayersListResponse": PlayersListResponse,
+    "PlayerTheme": PlayerTheme,
+    "PlayerThemeAssets": PlayerThemeAssets,
+    "PlayerThemeCreationPayload": PlayerThemeCreationPayload,
+    "PlayerThemeUpdatePayload": PlayerThemeUpdatePayload,
+    "PlayerThemesListResponse": PlayerThemesListResponse,
     "Quality": Quality,
     "RawStatisticsListLiveStreamAnalyticsResponse": RawStatisticsListLiveStreamAnalyticsResponse,
     "RawStatisticsListPlayerSessionEventsResponse": RawStatisticsListPlayerSessionEventsResponse,
     "RawStatisticsListSessionsResponse": RawStatisticsListSessionsResponse,
     "RefreshTokenPayload": RefreshTokenPayload,
-    "Subtitle": Subtitle,
-    "TokenCreatePayload": TokenCreatePayload,
+    "TokenCreationPayload": TokenCreationPayload,
     "TokenListResponse": TokenListResponse,
     "UploadToken": UploadToken,
     "Video": Video,
     "VideoAssets": VideoAssets,
-    "VideoCreatePayload": VideoCreatePayload,
+    "VideoCreationPayload": VideoCreationPayload,
     "VideoSession": VideoSession,
     "VideoSessionClient": VideoSessionClient,
     "VideoSessionDevice": VideoSessionDevice,
@@ -213,15 +207,15 @@ let typeMap: {[index: string]: any} = {
     "VideoSource": VideoSource,
     "VideoSourceLiveStream": VideoSourceLiveStream,
     "VideoSourceLiveStreamLink": VideoSourceLiveStreamLink,
+    "VideoStatus": VideoStatus,
+    "VideoStatusEncoding": VideoStatusEncoding,
+    "VideoStatusEncodingMetadata": VideoStatusEncodingMetadata,
+    "VideoStatusIngest": VideoStatusIngest,
     "VideoThumbnailPickPayload": VideoThumbnailPickPayload,
     "VideoUpdatePayload": VideoUpdatePayload,
     "VideosListResponse": VideosListResponse,
-    "Videostatus": Videostatus,
-    "VideostatusEncoding": VideostatusEncoding,
-    "VideostatusEncodingMetadata": VideostatusEncodingMetadata,
-    "VideostatusIngest": VideostatusIngest,
     "Webhook": Webhook,
-    "WebhooksCreatePayload": WebhooksCreatePayload,
+    "WebhooksCreationPayload": WebhooksCreationPayload,
     "WebhooksListResponse": WebhooksListResponse,
 }
 

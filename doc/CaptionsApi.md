@@ -150,7 +150,7 @@ const api = apiVideoClient.captions;
     string language = en; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
 
 try {
-    Subtitle result = apiInstance.get(videoId, language);
+    Caption result = apiInstance.get(videoId, language);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CaptionsApi#get");
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 
@@ -210,7 +210,7 @@ const api = apiVideoClient.captions;
 
 
 try {
-    Subtitle result = apiInstance.update(videoId, language, captionsUpdatePayload);
+    Caption result = apiInstance.update(videoId, language, captionsUpdatePayload);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CaptionsApi#update");
@@ -228,12 +228,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The unique identifier for the video you want to have automatic captions for.  | [default to undefined]
  **language** | **string**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. | [default to undefined]
- **captionsUpdatePayload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  | [optional]
+ **captionsUpdatePayload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  |
 
 ### Return type
 
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 
@@ -270,7 +270,7 @@ const api = apiVideoClient.captions;
     File file = BINARY_DATA_HERE; // The video text track (VTT) you want to upload.
 
 try {
-    Subtitle result = apiInstance.upload(videoId, language, file);
+    Caption result = apiInstance.upload(videoId, language, file);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CaptionsApi#upload");
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 

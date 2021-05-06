@@ -5,11 +5,11 @@ import { URLSearchParams } from 'url';
 import { BadRequest } from '../models/BadRequest';
 import { NotFound } from '../models/NotFound';
 import { Video } from '../models/Video';
-import { VideoCreatePayload } from '../models/VideoCreatePayload';
+import { VideoCreationPayload } from '../models/VideoCreationPayload';
+import { VideoStatus } from '../models/VideoStatus';
 import { VideoThumbnailPickPayload } from '../models/VideoThumbnailPickPayload';
 import { VideoUpdatePayload } from '../models/VideoUpdatePayload';
 import { VideosListResponse } from '../models/VideosListResponse';
-import { Videostatus } from '../models/Videostatus';
 
 /**
  * no description
@@ -82,14 +82,14 @@ export class VideosApi {
      * Show video status
      * @param videoId The unique identifier for the video you want the status for.
      */
-    public async getVideoStatus(videoId: string): Promise<Videostatus > {
+    public async getStatus(videoId: string): Promise<VideoStatus > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
 		
         // verify required parameter 'videoId' is not null or undefined
         if (videoId === null || videoId === undefined) {
-            throw new Error('Required parameter videoId was null or undefined when calling getVideoStatus.');
+            throw new Error('Required parameter videoId was null or undefined when calling getStatus.');
         }
 
 		// Path Params
@@ -101,8 +101,8 @@ export class VideosApi {
         return this.httpClient.call(localVarPath, queryParams)
             .then(response => ObjectSerializer.deserialize(
                 ObjectSerializer.parse(response.body, response.headers["content-type"]),
-                "Videostatus", ""
-            ) as Videostatus);
+                "VideoStatus", ""
+            ) as VideoStatus);
     }
 
     /**
@@ -118,7 +118,7 @@ export class VideosApi {
      * @param currentPage Choose the number of search results to return per page. Minimum value: 1
      * @param pageSize Results per page. Allowed values 1-100, default is 25.
      */
-    public async list(title?: string, tags?: Array<string>, metadata?: Array<string>, description?: string, liveStreamId?: string, sortBy?: string, sortOrder?: string, currentPage?: number, pageSize?: number): Promise<VideosListResponse > {
+    public async list(title?: string, tags?: Array<string>, metadata?: { [key: string]: string; }, description?: string, liveStreamId?: string, sortBy?: string, sortOrder?: string, currentPage?: number, pageSize?: number): Promise<VideosListResponse > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
@@ -144,7 +144,7 @@ export class VideosApi {
             urlSearchParams.append("tags", ObjectSerializer.serialize(tags, "Array<string>", ""));
         }
         if (metadata !== undefined) {
-            urlSearchParams.append("metadata", ObjectSerializer.serialize(metadata, "Array<string>", ""));
+            urlSearchParams.append("metadata", ObjectSerializer.serialize(metadata, "{ [key: string]: string; }", ""));
         }
         if (description !== undefined) {
             urlSearchParams.append("description", ObjectSerializer.serialize(description, "string", ""));
@@ -182,7 +182,7 @@ export class VideosApi {
      * @param videoId The video ID for the video you want to delete.
      * @param videoUpdatePayload 
      */
-    public async update(videoId: string, videoUpdatePayload?: VideoUpdatePayload): Promise<Video > {
+    public async update(videoId: string, videoUpdatePayload: VideoUpdatePayload): Promise<Video > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
@@ -193,6 +193,11 @@ export class VideosApi {
         }
 
 		
+        // verify required parameter 'videoUpdatePayload' is not null or undefined
+        if (videoUpdatePayload === null || videoUpdatePayload === undefined) {
+            throw new Error('Required parameter videoUpdatePayload was null or undefined when calling update.');
+        }
+
 		// Path Params
     	const localVarPath = '/videos/{videoId}'.substring(1)
             .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)));
@@ -223,7 +228,7 @@ export class VideosApi {
      * @param videoId Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
      * @param videoThumbnailPickPayload 
      */
-    public async pickThumbnail(videoId: string, videoThumbnailPickPayload?: VideoThumbnailPickPayload): Promise<Video > {
+    public async pickThumbnail(videoId: string, videoThumbnailPickPayload: VideoThumbnailPickPayload): Promise<Video > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
@@ -234,6 +239,11 @@ export class VideosApi {
         }
 
 		
+        // verify required parameter 'videoThumbnailPickPayload' is not null or undefined
+        if (videoThumbnailPickPayload === null || videoThumbnailPickPayload === undefined) {
+            throw new Error('Required parameter videoThumbnailPickPayload was null or undefined when calling pickThumbnail.');
+        }
+
 		// Path Params
     	const localVarPath = '/videos/{videoId}/thumbnail'.substring(1)
             .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)));
@@ -259,15 +269,71 @@ export class VideosApi {
     }
 
     /**
-     * To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"title\":\"My video\",       \"description\":\"so many details\",      \"mp4Support\":true }' ```  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in `source` parameter:  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"source\":\"http://uri/to/video.mp4\", \"title\":\"My video\"}' ```  In this case, the service will respond `202 Accepted` and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) 
-     * Create a video
-     * @param videoCreatePayload video to create
+     * When given a token, anyone can upload a file to the URI `https://ws.api.video/upload?token=<tokenId>`.  Example with cURL:  ```curl $ curl  --request POST --url 'https://ws.api.video/upload?token=toXXX'  --header 'content-type: multipart/form-data'  -F file=@video.mp4 ```  Or in an HTML form, with a little JavaScript to convert the form into JSON: ```html <!--form for user interaction--> <form name=\"videoUploadForm\" >   <label for=video>Video:</label>   <input type=file name=source/><br/>   <input value=\"Submit\" type=\"submit\"> </form> <div></div> <!--JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     --> <script>    var form = document.forms.namedItem(\"videoUploadForm\");     form.addEventListener('submit', function(ev) {   ev.preventDefault();      var oOutput = document.querySelector(\"div\"),          oData = new FormData(form);      var oReq = new XMLHttpRequest();         oReq.open(\"POST\", \"https://ws.api.video/upload?token=toXXX\", true);      oReq.send(oData);   oReq.onload = function(oEvent) {        if (oReq.status ==201) {          oOutput.innerHTML = \"Your video is uploaded!<br/>\"  + oReq.response;        } else {          oOutput.innerHTML = \"Error \" + oReq.status + \" occurred when trying to upload your file.<br />\";        }      };    }, false);  </script> ```   ### Dealing with large files  We have created a <a href='https://api.video/blog/tutorials/uploading-large-files-with-javascript'>tutorial</a> to walk through the steps required.
+     * Upload with an upload token
+     * @param token The unique identifier for the token you want to use to upload a video.
+     * @param file The path to the video you want to upload.
      */
-    public async create(videoCreatePayload?: VideoCreatePayload): Promise<Video > {
+    public async uploadWithUploadToken(token: string, file: File): Promise<Video > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
 		
+        // verify required parameter 'token' is not null or undefined
+        if (token === null || token === undefined) {
+            throw new Error('Required parameter token was null or undefined when calling uploadWithUploadToken.');
+        }
+
+		
+        // verify required parameter 'file' is not null or undefined
+        if (file === null || file === undefined) {
+            throw new Error('Required parameter file was null or undefined when calling uploadWithUploadToken.');
+        }
+
+		// Path Params
+    	const localVarPath = '/upload'.substring(1);
+
+        // Query Params
+        const urlSearchParams = new URLSearchParams();
+
+        if (token !== undefined) {
+            urlSearchParams.append("token", ObjectSerializer.serialize(token, "string", ""));
+        }
+
+        queryParams.searchParams = urlSearchParams;
+
+		// Form Params
+		let localVarFormParams = new FormData();
+
+        if (file !== undefined) {
+             localVarFormParams.append('file', file, file.name);
+        }
+        queryParams.form = localVarFormParams;
+
+        queryParams.method = 'POST';
+
+        return this.httpClient.call(localVarPath, queryParams)
+            .then(response => ObjectSerializer.deserialize(
+                ObjectSerializer.parse(response.body, response.headers["content-type"]),
+                "Video", ""
+            ) as Video);
+    }
+
+    /**
+     * To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"title\":\"My video\",       \"description\":\"so many details\",      \"mp4Support\":true }' ```  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in `source` parameter:  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"source\":\"http://uri/to/video.mp4\", \"title\":\"My video\"}' ```  In this case, the service will respond `202 Accepted` and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) 
+     * Create a video
+     * @param videoCreationPayload video to create
+     */
+    public async create(videoCreationPayload: VideoCreationPayload): Promise<Video > {
+        const queryParams: QueryOptions = {};
+
+        queryParams.headers = {};
+		
+        // verify required parameter 'videoCreationPayload' is not null or undefined
+        if (videoCreationPayload === null || videoCreationPayload === undefined) {
+            throw new Error('Required parameter videoCreationPayload was null or undefined when calling create.');
+        }
+
 		// Path Params
     	const localVarPath = '/videos'.substring(1);
 
@@ -278,7 +344,7 @@ export class VideosApi {
         queryParams.headers["Content-Type"] = contentType;
 
         queryParams.body = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(videoCreatePayload, "VideoCreatePayload", ""),
+            ObjectSerializer.serialize(videoCreationPayload, "VideoCreationPayload", ""),
             contentType
         );;
 

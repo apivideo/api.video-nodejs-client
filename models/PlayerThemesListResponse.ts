@@ -10,11 +10,11 @@
  * Do not edit the class manually.
  */
 
-import { Caption } from './Caption';
 import { Pagination } from './Pagination';
+import { PlayerTheme } from './PlayerTheme';
 
-export class CaptionsListResponse {
-    'data'?: Array<Caption>;
+export class PlayerThemesListResponse {
+    'data'?: Array<PlayerTheme>;
     'pagination'?: Pagination;
 
     static readonly discriminator: string | undefined = undefined;
@@ -23,7 +23,7 @@ export class CaptionsListResponse {
         {
             "name": "data",
             "baseName": "data",
-            "type": "Array<Caption>",
+            "type": "Array<PlayerTheme>",
             "format": ""
         },
         {
@@ -34,7 +34,7 @@ export class CaptionsListResponse {
         }    ];
 
     static getAttributeTypeMap() {
-        return CaptionsListResponse.attributeTypeMap;
+        return PlayerThemesListResponse.attributeTypeMap;
     }
     
     public constructor() {

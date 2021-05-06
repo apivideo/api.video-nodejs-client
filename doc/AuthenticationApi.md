@@ -45,7 +45,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authenticatePayload** | [**AuthenticatePayload**](AuthenticatePayload.md)|  | [optional]
+ **authenticatePayload** | [**AuthenticatePayload**](AuthenticatePayload.md)|  |
 
 ### Return type
 
@@ -103,7 +103,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **refreshTokenPayload** | [**RefreshTokenPayload**](RefreshTokenPayload.md)|  | [optional]
+ **refreshTokenPayload** | [**RefreshTokenPayload**](RefreshTokenPayload.md)|  |
 
 ### Return type
 

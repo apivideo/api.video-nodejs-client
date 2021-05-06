@@ -197,13 +197,13 @@ const api = apiVideoClient.webhooks;
 /*
 
 
-    WebhooksCreatePayload webhooksCreatePayload = ; // 
-        webhooksCreatePayload.setEvents(); // A list of the webhooks that you are subscribing to. Currently &quot;video.encoding.quality.completed&quot; is the only option. video.encoding.quality.completed - a video encoding quality is ready for the video (for example the 720p quality hls encoding video is ready.)
-        webhooksCreatePayload.setUrl(); // The the url to which HTTP notifications are sent. It could be any http or https URL.
+    WebhooksCreationPayload webhooksCreationPayload = ; // 
+        webhooksCreationPayload.setEvents(); // A list of the webhooks that you are subscribing to. Currently &quot;video.encoding.quality.completed&quot; is the only option. video.encoding.quality.completed - a video encoding quality is ready for the video (for example the 720p quality hls encoding video is ready.)
+        webhooksCreationPayload.setUrl(); // The the url to which HTTP notifications are sent. It could be any http or https URL.
 
 
 try {
-    Webhook result = apiInstance.create(webhooksCreatePayload);
+    Webhook result = apiInstance.create(webhooksCreationPayload);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhooksApi#create");
@@ -219,7 +219,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhooksCreatePayload** | [**WebhooksCreatePayload**](WebhooksCreatePayload.md)|  | [optional]
+ **webhooksCreationPayload** | [**WebhooksCreationPayload**](WebhooksCreationPayload.md)|  |
 
 ### Return type
 

@@ -10,31 +10,35 @@
  * Do not edit the class manually.
  */
 
-import { Caption } from './Caption';
-import { Pagination } from './Pagination';
 
-export class CaptionsListResponse {
-    'data'?: Array<Caption>;
-    'pagination'?: Pagination;
+export class PlayerThemeAssets {
+    /**
+    * The name of the file containing the logo you want to use.
+    */
+    'logo'?: string;
+    /**
+    * The path to the file containing your logo.
+    */
+    'link'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "Array<Caption>",
+            "name": "logo",
+            "baseName": "logo",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "pagination",
-            "baseName": "pagination",
-            "type": "Pagination",
+            "name": "link",
+            "baseName": "link",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CaptionsListResponse.attributeTypeMap;
+        return PlayerThemeAssets.attributeTypeMap;
     }
     
     public constructor() {

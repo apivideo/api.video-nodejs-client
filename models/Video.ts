@@ -20,6 +20,10 @@ export class Video {
     */
     'videoId'?: string;
     /**
+    * When an webhook was created, presented in ISO-8601 format.
+    */
+    'createdAt'?: Date;
+    /**
     * The title of the video content. 
     */
     'title'?: string;
@@ -38,7 +42,7 @@ export class Video {
     /**
     * One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  
     */
-    'tags'?: Array<any>;
+    'tags'?: Array<string>;
     /**
     * Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.  
     */
@@ -72,6 +76,12 @@ export class Video {
             "format": ""
         },
         {
+            "name": "createdAt",
+            "baseName": "createdAt",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
             "name": "title",
             "baseName": "title",
             "type": "string",
@@ -98,7 +108,7 @@ export class Video {
         {
             "name": "tags",
             "baseName": "tags",
-            "type": "Array<any>",
+            "type": "Array<string>",
             "format": ""
         },
         {

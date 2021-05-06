@@ -5,9 +5,9 @@
   "author": "api.video ecosystem team",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ApiVideo/nodejs-sdk"
+    "url": "https://github.com/ApiVideo/typescript-api-client"
   },
-  "bugs:": "https://github.com/ApiVideo/nodejs-sdk/issues",
+  "bugs:": "https://github.com/ApiVideo/typescript-api-client/issues",
   "keywords": [
     "fetch",
     "typescript",

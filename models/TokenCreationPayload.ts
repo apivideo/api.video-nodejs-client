@@ -10,31 +10,25 @@
  * Do not edit the class manually.
  */
 
-import { Caption } from './Caption';
-import { Pagination } from './Pagination';
 
-export class CaptionsListResponse {
-    'data'?: Array<Caption>;
-    'pagination'?: Pagination;
+export class TokenCreationPayload {
+    /**
+    * Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
+    */
+    'ttl'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "Array<Caption>",
-            "format": ""
-        },
-        {
-            "name": "pagination",
-            "baseName": "pagination",
-            "type": "Pagination",
+            "name": "ttl",
+            "baseName": "ttl",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CaptionsListResponse.attributeTypeMap;
+        return TokenCreationPayload.attributeTypeMap;
     }
     
     public constructor() {

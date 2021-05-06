@@ -42,6 +42,14 @@ export class LiveStream {
     * Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not.
     */
     'broadcasting'?: boolean;
+    /**
+    * When the player was created, presented in ISO-8601 format.
+    */
+    'createdAt'?: Date;
+    /**
+    * When the player was last updated, presented in ISO-8601 format.
+    */
+    'updatedAt'?: Date;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -93,6 +101,18 @@ export class LiveStream {
             "baseName": "broadcasting",
             "type": "boolean",
             "format": ""
+        },
+        {
+            "name": "createdAt",
+            "baseName": "createdAt",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "updatedAt",
+            "baseName": "updatedAt",
+            "type": "Date",
+            "format": "date-time"
         }    ];
 
     static getAttributeTypeMap() {

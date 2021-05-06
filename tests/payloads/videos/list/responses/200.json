@@ -16,7 +16,7 @@
       "value" : "Tutorial"
     } ],
     "publishedAt" : "2019-12-16T08:25:51+00:00",
-    "updateddAt" : "2019-12-16T08:48:49+00:00",
+    "updatedAt" : "2019-12-16T08:48:49+00:00",
     "source" : {
       "uri" : "/videos/c188ed58-3403-46a2-b91b-44603d10b2c9/source"
     },
@@ -46,7 +46,7 @@
       "value" : "Computers"
     } ],
     "publishedAt" : "2019-12-16T08:25:51+00:00",
-    "updateddAt" : "2019-12-16T08:48:49+00:00",
+    "updatedAt" : "2019-12-16T08:48:49+00:00",
     "source" : {
       "uri" : "/videos/1b9d6ae8-8f57-4b6d-8552-d636926b4f5f/source"
     },
@@ -70,7 +70,7 @@
       "value" : "Short"
     } ],
     "publishedAt" : "2019-12-16T08:25:51+00:00",
-    "updateddAt" : "2019-12-16T08:48:49+00:00",
+    "updatedAt" : "2019-12-16T08:48:49+00:00",
     "source" : {
       "uri" : "/videos/73129412-e320-4b93-99f6-59a85e3cedcd/source"
     },

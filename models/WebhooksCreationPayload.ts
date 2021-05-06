@@ -10,31 +10,35 @@
  * Do not edit the class manually.
  */
 
-import { Caption } from './Caption';
-import { Pagination } from './Pagination';
 
-export class CaptionsListResponse {
-    'data'?: Array<Caption>;
-    'pagination'?: Pagination;
+export class WebhooksCreationPayload {
+    /**
+    * A list of the webhooks that you are subscribing to. Currently \"video.encoding.quality.completed\" is the only option. video.encoding.quality.completed - a video encoding quality is ready for the video (for example the 720p quality hls encoding video is ready.)
+    */
+    'events': Array<string>;
+    /**
+    * The the url to which HTTP notifications are sent. It could be any http or https URL.
+    */
+    'url': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "Array<Caption>",
+            "name": "events",
+            "baseName": "events",
+            "type": "Array<string>",
             "format": ""
         },
         {
-            "name": "pagination",
-            "baseName": "pagination",
-            "type": "Pagination",
+            "name": "url",
+            "baseName": "url",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CaptionsListResponse.attributeTypeMap;
+        return WebhooksCreationPayload.attributeTypeMap;
     }
     
     public constructor() {

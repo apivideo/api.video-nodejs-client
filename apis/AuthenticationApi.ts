@@ -22,11 +22,16 @@ export class AuthenticationApi {
      * Authenticate
      * @param authenticatePayload 
      */
-    public async authenticate(authenticatePayload?: AuthenticatePayload): Promise<AccessToken > {
+    public async authenticate(authenticatePayload: AuthenticatePayload): Promise<AccessToken > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
 		
+        // verify required parameter 'authenticatePayload' is not null or undefined
+        if (authenticatePayload === null || authenticatePayload === undefined) {
+            throw new Error('Required parameter authenticatePayload was null or undefined when calling authenticate.');
+        }
+
 		// Path Params
     	const localVarPath = '/auth/api-key'.substring(1);
 
@@ -55,11 +60,16 @@ export class AuthenticationApi {
      * Refresh token
      * @param refreshTokenPayload 
      */
-    public async refresh(refreshTokenPayload?: RefreshTokenPayload): Promise<AccessToken > {
+    public async refresh(refreshTokenPayload: RefreshTokenPayload): Promise<AccessToken > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
 		
+        // verify required parameter 'refreshTokenPayload' is not null or undefined
+        if (refreshTokenPayload === null || refreshTokenPayload === undefined) {
+            throw new Error('Required parameter refreshTokenPayload was null or undefined when calling refresh.');
+        }
+
 		// Path Params
     	const localVarPath = '/auth/refresh'.substring(1);
 

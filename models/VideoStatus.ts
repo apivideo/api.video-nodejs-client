@@ -10,31 +10,31 @@
  * Do not edit the class manually.
  */
 
-import { Caption } from './Caption';
-import { Pagination } from './Pagination';
+import { VideoStatusEncoding } from './VideoStatusEncoding';
+import { VideoStatusIngest } from './VideoStatusIngest';
 
-export class CaptionsListResponse {
-    'data'?: Array<Caption>;
-    'pagination'?: Pagination;
+export class VideoStatus {
+    'ingest'?: VideoStatusIngest;
+    'encoding'?: VideoStatusEncoding;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "Array<Caption>",
+            "name": "ingest",
+            "baseName": "ingest",
+            "type": "VideoStatusIngest",
             "format": ""
         },
         {
-            "name": "pagination",
-            "baseName": "pagination",
-            "type": "Pagination",
+            "name": "encoding",
+            "baseName": "encoding",
+            "type": "VideoStatusEncoding",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CaptionsListResponse.attributeTypeMap;
+        return VideoStatus.attributeTypeMap;
     }
     
     public constructor() {

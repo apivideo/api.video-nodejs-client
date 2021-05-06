@@ -6,11 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **videoId** | **string** | The unique identifier of the video object. |  [optional]
+**createdAt** | **Date** | When an webhook was created, presented in ISO-8601 format. |  [optional]
 **title** | **string** | The title of the video content.  |  [optional]
 **description** | **string** | A description for the video content.  |  [optional]
 **publishedAt** | **string** | The date and time the API created the video. Date and time are provided using ISO-8601 UTC format. |  [optional]
 **updatedAt** | **Date** | The date and time the video was updated. Date and time are provided using ISO-8601 UTC format. |  [optional]
-**tags** | **Array&lt;any&gt;** | One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.   |  [optional]
+**tags** | **Array&lt;string&gt;** | One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.   |  [optional]
 **metadata** | [**Array&lt;Metadata&gt;**](Metadata.md) | Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.   |  [optional]
 **source** | [**VideoSource**](VideoSource.md) |  |  [optional]
 **assets** | [**VideoAssets**](VideoAssets.md) |  |  [optional]

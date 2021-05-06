@@ -5,7 +5,7 @@ import { URLSearchParams } from 'url';
 import { BadRequest } from '../models/BadRequest';
 import { NotFound } from '../models/NotFound';
 import { Webhook } from '../models/Webhook';
-import { WebhooksCreatePayload } from '../models/WebhooksCreatePayload';
+import { WebhooksCreationPayload } from '../models/WebhooksCreationPayload';
 import { WebhooksListResponse } from '../models/WebhooksListResponse';
 
 /**
@@ -116,15 +116,20 @@ export class WebhooksApi {
     }
 
     /**
-     * Webhooks can push notifications to your server, rather than polling api.video for changes
+     * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the ```video.encoding.quality.completed``` event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like ```{ \\\"type\\\": \\\"video.encoding.quality.completed\\\", \\\"emittedAt\\\": \\\"2021-01-29T16:46:25.217+01:00\\\", \\\"videoId\\\": \\\"viXXXXXXXX\\\", \\\"encoding\\\": \\\"hls\\\", \\\"quality\\\": \\\"720p\\\"} ```. This request says that the 720p HLS encoding was completed.
      * Create Webhook
-     * @param webhooksCreatePayload 
+     * @param webhooksCreationPayload 
      */
-    public async create(webhooksCreatePayload?: WebhooksCreatePayload): Promise<Webhook > {
+    public async create(webhooksCreationPayload: WebhooksCreationPayload): Promise<Webhook > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
 		
+        // verify required parameter 'webhooksCreationPayload' is not null or undefined
+        if (webhooksCreationPayload === null || webhooksCreationPayload === undefined) {
+            throw new Error('Required parameter webhooksCreationPayload was null or undefined when calling create.');
+        }
+
 		// Path Params
     	const localVarPath = '/webhooks'.substring(1);
 
@@ -135,7 +140,7 @@ export class WebhooksApi {
         queryParams.headers["Content-Type"] = contentType;
 
         queryParams.body = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(webhooksCreatePayload, "WebhooksCreatePayload", ""),
+            ObjectSerializer.serialize(webhooksCreationPayload, "WebhooksCreationPayload", ""),
             contentType
         );;
 

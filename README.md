@@ -24,22 +24,6 @@ npm install @api.video/typescript-api-client@1.0.0 --save
 All URIs are relative to *https://ws.api.video*
 
 
-### AccountApi
-
-
-#### Retrieve an instance of AccountApi:
-```javascript
-const apiVideoClient = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
-const account = apiVideoClient.account;
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**(deprecated)** [**get**](doc/AccountApi.md#get) | **GET** /account | Show account
-
-
 ### CaptionsApi
 
 
@@ -79,48 +63,48 @@ Method | HTTP request | Description
 [**upload**](doc/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
-### LiveApi
+### LiveStreamsApi
 
 
-#### Retrieve an instance of LiveApi:
+#### Retrieve an instance of LiveStreamsApi:
 ```javascript
 const apiVideoClient = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
-const live = apiVideoClient.live;
+const liveStreams = apiVideoClient.liveStreams;
 ```
 
 #### Endpoints
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/LiveApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**deleteThumbnail**](doc/LiveApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
-[**list**](doc/LiveApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](doc/LiveApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
-[**update**](doc/LiveApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**create**](doc/LiveApi.md#create) | **POST** /live-streams | Create live stream
-[**uploadThumbnail**](doc/LiveApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**delete**](doc/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
+[**deleteThumbnail**](doc/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**list**](doc/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
+[**get**](doc/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
+[**update**](doc/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
+[**create**](doc/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
+[**uploadThumbnail**](doc/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 
 
-### PlayersApi
+### PlayerThemesApi
 
 
-#### Retrieve an instance of PlayersApi:
+#### Retrieve an instance of PlayerThemesApi:
 ```javascript
 const apiVideoClient = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
-const players = apiVideoClient.players;
+const playerThemes = apiVideoClient.playerThemes;
 ```
 
 #### Endpoints
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/PlayersApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
-[**deleteLogo**](doc/PlayersApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](doc/PlayersApi.md#list) | **GET** /players | List all players
-[**get**](doc/PlayersApi.md#get) | **GET** /players/{playerId} | Show a player
-[**update**](doc/PlayersApi.md#update) | **PATCH** /players/{playerId} | Update a player
-[**create**](doc/PlayersApi.md#create) | **POST** /players | Create a player
-[**uploadLogo**](doc/PlayersApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
+[**delete**](doc/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
+[**deleteLogo**](doc/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
+[**list**](doc/PlayerThemesApi.md#list) | **GET** /players | List all players
+[**get**](doc/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
+[**update**](doc/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
+[**create**](doc/PlayerThemesApi.md#create) | **POST** /players | Create a player
+[**uploadLogo**](doc/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
 
 
 ### RawStatisticsApi
@@ -136,9 +120,28 @@ const rawStatistics = apiVideoClient.rawStatistics;
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLiveStreamAnalytics**](doc/RawStatisticsApi.md#getLiveStreamAnalytics) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**listPlayerSessionEvents**](doc/RawStatisticsApi.md#listPlayerSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**listSessions**](doc/RawStatisticsApi.md#listSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+[**listLiveStreamSessions**](doc/RawStatisticsApi.md#listLiveStreamSessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
+[**listSessionEvents**](doc/RawStatisticsApi.md#listSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
+[**listVideoSessions**](doc/RawStatisticsApi.md#listVideoSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+
+
+### UploadTokensApi
+
+
+#### Retrieve an instance of UploadTokensApi:
+```javascript
+const apiVideoClient = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+const uploadTokens = apiVideoClient.uploadTokens;
+```
+
+#### Endpoints
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**deleteToken**](doc/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
+[**list**](doc/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
+[**getToken**](doc/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Show upload token
+[**createToken**](doc/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 
 
 ### VideosApi
@@ -156,33 +159,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](doc/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
 [**get**](doc/VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**getVideoStatus**](doc/VideosApi.md#getVideoStatus) | **GET** /videos/{videoId}/status | Show video status
+[**getStatus**](doc/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Show video status
 [**list**](doc/VideosApi.md#list) | **GET** /videos | List all videos
 [**update**](doc/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
 [**pickThumbnail**](doc/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
+[**uploadWithUploadToken**](doc/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an upload token
 [**create**](doc/VideosApi.md#create) | **POST** /videos | Create a video
 [**upload**](doc/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
 [**uploadThumbnail**](doc/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
-
-
-### VideosDelegatedUploadApi
-
-
-#### Retrieve an instance of VideosDelegatedUploadApi:
-```javascript
-const apiVideoClient = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
-const videosDelegatedUpload = apiVideoClient.videosDelegatedUpload;
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteToken**](doc/VideosDelegatedUploadApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**listTokens**](doc/VideosDelegatedUploadApi.md#listTokens) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken**](doc/VideosDelegatedUploadApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Show upload token
-[**upload**](doc/VideosDelegatedUploadApi.md#upload) | **POST** /upload | Upload with an upload token
-[**createToken**](doc/VideosDelegatedUploadApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 
 
 ### WebhooksApi
@@ -213,6 +197,7 @@ Method | HTTP request | Description
  - [AuthenticatePayload](doc/AuthenticatePayload.md)
  - [BadRequest](doc/BadRequest.md)
  - [BytesRange](doc/BytesRange.md)
+ - [Caption](doc/Caption.md)
  - [CaptionsListResponse](doc/CaptionsListResponse.md)
  - [CaptionsUpdatePayload](doc/CaptionsUpdatePayload.md)
  - [Chapter](doc/Chapter.md)
@@ -220,7 +205,7 @@ Method | HTTP request | Description
  - [Link](doc/Link.md)
  - [LiveStream](doc/LiveStream.md)
  - [LiveStreamAssets](doc/LiveStreamAssets.md)
- - [LiveStreamCreatePayload](doc/LiveStreamCreatePayload.md)
+ - [LiveStreamCreationPayload](doc/LiveStreamCreationPayload.md)
  - [LiveStreamListResponse](doc/LiveStreamListResponse.md)
  - [LiveStreamSession](doc/LiveStreamSession.md)
  - [LiveStreamSessionClient](doc/LiveStreamSessionClient.md)
@@ -233,26 +218,23 @@ Method | HTTP request | Description
  - [NotFound](doc/NotFound.md)
  - [Pagination](doc/Pagination.md)
  - [PaginationLink](doc/PaginationLink.md)
- - [Player](doc/Player.md)
- - [PlayerAllOf](doc/PlayerAllOf.md)
- - [PlayerAllOfAssets](doc/PlayerAllOfAssets.md)
- - [PlayerCreationPayload](doc/PlayerCreationPayload.md)
  - [PlayerSessionEvent](doc/PlayerSessionEvent.md)
- - [PlayerUpdatePayload](doc/PlayerUpdatePayload.md)
- - [Playerinput](doc/Playerinput.md)
- - [PlayersListResponse](doc/PlayersListResponse.md)
+ - [PlayerTheme](doc/PlayerTheme.md)
+ - [PlayerThemeAssets](doc/PlayerThemeAssets.md)
+ - [PlayerThemeCreationPayload](doc/PlayerThemeCreationPayload.md)
+ - [PlayerThemeUpdatePayload](doc/PlayerThemeUpdatePayload.md)
+ - [PlayerThemesListResponse](doc/PlayerThemesListResponse.md)
  - [Quality](doc/Quality.md)
  - [RawStatisticsListLiveStreamAnalyticsResponse](doc/RawStatisticsListLiveStreamAnalyticsResponse.md)
  - [RawStatisticsListPlayerSessionEventsResponse](doc/RawStatisticsListPlayerSessionEventsResponse.md)
  - [RawStatisticsListSessionsResponse](doc/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](doc/RefreshTokenPayload.md)
- - [Subtitle](doc/Subtitle.md)
- - [TokenCreatePayload](doc/TokenCreatePayload.md)
+ - [TokenCreationPayload](doc/TokenCreationPayload.md)
  - [TokenListResponse](doc/TokenListResponse.md)
  - [UploadToken](doc/UploadToken.md)
  - [Video](doc/Video.md)
  - [VideoAssets](doc/VideoAssets.md)
- - [VideoCreatePayload](doc/VideoCreatePayload.md)
+ - [VideoCreationPayload](doc/VideoCreationPayload.md)
  - [VideoSession](doc/VideoSession.md)
  - [VideoSessionClient](doc/VideoSessionClient.md)
  - [VideoSessionDevice](doc/VideoSessionDevice.md)
@@ -263,15 +245,15 @@ Method | HTTP request | Description
  - [VideoSource](doc/VideoSource.md)
  - [VideoSourceLiveStream](doc/VideoSourceLiveStream.md)
  - [VideoSourceLiveStreamLink](doc/VideoSourceLiveStreamLink.md)
+ - [VideoStatus](doc/VideoStatus.md)
+ - [VideoStatusEncoding](doc/VideoStatusEncoding.md)
+ - [VideoStatusEncodingMetadata](doc/VideoStatusEncodingMetadata.md)
+ - [VideoStatusIngest](doc/VideoStatusIngest.md)
  - [VideoThumbnailPickPayload](doc/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](doc/VideoUpdatePayload.md)
  - [VideosListResponse](doc/VideosListResponse.md)
- - [Videostatus](doc/Videostatus.md)
- - [VideostatusEncoding](doc/VideostatusEncoding.md)
- - [VideostatusEncodingMetadata](doc/VideostatusEncodingMetadata.md)
- - [VideostatusIngest](doc/VideostatusIngest.md)
  - [Webhook](doc/Webhook.md)
- - [WebhooksCreatePayload](doc/WebhooksCreatePayload.md)
+ - [WebhooksCreationPayload](doc/WebhooksCreationPayload.md)
  - [WebhooksListResponse](doc/WebhooksListResponse.md)
 
 
@@ -297,5 +279,6 @@ ApiVideoClient apiVideoClient = new ApiVideoClient();
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
 ## Author
+
 
 

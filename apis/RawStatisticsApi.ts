@@ -24,14 +24,14 @@ export class RawStatisticsApi {
      * @param currentPage Choose the number of search results to return per page. Minimum value: 1
      * @param pageSize Results per page. Allowed values 1-100, default is 25.
      */
-    public async getLiveStreamAnalytics(liveStreamId: string, period?: string, currentPage?: number, pageSize?: number): Promise<RawStatisticsListLiveStreamAnalyticsResponse > {
+    public async listLiveStreamSessions(liveStreamId: string, period?: string, currentPage?: number, pageSize?: number): Promise<RawStatisticsListLiveStreamAnalyticsResponse > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
 		
         // verify required parameter 'liveStreamId' is not null or undefined
         if (liveStreamId === null || liveStreamId === undefined) {
-            throw new Error('Required parameter liveStreamId was null or undefined when calling getLiveStreamAnalytics.');
+            throw new Error('Required parameter liveStreamId was null or undefined when calling listLiveStreamSessions.');
         }
 
 		
@@ -72,14 +72,14 @@ export class RawStatisticsApi {
      * @param currentPage Choose the number of search results to return per page. Minimum value: 1
      * @param pageSize Results per page. Allowed values 1-100, default is 25.
      */
-    public async listPlayerSessionEvents(sessionId: string, currentPage?: number, pageSize?: number): Promise<RawStatisticsListPlayerSessionEventsResponse > {
+    public async listSessionEvents(sessionId: string, currentPage?: number, pageSize?: number): Promise<RawStatisticsListPlayerSessionEventsResponse > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
 		
         // verify required parameter 'sessionId' is not null or undefined
         if (sessionId === null || sessionId === undefined) {
-            throw new Error('Required parameter sessionId was null or undefined when calling listPlayerSessionEvents.');
+            throw new Error('Required parameter sessionId was null or undefined when calling listSessionEvents.');
         }
 
 		
@@ -118,14 +118,14 @@ export class RawStatisticsApi {
      * @param currentPage Choose the number of search results to return per page. Minimum value: 1
      * @param pageSize Results per page. Allowed values 1-100, default is 25.
      */
-    public async listSessions(videoId: string, period?: string, metadata?: Array<string>, currentPage?: number, pageSize?: number): Promise<RawStatisticsListSessionsResponse > {
+    public async listVideoSessions(videoId: string, period?: string, metadata?: Array<string>, currentPage?: number, pageSize?: number): Promise<RawStatisticsListSessionsResponse > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
 		
         // verify required parameter 'videoId' is not null or undefined
         if (videoId === null || videoId === undefined) {
-            throw new Error('Required parameter videoId was null or undefined when calling listSessions.');
+            throw new Error('Required parameter videoId was null or undefined when calling listVideoSessions.');
         }
 
 		

@@ -3,10 +3,10 @@ import HttpClient, { QueryOptions } from '../client/HttpClient';
 import { URLSearchParams } from 'url';
 
 import { BadRequest } from '../models/BadRequest';
+import { Caption } from '../models/Caption';
 import { CaptionsListResponse } from '../models/CaptionsListResponse';
 import { CaptionsUpdatePayload } from '../models/CaptionsUpdatePayload';
 import { NotFound } from '../models/NotFound';
-import { Subtitle } from '../models/Subtitle';
 
 /**
  * no description
@@ -104,7 +104,7 @@ export class CaptionsApi {
      * @param videoId The unique identifier for the video you want captions for.
      * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
      */
-    public async get(videoId: string, language: string): Promise<Subtitle > {
+    public async get(videoId: string, language: string): Promise<Caption > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
@@ -130,8 +130,8 @@ export class CaptionsApi {
         return this.httpClient.call(localVarPath, queryParams)
             .then(response => ObjectSerializer.deserialize(
                 ObjectSerializer.parse(response.body, response.headers["content-type"]),
-                "Subtitle", ""
-            ) as Subtitle);
+                "Caption", ""
+            ) as Caption);
     }
 
     /**
@@ -141,7 +141,7 @@ export class CaptionsApi {
      * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
      * @param captionsUpdatePayload 
      */
-    public async update(videoId: string, language: string, captionsUpdatePayload?: CaptionsUpdatePayload): Promise<Subtitle > {
+    public async update(videoId: string, language: string, captionsUpdatePayload: CaptionsUpdatePayload): Promise<Caption > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
@@ -158,6 +158,11 @@ export class CaptionsApi {
         }
 
 		
+        // verify required parameter 'captionsUpdatePayload' is not null or undefined
+        if (captionsUpdatePayload === null || captionsUpdatePayload === undefined) {
+            throw new Error('Required parameter captionsUpdatePayload was null or undefined when calling update.');
+        }
+
 		// Path Params
     	const localVarPath = '/videos/{videoId}/captions/{language}'.substring(1)
             .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)))
@@ -179,8 +184,8 @@ export class CaptionsApi {
         return this.httpClient.call(localVarPath, queryParams)
             .then(response => ObjectSerializer.deserialize(
                 ObjectSerializer.parse(response.body, response.headers["content-type"]),
-                "Subtitle", ""
-            ) as Subtitle);
+                "Caption", ""
+            ) as Caption);
     }
 
     /**
@@ -190,7 +195,7 @@ export class CaptionsApi {
      * @param language A valid BCP 47 language representation.
      * @param file The video text track (VTT) you want to upload.
      */
-    public async upload(videoId: string, language: string, file: File): Promise<Subtitle > {
+    public async upload(videoId: string, language: string, file: File): Promise<Caption > {
         const queryParams: QueryOptions = {};
 
         queryParams.headers = {};
@@ -230,8 +235,8 @@ export class CaptionsApi {
         return this.httpClient.call(localVarPath, queryParams)
             .then(response => ObjectSerializer.deserialize(
                 ObjectSerializer.parse(response.body, response.headers["content-type"]),
-                "Subtitle", ""
-            ) as Subtitle);
+                "Caption", ""
+            ) as Caption);
     }
 
 }

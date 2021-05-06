@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **pageSize** | **number** | Maximum number of item per page. |  [optional] [readonly]
 **currentPage** | **number** | The current page index. |  [optional] [readonly]
 **currentPageItems** | **number** | The number of items on the current page. |  [optional] [readonly]
-**links** | [**Array&lt;PaginationLink&gt;**](PaginationLink.md) |  | 
+**links** | **Array&lt;PaginationLink&gt;** |  | 
 
 

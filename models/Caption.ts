@@ -10,31 +10,46 @@
  * Do not edit the class manually.
  */
 
-import { Caption } from './Caption';
-import { Pagination } from './Pagination';
 
-export class CaptionsListResponse {
-    'data'?: Array<Caption>;
-    'pagination'?: Pagination;
+export class Caption {
+    'uri'?: string;
+    'src'?: string;
+    'srclang'?: string;
+    /**
+    * Whether you will have subtitles or not. True for yes you will have subtitles, false for no you will not have subtitles.
+    */
+    '_default'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "Array<Caption>",
+            "name": "uri",
+            "baseName": "uri",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "pagination",
-            "baseName": "pagination",
-            "type": "Pagination",
+            "name": "src",
+            "baseName": "src",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "srclang",
+            "baseName": "srclang",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "_default",
+            "baseName": "default",
+            "type": "boolean",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CaptionsListResponse.attributeTypeMap;
+        return Caption.attributeTypeMap;
     }
     
     public constructor() {

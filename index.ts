@@ -1,27 +1,25 @@
 import HttpClient from "./client/HttpClient";
 
-import { AccountApi } from './apis/AccountApi';
 import { CaptionsApi } from './apis/CaptionsApi';
 import { ChaptersApi } from './apis/ChaptersApi';
-import { LiveApi } from './apis/LiveApi';
-import { PlayersApi } from './apis/PlayersApi';
+import { LiveStreamsApi } from './apis/LiveStreamsApi';
+import { PlayerThemesApi } from './apis/PlayerThemesApi';
 import { RawStatisticsApi } from './apis/RawStatisticsApi';
+import { UploadTokensApi } from './apis/UploadTokensApi';
 import { VideosApi } from './apis/VideosApi';
-import { VideosDelegatedUploadApi } from './apis/VideosDelegatedUploadApi';
 import { WebhooksApi } from './apis/WebhooksApi';
 
 const PRODUCTION_BASE_URI = "https://ws.api.video";
 
 class ApiVideoClient {
     private httpClient: HttpClient;
-    private _account: AccountApi;
     private _captions: CaptionsApi;
     private _chapters: ChaptersApi;
-    private _live: LiveApi;
-    private _players: PlayersApi;
+    private _liveStreams: LiveStreamsApi;
+    private _playerThemes: PlayerThemesApi;
     private _rawStatistics: RawStatisticsApi;
+    private _uploadTokens: UploadTokensApi;
     private _videos: VideosApi;
-    private _videosDelegatedUpload: VideosDelegatedUploadApi;
     private _webhooks: WebhooksApi;
 
     constructor(params: {apiKey?: string, baseUri?: string}) {
@@ -30,26 +28,17 @@ class ApiVideoClient {
             baseUri: params.baseUri || PRODUCTION_BASE_URI
         })
 
-        this._account = new AccountApi(this.httpClient);
         this._captions = new CaptionsApi(this.httpClient);
         this._chapters = new ChaptersApi(this.httpClient);
-        this._live = new LiveApi(this.httpClient);
-        this._players = new PlayersApi(this.httpClient);
+        this._liveStreams = new LiveStreamsApi(this.httpClient);
+        this._playerThemes = new PlayerThemesApi(this.httpClient);
         this._rawStatistics = new RawStatisticsApi(this.httpClient);
+        this._uploadTokens = new UploadTokensApi(this.httpClient);
         this._videos = new VideosApi(this.httpClient);
-        this._videosDelegatedUpload = new VideosDelegatedUploadApi(this.httpClient);
         this._webhooks = new WebhooksApi(this.httpClient);
     }
 
 
-
-    /**
-    * Get an AccountApi instance
-    * @return AccountApi
-    */
-    public get account(): AccountApi {
-        return this._account;
-    }
 
     /**
     * Get an CaptionsApi instance
@@ -68,19 +57,19 @@ class ApiVideoClient {
     }
 
     /**
-    * Get an LiveApi instance
-    * @return LiveApi
+    * Get an LiveStreamsApi instance
+    * @return LiveStreamsApi
     */
-    public get live(): LiveApi {
-        return this._live;
+    public get liveStreams(): LiveStreamsApi {
+        return this._liveStreams;
     }
 
     /**
-    * Get an PlayersApi instance
-    * @return PlayersApi
+    * Get an PlayerThemesApi instance
+    * @return PlayerThemesApi
     */
-    public get players(): PlayersApi {
-        return this._players;
+    public get playerThemes(): PlayerThemesApi {
+        return this._playerThemes;
     }
 
     /**
@@ -92,19 +81,19 @@ class ApiVideoClient {
     }
 
     /**
+    * Get an UploadTokensApi instance
+    * @return UploadTokensApi
+    */
+    public get uploadTokens(): UploadTokensApi {
+        return this._uploadTokens;
+    }
+
+    /**
     * Get an VideosApi instance
     * @return VideosApi
     */
     public get videos(): VideosApi {
         return this._videos;
-    }
-
-    /**
-    * Get an VideosDelegatedUploadApi instance
-    * @return VideosDelegatedUploadApi
-    */
-    public get videosDelegatedUpload(): VideosDelegatedUploadApi {
-        return this._videosDelegatedUpload;
     }
 
     /**

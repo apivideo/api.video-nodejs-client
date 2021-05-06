@@ -8,10 +8,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
 [**get**](VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**getVideoStatus**](VideosApi.md#getVideoStatus) | **GET** /videos/{videoId}/status | Show video status
+[**getStatus**](VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Show video status
 [**list**](VideosApi.md#list) | **GET** /videos | List all videos
 [**update**](VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
 [**pickThumbnail**](VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
+[**uploadWithUploadToken**](VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an upload token
 [**create**](VideosApi.md#create) | **POST** /videos | Create a video
 [**upload**](VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
 [**uploadThumbnail**](VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
@@ -127,8 +128,8 @@ Name | Type | Description  | Notes
 **200** | Success |  -  |
 **404** | Not Found |  -  |
 
-<a name="getVideoStatus"></a>
-# **getVideoStatus**
+<a name="getStatus"></a>
+# **getStatus**
 
 
 ### Example
@@ -144,10 +145,10 @@ const api = apiVideoClient.videos;
     string videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz; // The unique identifier for the video you want the status for.
 
 try {
-    Videostatus result = apiInstance.getVideoStatus(videoId);
+    VideoStatus result = apiInstance.getStatus(videoId);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling VideosApi#getVideoStatus");
+    System.err.println("Exception when calling VideosApi#getStatus");
     System.err.println("Status code: " + e.getCode());
     System.err.println("Reason: " + e.getMessage());
     System.err.println("Response headers: " + e.getResponseHeaders());
@@ -165,7 +166,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Videostatus**](Videostatus.md)
+[**VideoStatus**](VideoStatus.md)
 
 ### Authorization
 
@@ -197,8 +198,8 @@ const api = apiVideoClient.videos;
 
 
     string title = My Video.mp4; // The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
-    Array<string> tags = "tags": ["captions", "dialogue"]; // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-    Array<string> metadata = [{"key":"Author", "value":"John Doe"}, {"key":"Format", "value":"Tutorial"}]; // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
+    Array<string> tags = ["captions", "dialogue"]; // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
+    { [key: string]: string; } metadata = metadata[Author]=John Doe&metadata[Format]=Tutorial; // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
     string description = New Zealand; // If you described a video with a term or sentence, you can add it here to return videos containing this string.
     string liveStreamId = li400mYKSgQ6xs7taUeSaEKr; // If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.
     string sortBy = publishedAt; // Allowed: publishedAt, title. You can search by the time videos were published at, or by title.
@@ -235,7 +236,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **string**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional] [default to undefined]
  **tags** | [**Array&lt;string&gt;**](string.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- **metadata** | [**Array&lt;string&gt;**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
+ **metadata** | [**{ [key: string]: string; }**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
  **description** | **string**| If you described a video with a term or sentence, you can add it here to return videos containing this string. | [optional] [default to undefined]
  **liveStreamId** | **string**| If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. | [optional] [default to undefined]
  **sortBy** | **string**| Allowed: publishedAt, title. You can search by the time videos were published at, or by title. | [optional] [default to undefined]
@@ -307,7 +308,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The video ID for the video you want to delete. | [default to undefined]
- **videoUpdatePayload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  | [optional]
+ **videoUpdatePayload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  |
 
 ### Return type
 
@@ -373,7 +374,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. | [default to undefined]
- **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  | [optional]
+ **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  |
 
 ### Return type
 
@@ -395,6 +396,73 @@ Name | Type | Description  | Notes
 **200** | Success |  -  |
 **404** | Not Found |  -  |
 
+<a name="uploadWithUploadToken"></a>
+# **uploadWithUploadToken**
+
+
+### Example
+```javascript
+const apiVideoClient = new VideoApiClient();
+
+const api = apiVideoClient.videos;
+
+//TODO from java generator, to be adapted
+/*
+
+
+    string token = to1tcmSFHeYY5KzyhOqVKMKb; // The unique identifier for the token you want to use to upload a video.
+    File file = BINARY_DATA_HERE; // The path to the video you want to upload.
+
+try {
+    Video result = apiInstance.uploadWithUploadToken(token, file);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling VideosApi#uploadWithUploadToken");
+    System.err.println("Status code: " + e.getCode());
+    System.err.println("Reason: " + e.getMessage());
+    System.err.println("Response headers: " + e.getResponseHeaders());
+    e.printStackTrace();
+}
+*/
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **string**| The unique identifier for the token you want to use to upload a video. | [default to undefined]
+ **file** | **File**| The path to the video you want to upload. | [default to undefined]
+
+
+### Upload chunks
+
+Large files are broken into chunks for upload. You can control the size of the chunks using the `setUploadChunkSize()` of method of `ApiVideoClient` before uploading:
+
+```java
+apiVideoClient.setUploadChunkSize(50*1024*1024); // use 50MB chunks
+apiVideoClient.videos().uploadWithUploadToken(token, file);
+```
+
+### Return type
+
+
+[**Video**](Video.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+
 <a name="create"></a>
 # **create**
 
@@ -409,21 +477,21 @@ const api = apiVideoClient.videos;
 /*
 
 
-    VideoCreatePayload videoCreatePayload = ; // video to create
-        videoCreatePayload.setTitle(); // The title of your new video.
-        videoCreatePayload.setDescription(); // A brief description of your video.
-        videoCreatePayload.setSource(); // If you add a video already on the web, this is where you enter the url for the video.
-        videoCreatePayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-        videoCreatePayload.setPanoramic(); // Indicates if your video is a 360/immersive video.
-        videoCreatePayload.setMp4Support(); // Enables mp4 version in addition to streamed version.
-        videoCreatePayload.setPlayerId(); // The unique identification number for your video player.
-        videoCreatePayload.setTags(); // A list of tags you want to use to describe your video.
-        videoCreatePayload.setMetadata(); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
-        videoCreatePayload.setPublishedAt(); // The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
+    VideoCreationPayload videoCreationPayload = ; // video to create
+        videoCreationPayload.setTitle(); // The title of your new video.
+        videoCreationPayload.setDescription(); // A brief description of your video.
+        videoCreationPayload.setSource(); // If you add a video already on the web, this is where you enter the url for the video.
+        videoCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+        videoCreationPayload.setPanoramic(); // Indicates if your video is a 360/immersive video.
+        videoCreationPayload.setMp4Support(); // Enables mp4 version in addition to streamed version.
+        videoCreationPayload.setPlayerId(); // The unique identification number for your video player.
+        videoCreationPayload.setTags(); // A list of tags you want to use to describe your video.
+        videoCreationPayload.setMetadata(); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
+        videoCreationPayload.setPublishedAt(); // The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
 
 
 try {
-    Video result = apiInstance.create(videoCreatePayload);
+    Video result = apiInstance.create(videoCreationPayload);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VideosApi#create");
@@ -439,7 +507,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoCreatePayload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create | [optional]
+ **videoCreationPayload** | [**VideoCreationPayload**](VideoCreationPayload.md)| video to create |
 
 ### Return type
 
