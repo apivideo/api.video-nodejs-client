@@ -21,7 +21,7 @@ Method | HTTP request | Description
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player you want to delete.
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const playerId = 'pl14Db6oMJRH6SRVoOwORacK'; // The unique identifier for the player.
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const sortBy = 'createdAt'; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
         const sortOrder = 'asc'; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player you want to retrieve. 
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player.
         const playerThemeUpdatePayload = ''; // 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const playerThemeCreationPayload = ''; // 
                 playerThemeCreationPayload.setText(); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const playerId = 'pl14Db6oMJRH6SRVoOwORacK'; // The unique identifier for the player.
         const file = 'BINARY_DATA_HERE'; // The name of the file you want to use for your logo.

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const webhookId = 'webhookId_example'; // The webhook you wish to delete.
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const webhookId = 'webhookId_example'; // The unique webhook you wish to retreive details on.
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const events = 'video.encoding.quality.completed'; // The webhook event that you wish to filter on.
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const webhooksCreationPayload = ''; // 
                 webhooksCreationPayload.setEvents(); // A list of the webhooks that you are subscribing to. Currently &quot;video.encoding.quality.completed&quot; is the only option. video.encoding.quality.completed - a video encoding quality is ready for the video (for example the 720p quality hls encoding video is ready.)
