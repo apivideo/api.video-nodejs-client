@@ -1,7 +1,7 @@
 {
   "name": "@api.video/nodejs-client",
   "version": "2.0.0",
-  "description": "api.video typescript client",
+  "description": "api.video nodejs client",
   "author": "api.video ecosystem team",
   "engines": {
     "node": "^14.16.1"
