@@ -1,32 +1,58 @@
 {
-  "name": "@api.video/typescript-sdk",
-  "version": "1.0.0",
-  "description": "api.video java API client",
+  "name": "@api.video/nodejs-client",
+  "version": "2.0.0",
+  "description": "api.video typescript client",
   "author": "api.video ecosystem team",
+  "engines": {
+    "node": "^14.16.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ApiVideo/typescript-api-client"
   },
   "bugs:": "https://github.com/ApiVideo/typescript-api-client/issues",
   "keywords": [
-    "fetch",
-    "typescript",
-    "openapi-client",
-    "openapi-generator"
+    "api",
+    "video",
+    "client",
+    "rest"
   ],
   "license": "MIT",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
+  "files": [
+    "lib/",
+    "doc/",
+    "test/sandbox.spec.ts"
+  ],
   "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build"
+    "prepublishOnly": "tsc",
+    "test": "mocha --reporter spec --require ts-node/register --require tsconfig-paths/register test/**/*.spec.ts --exclude test/sandbox.spec.ts",
+    "test:sandbox": "mocha --timeout 120000 --reporter spec --require ts-node/register --require tsconfig-paths/register test/sandbox.spec.ts",
+    "eslint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "prettier": "prettier-eslint --write 'src/**/*.ts' 'test/**/*.ts'"
   },
   "dependencies": {
+    "form-data": "^4.0.0",
     "got": "^11.8.1"
   },
   "devDependencies": {
-    "typescript": "^3.9.3",
+    "@tsconfig/node14": "^1.0.0",
+    "@types/chai": "^4.2.17",
     "@types/got": "^9.6.11",
-    "@types/node": "^14.14.28"
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^14.14.28",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "mocha": "^8.3.2",
+    "prettier": "^2.2.1",
+    "prettier-eslint-cli": "^5.0.1",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.9.3"
   }
 }
