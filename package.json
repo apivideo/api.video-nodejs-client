@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "api.video nodejs client",
   "author": "api.video ecosystem team",
   "engines": {
@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ApiVideo/typescript-api-client"
+    "url": "https://github.com/apivideo/nodejs-api-client"
   },
-  "bugs:": "https://github.com/ApiVideo/typescript-api-client/issues",
+  "bugs:": "https://github.com/apivideo/nodejs-api-client/issues",
   "keywords": [
     "api",
     "video",
@@ -28,7 +28,7 @@
   "scripts": {
     "prepublishOnly": "tsc",
     "test": "mocha --reporter spec --require ts-node/register --require tsconfig-paths/register test/**/*.spec.ts --exclude test/sandbox.spec.ts",
-    "test:sandbox": "mocha --timeout 120000 --reporter spec --require ts-node/register --require tsconfig-paths/register test/sandbox.spec.ts",
+    "test:sandbox": "mocha --timeout 300000 --reporter spec --require ts-node/register --require tsconfig-paths/register test/sandbox.spec.ts",
     "eslint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
     "prettier": "prettier-eslint --write 'src/**/*.ts' 'test/**/*.ts'"
   },

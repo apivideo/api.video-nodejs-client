@@ -24,7 +24,7 @@ Method | HTTP request | Description
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The video ID for the video you want to delete.
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'videoId_example'; // The unique identifier for the video you want details about.
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want the status for.
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const title = 'My Video.mp4'; // The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
         const tags = '["captions", "dialogue"]'; // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The video ID for the video you want to delete.
         const videoUpdatePayload = ''; // 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
         const videoThumbnailPickPayload = ''; // 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient();
+        const client = new ApiVideoClient();
 
         const token = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the token you want to use to upload a video.
         const file = 'BINARY_DATA_HERE'; // The path to the video you want to upload.
@@ -366,7 +366,7 @@ apiVideoClient.videos().uploadWithUploadToken(token, file);
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoCreationPayload = ''; // video to create
                 videoCreationPayload.setTitle(); // The title of your new video.
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // Enter the videoId you want to use to upload your video.
         const file = 'BINARY_DATA_HERE'; // The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\"/videos\\\" endpoint and add the \\\"source\\\" parameter when you create a new video.
@@ -474,7 +474,7 @@ apiVideoClient.videos().upload(videoId, file);
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'videoId_example'; // Unique identifier of the chosen video 
         const file = 'BINARY_DATA_HERE'; // The image to be added as a thumbnail.

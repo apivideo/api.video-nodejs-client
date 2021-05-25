@@ -18,7 +18,7 @@ Method | HTTP request | Description
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const uploadToken = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const sortBy = 'ttl'; // Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.
         const sortOrder = 'asc'; // Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A.
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const uploadToken = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the token you want information about.
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 ```js
 (async () => {
     try {
-        const client = new VideoApiClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const tokenCreationPayload = ''; // 
                 tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
