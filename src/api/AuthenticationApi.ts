@@ -21,12 +21,12 @@ import {
 import { promisify } from 'util';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from 'ObjectSerializer';
-import HttpClient, { QueryOptions } from 'HttpClient';
-import AccessToken from 'model/AccessToken';
-import AuthenticatePayload from 'model/AuthenticatePayload';
-import BadRequest from 'model/BadRequest';
-import RefreshTokenPayload from 'model/RefreshTokenPayload';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import AccessToken from '../model/AccessToken';
+import AuthenticatePayload from '../model/AuthenticatePayload';
+import BadRequest from '../model/BadRequest';
+import RefreshTokenPayload from '../model/RefreshTokenPayload';
 
 /**
  * no description

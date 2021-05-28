@@ -1,5 +1,5 @@
 import { Response } from 'got';
-import ProblemDetails from 'model/ProblemDetails';
+import ProblemDetails from './model/ProblemDetails';
 
 export default class ApiVideoError extends Error {
   private problemDetails: ProblemDetails;

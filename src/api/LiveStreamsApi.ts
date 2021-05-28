@@ -21,14 +21,14 @@ import {
 import { promisify } from 'util';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from 'ObjectSerializer';
-import HttpClient, { QueryOptions } from 'HttpClient';
-import BadRequest from 'model/BadRequest';
-import LiveStream from 'model/LiveStream';
-import LiveStreamCreationPayload from 'model/LiveStreamCreationPayload';
-import LiveStreamListResponse from 'model/LiveStreamListResponse';
-import LiveStreamUpdatePayload from 'model/LiveStreamUpdatePayload';
-import NotFound from 'model/NotFound';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import BadRequest from '../model/BadRequest';
+import LiveStream from '../model/LiveStream';
+import LiveStreamCreationPayload from '../model/LiveStreamCreationPayload';
+import LiveStreamListResponse from '../model/LiveStreamListResponse';
+import LiveStreamUpdatePayload from '../model/LiveStreamUpdatePayload';
+import NotFound from '../model/NotFound';
 
 /**
  * no description
@@ -138,7 +138,7 @@ export default class LiveStreamsApi {
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
-  }): Promise<LiveStreamListResponse> {
+  } = {}): Promise<LiveStreamListResponse> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params
@@ -304,7 +304,7 @@ export default class LiveStreamsApi {
       );
   }
   /**
-   * A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
+   * A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream. The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
    * Create live stream
    * @param liveStreamCreationPayload
    */

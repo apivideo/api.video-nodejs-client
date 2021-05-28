@@ -21,14 +21,14 @@ import {
 import { promisify } from 'util';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from 'ObjectSerializer';
-import HttpClient, { QueryOptions } from 'HttpClient';
-import BadRequest from 'model/BadRequest';
-import NotFound from 'model/NotFound';
-import PlayerTheme from 'model/PlayerTheme';
-import PlayerThemeCreationPayload from 'model/PlayerThemeCreationPayload';
-import PlayerThemeUpdatePayload from 'model/PlayerThemeUpdatePayload';
-import PlayerThemesListResponse from 'model/PlayerThemesListResponse';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import BadRequest from '../model/BadRequest';
+import NotFound from '../model/NotFound';
+import PlayerTheme from '../model/PlayerTheme';
+import PlayerThemeCreationPayload from '../model/PlayerThemeCreationPayload';
+import PlayerThemeUpdatePayload from '../model/PlayerThemeUpdatePayload';
+import PlayerThemesListResponse from '../model/PlayerThemesListResponse';
 
 /**
  * no description
@@ -126,7 +126,7 @@ export default class PlayerThemesApi {
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
-  }): Promise<PlayerThemesListResponse> {
+  } = {}): Promise<PlayerThemesListResponse> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params
@@ -326,7 +326,7 @@ export default class PlayerThemesApi {
       );
   }
   /**
-   * The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+   * The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
    * Upload a logo
    * @param playerId The unique identifier for the player.
    * @param file The name of the file you want to use for your logo.
