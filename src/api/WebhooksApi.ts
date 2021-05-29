@@ -21,13 +21,13 @@ import {
 import { promisify } from 'util';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from 'ObjectSerializer';
-import HttpClient, { QueryOptions } from 'HttpClient';
-import BadRequest from 'model/BadRequest';
-import NotFound from 'model/NotFound';
-import Webhook from 'model/Webhook';
-import WebhooksCreationPayload from 'model/WebhooksCreationPayload';
-import WebhooksListResponse from 'model/WebhooksListResponse';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import BadRequest from '../model/BadRequest';
+import NotFound from '../model/NotFound';
+import Webhook from '../model/Webhook';
+import WebhooksCreationPayload from '../model/WebhooksCreationPayload';
+import WebhooksListResponse from '../model/WebhooksListResponse';
 
 /**
  * no description
@@ -123,7 +123,7 @@ export default class WebhooksApi {
     events?: string;
     currentPage?: number;
     pageSize?: number;
-  }): Promise<WebhooksListResponse> {
+  } = {}): Promise<WebhooksListResponse> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params

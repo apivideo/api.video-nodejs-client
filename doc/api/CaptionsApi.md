@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
     try {
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
-        const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to have automatic captions for. 
+        const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to have automatic captions for.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
         const captionsUpdatePayload = ''; // 
                 captionsUpdatePayload.setDefault(); // 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoId** | **string**| The unique identifier for the video you want to have automatic captions for.  | [default to undefined]
+ **videoId** | **string**| The unique identifier for the video you want to have automatic captions for. | [default to undefined]
  **language** | **string**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. | [default to undefined]
  **captionsUpdatePayload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  |
 

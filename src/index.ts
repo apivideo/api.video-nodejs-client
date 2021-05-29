@@ -11,14 +11,14 @@
 
 import HttpClient from './HttpClient';
 
-import CaptionsApi from 'api/CaptionsApi';
-import ChaptersApi from 'api/ChaptersApi';
-import LiveStreamsApi from 'api/LiveStreamsApi';
-import PlayerThemesApi from 'api/PlayerThemesApi';
-import RawStatisticsApi from 'api/RawStatisticsApi';
-import UploadTokensApi from 'api/UploadTokensApi';
-import VideosApi from 'api/VideosApi';
-import WebhooksApi from 'api/WebhooksApi';
+import CaptionsApi from './api/CaptionsApi';
+import ChaptersApi from './api/ChaptersApi';
+import LiveStreamsApi from './api/LiveStreamsApi';
+import PlayerThemesApi from './api/PlayerThemesApi';
+import RawStatisticsApi from './api/RawStatisticsApi';
+import UploadTokensApi from './api/UploadTokensApi';
+import VideosApi from './api/VideosApi';
+import WebhooksApi from './api/WebhooksApi';
 
 const PRODUCTION_BASE_URI = 'https://ws.api.video';
 

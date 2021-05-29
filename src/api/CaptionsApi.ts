@@ -21,13 +21,13 @@ import {
 import { promisify } from 'util';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from 'ObjectSerializer';
-import HttpClient, { QueryOptions } from 'HttpClient';
-import BadRequest from 'model/BadRequest';
-import Caption from 'model/Caption';
-import CaptionsListResponse from 'model/CaptionsListResponse';
-import CaptionsUpdatePayload from 'model/CaptionsUpdatePayload';
-import NotFound from 'model/NotFound';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import BadRequest from '../model/BadRequest';
+import Caption from '../model/Caption';
+import CaptionsListResponse from '../model/CaptionsListResponse';
+import CaptionsUpdatePayload from '../model/CaptionsUpdatePayload';
+import NotFound from '../model/NotFound';
 
 /**
  * no description

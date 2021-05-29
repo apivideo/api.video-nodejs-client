@@ -21,13 +21,13 @@ import {
 import { promisify } from 'util';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from 'ObjectSerializer';
-import HttpClient, { QueryOptions } from 'HttpClient';
-import BadRequest from 'model/BadRequest';
-import NotFound from 'model/NotFound';
-import TokenCreationPayload from 'model/TokenCreationPayload';
-import TokenListResponse from 'model/TokenListResponse';
-import UploadToken from 'model/UploadToken';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import BadRequest from '../model/BadRequest';
+import NotFound from '../model/NotFound';
+import TokenCreationPayload from '../model/TokenCreationPayload';
+import TokenListResponse from '../model/TokenListResponse';
+import UploadToken from '../model/UploadToken';
 
 /**
  * no description
@@ -95,7 +95,7 @@ export default class UploadTokensApi {
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
-  }): Promise<TokenListResponse> {
+  } = {}): Promise<TokenListResponse> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params

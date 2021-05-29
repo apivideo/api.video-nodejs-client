@@ -21,12 +21,12 @@ import {
 import { promisify } from 'util';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from 'ObjectSerializer';
-import HttpClient, { QueryOptions } from 'HttpClient';
-import NotFound from 'model/NotFound';
-import RawStatisticsListLiveStreamAnalyticsResponse from 'model/RawStatisticsListLiveStreamAnalyticsResponse';
-import RawStatisticsListPlayerSessionEventsResponse from 'model/RawStatisticsListPlayerSessionEventsResponse';
-import RawStatisticsListSessionsResponse from 'model/RawStatisticsListSessionsResponse';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import NotFound from '../model/NotFound';
+import RawStatisticsListLiveStreamAnalyticsResponse from '../model/RawStatisticsListLiveStreamAnalyticsResponse';
+import RawStatisticsListPlayerSessionEventsResponse from '../model/RawStatisticsListPlayerSessionEventsResponse';
+import RawStatisticsListSessionsResponse from '../model/RawStatisticsListSessionsResponse';
 
 /**
  * no description
@@ -42,7 +42,7 @@ export default class RawStatisticsApi {
    * List live stream player sessions
    * @param {Object} searchParams
    * @param { string } searchParams.liveStreamId The unique identifier for the live stream you want to retrieve analytics for.
-   * @param { string } searchParams.period Period must have one of the following formats:   - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;
+   * @param { string } searchParams.period Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;, - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period: -  Date range: \&quot;2018-01-01/2018-01-15\&quot;
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
@@ -180,7 +180,7 @@ export default class RawStatisticsApi {
    * List video player sessions
    * @param {Object} searchParams
    * @param { string } searchParams.videoId The unique identifier for the video you want to retrieve session information for.
-   * @param { string } searchParams.period Period must have one of the following formats:   - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018  For a range period:  -  Date range: 2018-01-01/2018-01-15
+   * @param { string } searchParams.period Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15
    * @param { Array&lt;string&gt; } searchParams.metadata Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.

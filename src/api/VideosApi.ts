@@ -21,16 +21,16 @@ import {
 import { promisify } from 'util';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from 'ObjectSerializer';
-import HttpClient, { QueryOptions } from 'HttpClient';
-import BadRequest from 'model/BadRequest';
-import NotFound from 'model/NotFound';
-import Video from 'model/Video';
-import VideoCreationPayload from 'model/VideoCreationPayload';
-import VideoStatus from 'model/VideoStatus';
-import VideoThumbnailPickPayload from 'model/VideoThumbnailPickPayload';
-import VideoUpdatePayload from 'model/VideoUpdatePayload';
-import VideosListResponse from 'model/VideosListResponse';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import BadRequest from '../model/BadRequest';
+import NotFound from '../model/NotFound';
+import Video from '../model/Video';
+import VideoCreationPayload from '../model/VideoCreationPayload';
+import VideoStatus from '../model/VideoStatus';
+import VideoThumbnailPickPayload from '../model/VideoThumbnailPickPayload';
+import VideoUpdatePayload from '../model/VideoUpdatePayload';
+import VideosListResponse from '../model/VideosListResponse';
 
 /**
  * no description
@@ -178,7 +178,7 @@ export default class VideosApi {
     sortOrder?: string;
     currentPage?: number;
     pageSize?: number;
-  }): Promise<VideosListResponse> {
+  } = {}): Promise<VideosListResponse> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params
@@ -486,7 +486,7 @@ export default class VideosApi {
     return Promise.resolve(lastBody as Video);
   }
   /**
-   * To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"title\":\"My video\",       \"description\":\"so many details\",      \"mp4Support\":true }' ```  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in `source` parameter:  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"source\":\"http://uri/to/video.mp4\", \"title\":\"My video\"}' ```  In this case, the service will respond `202 Accepted` and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos)
+   * To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"title\":\"My video\",      \"description\":\"so many details\",      \"mp4Support\":true }' ```  ### Creating a hosted video  You can also create a video directly from one hosted on a third-party server by giving its URI in `source` parameter:  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"source\":\"http://uri/to/video.mp4\", \"title\":\"My video\"}' ```  In this case, the service will respond `202 Accepted` and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos)
    * Create a video
    * @param videoCreationPayload video to create
    */
