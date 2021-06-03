@@ -22,7 +22,7 @@ import WebhooksApi from './api/WebhooksApi';
 
 const PRODUCTION_BASE_URI = 'https://ws.api.video';
 
-export default class ApiVideoClient {
+class ApiVideoClient {
   private httpClient: HttpClient;
   private _captions: CaptionsApi;
   private _chapters: ChaptersApi;
@@ -113,3 +113,5 @@ export default class ApiVideoClient {
     return this._webhooks;
   }
 }
+
+export = ApiVideoClient;

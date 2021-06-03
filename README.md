@@ -39,6 +39,8 @@ All URIs are relative to *https://ws.api.video*
 ### CaptionsApi
 
 ```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
 const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 const captions = apiVideoClient.captions;
 ```
@@ -57,6 +59,8 @@ Method | HTTP request | Description
 ### ChaptersApi
 
 ```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
 const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 const chapters = apiVideoClient.chapters;
 ```
@@ -74,6 +78,8 @@ Method | HTTP request | Description
 ### LiveStreamsApi
 
 ```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
 const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 const liveStreams = apiVideoClient.liveStreams;
 ```
@@ -94,6 +100,8 @@ Method | HTTP request | Description
 ### PlayerThemesApi
 
 ```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
 const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 const playerThemes = apiVideoClient.playerThemes;
 ```
@@ -114,6 +122,8 @@ Method | HTTP request | Description
 ### RawStatisticsApi
 
 ```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
 const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 const rawStatistics = apiVideoClient.rawStatistics;
 ```
@@ -130,6 +140,8 @@ Method | HTTP request | Description
 ### UploadTokensApi
 
 ```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
 const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 const uploadTokens = apiVideoClient.uploadTokens;
 ```
@@ -147,6 +159,8 @@ Method | HTTP request | Description
 ### VideosApi
 
 ```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
 const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 const videos = apiVideoClient.videos;
 ```
@@ -170,6 +184,8 @@ Method | HTTP request | Description
 ### WebhooksApi
 
 ```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
 const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 const webhooks = apiVideoClient.webhooks;
 ```

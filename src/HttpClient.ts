@@ -35,7 +35,7 @@ export default class HttpClient {
     this.baseUri = params.baseUri;
     this.tokenType = 'Bearer';
     this.headers = {
-      'User-Agent': `api.video client (nodejs; v:2.0.3; )`,
+      'User-Agent': `api.video client (nodejs; v:2.0.4; )`,
       Accept: 'application/json, */*;q=0.8',
     };
     this.baseRequest = got.extend({
