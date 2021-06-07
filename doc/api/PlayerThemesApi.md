@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
         const playerId = 'pl14Db6oMJRH6SRVoOwORacK'; // The unique identifier for the player.
         const file = 'BINARY_DATA_HERE'; // The name of the file you want to use for your logo.
-        const link = 'link_example'; // The path to the file you want to upload and use as a logo.
+        const link = 'link_example'; // A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address.
 
         // PlayerTheme
         const result = await client.playerThemes.uploadLogo(playerId, file, link);
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playerId** | **string**| The unique identifier for the player. | [default to undefined]
  **file** | **string**| The name of the file you want to use for your logo. | [default to undefined]
- **link** | **string**| The path to the file you want to upload and use as a logo. | [default to undefined]
+ **link** | **string**| A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. | [optional] [default to undefined]
 
 ### Return type
 
