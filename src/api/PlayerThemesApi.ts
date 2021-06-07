@@ -330,12 +330,12 @@ export default class PlayerThemesApi {
    * Upload a logo
    * @param playerId The unique identifier for the player.
    * @param file The name of the file you want to use for your logo.
-   * @param link The path to the file you want to upload and use as a logo.
+   * @param link A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address.
    */
   public async uploadLogo(
     playerId: string,
     file: string,
-    link: string
+    link?: string
   ): Promise<PlayerTheme> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
@@ -351,11 +351,6 @@ export default class PlayerThemesApi {
     const length = statSync(file).size;
     if (length <= 0) {
       throw new Error(`${file} is empty`);
-    }
-    if (link === null || link === undefined) {
-      throw new Error(
-        'Required parameter link was null or undefined when calling uploadLogo.'
-      );
     }
     // Path Params
     const localVarPath = '/players/{playerId}/logo'
