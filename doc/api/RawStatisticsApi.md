@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to retrieve session information for.
         const period = 'period_example'; // Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 
-        const metadata = '[{"key": "Author", "value": "John Doe"}, {"key": "Format", "value": "Tutorial"}]'; // Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.
+        const metadata = 'metadata[Author]=John Doe&metadata[Format]=Tutorial'; // Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The unique identifier for the video you want to retrieve session information for. | [default to undefined]
  **period** | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  | [optional] [default to undefined]
- **metadata** | [**Array&lt;string&gt;**](string.md)| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | [optional]
+ **metadata** | [**{ [key: string]: string; }**](string.md)| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | [optional]
  **currentPage** | **number**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 

@@ -10,6 +10,7 @@
  */
 
 import AttributeType from './AttributeType';
+import Metadata from './Metadata';
 
 export default class VideoSessionSession {
   /**
@@ -24,6 +25,10 @@ export default class VideoSessionSession {
    * When the video session ended, presented in ISO-8601 format.
    */
   'endedAt'?: Date;
+  /**
+   * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
+   */
+  'metadata'?: Array<Metadata>;
 
   static readonly discriminator?: string = undefined;
 
@@ -45,6 +50,12 @@ export default class VideoSessionSession {
       baseName: 'endedAt',
       type: 'Date',
       format: 'date-time',
+    },
+    {
+      name: 'metadata',
+      baseName: 'metadata',
+      type: 'Array<Metadata>',
+      format: '',
     },
   ];
 

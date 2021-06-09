@@ -181,7 +181,7 @@ export default class RawStatisticsApi {
    * @param {Object} searchParams
    * @param { string } searchParams.videoId The unique identifier for the video you want to retrieve session information for.
    * @param { string } searchParams.period Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15
-   * @param { Array&lt;string&gt; } searchParams.metadata Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.
+   * @param { { [key: string]: string; } } searchParams.metadata Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
@@ -194,7 +194,7 @@ export default class RawStatisticsApi {
   }: {
     videoId: string;
     period?: string;
-    metadata?: Array<string>;
+    metadata?: { [key: string]: string };
     currentPage?: number;
     pageSize?: number;
   }): Promise<RawStatisticsListSessionsResponse> {
@@ -220,9 +220,14 @@ export default class RawStatisticsApi {
       );
     }
     if (metadata !== undefined) {
-      urlSearchParams.append(
-        'metadata',
-        ObjectSerializer.serialize(metadata, 'Array<string>', '')
+      if (typeof metadata !== 'object') {
+        throw new Error(`${metadata} is not an object`);
+      }
+      Object.keys(metadata).forEach((k) =>
+        urlSearchParams.append(
+          'metadata[' + k + ']',
+          ObjectSerializer.serialize(metadata[k], 'string', '')
+        )
       );
     }
     if (currentPage !== undefined) {
