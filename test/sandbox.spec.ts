@@ -176,6 +176,7 @@ describe('ApiVideoClient', () => {
       .listVideoSessions({
         videoId,
         period: new Date().getFullYear().toString(),
+        metadata: { user: 'username' },
       })
       .then(({ data: videoSessions }) =>
         expect(videoSessions).to.be.an('array')

@@ -200,9 +200,14 @@ export default class VideosApi {
       );
     }
     if (metadata !== undefined) {
-      urlSearchParams.append(
-        'metadata',
-        ObjectSerializer.serialize(metadata, '{ [key: string]: string; }', '')
+      if (typeof metadata !== 'object') {
+        throw new Error(`${metadata} is not an object`);
+      }
+      Object.keys(metadata).forEach((k) =>
+        urlSearchParams.append(
+          'metadata[' + k + ']',
+          ObjectSerializer.serialize(metadata[k], 'string', '')
+        )
       );
     }
     if (description !== undefined) {
