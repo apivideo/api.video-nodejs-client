@@ -89,7 +89,10 @@ try {
 describe('ApiVideoClient', () => {
   it('works with the sandbox', async () => {
     // Create client for Sandbox and authenticate
-    const client = new ApiVideoClient({ apiKey: process.env.API_KEY });
+    const client = new ApiVideoClient({
+      apiKey: process.env.API_KEY,
+      baseUri: process.env.BASE_URI,
+    });
 
     // Create
     const videoTitle = 'Course #4 - Part B';
