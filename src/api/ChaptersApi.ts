@@ -142,6 +142,7 @@ export default class ChaptersApi {
       );
   }
   /**
+   * Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
    * Show a chapter
    * @param videoId The unique identifier for the video you want to show a chapter for.
    * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
