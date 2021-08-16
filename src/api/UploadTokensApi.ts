@@ -77,7 +77,7 @@ export default class UploadTokensApi {
       );
   }
   /**
-   * A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+   * A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
    * List all active upload tokens.
    * @param {Object} searchParams
    * @param { &#39;createdAt&#39; | &#39;ttl&#39; } searchParams.sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.
@@ -185,7 +185,7 @@ export default class UploadTokensApi {
       );
   }
   /**
-   * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
+   * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
    * Generate an upload token
    * @param tokenCreationPayload
    */

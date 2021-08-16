@@ -176,7 +176,7 @@ export default class RawStatisticsApi {
       );
   }
   /**
-   * Retrieve all available user sessions for a specific video.
+   * Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).
    * List video player sessions
    * @param {Object} searchParams
    * @param { string } searchParams.videoId The unique identifier for the video you want to retrieve session information for.

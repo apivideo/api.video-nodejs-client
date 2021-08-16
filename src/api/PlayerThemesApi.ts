@@ -108,7 +108,7 @@ export default class PlayerThemesApi {
       );
   }
   /**
-   * Retrieve a list of all the players you created, as well as details about each one.
+   * Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
    * List all players
    * @param {Object} searchParams
    * @param { &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.

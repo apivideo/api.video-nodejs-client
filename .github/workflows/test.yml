@@ -1,0 +1,20 @@
+name: Run tests
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['14', '15']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install --no-save
+      - run: npm test
+      - name: Run sandbox test
+        run: npm run test:sandbox
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
