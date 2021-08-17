@@ -92,6 +92,7 @@ describe('ApiVideoClient', () => {
     const client = new ApiVideoClient({
       apiKey: process.env.API_KEY,
       baseUri: process.env.BASE_URI,
+      chunkSize: 5 * 1024 * 1024,
     });
 
     // Create

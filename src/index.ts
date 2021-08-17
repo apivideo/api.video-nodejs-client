@@ -21,6 +21,9 @@ import VideosApi from './api/VideosApi';
 import WebhooksApi from './api/WebhooksApi';
 
 const PRODUCTION_BASE_URI = 'https://ws.api.video';
+const DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
+const MIN_CHUNK_SIZE = 5 * 1024 * 1024;
+const MAX_CHUNK_SIZE = 128 * 1024 * 1024;
 
 class ApiVideoClient {
   private httpClient: HttpClient;
@@ -33,10 +36,27 @@ class ApiVideoClient {
   private _videos: VideosApi;
   private _webhooks: WebhooksApi;
 
-  constructor(params: { apiKey?: string; baseUri?: string }) {
+  constructor(params: {
+    apiKey?: string;
+    baseUri?: string;
+    chunkSize?: number;
+  }) {
+    if (
+      params.chunkSize &&
+      (params.chunkSize < MIN_CHUNK_SIZE || params.chunkSize > MAX_CHUNK_SIZE)
+    ) {
+      throw new Error(
+        'Invalid chunk size value. Must be greater than ' +
+          MIN_CHUNK_SIZE +
+          ' bytes and lower than ' +
+          MAX_CHUNK_SIZE +
+          ' bytes.'
+      );
+    }
     this.httpClient = new HttpClient({
       ...params,
       baseUri: params.baseUri || PRODUCTION_BASE_URI,
+      chunkSize: params.chunkSize || DEFAULT_CHUNK_SIZE,
     });
 
     this._captions = new CaptionsApi(this.httpClient);

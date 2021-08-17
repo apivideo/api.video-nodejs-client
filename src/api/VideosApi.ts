@@ -424,7 +424,7 @@ export default class VideosApi {
 
     const formData = new FormData();
 
-    const chunkSize = 64 * 1024 * 1024;
+    const chunkSize = this.httpClient.getChunkSize();
     // Upload in a single request when file is small enough
     if (chunkSize > length) {
       const filename = path.basename(file);
@@ -570,7 +570,7 @@ export default class VideosApi {
 
     const formData = new FormData();
 
-    const chunkSize = 64 * 1024 * 1024;
+    const chunkSize = this.httpClient.getChunkSize();
     // Upload in a single request when file is small enough
     if (chunkSize > length) {
       const filename = path.basename(file);
