@@ -12,6 +12,5 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm install --no-save
       - run: npm publish --access=public
-        if: ${{ github.ref == 'refs/heads/main' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
