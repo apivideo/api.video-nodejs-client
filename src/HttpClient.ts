@@ -29,13 +29,15 @@ export default class HttpClient {
   private accessToken?: AccessToken;
   private headers: Headers;
   private baseRequest: Got;
+  private chunkSize: number;
 
-  constructor(params: { apiKey?: string; baseUri: string }) {
+  constructor(params: { apiKey?: string; baseUri: string; chunkSize: number }) {
     this.apiKey = params.apiKey;
     this.baseUri = params.baseUri;
+    this.chunkSize = params.chunkSize;
     this.tokenType = 'Bearer';
     this.headers = {
-      'User-Agent': `api.video client (nodejs; v:2.0.6; )`,
+      'User-Agent': `api.video client (nodejs; v:2.0.7; )`,
       Accept: 'application/json, */*;q=0.8',
     };
     this.baseRequest = got.extend({
@@ -84,6 +86,10 @@ export default class HttpClient {
         },
       ],
     });
+  }
+
+  getChunkSize() {
+    return this.chunkSize;
   }
 
   async getAccessToken(): Promise<AccessToken> {
