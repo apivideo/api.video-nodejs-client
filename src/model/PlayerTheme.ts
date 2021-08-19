@@ -81,26 +81,6 @@ export default class PlayerTheme {
   /**
    * Deprecated
    */
-  'shapeMargin'?: number;
-  /**
-   * Deprecated
-   */
-  'shapeRadius'?: number;
-  /**
-   * Deprecated
-   */
-  'shapeAspect'?: string;
-  /**
-   * Deprecated
-   */
-  'shapeBackgroundTop'?: string;
-  /**
-   * Deprecated
-   */
-  'shapeBackgroundBottom'?: string;
-  /**
-   * Deprecated
-   */
   'linkActive'?: string;
   'assets'?: PlayerThemeAssets;
 
@@ -208,36 +188,6 @@ export default class PlayerTheme {
       baseName: 'updatedAt',
       type: 'Date',
       format: 'date-time',
-    },
-    {
-      name: 'shapeMargin',
-      baseName: 'shapeMargin',
-      type: 'number',
-      format: '',
-    },
-    {
-      name: 'shapeRadius',
-      baseName: 'shapeRadius',
-      type: 'number',
-      format: '',
-    },
-    {
-      name: 'shapeAspect',
-      baseName: 'shapeAspect',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'shapeBackgroundTop',
-      baseName: 'shapeBackgroundTop',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'shapeBackgroundBottom',
-      baseName: 'shapeBackgroundBottom',
-      type: 'string',
-      format: '',
     },
     {
       name: 'linkActive',
