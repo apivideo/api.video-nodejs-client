@@ -157,8 +157,9 @@ Name | Type | Description  | Notes
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to have automatic captions for.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-        const captionsUpdatePayload = ''; // 
-                captionsUpdatePayload.setDefault(); // 
+        const captionsUpdatePayload = {
+			_default: true,
+		}; 
 
         // Caption
         const result = await client.captions.update(videoId, language, captionsUpdatePayload);
