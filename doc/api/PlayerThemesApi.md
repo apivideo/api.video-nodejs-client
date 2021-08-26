@@ -198,21 +198,22 @@ Name | Type | Description  | Notes
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player.
-        const playerThemeUpdatePayload = ''; // 
-                playerThemeUpdatePayload.setText(); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
-                playerThemeUpdatePayload.setLink(); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
-                playerThemeUpdatePayload.setLinkHover(); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
-                playerThemeUpdatePayload.setTrackPlayed(); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
-                playerThemeUpdatePayload.setTrackUnplayed(); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
-                playerThemeUpdatePayload.setTrackBackground(); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
-                playerThemeUpdatePayload.setBackgroundTop(); // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
-                playerThemeUpdatePayload.setBackgroundBottom(); // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
-                playerThemeUpdatePayload.setBackgroundText(); // RGBA color for title text. Default: rgba(255, 255, 255, 1)
-                playerThemeUpdatePayload.setEnableApi(); // enable/disable player SDK access. Default: true
-                playerThemeUpdatePayload.setEnableControls(); // enable/disable player controls. Default: true
-                playerThemeUpdatePayload.setForceAutoplay(); // enable/disable player autoplay. Default: false
-                playerThemeUpdatePayload.setHideTitle(); // enable/disable title. Default: false
-                playerThemeUpdatePayload.setForceLoop(); // enable/disable looping. Default: false
+        const playerThemeUpdatePayload = {
+			text: "text_example", // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
+			link: "link_example", // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
+			linkHover: "linkHover_example", // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+			trackPlayed: "trackPlayed_example", // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
+			trackUnplayed: "trackUnplayed_example", // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
+			trackBackground: "trackBackground_example", // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
+			backgroundTop: "backgroundTop_example", // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
+			backgroundBottom: "backgroundBottom_example", // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
+			backgroundText: "backgroundText_example", // RGBA color for title text. Default: rgba(255, 255, 255, 1)
+			enableApi: true, // enable/disable player SDK access. Default: true
+			enableControls: true, // enable/disable player controls. Default: true
+			forceAutoplay: true, // enable/disable player autoplay. Default: false
+			hideTitle: true, // enable/disable title. Default: false
+			forceLoop: true, // enable/disable looping. Default: false
+		}; 
 
         // PlayerTheme
         const result = await client.playerThemes.update(playerId, playerThemeUpdatePayload);
@@ -255,21 +256,22 @@ Name | Type | Description  | Notes
     try {
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
-        const playerThemeCreationPayload = ''; // 
-                playerThemeCreationPayload.setText(); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
-                playerThemeCreationPayload.setLink(); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
-                playerThemeCreationPayload.setLinkHover(); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
-                playerThemeCreationPayload.setTrackPlayed(); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
-                playerThemeCreationPayload.setTrackUnplayed(); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
-                playerThemeCreationPayload.setTrackBackground(); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
-                playerThemeCreationPayload.setBackgroundTop(); // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
-                playerThemeCreationPayload.setBackgroundBottom(); // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
-                playerThemeCreationPayload.setBackgroundText(); // RGBA color for title text. Default: rgba(255, 255, 255, 1)
-                playerThemeCreationPayload.setEnableApi(); // enable/disable player SDK access. Default: true
-                playerThemeCreationPayload.setEnableControls(); // enable/disable player controls. Default: true
-                playerThemeCreationPayload.setForceAutoplay(); // enable/disable player autoplay. Default: false
-                playerThemeCreationPayload.setHideTitle(); // enable/disable title. Default: false
-                playerThemeCreationPayload.setForceLoop(); // enable/disable looping. Default: false
+        const playerThemeCreationPayload = {
+			text: "text_example", // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
+			link: "link_example", // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
+			linkHover: "linkHover_example", // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+			trackPlayed: "trackPlayed_example", // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
+			trackUnplayed: "trackUnplayed_example", // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
+			trackBackground: "trackBackground_example", // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
+			backgroundTop: "backgroundTop_example", // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
+			backgroundBottom: "backgroundBottom_example", // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
+			backgroundText: "backgroundText_example", // RGBA color for title text. Default: rgba(255, 255, 255, 1)
+			enableApi: true, // enable/disable player SDK access. Default: true
+			enableControls: true, // enable/disable player controls. Default: true
+			forceAutoplay: true, // enable/disable player autoplay. Default: false
+			hideTitle: true, // enable/disable title. Default: false
+			forceLoop: true, // enable/disable looping. Default: false
+		}; 
 
         // PlayerTheme
         const result = await client.playerThemes.create(playerThemeCreationPayload);

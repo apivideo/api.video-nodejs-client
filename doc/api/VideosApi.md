@@ -211,15 +211,16 @@ Name | Type | Description  | Notes
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The video ID for the video you want to delete.
-        const videoUpdatePayload = ''; // 
-                videoUpdatePayload.setPlayerId(); // The unique ID for the player you want to associate with your video.
-                videoUpdatePayload.setTitle(); // The title you want to use for your video.
-                videoUpdatePayload.setDescription(); // A brief description of the video.
-                videoUpdatePayload.setPublic(); // Whether the video is publicly available or not. False means it is set to private.
-                videoUpdatePayload.setPanoramic(); // Whether the video is a 360 degree or immersive video.
-                videoUpdatePayload.setMp4Support(); // Whether the player supports the mp4 format.
-                videoUpdatePayload.setTags(); // A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
-                videoUpdatePayload.setMetadata(); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video.
+        const videoUpdatePayload = {
+			playerId: "pl4k0jvEUuaTdRAEjQ4Jfrgz", // The unique ID for the player you want to associate with your video.
+			title: "title_example", // The title you want to use for your video.
+			description: "A film about good books.", // A brief description of the video.
+			_public: true, // Whether the video is publicly available or not. False means it is set to private.
+			panoramic: false, // Whether the video is a 360 degree or immersive video.
+			mp4Support: true, // Whether the player supports the mp4 format.
+			tags: ["maths", "string theory", "video"], // A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
+			metadata: null, // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video.
+		}; 
 
         // Video
         const result = await client.videos.update(videoId, videoUpdatePayload);
@@ -264,14 +265,9 @@ Name | Type | Description  | Notes
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
-        const videoThumbnailPickPayload = ''; // 
-                videoThumbnailPickPayload.setTimecode(); // Frame in video to be used as a placeholder before the video plays.
-Example: &#39;&quot;00:01:00.000&quot; for 1 minute into the video.&#39;
-Valid Patterns:
-&quot;hh:mm:ss.ms&quot;
-&quot;hh:mm:ss:frameNumber&quot;
-&quot;124&quot; (integer value is reported as seconds)
-If selection is out of range, &quot;00:00:00.00&quot; will be chosen.
+        const videoThumbnailPickPayload = {
+			timecode: "timecode_example", // Frame in video to be used as a placeholder before the video plays. Example: '\"00:01:00.000\" for 1 minute into the video.' Valid Patterns: \"hh:mm:ss.ms\" \"hh:mm:ss:frameNumber\" \"124\" (integer value is reported as seconds) If selection is out of range, \"00:00:00.00\" will be chosen.
+		}; 
 
         // Video
         const result = await client.videos.pickThumbnail(videoId, videoThumbnailPickPayload);
@@ -368,17 +364,18 @@ apiVideoClient.videos().uploadWithUploadToken(token, file);
     try {
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
-        const videoCreationPayload = ''; // video to create
-                videoCreationPayload.setTitle(); // The title of your new video.
-                videoCreationPayload.setDescription(); // A brief description of your video.
-                videoCreationPayload.setSource(); // If you add a video already on the web, this is where you enter the url for the video.
-                videoCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-                videoCreationPayload.setPanoramic(); // Indicates if your video is a 360/immersive video.
-                videoCreationPayload.setMp4Support(); // Enables mp4 version in addition to streamed version.
-                videoCreationPayload.setPlayerId(); // The unique identification number for your video player.
-                videoCreationPayload.setTags(); // A list of tags you want to use to describe your video.
-                videoCreationPayload.setMetadata(); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
-                videoCreationPayload.setPublishedAt(); // The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
+        const videoCreationPayload = {
+			title: "Maths video", // The title of your new video.
+			description: "A video about string theory.", // A brief description of your video.
+			source: "https://www.myvideo.url.com/video.mp4", // If you add a video already on the web, this is where you enter the url for the video.
+			_public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+			panoramic: false, // Indicates if your video is a 360/immersive video.
+			mp4Support: true, // Enables mp4 version in addition to streamed version.
+			playerId: "pl45KFKdlddgk654dspkze", // The unique identification number for your video player.
+			tags: ["maths", "string theory", "video"], // A list of tags you want to use to describe your video.
+			metadata: [{"key": "Author", "value": "John Doe"}], // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
+			publishedAt: "2020-07-14T23:36:18.598Z", // The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
+		}; 
 
         // Video
         const result = await client.videos.create(videoCreationPayload);

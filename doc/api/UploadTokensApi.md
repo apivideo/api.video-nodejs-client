@@ -151,8 +151,9 @@ Name | Type | Description  | Notes
     try {
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
-        const tokenCreationPayload = ''; // 
-                tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
+        const tokenCreationPayload = {
+			ttl: 56, // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
+		}; 
 
         // UploadToken
         const result = await client.uploadTokens.createToken(tokenCreationPayload);

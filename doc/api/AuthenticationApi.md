@@ -18,8 +18,9 @@ Method | HTTP request | Description
     try {
         const client = new ApiVideoClient();
 
-        const authenticatePayload = ''; // 
-                authenticatePayload.setApiKey(); // Your account API key. You can use your sandbox API key, or you can use your production API key.
+        const authenticatePayload = {
+			apiKey: "apiKey_example", // Your account API key. You can use your sandbox API key, or you can use your production API key.
+		}; 
 
         // AccessToken
         const result = await client.authentication.authenticate(authenticatePayload);
@@ -61,9 +62,9 @@ Name | Type | Description  | Notes
     try {
         const client = new ApiVideoClient();
 
-        const refreshTokenPayload = ''; // 
-                refreshTokenPayload.setRefreshToken(); // The refresh token is either the first refresh token you received when you authenticated with the auth/api-key endpoint, or it&#39;s the refresh token from the last time you used the auth/refresh endpoint. Place this in the body of your request to obtain a new access token (which is valid for an hour) and a new refresh token.
-
+        const refreshTokenPayload = {
+			refreshToken: "refreshToken_example", // The refresh token is either the first refresh token you received when you authenticated with the auth/api-key endpoint, or it's the refresh token from the last time you used the auth/refresh endpoint. Place this in the body of your request to obtain a new access token (which is valid for an hour) and a new refresh token. 
+		}; 
 
         // AccessToken
         const result = await client.authentication.refresh(refreshTokenPayload);

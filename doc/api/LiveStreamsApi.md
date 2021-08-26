@@ -199,12 +199,12 @@ Name | Type | Description  | Notes
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
-        const liveStreamUpdatePayload = ''; // 
-                liveStreamUpdatePayload.setName(); // The name you want to use for your live stream.
-                liveStreamUpdatePayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users.
-Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-                liveStreamUpdatePayload.setRecord(); // Use this to indicate whether you want the recording on or off. On is true, off is false.
-                liveStreamUpdatePayload.setPlayerId(); // The unique ID for the player associated with a live stream that you want to update.
+        const liveStreamUpdatePayload = {
+			name: "My Live Stream Video", // The name you want to use for your live stream.
+			_public: true, // BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+			record: true, // Use this to indicate whether you want the recording on or off. On is true, off is false.
+			playerId: "pl45KFKdlddgk654dspkze", // The unique ID for the player associated with a live stream that you want to update.
+		}; 
 
         // LiveStream
         const result = await client.liveStreams.update(liveStreamId, liveStreamUpdatePayload);
@@ -247,11 +247,12 @@ Name | Type | Description  | Notes
     try {
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
-        const liveStreamCreationPayload = ''; // 
-                liveStreamCreationPayload.setName(); // Add a name for your live stream here.
-                liveStreamCreationPayload.setRecord(); // Whether you are recording or not. True for record, false for not record.
-                liveStreamCreationPayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-                liveStreamCreationPayload.setPlayerId(); // The unique identifier for the player.
+        const liveStreamCreationPayload = {
+			name: "My Live Stream Video", // Add a name for your live stream here.
+			record: true, // Whether you are recording or not. True for record, false for not record.
+			_public: true, // BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+			playerId: "pl4f4ferf5erfr5zed4fsdd", // The unique identifier for the player.
+		}; 
 
         // LiveStream
         const result = await client.liveStreams.create(liveStreamCreationPayload);

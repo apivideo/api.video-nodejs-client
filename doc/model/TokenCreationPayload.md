@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ttl** | **number** | Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration. |  [optional]
+**ttl** | **number** | Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration. |  [optional]
 
 
 
