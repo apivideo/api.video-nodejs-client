@@ -40,7 +40,6 @@ Name | Type | Description  | Notes
  **language** | **string**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. | [default to undefined]
 
 ### Return type
-
 [**void**](../model/.md)
 
 ### HTTP request headers
@@ -68,7 +67,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<Chapter>
+        // ChaptersListResponse
         const result = await client.chapters.list({ videoId, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -86,8 +85,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](../model/pagination.md)<[**Chapter**](../model/Chapter.md)>
-
+[**ChaptersListResponse**](../model/ChaptersListResponse.md)
 
 ### HTTP request headers
 
@@ -130,7 +128,6 @@ Name | Type | Description  | Notes
  **language** | **string**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. | [default to undefined]
 
 ### Return type
-
 [**Chapter**](../model/Chapter.md)
 
 ### HTTP request headers
@@ -176,7 +173,6 @@ Name | Type | Description  | Notes
  **file** | **string**| The VTT file describing the chapters you want to upload. | [default to undefined]
 
 ### Return type
-
 [**Chapter**](../model/Chapter.md)
 
 ### HTTP request headers

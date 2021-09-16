@@ -24,7 +24,7 @@ Method | HTTP request | Description
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<LiveStreamSession>
+        // RawStatisticsListLiveStreamAnalyticsResponse
         const result = await client.rawStatistics.listLiveStreamSessions({ liveStreamId, period, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -43,8 +43,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](../model/pagination.md)<[**LiveStreamSession**](../model/LiveStreamSession.md)>
-
+[**RawStatisticsListLiveStreamAnalyticsResponse**](../model/RawStatisticsListLiveStreamAnalyticsResponse.md)
 
 ### HTTP request headers
 
@@ -71,7 +70,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<PlayerSessionEvent>
+        // RawStatisticsListPlayerSessionEventsResponse
         const result = await client.rawStatistics.listSessionEvents({ sessionId, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -89,8 +88,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](../model/pagination.md)<[**PlayerSessionEvent**](../model/PlayerSessionEvent.md)>
-
+[**RawStatisticsListPlayerSessionEventsResponse**](../model/RawStatisticsListPlayerSessionEventsResponse.md)
 
 ### HTTP request headers
 
@@ -119,7 +117,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<VideoSession>
+        // RawStatisticsListSessionsResponse
         const result = await client.rawStatistics.listVideoSessions({ videoId, period, metadata, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -139,8 +137,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](../model/pagination.md)<[**VideoSession**](../model/VideoSession.md)>
-
+[**RawStatisticsListSessionsResponse**](../model/RawStatisticsListSessionsResponse.md)
 
 ### HTTP request headers
 

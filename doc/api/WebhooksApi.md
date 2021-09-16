@@ -38,7 +38,6 @@ Name | Type | Description  | Notes
  **webhookId** | **string**| The webhook you wish to delete. | [default to undefined]
 
 ### Return type
-
 [**void**](../model/.md)
 
 ### HTTP request headers
@@ -80,7 +79,6 @@ Name | Type | Description  | Notes
  **webhookId** | **string**| The unique webhook you wish to retreive details on. | [default to undefined]
 
 ### Return type
-
 [**Webhook**](../model/Webhook.md)
 
 ### HTTP request headers
@@ -107,7 +105,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<Webhook>
+        // WebhooksListResponse
         const result = await client.webhooks.list({ events, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -125,8 +123,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](../model/pagination.md)<[**Webhook**](../model/Webhook.md)>
-
+[**WebhooksListResponse**](../model/WebhooksListResponse.md)
 
 ### HTTP request headers
 
@@ -169,7 +166,6 @@ Name | Type | Description  | Notes
  **webhooksCreationPayload** | [**WebhooksCreationPayload**](../model/WebhooksCreationPayload.md)|  |
 
 ### Return type
-
 [**Webhook**](../model/Webhook.md)
 
 ### HTTP request headers

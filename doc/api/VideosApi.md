@@ -44,7 +44,6 @@ Name | Type | Description  | Notes
  **videoId** | **string**| The video ID for the video you want to delete. | [default to undefined]
 
 ### Return type
-
 [**void**](../model/.md)
 
 ### HTTP request headers
@@ -86,7 +85,6 @@ Name | Type | Description  | Notes
  **videoId** | **string**| The unique identifier for the video you want details about. | [default to undefined]
 
 ### Return type
-
 [**Video**](../model/Video.md)
 
 ### HTTP request headers
@@ -128,7 +126,6 @@ Name | Type | Description  | Notes
  **videoId** | **string**| The unique identifier for the video you want the status for. | [default to undefined]
 
 ### Return type
-
 [**VideoStatus**](../model/VideoStatus.md)
 
 ### HTTP request headers
@@ -162,7 +159,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<Video>
+        // VideosListResponse
         const result = await client.videos.list({ title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -186,8 +183,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](../model/pagination.md)<[**Video**](../model/Video.md)>
-
+[**VideosListResponse**](../model/VideosListResponse.md)
 
 ### HTTP request headers
 
@@ -239,7 +235,6 @@ Name | Type | Description  | Notes
  **videoUpdatePayload** | [**VideoUpdatePayload**](../model/VideoUpdatePayload.md)|  |
 
 ### Return type
-
 [**Video**](../model/Video.md)
 
 ### HTTP request headers
@@ -286,7 +281,6 @@ Name | Type | Description  | Notes
  **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](../model/VideoThumbnailPickPayload.md)|  |
 
 ### Return type
-
 [**Video**](../model/Video.md)
 
 ### HTTP request headers
@@ -340,7 +334,6 @@ apiVideoClient.videos().uploadWithUploadToken(token, file);
 ```
 
 ### Return type
-
 [**Video**](../model/Video.md)
 
 ### HTTP request headers
@@ -393,7 +386,6 @@ Name | Type | Description  | Notes
  **videoCreationPayload** | [**VideoCreationPayload**](../model/VideoCreationPayload.md)| video to create |
 
 ### Return type
-
 [**Video**](../model/Video.md)
 
 ### HTTP request headers
@@ -448,7 +440,6 @@ apiVideoClient.videos().upload(videoId, file);
 ```
 
 ### Return type
-
 [**Video**](../model/Video.md)
 
 ### HTTP request headers
@@ -493,7 +484,6 @@ Name | Type | Description  | Notes
  **file** | **string**| The image to be added as a thumbnail. | [default to undefined]
 
 ### Return type
-
 [**Video**](../model/Video.md)
 
 ### HTTP request headers
