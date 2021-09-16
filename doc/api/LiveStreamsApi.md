@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<>
+        // Page<LiveStream>
         const result = await client.liveStreams.list({ streamKey, name, sortBy, sortOrder, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](pagination.md)<[****](.md)>
+[**Page**](../model/pagination.md)<[**LiveStream**](../model/LiveStream.md)>
 
 
 ### HTTP request headers
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **liveStreamId** | **string**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. | [default to undefined]
- **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](LiveStreamUpdatePayload.md)|  |
+ **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](../model/LiveStreamUpdatePayload.md)|  |
 
 ### Return type
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamCreationPayload** | [**LiveStreamCreationPayload**](LiveStreamCreationPayload.md)|  |
+ **liveStreamCreationPayload** | [**LiveStreamCreationPayload**](../model/LiveStreamCreationPayload.md)|  |
 
 ### Return type
 
