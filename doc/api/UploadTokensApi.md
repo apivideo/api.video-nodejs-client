@@ -38,7 +38,6 @@ Name | Type | Description  | Notes
  **uploadToken** | **string**| The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication. | [default to undefined]
 
 ### Return type
-
 [**void**](../model/.md)
 
 ### HTTP request headers
@@ -67,7 +66,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<UploadToken>
+        // TokenListResponse
         const result = await client.uploadTokens.list({ sortBy, sortOrder, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -86,8 +85,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](../model/pagination.md)<[**UploadToken**](../model/UploadToken.md)>
-
+[**TokenListResponse**](../model/TokenListResponse.md)
 
 ### HTTP request headers
 
@@ -127,7 +125,6 @@ Name | Type | Description  | Notes
  **uploadToken** | **string**| The unique identifier for the token you want information about. | [default to undefined]
 
 ### Return type
-
 [**UploadToken**](../model/UploadToken.md)
 
 ### HTTP request headers
@@ -171,7 +168,6 @@ Name | Type | Description  | Notes
  **tokenCreationPayload** | [**TokenCreationPayload**](../model/TokenCreationPayload.md)|  |
 
 ### Return type
-
 [**UploadToken**](../model/UploadToken.md)
 
 ### HTTP request headers

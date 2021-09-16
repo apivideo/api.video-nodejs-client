@@ -41,7 +41,6 @@ Name | Type | Description  | Notes
  **playerId** | **string**| The unique identifier for the player you want to delete. | [default to undefined]
 
 ### Return type
-
 [**void**](../model/.md)
 
 ### HTTP request headers
@@ -83,7 +82,6 @@ Name | Type | Description  | Notes
  **playerId** | **string**| The unique identifier for the player. | [default to undefined]
 
 ### Return type
-
 [**void**](../model/.md)
 
 ### HTTP request headers
@@ -112,7 +110,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<PlayerTheme>
+        // PlayerThemesListResponse
         const result = await client.playerThemes.list({ sortBy, sortOrder, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -131,8 +129,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](../model/pagination.md)<[**PlayerTheme**](../model/PlayerTheme.md)>
-
+[**PlayerThemesListResponse**](../model/PlayerThemesListResponse.md)
 
 ### HTTP request headers
 
@@ -173,7 +170,6 @@ Name | Type | Description  | Notes
  **playerId** | **string**| The unique identifier for the player you want to retrieve.  | [default to undefined]
 
 ### Return type
-
 [**PlayerTheme**](../model/PlayerTheme.md)
 
 ### HTTP request headers
@@ -232,7 +228,6 @@ Name | Type | Description  | Notes
  **playerThemeUpdatePayload** | [**PlayerThemeUpdatePayload**](../model/PlayerThemeUpdatePayload.md)|  |
 
 ### Return type
-
 [**PlayerTheme**](../model/PlayerTheme.md)
 
 ### HTTP request headers
@@ -289,7 +284,6 @@ Name | Type | Description  | Notes
  **playerThemeCreationPayload** | [**PlayerThemeCreationPayload**](../model/PlayerThemeCreationPayload.md)|  |
 
 ### Return type
-
 [**PlayerTheme**](../model/PlayerTheme.md)
 
 ### HTTP request headers
@@ -334,7 +328,6 @@ Name | Type | Description  | Notes
  **link** | **string**| A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. | [optional] [default to undefined]
 
 ### Return type
-
 [**PlayerTheme**](../model/PlayerTheme.md)
 
 ### HTTP request headers

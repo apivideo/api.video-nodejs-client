@@ -38,7 +38,6 @@ Name | Type | Description  | Notes
  **authenticatePayload** | [**AuthenticatePayload**](../model/AuthenticatePayload.md)|  |
 
 ### Return type
-
 [**AccessToken**](../model/AccessToken.md)
 
 ### HTTP request headers
@@ -82,7 +81,6 @@ Name | Type | Description  | Notes
  **refreshTokenPayload** | [**RefreshTokenPayload**](../model/RefreshTokenPayload.md)|  |
 
 ### Return type
-
 [**AccessToken**](../model/AccessToken.md)
 
 ### HTTP request headers
