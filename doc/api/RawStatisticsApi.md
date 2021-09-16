@@ -24,7 +24,7 @@ Method | HTTP request | Description
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<>
+        // Page<LiveStreamSession>
         const result = await client.rawStatistics.listLiveStreamSessions({ liveStreamId, period, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](pagination.md)<[****](.md)>
+[**Page**](../model/pagination.md)<[**LiveStreamSession**](../model/LiveStreamSession.md)>
 
 
 ### HTTP request headers
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<>
+        // Page<PlayerSessionEvent>
         const result = await client.rawStatistics.listSessionEvents({ sessionId, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](pagination.md)<[****](.md)>
+[**Page**](../model/pagination.md)<[**PlayerSessionEvent**](../model/PlayerSessionEvent.md)>
 
 
 ### HTTP request headers
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<>
+        // Page<VideoSession>
         const result = await client.rawStatistics.listVideoSessions({ videoId, period, metadata, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -134,12 +134,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The unique identifier for the video you want to retrieve session information for. | [default to undefined]
  **period** | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  | [optional] [default to undefined]
- **metadata** | [**{ [key: string]: string; }**](string.md)| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | [optional]
+ **metadata** | **{ [key: string]: string; }**| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | [optional]
  **currentPage** | **number**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](pagination.md)<[****](.md)>
+[**Page**](../model/pagination.md)<[**VideoSession**](../model/VideoSession.md)>
 
 
 ### HTTP request headers

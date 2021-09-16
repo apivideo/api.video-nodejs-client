@@ -35,7 +35,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authenticatePayload** | [**AuthenticatePayload**](AuthenticatePayload.md)|  |
+ **authenticatePayload** | [**AuthenticatePayload**](../model/AuthenticatePayload.md)|  |
 
 ### Return type
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **refreshTokenPayload** | [**RefreshTokenPayload**](RefreshTokenPayload.md)|  |
+ **refreshTokenPayload** | [**RefreshTokenPayload**](../model/RefreshTokenPayload.md)|  |
 
 ### Return type
 

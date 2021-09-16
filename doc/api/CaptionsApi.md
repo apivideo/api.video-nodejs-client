@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<>
+        // Page<Caption>
         const result = await client.captions.list({ videoId, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](pagination.md)<[****](.md)>
+[**Page**](../model/pagination.md)<[**Caption**](../model/Caption.md)>
 
 
 ### HTTP request headers
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The unique identifier for the video you want to have automatic captions for. | [default to undefined]
  **language** | **string**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. | [default to undefined]
- **captionsUpdatePayload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  |
+ **captionsUpdatePayload** | [**CaptionsUpdatePayload**](../model/CaptionsUpdatePayload.md)|  |
 
 ### Return type
 

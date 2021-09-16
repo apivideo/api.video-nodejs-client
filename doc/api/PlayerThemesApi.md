@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<>
+        // Page<PlayerTheme>
         const result = await client.playerThemes.list({ sortBy, sortOrder, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](pagination.md)<[****](.md)>
+[**Page**](../model/pagination.md)<[**PlayerTheme**](../model/PlayerTheme.md)>
 
 
 ### HTTP request headers
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playerId** | **string**| The unique identifier for the player. | [default to undefined]
- **playerThemeUpdatePayload** | [**PlayerThemeUpdatePayload**](PlayerThemeUpdatePayload.md)|  |
+ **playerThemeUpdatePayload** | [**PlayerThemeUpdatePayload**](../model/PlayerThemeUpdatePayload.md)|  |
 
 ### Return type
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerThemeCreationPayload** | [**PlayerThemeCreationPayload**](PlayerThemeCreationPayload.md)|  |
+ **playerThemeCreationPayload** | [**PlayerThemeCreationPayload**](../model/PlayerThemeCreationPayload.md)|  |
 
 ### Return type
 

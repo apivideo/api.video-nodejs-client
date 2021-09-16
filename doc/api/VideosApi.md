@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
-        // Page<>
+        // Page<Video>
         const result = await client.videos.list({ title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize })
         console.log(result);
     } catch (e) {
@@ -176,8 +176,8 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **string**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional] [default to undefined]
- **tags** | [**Array&lt;string&gt;**](string.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- **metadata** | [**{ [key: string]: string; }**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
+ **tags** | **Array&lt;string&gt;**| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
+ **metadata** | **{ [key: string]: string; }**| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
  **description** | **string**| If you described a video with a term or sentence, you can add it here to return videos containing this string. | [optional] [default to undefined]
  **liveStreamId** | **string**| If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. | [optional] [default to undefined]
  **sortBy** | **string**| Allowed: publishedAt, title. You can search by the time videos were published at, or by title. | [optional] [default to undefined]
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
-[**Page**](pagination.md)<[****](.md)>
+[**Page**](../model/pagination.md)<[**Video**](../model/Video.md)>
 
 
 ### HTTP request headers
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The video ID for the video you want to delete. | [default to undefined]
- **videoUpdatePayload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  |
+ **videoUpdatePayload** | [**VideoUpdatePayload**](../model/VideoUpdatePayload.md)|  |
 
 ### Return type
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. | [default to undefined]
- **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  |
+ **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](../model/VideoThumbnailPickPayload.md)|  |
 
 ### Return type
 
@@ -390,7 +390,7 @@ apiVideoClient.videos().uploadWithUploadToken(token, file);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoCreationPayload** | [**VideoCreationPayload**](VideoCreationPayload.md)| video to create |
+ **videoCreationPayload** | [**VideoCreationPayload**](../model/VideoCreationPayload.md)| video to create |
 
 ### Return type
 
