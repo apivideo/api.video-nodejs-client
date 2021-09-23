@@ -49,10 +49,6 @@ export default class VideoCreationPayload {
    * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
    */
   'metadata'?: Array<Metadata>;
-  /**
-   * The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
-   */
-  'publishedAt'?: Date;
 
   static readonly discriminator?: string = undefined;
 
@@ -110,12 +106,6 @@ export default class VideoCreationPayload {
       baseName: 'metadata',
       type: 'Array<Metadata>',
       format: '',
-    },
-    {
-      name: 'publishedAt',
-      baseName: 'publishedAt',
-      type: 'Date',
-      format: 'date-time',
     },
   ];
 
