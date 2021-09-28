@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **string**| The unique identifier for the token you want to use to upload a video. | [default to undefined]
  **file** | **string**| The path to the video you want to upload. | [default to undefined]
-
+**progressListener?** | **(event: UploadProgressEvent) => void \| undefined** | Optional upload progress listener | [default to undefined]
 
 ### Upload chunks
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| Enter the videoId you want to use to upload your video. | [default to undefined]
  **file** | **string**| The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. | [default to undefined]
-
+**progressListener?** | **(event: UploadProgressEvent) => void \| undefined** | Optional upload progress listener | [default to undefined]
 
 ### Upload chunks
 
