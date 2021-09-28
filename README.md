@@ -288,7 +288,8 @@ Some endpoints don't require authentication. These one can be called with an Api
 const client = new ApiVideoClient();
 ```
 
-## Author
+## Have you gotten use from this API client?
 
+Please take a moment to leave a star on the client ⭐
 
-
+This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
