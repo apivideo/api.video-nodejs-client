@@ -31,6 +31,7 @@ import VideoStatus from '../model/VideoStatus';
 import VideoThumbnailPickPayload from '../model/VideoThumbnailPickPayload';
 import VideoUpdatePayload from '../model/VideoUpdatePayload';
 import VideosListResponse from '../model/VideosListResponse';
+import UploadProgressEvent from '../model/UploadProgressEvent';
 
 /**
  * no description
@@ -388,7 +389,8 @@ export default class VideosApi {
    */
   public async uploadWithUploadToken(
     token: string,
-    file: string
+    file: string,
+    progressListener?: (event: UploadProgressEvent) => void
   ): Promise<Video> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
@@ -430,26 +432,37 @@ export default class VideosApi {
       const filename = path.basename(file);
       formData.append(filename, createReadStream(file), filename);
       queryParams.body = formData;
-      return this.httpClient
-        .call(localVarPath, queryParams)
-        .then(
-          (response) =>
-            ObjectSerializer.deserialize(
-              ObjectSerializer.parse(
-                response.body,
-                response.headers['content-type']
-              ),
-              'Video',
-              ''
-            ) as Video
-        );
+      const call = this.httpClient.call(localVarPath, queryParams);
+      if (progressListener) {
+        call.on('uploadProgress', (progress) => {
+          progressListener({
+            chunksCount: 1,
+            currentChunk: 0,
+            currentChunkUploadedBytes: progress.transferred,
+            currentChunkTotalBytes: progress.total || 0,
+            uploadedBytes: progress.transferred,
+            totalBytes: progress.total || 0,
+          });
+        });
+      }
+      return call.then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'Video',
+            ''
+          ) as Video
+      );
     }
-    const fileDescriptor = openSync(file, 'r');
-    const readAsPromise = promisify(read);
-    const buf = Buffer.alloc(chunkSize);
     let uploadChunkSize = chunkSize;
     let lastBody;
-    for (let offset = 0; offset < length; offset += chunkSize) {
+    let stream;
+    let chunkNumber = 0;
+
+    for (let offset = 0; offset < length; offset += chunkSize, chunkNumber++) {
       // default the upload size to be as large as possible.
       uploadChunkSize = chunkSize;
       // BUT,if we are on the last chunk to be uploaded, the uploaded chunk must be
@@ -457,35 +470,53 @@ export default class VideosApi {
       if (offset + uploadChunkSize > length) {
         uploadChunkSize = length - offset;
       }
-      await readAsPromise(fileDescriptor, buf, 0, uploadChunkSize, offset);
+
       console.log(`Uploading ${offset}-${offset + uploadChunkSize}...`);
 
       const filename = path.basename(file);
       const chunkFormData = new FormData();
-      chunkFormData.append(filename, buf, filename);
+      stream = createReadStream(file, {
+        start: offset,
+        end: uploadChunkSize + offset - 1,
+      });
+      chunkFormData.append(filename, stream, filename);
 
       queryParams.body = chunkFormData;
       queryParams.headers['Content-Range'] = `bytes ${offset}-${
         offset + uploadChunkSize - 1
       }/${length}`;
 
-      lastBody = await this.httpClient
-        .call(localVarPath, queryParams)
-        .then(
-          (response) =>
-            ObjectSerializer.deserialize(
-              ObjectSerializer.parse(
-                response.body,
-                response.headers['content-type']
-              ),
-              'Video',
-              ''
-            ) as Video
-        )
-        .catch((error: Error) => {
-          closeSync(fileDescriptor);
-          throw error;
+      const call = this.httpClient.call(localVarPath, queryParams);
+
+      if (progressListener) {
+        call.on('uploadProgress', (progress) => {
+          progressListener({
+            chunksCount: Math.ceil(length / chunkSize),
+            currentChunk: chunkNumber,
+            currentChunkUploadedBytes: progress.transferred,
+            currentChunkTotalBytes: progress.total || 0,
+            uploadedBytes: Math.min(
+              length,
+              chunkNumber * chunkSize + progress.transferred
+            ),
+            totalBytes: length,
+          });
         });
+      }
+
+      lastBody = await call.then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'Video',
+            ''
+          ) as Video
+      );
+
+      stream.close();
     }
 
     return Promise.resolve(lastBody as Video);
@@ -545,7 +576,11 @@ export default class VideosApi {
    * @param videoId Enter the videoId you want to use to upload your video.
    * @param file The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video.
    */
-  public async upload(videoId: string, file: string): Promise<Video> {
+  public async upload(
+    videoId: string,
+    file: string,
+    progressListener?: (event: UploadProgressEvent) => void
+  ): Promise<Video> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -576,26 +611,37 @@ export default class VideosApi {
       const filename = path.basename(file);
       formData.append(filename, createReadStream(file), filename);
       queryParams.body = formData;
-      return this.httpClient
-        .call(localVarPath, queryParams)
-        .then(
-          (response) =>
-            ObjectSerializer.deserialize(
-              ObjectSerializer.parse(
-                response.body,
-                response.headers['content-type']
-              ),
-              'Video',
-              ''
-            ) as Video
-        );
+      const call = this.httpClient.call(localVarPath, queryParams);
+      if (progressListener) {
+        call.on('uploadProgress', (progress) => {
+          progressListener({
+            chunksCount: 1,
+            currentChunk: 0,
+            currentChunkUploadedBytes: progress.transferred,
+            currentChunkTotalBytes: progress.total || 0,
+            uploadedBytes: progress.transferred,
+            totalBytes: progress.total || 0,
+          });
+        });
+      }
+      return call.then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'Video',
+            ''
+          ) as Video
+      );
     }
-    const fileDescriptor = openSync(file, 'r');
-    const readAsPromise = promisify(read);
-    const buf = Buffer.alloc(chunkSize);
     let uploadChunkSize = chunkSize;
     let lastBody;
-    for (let offset = 0; offset < length; offset += chunkSize) {
+    let stream;
+    let chunkNumber = 0;
+
+    for (let offset = 0; offset < length; offset += chunkSize, chunkNumber++) {
       // default the upload size to be as large as possible.
       uploadChunkSize = chunkSize;
       // BUT,if we are on the last chunk to be uploaded, the uploaded chunk must be
@@ -603,35 +649,53 @@ export default class VideosApi {
       if (offset + uploadChunkSize > length) {
         uploadChunkSize = length - offset;
       }
-      await readAsPromise(fileDescriptor, buf, 0, uploadChunkSize, offset);
+
       console.log(`Uploading ${offset}-${offset + uploadChunkSize}...`);
 
       const filename = path.basename(file);
       const chunkFormData = new FormData();
-      chunkFormData.append(filename, buf, filename);
+      stream = createReadStream(file, {
+        start: offset,
+        end: uploadChunkSize + offset - 1,
+      });
+      chunkFormData.append(filename, stream, filename);
 
       queryParams.body = chunkFormData;
       queryParams.headers['Content-Range'] = `bytes ${offset}-${
         offset + uploadChunkSize - 1
       }/${length}`;
 
-      lastBody = await this.httpClient
-        .call(localVarPath, queryParams)
-        .then(
-          (response) =>
-            ObjectSerializer.deserialize(
-              ObjectSerializer.parse(
-                response.body,
-                response.headers['content-type']
-              ),
-              'Video',
-              ''
-            ) as Video
-        )
-        .catch((error: Error) => {
-          closeSync(fileDescriptor);
-          throw error;
+      const call = this.httpClient.call(localVarPath, queryParams);
+
+      if (progressListener) {
+        call.on('uploadProgress', (progress) => {
+          progressListener({
+            chunksCount: Math.ceil(length / chunkSize),
+            currentChunk: chunkNumber,
+            currentChunkUploadedBytes: progress.transferred,
+            currentChunkTotalBytes: progress.total || 0,
+            uploadedBytes: Math.min(
+              length,
+              chunkNumber * chunkSize + progress.transferred
+            ),
+            totalBytes: length,
+          });
         });
+      }
+
+      lastBody = await call.then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'Video',
+            ''
+          ) as Video
+      );
+
+      stream.close();
     }
 
     return Promise.resolve(lastBody as Video);
