@@ -37,7 +37,7 @@ export default class HttpClient {
     this.chunkSize = params.chunkSize;
     this.tokenType = 'Bearer';
     this.headers = {
-      'User-Agent': `api.video client (nodejs; v:2.0.10; )`,
+      'User-Agent': `api.video client (nodejs; v:2.0.11; )`,
       Accept: 'application/json, */*;q=0.8',
     };
     this.baseRequest = got.extend({
@@ -50,7 +50,7 @@ export default class HttpClient {
           async (options) => {
             if (!options.headers.Authorization) {
               if (!this.accessToken) {
-                await this.getAccessToken.call(this);
+                await this.retrieveAccessToken.call(this);
               }
               // @ts-ignore
               const { tokenType, accessToken } = this.accessToken;
@@ -92,7 +92,11 @@ export default class HttpClient {
     return this.chunkSize;
   }
 
-  async getAccessToken(): Promise<AccessToken> {
+  async getAccessToken() {
+    return this.accessToken || (await this.retrieveAccessToken());
+  }
+
+  async retrieveAccessToken(): Promise<AccessToken> {
     const { statusCode, body } = await got.post(
       `${this.baseUri}/auth/api-key`,
       {
@@ -115,7 +119,9 @@ export default class HttpClient {
 
   isStillAuthenticated: AfterResponseHook = async (response, retry) => {
     if (response.statusCode === 401) {
-      const { tokenType, accessToken } = await this.getAccessToken.call(this);
+      const { tokenType, accessToken } = await this.retrieveAccessToken.call(
+        this
+      );
       const updatedOptions = {
         headers: {
           Authorization: `${tokenType} ${accessToken}`,
