@@ -13,6 +13,10 @@ import AttributeType from './AttributeType';
 
 export default class Quality {
   /**
+   * The type of video (hls or mp4).
+   */
+  'type'?: QualityTypeEnum;
+  /**
    * The quality of the video you have, in pixels. Choices include 360p, 480p, 720p, 1080p, and 2160p.
    */
   'quality'?: QualityQualityEnum;
@@ -24,6 +28,12 @@ export default class Quality {
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
+    {
+      name: 'type',
+      baseName: 'type',
+      type: 'QualityTypeEnum',
+      format: '',
+    },
     {
       name: 'quality',
       baseName: 'quality',
@@ -43,6 +53,7 @@ export default class Quality {
   }
 }
 
+export type QualityTypeEnum = 'hls' | 'mp4';
 export type QualityQualityEnum =
   | '240p'
   | '360p'
