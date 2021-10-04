@@ -281,6 +281,14 @@ All you have to do is provide an API token when instantiating the ApiVideoClient
 const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 ```
 
+### Get the access token
+
+If you need to access the access-token value obtained using the API key, you can use the getAccessToken() method of the client:
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const accessToken = await client.getAccessToken();
+```
+
 ### Public endpoints
 
 Some endpoints don't require authentication. These one can be called with an ApiVideoClient instantiated without API token:
