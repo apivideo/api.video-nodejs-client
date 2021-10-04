@@ -44,6 +44,7 @@ import PlayerThemeCreationPayload from './model/PlayerThemeCreationPayload';
 import PlayerThemeUpdatePayload from './model/PlayerThemeUpdatePayload';
 import PlayerThemesListResponse from './model/PlayerThemesListResponse';
 import Quality, {
+  QualityTypeEnum,
   QualityQualityEnum,
   QualityStatusEnum,
 } from './model/Quality';
@@ -98,6 +99,7 @@ const supportedMediaTypes: { [mediaType: string]: number } = {
 };
 
 const enumsMap: Set<string> = new Set<string>([
+  'QualityTypeEnum',
   'QualityQualityEnum',
   'QualityStatusEnum',
   'VideoStatusIngestStatusEnum',
