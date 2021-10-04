@@ -69,6 +69,10 @@ class ApiVideoClient {
     this._webhooks = new WebhooksApi(this.httpClient);
   }
 
+  public async getAccessToken() {
+    return this.httpClient.getAccessToken();
+  }
+
   /**
    * Get an CaptionsApi instance
    * @return CaptionsApi
