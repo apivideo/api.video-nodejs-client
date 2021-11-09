@@ -26,7 +26,7 @@ export default class VideoCreationPayload {
    */
   'source'?: string;
   /**
-   * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+   * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
    */
   '_public'?: boolean;
   /**
@@ -46,7 +46,7 @@ export default class VideoCreationPayload {
    */
   'tags'?: Array<string>;
   /**
-   * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
+   * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).
    */
   'metadata'?: Array<Metadata>;
 

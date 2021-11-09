@@ -23,6 +23,7 @@ import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
+import ProgressiveSession from 'model/ProgressiveSession';
 import AccessToken from '../model/AccessToken';
 import AuthenticatePayload from '../model/AuthenticatePayload';
 import BadRequest from '../model/BadRequest';
@@ -87,6 +88,7 @@ export default class AuthenticationApi {
           ) as AccessToken
       );
   }
+
   /**
    * Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.
    * Refresh token

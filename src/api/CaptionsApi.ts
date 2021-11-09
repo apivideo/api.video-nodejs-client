@@ -23,6 +23,7 @@ import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
+import ProgressiveSession from 'model/ProgressiveSession';
 import BadRequest from '../model/BadRequest';
 import Caption from '../model/Caption';
 import CaptionsListResponse from '../model/CaptionsListResponse';
@@ -80,6 +81,7 @@ export default class CaptionsApi {
           ) as void
       );
   }
+
   /**
    * Retrieve a list of available captions for the videoId you provide.
    * List video captions
@@ -143,6 +145,7 @@ export default class CaptionsApi {
           ) as CaptionsListResponse
       );
   }
+
   /**
    * Display a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a response indicating the caption was not found. Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
    * Show a caption
@@ -184,6 +187,7 @@ export default class CaptionsApi {
           ) as Caption
       );
   }
+
   /**
    * To have the captions on automatically, use this PATCH to set default: true.
    * Update caption
@@ -250,6 +254,7 @@ export default class CaptionsApi {
           ) as Caption
       );
   }
+
   /**
    * Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
    * Upload a caption

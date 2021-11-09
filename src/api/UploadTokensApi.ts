@@ -23,6 +23,7 @@ import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
+import ProgressiveSession from 'model/ProgressiveSession';
 import BadRequest from '../model/BadRequest';
 import NotFound from '../model/NotFound';
 import TokenCreationPayload from '../model/TokenCreationPayload';
@@ -76,6 +77,7 @@ export default class UploadTokensApi {
           ) as void
       );
   }
+
   /**
    * A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
    * List all active upload tokens.
@@ -147,6 +149,7 @@ export default class UploadTokensApi {
           ) as TokenListResponse
       );
   }
+
   /**
    * You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
    * Show upload token
@@ -184,6 +187,7 @@ export default class UploadTokensApi {
           ) as UploadToken
       );
   }
+
   /**
    * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
    * Generate an upload token

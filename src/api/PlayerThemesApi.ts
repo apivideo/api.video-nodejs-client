@@ -23,6 +23,7 @@ import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
+import ProgressiveSession from 'model/ProgressiveSession';
 import BadRequest from '../model/BadRequest';
 import NotFound from '../model/NotFound';
 import PlayerTheme from '../model/PlayerTheme';
@@ -74,6 +75,7 @@ export default class PlayerThemesApi {
           ) as void
       );
   }
+
   /**
    * Delete logo
    * @param playerId The unique identifier for the player.
@@ -107,6 +109,7 @@ export default class PlayerThemesApi {
           ) as void
       );
   }
+
   /**
    * Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
    * List all players
@@ -178,6 +181,7 @@ export default class PlayerThemesApi {
           ) as PlayerThemesListResponse
       );
   }
+
   /**
    * Use a player ID to retrieve details about the player and display it for viewers.
    * Show a player
@@ -212,6 +216,7 @@ export default class PlayerThemesApi {
           ) as PlayerTheme
       );
   }
+
   /**
    * Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
    * Update a player
@@ -273,6 +278,7 @@ export default class PlayerThemesApi {
           ) as PlayerTheme
       );
   }
+
   /**
    * Create a player for your video, and customise it.
    * Create a player
@@ -325,8 +331,9 @@ export default class PlayerThemesApi {
           ) as PlayerTheme
       );
   }
+
   /**
-   * The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+   * The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
    * Upload a logo
    * @param playerId The unique identifier for the player.
    * @param file The name of the file you want to use for your logo.

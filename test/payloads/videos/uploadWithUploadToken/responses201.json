@@ -18,9 +18,10 @@
     "uri" : "/videos/vi4k0jvEUuaTdRAEjQ4Jfrgz/source"
   },
   "assets" : {
-    "iframe" : "<iframe src=\"//embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
-    "player" : "https://embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae",
-    "hls" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8",
-    "thumbnail" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg"
+    "iframe" : "<iframe src=\"https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
+    "player" : "https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27",
+    "hls" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/hls/manifest.m3u8",
+    "thumbnail" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/thumbnail.jpg",
+    "mp4" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/mp4/1080/source.mp4"
   }
 }
