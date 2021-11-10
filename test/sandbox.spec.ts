@@ -1,8 +1,6 @@
 import { expect } from 'chai';
 import ApiVideoClient from '../src';
 import AccessToken from '../src/model/AccessToken';
-import Account from '../src/model/Account';
-import AccountQuota from '../src/model/AccountQuota';
 import AuthenticatePayload from '../src/model/AuthenticatePayload';
 import BadRequest from '../src/model/BadRequest';
 import BytesRange from '../src/model/BytesRange';
@@ -96,17 +94,54 @@ describe('ApiVideoClient', () => {
     });
 
     // Create
+    const progressiveUploadVideo = 'Nodejs - progressive upload';
+    const { videoId: progressiveUploadVideoId } = await client.videos.create({
+      title: progressiveUploadVideo,
+    });
+
+    // Progressive upload
+    const progressiveUploadSession =
+      client.videos.createUploadProgressiveSession(progressiveUploadVideoId);
+    await progressiveUploadSession.uploadPart('test/data/10m.mp4.part.a');
+    await progressiveUploadSession.uploadPart('test/data/10m.mp4.part.b');
+    await progressiveUploadSession
+      .uploadLastPart('test/data/10m.mp4.part.c')
+      .then((video) => {
+        expect(video.title).to.equals(progressiveUploadVideo);
+      });
+    await client.videos.delete(progressiveUploadVideoId);
+
+    // Create an upload token
+    const { token: progressiveUploadToken } =
+      await client.uploadTokens.createToken();
+    // Progressive upload
+    const progressiveUploadWithTokenSession =
+      client.videos.createUploadWithUploadTokenProgressiveSession(
+        progressiveUploadToken as string
+      );
+    await progressiveUploadWithTokenSession.uploadPart(
+      'test/data/10m.mp4.part.a'
+    );
+    await progressiveUploadWithTokenSession.uploadPart(
+      'test/data/10m.mp4.part.b'
+    );
+    await progressiveUploadWithTokenSession
+      .uploadLastPart('test/data/10m.mp4.part.c')
+      .then((video) => {
+        expect(video.title).to.equals('10m.mp4.part.a');
+        client.videos.delete(video.videoId);
+      });
+
+    // Create
     const videoTitle = 'Course #4 - Part B';
     const { videoId, title } = await client.videos.create({
       title: videoTitle,
     });
 
     // upload a video resource
-    await client.videos
-      .upload(videoId, 'test/data/small.webm')
-      .then((video) => {
-        expect(title).to.equals(videoTitle);
-      });
+    await client.videos.upload(videoId, 'test/data/558k.mp4').then((video) => {
+      expect(title).to.equals(videoTitle);
+    });
 
     // Update video properties
     const newDescription = 'Course #4 - Part C';
@@ -280,7 +315,7 @@ describe('ApiVideoClient', () => {
     // Upload a video with a token
     await client.videos.uploadWithUploadToken(
       token as string,
-      'test/data/small.webm'
+      'test/data/558k.mp4'
     );
   });
 });

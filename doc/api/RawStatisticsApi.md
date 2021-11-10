@@ -20,7 +20,7 @@ Method | HTTP request | Description
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the live stream you want to retrieve analytics for.
-        const period = '2019-01-01'; // Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\", - For a month: \"2018-01\" - For a year: \"2018\"  For a range period: -  Date range: \"2018-01-01/2018-01-15\" 
+        const period = '2019-01-01'; // Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\",  - For a month: \"2018-01\" - For a year: \"2018\" For a range period:  -  Date range: \"2018-01-01/2018-01-15\" 
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
@@ -38,7 +38,7 @@ Method | HTTP request | Description
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **liveStreamId** | **string**| The unique identifier for the live stream you want to retrieve analytics for. | [default to undefined]
- **period** | **string**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;, - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period: -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  | [optional] [default to undefined]
+ **period** | **string**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  | [optional] [default to undefined]
  **currentPage** | **number**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
@@ -112,8 +112,8 @@ Name | Type | Description  | Notes
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to retrieve session information for.
-        const period = 'period_example'; // Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 
-        const metadata = 'metadata[Author]=John Doe&metadata[Format]=Tutorial'; // Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.
+        const period = 'period_example'; // Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 
+        const metadata = 'metadata[Author]=John Doe&metadata[Format]=Tutorial'; // Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with.
         const currentPage = '2'; // Choose the number of search results to return per page. Minimum value: 1
         const pageSize = '30'; // Results per page. Allowed values 1-100, default is 25.
 
@@ -131,8 +131,8 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The unique identifier for the video you want to retrieve session information for. | [default to undefined]
- **period** | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  | [optional] [default to undefined]
- **metadata** | **{ [key: string]: string; }**| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | [optional]
+ **period** | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  | [optional] [default to undefined]
+ **metadata** | **{ [key: string]: string; }**| Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. | [optional]
  **currentPage** | **number**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 

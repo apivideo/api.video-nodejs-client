@@ -11,8 +11,6 @@
  */
 
 import AccessToken from './model/AccessToken';
-import Account from './model/Account';
-import AccountQuota from './model/AccountQuota';
 import AuthenticatePayload from './model/AuthenticatePayload';
 import BadRequest from './model/BadRequest';
 import BytesRange from './model/BytesRange';
@@ -107,8 +105,6 @@ const enumsMap: Set<string> = new Set<string>([
 
 const typeMap: { [index: string]: any } = {
   AccessToken: AccessToken,
-  Account: Account,
-  AccountQuota: AccountQuota,
   AuthenticatePayload: AuthenticatePayload,
   BadRequest: BadRequest,
   BytesRange: BytesRange,

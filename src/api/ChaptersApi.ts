@@ -23,6 +23,7 @@ import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
+import ProgressiveSession from 'model/ProgressiveSession';
 import BadRequest from '../model/BadRequest';
 import Chapter from '../model/Chapter';
 import ChaptersListResponse from '../model/ChaptersListResponse';
@@ -78,6 +79,7 @@ export default class ChaptersApi {
           ) as void
       );
   }
+
   /**
    * Retrieve a list of all chapters for a specified video.
    * List video chapters
@@ -141,6 +143,7 @@ export default class ChaptersApi {
           ) as ChaptersListResponse
       );
   }
+
   /**
    * Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
    * Show a chapter
@@ -182,6 +185,7 @@ export default class ChaptersApi {
           ) as Chapter
       );
   }
+
   /**
    * Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
    * Upload a chapter

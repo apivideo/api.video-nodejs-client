@@ -212,8 +212,6 @@ Method | HTTP request | Description
 ## API Models
 
  - [AccessToken](doc/model/AccessToken.md)
- - [Account](doc/model/Account.md)
- - [AccountQuota](doc/model/AccountQuota.md)
  - [AuthenticatePayload](doc/model/AuthenticatePayload.md)
  - [BadRequest](doc/model/BadRequest.md)
  - [BytesRange](doc/model/BytesRange.md)

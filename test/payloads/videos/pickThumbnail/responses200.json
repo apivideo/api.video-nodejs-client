@@ -1,5 +1,5 @@
 {
-  "videoId" : "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+  "videoId" : "vi4blUQJFrYWbaG44NChkH27",
   "playerId" : "pl45KFKdlddgk654dspkze",
   "title" : "Maths video",
   "description" : "An amazing video explaining string theory",
@@ -14,15 +14,15 @@
     "key" : "Format",
     "value" : "Tutorial"
   } ],
-  "publishedAt" : "4665-07-14T23:36:18.598Z",
+  "publishedAt" : "4665-07-14T23:36:18.598+00:00",
   "source" : {
-    "uri" : "/videos/vi4k0jvEUuaTdRAEjQ4Jfrgz/source"
+    "uri" : "/videos/vi4blUQJFrYWbaG44NChkH27/source"
   },
   "assets" : {
-    "iframe" : "<iframe src=\"//embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
-    "player" : "https://embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae",
-    "hls" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8",
-    "thumbnail" : "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg",
-    "mp4" : "https://cdn.api.video/vod/vi4k0jvEUuaTdRAEjQ4Jfrgz/token/8fd70443-d9f0-45d2-b01c-12c8cfc707c9/mp4/720/source.mp4"
+    "iframe" : "<iframe src=\"https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
+    "player" : "https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27",
+    "hls" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/hls/manifest.m3u8",
+    "thumbnail" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/thumbnail.jpg",
+    "mp4" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/mp4/1080/source.mp4"
   }
 }

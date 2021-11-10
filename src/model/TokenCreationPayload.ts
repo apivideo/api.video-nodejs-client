@@ -13,7 +13,7 @@ import AttributeType from './AttributeType';
 
 export default class TokenCreationPayload {
   /**
-   * Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
+   * Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
    */
   'ttl'?: number;
 
