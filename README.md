@@ -1,20 +1,40 @@
-[![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video)
-
-[![badge](https://img.shields.io/github/stars/apivideo/nodejs-api-client?style=social)](https://github.com/apivideo/nodejs-api-client)
-
-[![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
-
+[![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video) &nbsp; [![badge](https://img.shields.io/github/stars/apivideo/api.video-nodejs-client?style=social)](https://github.com/apivideo/api.video-nodejs-client) &nbsp; [![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
 ![](https://github.com/apivideo/API_OAS_file/blob/master/apivideo_banner.png)
+<h1 align="center">api.video Node.js client</h1>
 
-[api.video](https://api.video) is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
+[api.video](https://api.video) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
 
-# api.video Node.js API client
+# Table of contents
 
-A lightweight client built in `TypeScript` for `nodejs`.
+- [Project description](#project-description)
+- [Getting started](#getting-started)
+  - [Installation](#installation)
+  - [Migration](#migration)
+  - [Development](#development)
+  - [Code sample](#code-sample)
+- [Documentation](#documentation)
+  - [API Endpoints](#api-endpoints)
+    - [CaptionsApi](#CaptionsApi)
+    - [ChaptersApi](#ChaptersApi)
+    - [LiveStreamsApi](#LiveStreamsApi)
+    - [PlayerThemesApi](#PlayerThemesApi)
+    - [RawStatisticsApi](#RawStatisticsApi)
+    - [UploadTokensApi](#UploadTokensApi)
+    - [VideosApi](#VideosApi)
+    - [WebhooksApi](#WebhooksApi)
+  - [Models](#models)
+  - [Authorization](#authorization)
+    - [API token](#api-token)
+    - [Get the access token](#get-the-access-token)
+    - [Public endpoints](#public-endpoints)
+- [Have you gotten use from this API client?](#have-you-gotten-use-from-this-api-client-)
+- [Contribution](#contribution)
 
-> This client is part of our generated clients built upon our [Open API schema definition](https://github.com/apivideo/API_OAS_file).
+# Project description
 
-api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
+api.video's Java Node.js is a lightweight client built in `TypeScript` that streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
+
+# Getting started
 
 ## Installation
 With `npm`:
@@ -39,7 +59,33 @@ npm install
 npm run build
 ```
 
-## API resources
+## Code sample
+
+```typescript
+const ApiVideoClient = require('@api.video/nodejs-client');
+
+(async () => {
+    try {
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+
+        // create a video
+        const videoCreationPayload = {
+            title: "Maths video", // The title of your new video.
+            description: "A video about string theory.", // A brief description of your video.
+        };
+        const video = await client.videos.create(videoCreationPayload);
+
+        // upload a video file into the video container
+        await client.videos.upload(video.videoId, "my-video-file.mp4");
+    } catch (e) {
+        console.error(e);
+    }
+})();
+```
+
+# Documentation
+
+## API Endpoints
 
 All URIs are relative to *https://ws.api.video*
 
@@ -209,7 +255,7 @@ Method | HTTP request | Description
 
 
 
-## API Models
+## Models
 
  - [AccessToken](doc/model/AccessToken.md)
  - [AuthenticatePayload](doc/model/AuthenticatePayload.md)
@@ -302,8 +348,13 @@ Some endpoints don't require authentication. These one can be called with an Api
 const client = new ApiVideoClient();
 ```
 
-## Have you gotten use from this API client?
+# Have you gotten use from this API client?
 
 Please take a moment to leave a star on the client ⭐
 
 This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
+
+
+# Contribution
+
+Since this API client is generated from an OpenAPI description, we cannot accept pull requests made directly to the repository. If you want to contribute, you can open a pull request on the repository of our [client generator](https://github.com/apivideo/api-client-generator). Otherwise, you can also simply open an issue detailing your need on this repository.
