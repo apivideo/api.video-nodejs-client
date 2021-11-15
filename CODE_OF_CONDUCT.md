@@ -141,7 +141,7 @@ Try to get as much of the incident in written form. The important information to
 
 The line manager who is handling the reported offence should find out the following:
 
-- What happened?
+- What happened? 
 - Are we doing anything about it?
 - Who is doing those things?
 - When are they doing them?
