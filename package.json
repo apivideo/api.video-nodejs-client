@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/apivideo/nodejs-api-client"
+    "url": "https://github.com/apivideo/api.video-nodejs-client"
   },
-  "bugs:": "https://github.com/apivideo/nodejs-api-client/issues",
+  "bugs:": "https://github.com/apivideo/api.video-nodejs-client/issues",
   "keywords": [
     "api",
     "video",
