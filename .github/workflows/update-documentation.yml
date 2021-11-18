@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Update readme.io documentation
-        uses: apivideo/apivideo/api.video-readmeio-document-sync-action@1.3
+        uses: apivideo/api.video-readmeio-document-sync-action@1.2
         with:
           document-slug: nodejs-api-client
           markdown-file-path: README.md
