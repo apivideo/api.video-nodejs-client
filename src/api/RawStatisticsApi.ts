@@ -23,7 +23,7 @@ import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
-import ProgressiveSession from 'model/ProgressiveSession';
+import ProgressiveSession from '../model/ProgressiveSession';
 import NotFound from '../model/NotFound';
 import RawStatisticsListLiveStreamAnalyticsResponse from '../model/RawStatisticsListLiveStreamAnalyticsResponse';
 import RawStatisticsListPlayerSessionEventsResponse from '../model/RawStatisticsListPlayerSessionEventsResponse';

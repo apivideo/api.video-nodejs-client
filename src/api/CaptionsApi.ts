@@ -23,7 +23,7 @@ import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
-import ProgressiveSession from 'model/ProgressiveSession';
+import ProgressiveSession from '../model/ProgressiveSession';
 import BadRequest from '../model/BadRequest';
 import Caption from '../model/Caption';
 import CaptionsListResponse from '../model/CaptionsListResponse';
