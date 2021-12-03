@@ -13,6 +13,10 @@ import AttributeType from './AttributeType';
 
 export default class PlayerThemeUpdatePayload {
   /**
+   * Add a name for your player theme here.
+   */
+  'name'?: string;
+  /**
    * RGBA color for timer text. Default: rgba(255, 255, 255, 1)
    */
   'text'?: string;
@@ -72,6 +76,12 @@ export default class PlayerThemeUpdatePayload {
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
+    {
+      name: 'name',
+      baseName: 'name',
+      type: 'string',
+      format: '',
+    },
     {
       name: 'text',
       baseName: 'text',

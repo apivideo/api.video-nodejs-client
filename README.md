@@ -166,7 +166,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](doc/api/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**deleteLogo**](doc/api/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](doc/api/PlayerThemesApi.md#list) | **GET** /players | List all players
+[**list**](doc/api/PlayerThemesApi.md#list) | **GET** /players | List all player themes
 [**get**](doc/api/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
 [**update**](doc/api/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](doc/api/PlayerThemesApi.md#create) | **POST** /players | Create a player

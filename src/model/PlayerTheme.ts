@@ -14,6 +14,10 @@ import PlayerThemeAssets from './PlayerThemeAssets';
 
 export default class PlayerTheme {
   /**
+   * The name of the player theme
+   */
+  'name'?: string;
+  /**
    * RGBA color for timer text. Default: rgba(255, 255, 255, 1)
    */
   'text'?: string;
@@ -87,6 +91,12 @@ export default class PlayerTheme {
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
+    {
+      name: 'name',
+      baseName: 'name',
+      type: 'string',
+      format: '',
+    },
     {
       name: 'text',
       baseName: 'text',
