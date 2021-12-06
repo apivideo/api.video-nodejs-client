@@ -26,7 +26,7 @@ export default class Video {
   /**
    * The title of the video content.
    */
-  'title': string;
+  'title'?: string;
   /**
    * A description for the video content.
    */
