@@ -224,13 +224,15 @@ describe('ApiVideoClient', () => {
     // Delete video resource
     await client.videos.delete(videoId);
 
-    // Create a player theme with default values
-    const { playerId } = await client.playerThemes.create();
-    expect(playerId).to.be.a('string');
+    // Create a player theme with a custom name
+    const playerThemeName = 'my player theme';
+    const theme = await client.playerThemes.create({ name: playerThemeName });
+    expect(theme.playerId).to.be.a('string');
 
     // Get a playerTheme
-    await client.playerThemes.get(playerId).then((playerTheme) => {
-      expect(playerId).to.equals(playerTheme.playerId);
+    await client.playerThemes.get(theme.playerId).then((playerTheme) => {
+      expect(theme.playerId).to.equals(playerTheme.playerId);
+      expect(playerThemeName).to.equals(playerTheme.name);
     });
 
     // Search a player theme with paginate results
@@ -256,7 +258,7 @@ describe('ApiVideoClient', () => {
     };
 
     await client.playerThemes
-      .update(playerId, properties)
+      .update(theme.playerId, properties)
       .then((playerTheme) => {
         Object.keys(properties).forEach((property) => {
           // @ts-ignore
@@ -265,12 +267,12 @@ describe('ApiVideoClient', () => {
       });
 
     await client.playerThemes
-      .uploadLogo(playerId, 'test/data/test.jpg', 'https://api.video')
+      .uploadLogo(theme.playerId, 'test/data/test.jpg', 'https://api.video')
       .then((playerTheme) =>
         expect(playerTheme.assets?.link).to.equals('https://api.video')
       );
 
-    await client.playerThemes.delete(playerId);
+    await client.playerThemes.delete(theme.playerId);
 
     // Create a live
     const name = 'This is a live';

@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**deleteLogo**](PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](PlayerThemesApi.md#list) | **GET** /players | List all players
+[**list**](PlayerThemesApi.md#list) | **GET** /players | List all player themes
 [**get**](PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
 [**update**](PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](PlayerThemesApi.md#create) | **POST** /players | Create a player
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sortBy** | **&#39;createdAt&#39; | &#39;updatedAt&#39;**| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. | [optional] [default to undefined] [enum: createdAt, updatedAt]
+ **sortBy** | **&#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. | [optional] [default to undefined] [enum: name, createdAt, updatedAt]
  **sortOrder** | **&#39;asc&#39; | &#39;desc&#39;**| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. | [optional] [default to undefined] [enum: asc, desc]
  **currentPage** | **number**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **number**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
@@ -195,6 +195,7 @@ Name | Type | Description  | Notes
 
         const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player.
         const playerThemeUpdatePayload = {
+			name: "name_example", // Add a name for your player theme here.
 			text: "text_example", // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
 			link: "link_example", // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
 			linkHover: "linkHover_example", // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
@@ -252,6 +253,7 @@ Name | Type | Description  | Notes
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const playerThemeCreationPayload = {
+			name: "name_example", // Add a name for your player theme here.
 			text: "text_example", // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
 			link: "link_example", // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
 			linkHover: "linkHover_example", // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
