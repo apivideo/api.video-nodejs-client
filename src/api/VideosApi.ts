@@ -928,7 +928,7 @@ export default class VideosApi {
    * The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video.  Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
    * Upload a thumbnail
    * @param videoId Unique identifier of the chosen video
-   * @param file The image to be added as a thumbnail.
+   * @param file The .jpg image to be added as a thumbnail.
    */
   public async uploadThumbnail(videoId: string, file: string): Promise<Video> {
     const queryParams: QueryOptions = {};

@@ -518,7 +518,7 @@ try {
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'videoId_example'; // Unique identifier of the chosen video 
-        const file = 'BINARY_DATA_HERE'; // The image to be added as a thumbnail.
+        const file = 'BINARY_DATA_HERE'; // The .jpg image to be added as a thumbnail.
 
         // Video
         const result = await client.videos.uploadThumbnail(videoId, file);
@@ -534,7 +534,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| Unique identifier of the chosen video  | [default to undefined]
- **file** | **string**| The image to be added as a thumbnail. | [default to undefined]
+ **file** | **string**| The .jpg image to be added as a thumbnail. | [default to undefined]
 
 ### Return type
 [**Video**](../model/Video.md)
