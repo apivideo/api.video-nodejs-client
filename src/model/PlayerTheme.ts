@@ -83,7 +83,7 @@ export default class PlayerTheme {
    */
   'updatedAt'?: Date;
   /**
-   * Deprecated
+   * RGBA color for the play button when hovered.
    */
   'linkActive'?: string;
   'assets'?: PlayerThemeAssets;

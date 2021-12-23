@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **playerId** | **string** |  | 
 **createdAt** | **Date** | When the player was created, presented in ISO-8601 format. |  [optional]
 **updatedAt** | **Date** | When the player was last updated, presented in ISO-8601 format. |  [optional]
-**linkActive** | **string** | Deprecated |  [optional]
+**linkActive** | **string** | RGBA color for the play button when hovered. |  [optional]
 **assets** | [**PlayerThemeAssets**](PlayerThemeAssets.md) |  |  [optional]
 
 
