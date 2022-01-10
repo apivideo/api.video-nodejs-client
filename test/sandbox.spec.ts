@@ -136,6 +136,7 @@ describe('ApiVideoClient', () => {
     const videoTitle = 'Course #4 - Part B';
     const { videoId, title } = await client.videos.create({
       title: videoTitle,
+      tags: ['tag1', 'tag2'],
     });
 
     // upload a video resource
@@ -161,6 +162,23 @@ describe('ApiVideoClient', () => {
           'To find the previously created video in the list.'
         ).to.be.true;
       });
+
+    // Tags filtering
+    await client.videos
+      .list({ tags: ['tag1'] })
+      .then(({ data: videos }) =>
+        expect(videos).to.be.has.length.greaterThan(1)
+      );
+
+    await client.videos
+      .list({ tags: ['tag1', 'tag2'] })
+      .then(({ data: videos }) =>
+        expect(videos).to.be.has.length.greaterThan(1)
+      );
+
+    await client.videos
+      .list({ tags: ['tag3'] })
+      .then(({ data: videos }) => expect(videos).to.be.has.length(0));
 
     // Upload a video thumbnail
     await client.videos
