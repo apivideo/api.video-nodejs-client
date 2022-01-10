@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**playerId** | **string** | The unique ID for the player you want to associate with your video. |  [optional]
+**playerId** | **string** \| **null** | The unique ID for the player you want to associate with your video. |  [optional]
 **title** | **string** | The title you want to use for your video. |  [optional]
 **description** | **string** | A brief description of the video. |  [optional]
 **_public** | **boolean** | Whether the video is publicly available or not. False means it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos). |  [optional]
