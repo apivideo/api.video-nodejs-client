@@ -199,9 +199,13 @@ export default class VideosApi {
       );
     }
     if (tags !== undefined) {
-      urlSearchParams.append(
-        'tags',
-        ObjectSerializer.serialize(tags, 'Array<string>', '')
+      const tagsSerialized = ObjectSerializer.serialize(
+        tags,
+        'Array<string>',
+        ''
+      );
+      tagsSerialized.forEach((v: string) =>
+        urlSearchParams.append('tags[]', v)
       );
     }
     if (metadata !== undefined) {
