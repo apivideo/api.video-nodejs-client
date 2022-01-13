@@ -1,0 +1,22 @@
+{
+  "title" : "This parameter is out of the allowed range of values.",
+  "name" : "page",
+  "status" : 400,
+  "range" : {
+    "min" : 1
+  },
+  "problems" : [ {
+    "title" : "This parameter is out of the allowed range of values.",
+    "name" : "page",
+    "range" : {
+      "min" : 1
+    }
+  }, {
+    "title" : "This parameter is out of the allowed range of values.",
+    "name" : "pageSize",
+    "range" : {
+      "min" : 10,
+      "max" : 100
+    }
+  } ]
+}

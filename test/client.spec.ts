@@ -7,6 +7,7 @@ import PlayerThemesApi from '../src/api/PlayerThemesApi';
 import RawStatisticsApi from '../src/api/RawStatisticsApi';
 import UploadTokensApi from '../src/api/UploadTokensApi';
 import VideosApi from '../src/api/VideosApi';
+import WatermarksApi from '../src/api/WatermarksApi';
 import WebhooksApi from '../src/api/WebhooksApi';
 
 describe('ApiVideoClient', () => {
@@ -37,6 +38,10 @@ describe('ApiVideoClient', () => {
   it('should use the VideosApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
     expect(client.videos).instanceOf(VideosApi);
+  });
+  it('should use the WatermarksApi class', () => {
+    const client = new ApiVideoClient({ apiKey: 'test' });
+    expect(client.watermarks).instanceOf(WatermarksApi);
   });
   it('should use the WebhooksApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });

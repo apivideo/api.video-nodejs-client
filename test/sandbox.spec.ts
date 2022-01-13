@@ -41,6 +41,7 @@ import TokenListResponse from '../src/model/TokenListResponse';
 import UploadToken from '../src/model/UploadToken';
 import Video from '../src/model/Video';
 import VideoAssets from '../src/model/VideoAssets';
+import VideoClip from '../src/model/VideoClip';
 import VideoCreationPayload from '../src/model/VideoCreationPayload';
 import VideoSession from '../src/model/VideoSession';
 import VideoSessionClient from '../src/model/VideoSessionClient';
@@ -58,7 +59,10 @@ import VideoStatusEncodingMetadata from '../src/model/VideoStatusEncodingMetadat
 import VideoStatusIngest from '../src/model/VideoStatusIngest';
 import VideoThumbnailPickPayload from '../src/model/VideoThumbnailPickPayload';
 import VideoUpdatePayload from '../src/model/VideoUpdatePayload';
+import VideoWatermark from '../src/model/VideoWatermark';
 import VideosListResponse from '../src/model/VideosListResponse';
+import Watermark from '../src/model/Watermark';
+import WatermarksListResponse from '../src/model/WatermarksListResponse';
 import Webhook from '../src/model/Webhook';
 import WebhooksCreationPayload from '../src/model/WebhooksCreationPayload';
 import WebhooksListResponse from '../src/model/WebhooksListResponse';
@@ -92,6 +96,34 @@ describe('ApiVideoClient', () => {
       baseUri: process.env.BASE_URI,
       chunkSize: 5 * 1024 * 1024,
     });
+
+    // Upload a watermark
+    const watermark = await client.watermarks.upload('test/data/test.jpg');
+    expect(watermark.watermarkId).to.be.a('string');
+
+    // create a video with watermark
+    const watermarkVideo = await client.videos.create({
+      title: 'Nodejs - watermark',
+      watermark: {
+        id: watermark.watermarkId,
+        top: '0px',
+        left: '0px',
+        width: '100px',
+        height: '100px',
+      },
+    });
+    expect(watermarkVideo.title).to.be.eq('Nodejs - watermark');
+
+    // list watermarks
+    const watermarks = await client.watermarks.list({
+      sortBy: 'createdAt',
+      sortOrder: 'desc',
+    });
+    expect(watermarks.data).to.has.length.greaterThan(0);
+
+    // delete watermark & watermarked video
+    await client.watermarks.delete(watermark.watermarkId!);
+    await client.videos.delete(watermarkVideo.videoId);
 
     // Create
     const progressiveUploadVideo = 'Nodejs - progressive upload';
