@@ -16,7 +16,7 @@ export default class VideoUpdatePayload {
   /**
    * The unique ID for the player you want to associate with your video.
    */
-  'playerId'?: string;
+  'playerId'?: string | null;
   /**
    * The title you want to use for your video.
    */
