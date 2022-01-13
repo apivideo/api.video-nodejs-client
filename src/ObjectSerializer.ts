@@ -55,6 +55,7 @@ import TokenListResponse from './model/TokenListResponse';
 import UploadToken from './model/UploadToken';
 import Video from './model/Video';
 import VideoAssets from './model/VideoAssets';
+import VideoClip from './model/VideoClip';
 import VideoCreationPayload from './model/VideoCreationPayload';
 import VideoSession from './model/VideoSession';
 import VideoSessionClient from './model/VideoSessionClient';
@@ -74,7 +75,10 @@ import VideoStatusIngest, {
 } from './model/VideoStatusIngest';
 import VideoThumbnailPickPayload from './model/VideoThumbnailPickPayload';
 import VideoUpdatePayload from './model/VideoUpdatePayload';
+import VideoWatermark from './model/VideoWatermark';
 import VideosListResponse from './model/VideosListResponse';
+import Watermark from './model/Watermark';
+import WatermarksListResponse from './model/WatermarksListResponse';
 import Webhook from './model/Webhook';
 import WebhooksCreationPayload from './model/WebhooksCreationPayload';
 import WebhooksListResponse from './model/WebhooksListResponse';
@@ -147,6 +151,7 @@ let typeMap: { [index: string]: any } = {
   UploadToken: UploadToken,
   Video: Video,
   VideoAssets: VideoAssets,
+  VideoClip: VideoClip,
   VideoCreationPayload: VideoCreationPayload,
   VideoSession: VideoSession,
   VideoSessionClient: VideoSessionClient,
@@ -164,7 +169,10 @@ let typeMap: { [index: string]: any } = {
   VideoStatusIngest: VideoStatusIngest,
   VideoThumbnailPickPayload: VideoThumbnailPickPayload,
   VideoUpdatePayload: VideoUpdatePayload,
+  VideoWatermark: VideoWatermark,
   VideosListResponse: VideosListResponse,
+  Watermark: Watermark,
+  WatermarksListResponse: WatermarksListResponse,
   Webhook: Webhook,
   WebhooksCreationPayload: WebhooksCreationPayload,
   WebhooksListResponse: WebhooksListResponse,

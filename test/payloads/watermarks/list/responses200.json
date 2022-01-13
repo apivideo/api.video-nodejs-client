@@ -1,0 +1,26 @@
+{
+  "data" : [ {
+    "watermarkId" : "watermark_1BWr2L5MTQwxGkuxKjzh6i",
+    "createdAt" : "2019-12-16T08:25:51+00:00"
+  }, {
+    "watermarkId" : "watermark_3BWC2L5MTQwxGkuxKjzh7g",
+    "createdAt" : "2019-12-16T08:25:51+00:00"
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 11,
+    "currentPageItems" : 11,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "https://ws.api.video/watermarks?currentPage=1"
+    }, {
+      "rel" : "first",
+      "uri" : "https://ws.api.video/watermarks?currentPage=1"
+    }, {
+      "rel" : "last",
+      "uri" : "https://ws.api.video/watermarks?currentPage=1"
+    } ]
+  }
+}

@@ -18,6 +18,7 @@ import PlayerThemesApi from './api/PlayerThemesApi';
 import RawStatisticsApi from './api/RawStatisticsApi';
 import UploadTokensApi from './api/UploadTokensApi';
 import VideosApi from './api/VideosApi';
+import WatermarksApi from './api/WatermarksApi';
 import WebhooksApi from './api/WebhooksApi';
 
 const PRODUCTION_BASE_URI = 'https://ws.api.video';
@@ -34,6 +35,7 @@ class ApiVideoClient {
   private _rawStatistics: RawStatisticsApi;
   private _uploadTokens: UploadTokensApi;
   private _videos: VideosApi;
+  private _watermarks: WatermarksApi;
   private _webhooks: WebhooksApi;
 
   constructor(params: {
@@ -66,6 +68,7 @@ class ApiVideoClient {
     this._rawStatistics = new RawStatisticsApi(this.httpClient);
     this._uploadTokens = new UploadTokensApi(this.httpClient);
     this._videos = new VideosApi(this.httpClient);
+    this._watermarks = new WatermarksApi(this.httpClient);
     this._webhooks = new WebhooksApi(this.httpClient);
   }
 
@@ -127,6 +130,14 @@ class ApiVideoClient {
    */
   public get videos(): VideosApi {
     return this._videos;
+  }
+
+  /**
+   * Get an WatermarksApi instance
+   * @return WatermarksApi
+   */
+  public get watermarks(): WatermarksApi {
+    return this._watermarks;
   }
 
   /**

@@ -11,6 +11,8 @@
 
 import AttributeType from './AttributeType';
 import Metadata from './Metadata';
+import VideoClip from './VideoClip';
+import VideoWatermark from './VideoWatermark';
 
 export default class VideoCreationPayload {
   /**
@@ -49,6 +51,8 @@ export default class VideoCreationPayload {
    * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).
    */
   'metadata'?: Array<Metadata>;
+  'clip'?: VideoClip;
+  'watermark'?: VideoWatermark;
 
   static readonly discriminator?: string = undefined;
 
@@ -105,6 +109,18 @@ export default class VideoCreationPayload {
       name: 'metadata',
       baseName: 'metadata',
       type: 'Array<Metadata>',
+      format: '',
+    },
+    {
+      name: 'clip',
+      baseName: 'clip',
+      type: 'VideoClip',
+      format: '',
+    },
+    {
+      name: 'watermark',
+      baseName: 'watermark',
+      type: 'VideoWatermark',
       format: '',
     },
   ];

@@ -21,6 +21,7 @@
     - [RawStatisticsApi](#rawstatisticsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
+    - [WatermarksApi](#watermarksapi)
     - [WebhooksApi](#webhooksapi)
   - [Models](#models)
   - [Authorization](#authorization)
@@ -235,6 +236,24 @@ Method | HTTP request | Description
 [**uploadThumbnail**](doc/api/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
 
 
+### WatermarksApi
+
+```js
+const ApiVideoClient = require('@api.video/nodejs-client');
+
+const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const watermarks = apiVideoClient.watermarks;
+```
+
+#### Endpoints
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**delete**](doc/api/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
+[**list**](doc/api/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
+[**upload**](doc/api/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
+
+
 ### WebhooksApi
 
 ```js
@@ -298,6 +317,7 @@ Method | HTTP request | Description
  - [UploadToken](doc/model/UploadToken.md)
  - [Video](doc/model/Video.md)
  - [VideoAssets](doc/model/VideoAssets.md)
+ - [VideoClip](doc/model/VideoClip.md)
  - [VideoCreationPayload](doc/model/VideoCreationPayload.md)
  - [VideoSession](doc/model/VideoSession.md)
  - [VideoSessionClient](doc/model/VideoSessionClient.md)
@@ -315,7 +335,10 @@ Method | HTTP request | Description
  - [VideoStatusIngest](doc/model/VideoStatusIngest.md)
  - [VideoThumbnailPickPayload](doc/model/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](doc/model/VideoUpdatePayload.md)
+ - [VideoWatermark](doc/model/VideoWatermark.md)
  - [VideosListResponse](doc/model/VideosListResponse.md)
+ - [Watermark](doc/model/Watermark.md)
+ - [WatermarksListResponse](doc/model/WatermarksListResponse.md)
  - [Webhook](doc/model/Webhook.md)
  - [WebhooksCreationPayload](doc/model/WebhooksCreationPayload.md)
  - [WebhooksListResponse](doc/model/WebhooksListResponse.md)
