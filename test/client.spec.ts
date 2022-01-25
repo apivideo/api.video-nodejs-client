@@ -47,4 +47,27 @@ describe('ApiVideoClient', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
     expect(client.webhooks).instanceOf(WebhooksApi);
   });
+
+  it('should validate the application name value', () => {
+    expect(
+      () => new ApiVideoClient({ applicationName: 'application name' })
+    ).to.throw(
+      "Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50."
+    );
+
+    expect(
+      () =>
+        new ApiVideoClient({
+          applicationName:
+            '012345678901234567890123456789012345678901234567891',
+        })
+    ).to.throw(
+      "Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50."
+    );
+
+    expect(
+      () =>
+        new ApiVideoClient({ applicationName: 'my-great-application/v1.1.2' })
+    ).not.to.throw();
+  });
 });

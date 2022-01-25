@@ -42,6 +42,7 @@ class ApiVideoClient {
     apiKey?: string;
     baseUri?: string;
     chunkSize?: number;
+    applicationName?: string;
   }) {
     if (
       params.chunkSize &&
@@ -53,6 +54,14 @@ class ApiVideoClient {
           ' bytes and lower than ' +
           MAX_CHUNK_SIZE +
           ' bytes.'
+      );
+    }
+    if (
+      params.applicationName &&
+      !/^[\w-\/\.]{1,50}$/.test(params.applicationName)
+    ) {
+      throw new Error(
+        "Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50."
       );
     }
     this.httpClient = new HttpClient({
