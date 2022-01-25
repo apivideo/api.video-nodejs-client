@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.2.1] - 2022-01-24
+- Add applicationName parameter (to allow user agent extension)
+
 ## [2.2.0] - 2022-01-07
 - Add watermark endpoints
 - Add video clips

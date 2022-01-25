@@ -95,6 +95,7 @@ describe('ApiVideoClient', () => {
       apiKey: process.env.API_KEY,
       baseUri: process.env.BASE_URI,
       chunkSize: 5 * 1024 * 1024,
+      applicationName: 'client-integration-tests',
     });
 
     // Upload a watermark

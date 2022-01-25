@@ -31,13 +31,20 @@ export default class HttpClient {
   private baseRequest: Got;
   private chunkSize: number;
 
-  constructor(params: { apiKey?: string; baseUri: string; chunkSize: number }) {
+  constructor(params: {
+    apiKey?: string;
+    baseUri: string;
+    chunkSize: number;
+    applicationName?: string;
+  }) {
     this.apiKey = params.apiKey;
     this.baseUri = params.baseUri;
     this.chunkSize = params.chunkSize;
     this.tokenType = 'Bearer';
     this.headers = {
-      'User-Agent': `api.video client (nodejs; v:2.2.0; )`,
+      'User-Agent': `api.video client (nodejs; v:2.2.1; )${
+        params.applicationName ? ' ' + params.applicationName : ''
+      }`,
       Accept: 'application/json, */*;q=0.8',
     };
     this.baseRequest = got.extend({

@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "api.video nodejs client",
   "author": "api.video ecosystem team",
   "repository": {
