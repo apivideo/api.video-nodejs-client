@@ -42,7 +42,7 @@ export default class HttpClient {
     this.chunkSize = params.chunkSize;
     this.tokenType = 'Bearer';
     this.headers = {
-      'User-Agent': `api.video client (nodejs; v:2.2.1; )${
+      'User-Agent': `api.video client (nodejs; v:2.2.2; )${
         params.applicationName ? ' ' + params.applicationName : ''
       }`,
       Accept: 'application/json, */*;q=0.8',

@@ -29,6 +29,10 @@ export default class PlayerThemeCreationPayload {
    */
   'linkHover'?: string;
   /**
+   * RGBA color for the play button when hovered.
+   */
+  'linkActive'?: string;
+  /**
    * RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
    */
   'trackPlayed'?: string;
@@ -97,6 +101,12 @@ export default class PlayerThemeCreationPayload {
     {
       name: 'linkHover',
       baseName: 'linkHover',
+      type: 'string',
+      format: '',
+    },
+    {
+      name: 'linkActive',
+      baseName: 'linkActive',
       type: 'string',
       format: '',
     },

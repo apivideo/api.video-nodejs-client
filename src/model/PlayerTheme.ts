@@ -30,6 +30,10 @@ export default class PlayerTheme {
    */
   'linkHover'?: string;
   /**
+   * RGBA color for the play button when hovered.
+   */
+  'linkActive'?: string;
+  /**
    * RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
    */
   'trackPlayed'?: string;
@@ -82,10 +86,6 @@ export default class PlayerTheme {
    * When the player was last updated, presented in ISO-8601 format.
    */
   'updatedAt'?: Date;
-  /**
-   * RGBA color for the play button when hovered.
-   */
-  'linkActive'?: string;
   'assets'?: PlayerThemeAssets;
 
   static readonly discriminator?: string = undefined;
@@ -112,6 +112,12 @@ export default class PlayerTheme {
     {
       name: 'linkHover',
       baseName: 'linkHover',
+      type: 'string',
+      format: '',
+    },
+    {
+      name: 'linkActive',
+      baseName: 'linkActive',
       type: 'string',
       format: '',
     },
@@ -198,12 +204,6 @@ export default class PlayerTheme {
       baseName: 'updatedAt',
       type: 'Date',
       format: 'date-time',
-    },
-    {
-      name: 'linkActive',
-      baseName: 'linkActive',
-      type: 'string',
-      format: '',
     },
     {
       name: 'assets',
