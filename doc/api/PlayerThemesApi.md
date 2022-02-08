@@ -199,6 +199,7 @@ Name | Type | Description  | Notes
 			text: "text_example", // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
 			link: "link_example", // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
 			linkHover: "linkHover_example", // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+			linkActive: "linkActive_example", // RGBA color for the play button when hovered.
 			trackPlayed: "trackPlayed_example", // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
 			trackUnplayed: "trackUnplayed_example", // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
 			trackBackground: "trackBackground_example", // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
@@ -257,6 +258,7 @@ Name | Type | Description  | Notes
 			text: "text_example", // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
 			link: "link_example", // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
 			linkHover: "linkHover_example", // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+			linkActive: "linkActive_example", // RGBA color for the play button when hovered.
 			trackPlayed: "trackPlayed_example", // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
 			trackUnplayed: "trackUnplayed_example", // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
 			trackBackground: "trackBackground_example", // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)

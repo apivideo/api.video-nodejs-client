@@ -295,6 +295,7 @@ describe('ApiVideoClient', () => {
       text: 'rgba(255, 255, 255, .95)',
       link: 'rgba(255, 0, 0, .95)',
       linkHover: 'rgba(255, 255, 255, .75)',
+      linkActive: 'rgba(255, 0, 0, .75)',
       trackPlayed: 'rgba(255, 255, 255, .95)',
       trackUnplayed: 'rgba(255, 255, 255, .1)',
       trackBackground: 'rgba(0, 0, 0, 0)',
