@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.2.3] - 2022-03-02
+- Add Origin identification headers
+
 ## [2.2.2] - 2022-02-08
 - Add missing `linkActive` in `PlayerThemeUpdatePayload` and `PlayerThemeCreationPayload`
 

@@ -52,7 +52,7 @@ describe('ApiVideoClient', () => {
     expect(
       () => new ApiVideoClient({ applicationName: 'application name' })
     ).to.throw(
-      "Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50."
+      "Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
     );
 
     expect(
@@ -62,12 +62,33 @@ describe('ApiVideoClient', () => {
             '012345678901234567890123456789012345678901234567891',
         })
     ).to.throw(
-      "Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50."
+      "Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
+    );
+
+    expect(
+      () => new ApiVideoClient({ applicationName: 'my-great-application1' })
+    ).not.to.throw();
+
+    expect(() => new ApiVideoClient({ applicationVersion: '1.0.0' })).to.throw(
+      'applicationName is mandatory when applicationVersion is set.'
     );
 
     expect(
       () =>
-        new ApiVideoClient({ applicationName: 'my-great-application/v1.1.2' })
+        new ApiVideoClient({
+          applicationName: 'application',
+          applicationVersion: '1.1234.0',
+        })
+    ).to.throw(
+      'Invalid applicationVersion value. The version should match the xxx[.yyy][.zzz] pattern.'
+    );
+
+    expect(
+      () =>
+        new ApiVideoClient({
+          applicationName: 'application',
+          applicationVersion: '1.123.0',
+        })
     ).not.to.throw();
   });
 });
