@@ -43,6 +43,7 @@ class ApiVideoClient {
     baseUri?: string;
     chunkSize?: number;
     applicationName?: string;
+    applicationVersion?: string;
   }) {
     if (
       params.chunkSize &&
@@ -56,14 +57,29 @@ class ApiVideoClient {
           ' bytes.'
       );
     }
-    if (
-      params.applicationName &&
-      !/^[\w-\/\.]{1,50}$/.test(params.applicationName)
-    ) {
+
+    if (params.applicationVersion && !params.applicationName) {
       throw new Error(
-        "Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50."
+        'applicationName is mandatory when applicationVersion is set.'
       );
     }
+    if (
+      params.applicationName &&
+      !/^[\w-]{1,50}$/.test(params.applicationName)
+    ) {
+      throw new Error(
+        "Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
+      );
+    }
+    if (
+      params.applicationVersion &&
+      !/^\d{1,3}(\.\d{1,3}(\.\d{1,3})?)?$/.test(params.applicationVersion)
+    ) {
+      throw new Error(
+        'Invalid applicationVersion value. The version should match the xxx[.yyy][.zzz] pattern.'
+      );
+    }
+
     this.httpClient = new HttpClient({
       ...params,
       baseUri: params.baseUri || PRODUCTION_BASE_URI,

@@ -36,16 +36,22 @@ export default class HttpClient {
     baseUri: string;
     chunkSize: number;
     applicationName?: string;
+    applicationVersion?: string;
   }) {
     this.apiKey = params.apiKey;
     this.baseUri = params.baseUri;
     this.chunkSize = params.chunkSize;
     this.tokenType = 'Bearer';
     this.headers = {
-      'User-Agent': `api.video client (nodejs; v:2.2.2; )${
-        params.applicationName ? ' ' + params.applicationName : ''
-      }`,
       Accept: 'application/json, */*;q=0.8',
+      'AV-Origin-Client': 'nodejs:2.2.3',
+      ...(params.applicationName
+        ? {
+            'AV-Origin-App': `${params.applicationName}${
+              params.applicationVersion ? ':' + params.applicationVersion : ''
+            }`,
+          }
+        : {}),
     };
     this.baseRequest = got.extend({
       prefixUrl: this.baseUri,
@@ -109,6 +115,7 @@ export default class HttpClient {
       {
         json: { apiKey: this.apiKey },
         responseType: 'json',
+        headers: this.headers,
       }
     );
     this.accessToken = ObjectSerializer.deserialize(
