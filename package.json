@@ -1,20 +1,22 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.2.3",
-  "description": "api.video nodejs client",
-  "author": "api.video ecosystem team",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/apivideo/api.video-nodejs-client"
-  },
-  "bugs:": "https://github.com/apivideo/api.video-nodejs-client/issues",
-  "keywords": [
+  "version": "2.2.4",
+  "description": "api.video nodejs API client",
+   "keywords": [
+    "api.video",
     "api",
     "video",
     "client",
     "rest"
   ],
+  "homepage": "https://github.com/apivideo/api.video-nodejs-client#readme",
+  "bugs:": "https://github.com/apivideo/api.video-nodejs-client/issues",
   "license": "MIT",
+  "author": "api.video <ecosystem@api.video> (https://api.video/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apivideo/api.video-nodejs-client"
+  },
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "files": ["lib/", "doc/", "test/sandbox.spec.ts"],

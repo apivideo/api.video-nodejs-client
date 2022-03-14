@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.2.4] - 2022-03-14
+- Updates in packages.json
+
 ## [2.2.3] - 2022-03-02
 - Add Origin identification headers
 
