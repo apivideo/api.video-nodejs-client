@@ -386,7 +386,7 @@ try {
         const videoCreationPayload = {
 			title: "Maths video", // The title of your new video.
 			description: "A video about string theory.", // A brief description of your video.
-			source: "https://www.myvideo.url.com/video.mp4", // If you add a video already on the web, this is where you enter the url for the video.
+			source: "https://www.myvideo.url.com/video.mp4 OR vi4k0jvEUuaTdRAEjQ4JfOyl", // You can either add a video already on the web, by entering the URL of the video, or you can also enter the `videoId` of one of the videos you already have on your api.video acccount, and this will generate a copy of your video. Creating a copy of a video can be especially useful if you want to keep your original video and trim or apply a watermark onto the copy you would create.
 			_public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
 			panoramic: false, // Indicates if your video is a 360/immersive video.
 			mp4Support: true, // Enables mp4 version in addition to streamed version.
@@ -520,7 +520,7 @@ try {
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const videoId = 'videoId_example'; // Unique identifier of the chosen video 
-        const file = 'BINARY_DATA_HERE'; // The .jpg image to be added as a thumbnail.
+        const file = 'BINARY_DATA_HERE'; // The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
         // Video
         const result = await client.videos.uploadThumbnail(videoId, file);
@@ -536,7 +536,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| Unique identifier of the chosen video  | [default to undefined]
- **file** | **string**| The .jpg image to be added as a thumbnail. | [default to undefined]
+ **file** | **string**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. | [default to undefined]
 
 ### Return type
 [**Video**](../model/Video.md)

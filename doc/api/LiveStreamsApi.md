@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
         const liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique ID for the live stream you want to upload.
-        const file = 'BINARY_DATA_HERE'; // The .jpg image to be added as a thumbnail.
+        const file = 'BINARY_DATA_HERE'; // The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
         // LiveStream
         const result = await client.liveStreams.uploadThumbnail(liveStreamId, file);
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **liveStreamId** | **string**| The unique ID for the live stream you want to upload. | [default to undefined]
- **file** | **string**| The .jpg image to be added as a thumbnail. | [default to undefined]
+ **file** | **string**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. | [default to undefined]
 
 ### Return type
 [**LiveStream**](../model/LiveStream.md)

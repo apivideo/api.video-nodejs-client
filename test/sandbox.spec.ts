@@ -57,6 +57,7 @@ import VideoStatus from '../src/model/VideoStatus';
 import VideoStatusEncoding from '../src/model/VideoStatusEncoding';
 import VideoStatusEncodingMetadata from '../src/model/VideoStatusEncodingMetadata';
 import VideoStatusIngest from '../src/model/VideoStatusIngest';
+import VideoStatusIngestReceivedParts from '../src/model/VideoStatusIngestReceivedParts';
 import VideoThumbnailPickPayload from '../src/model/VideoThumbnailPickPayload';
 import VideoUpdatePayload from '../src/model/VideoUpdatePayload';
 import VideoWatermark from '../src/model/VideoWatermark';
@@ -96,7 +97,7 @@ describe('ApiVideoClient', () => {
       baseUri: process.env.BASE_URI,
       chunkSize: 5 * 1024 * 1024,
       applicationName: 'client-integration-tests',
-      applicationVersion: '2.2.4',
+      applicationVersion: '2.2.5',
     });
 
     // Upload a watermark

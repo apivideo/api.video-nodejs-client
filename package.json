@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "api.video nodejs API client",
    "keywords": [
     "api.video",

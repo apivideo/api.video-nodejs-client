@@ -366,7 +366,7 @@ export default class LiveStreamsApi {
    * Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
    * Upload a thumbnail
    * @param liveStreamId The unique ID for the live stream you want to upload.
-   * @param file The .jpg image to be added as a thumbnail.
+   * @param file The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
    */
   public async uploadThumbnail(
     liveStreamId: string,

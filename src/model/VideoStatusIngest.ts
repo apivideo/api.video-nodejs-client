@@ -11,6 +11,7 @@
 
 import AttributeType from './AttributeType';
 import BytesRange from './BytesRange';
+import VideoStatusIngestReceivedParts from './VideoStatusIngestReceivedParts';
 
 /**
  * Details about the capturing, transferring, and storing of your video for use immediately or in the future.
@@ -28,6 +29,7 @@ export default class VideoStatusIngest {
    * The total number of bytes received, listed for each chunk of the upload.
    */
   'receivedBytes'?: Array<BytesRange>;
+  'receivedParts'?: VideoStatusIngestReceivedParts;
 
   static readonly discriminator?: string = undefined;
 
@@ -48,6 +50,12 @@ export default class VideoStatusIngest {
       name: 'receivedBytes',
       baseName: 'receivedBytes',
       type: 'Array<BytesRange>',
+      format: '',
+    },
+    {
+      name: 'receivedParts',
+      baseName: 'receivedParts',
+      type: 'VideoStatusIngestReceivedParts',
       format: '',
     },
   ];
