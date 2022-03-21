@@ -21,7 +21,7 @@ export default class BytesRange {
    */
   'to'?: number;
   /**
-   * The total number of bytes in the provided range.
+   * The total number of expected bytes.
    */
   'total'?: number;
 

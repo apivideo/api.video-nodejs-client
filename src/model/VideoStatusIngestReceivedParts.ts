@@ -13,7 +13,7 @@ import AttributeType from './AttributeType';
 
 export default class VideoStatusIngestReceivedParts {
   /**
-   * The parts that are have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].
+   * The parts that have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].
    */
   'parts'?: Array<number>;
   /**
