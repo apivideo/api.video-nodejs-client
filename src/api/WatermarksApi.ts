@@ -40,7 +40,7 @@ export default class WatermarksApi {
   }
 
   /**
-   * Delete a watermark. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+   * Delete a watermark. A watermark is a static image, directly burnt-into a video.
    * Delete a watermark
    * @param watermarkId The watermark ID for the watermark you want to delete.
    */
@@ -78,7 +78,7 @@ export default class WatermarksApi {
   }
 
   /**
-   * List all watermarks. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+   * List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
    * List all watermarks
    * @param {Object} searchParams
    * @param { string } searchParams.sortBy Allowed: createdAt. You can search by the time watermark were created at.
@@ -150,9 +150,9 @@ export default class WatermarksApi {
   }
 
   /**
-   * Create a new watermark by uploading a .jpg or a .png image. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+   * Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
    * Upload a watermark
-   * @param file The .jpg or .png image to be added as a watermark.
+   * @param file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.
    */
   public async upload(file: string): Promise<Watermark> {
     const queryParams: QueryOptions = {};

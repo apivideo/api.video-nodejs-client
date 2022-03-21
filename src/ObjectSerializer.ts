@@ -73,6 +73,7 @@ import VideoStatusEncodingMetadata from './model/VideoStatusEncodingMetadata';
 import VideoStatusIngest, {
   VideoStatusIngestStatusEnum,
 } from './model/VideoStatusIngest';
+import VideoStatusIngestReceivedParts from './model/VideoStatusIngestReceivedParts';
 import VideoThumbnailPickPayload from './model/VideoThumbnailPickPayload';
 import VideoUpdatePayload from './model/VideoUpdatePayload';
 import VideoWatermark from './model/VideoWatermark';
@@ -167,6 +168,7 @@ let typeMap: { [index: string]: any } = {
   VideoStatusEncoding: VideoStatusEncoding,
   VideoStatusEncodingMetadata: VideoStatusEncodingMetadata,
   VideoStatusIngest: VideoStatusIngest,
+  VideoStatusIngestReceivedParts: VideoStatusIngestReceivedParts,
   VideoThumbnailPickPayload: VideoThumbnailPickPayload,
   VideoUpdatePayload: VideoUpdatePayload,
   VideoWatermark: VideoWatermark,

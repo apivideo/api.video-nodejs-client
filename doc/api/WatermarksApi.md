@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
     try {
         const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
 
-        const file = 'BINARY_DATA_HERE'; // The .jpg or .png image to be added as a watermark.
+        const file = 'BINARY_DATA_HERE'; // The `.jpg` or `.png` image to be added as a watermark.
 
         // Watermark
         const result = await client.watermarks.upload(file);
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **string**| The .jpg or .png image to be added as a watermark. | [default to undefined]
+ **file** | **string**| The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. | [default to undefined]
 
 ### Return type
 [**Watermark**](../model/Watermark.md)

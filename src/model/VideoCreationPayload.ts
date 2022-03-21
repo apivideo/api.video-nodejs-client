@@ -24,7 +24,7 @@ export default class VideoCreationPayload {
    */
   'description'?: string;
   /**
-   * If you add a video already on the web, this is where you enter the url for the video.
+   * You can either add a video already on the web, by entering the URL of the video, or you can also enter the `videoId` of one of the videos you already have on your api.video acccount, and this will generate a copy of your video. Creating a copy of a video can be especially useful if you want to keep your original video and trim or apply a watermark onto the copy you would create.
    */
   'source'?: string;
   /**

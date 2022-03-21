@@ -333,6 +333,7 @@ Method | HTTP request | Description
  - [VideoStatusEncoding](doc/model/VideoStatusEncoding.md)
  - [VideoStatusEncodingMetadata](doc/model/VideoStatusEncodingMetadata.md)
  - [VideoStatusIngest](doc/model/VideoStatusIngest.md)
+ - [VideoStatusIngestReceivedParts](doc/model/VideoStatusIngestReceivedParts.md)
  - [VideoThumbnailPickPayload](doc/model/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](doc/model/VideoUpdatePayload.md)
  - [VideoWatermark](doc/model/VideoWatermark.md)
