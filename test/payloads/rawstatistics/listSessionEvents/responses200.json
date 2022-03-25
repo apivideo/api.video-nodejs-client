@@ -1,108 +1,108 @@
 {
   "data" : [ {
     "type" : "ready",
-    "emittedAt" : "2020-09-15T09:47:42+00:00",
+    "emittedAt" : "2020-09-15T09:47:42.000Z",
     "at" : 0
   }, {
     "type" : "play",
-    "emittedAt" : "2020-09-15T21:35:57+00:00",
+    "emittedAt" : "2020-09-15T21:35:57.000Z",
     "at" : 0
   }, {
     "type" : "pause",
-    "emittedAt" : "2020-09-15T21:36:05+00:00",
+    "emittedAt" : "2020-09-15T21:36:05.000Z",
     "at" : 7
   }, {
     "type" : "resume",
-    "emittedAt" : "2020-09-15T21:36:19+00:00",
+    "emittedAt" : "2020-09-15T21:36:19.000Z",
     "at" : 21
   }, {
     "type" : "seek.forward",
-    "emittedAt" : "2020-09-15T21:36:19+00:00",
+    "emittedAt" : "2020-09-15T21:36:19.000Z",
     "from" : 7,
     "to" : 21
   }, {
     "type" : "end",
-    "emittedAt" : "2020-09-15T21:36:28+00:00",
+    "emittedAt" : "2020-09-15T21:36:28.000Z",
     "at" : 30
   }, {
     "type" : "play",
-    "emittedAt" : "2020-09-15T21:36:29+00:00",
+    "emittedAt" : "2020-09-15T21:36:29.000Z",
     "at" : 0
   }, {
     "type" : "seek.backward",
-    "emittedAt" : "2020-09-15T21:36:29+00:00",
+    "emittedAt" : "2020-09-15T21:36:29.000Z",
     "from" : 30,
     "to" : 0
   }, {
     "type" : "pause",
-    "emittedAt" : "2020-09-15T21:36:29+00:00",
+    "emittedAt" : "2020-09-15T21:36:29.000Z",
     "at" : 21
   }, {
     "type" : "resume",
-    "emittedAt" : "2020-09-15T21:36:30+00:00",
+    "emittedAt" : "2020-09-15T21:36:30.000Z",
     "at" : 21
   }, {
     "type" : "seek.forward",
-    "emittedAt" : "2020-09-15T21:36:30+00:00",
+    "emittedAt" : "2020-09-15T21:36:30.000Z",
     "from" : 0,
     "to" : 21
   }, {
     "type" : "pause",
-    "emittedAt" : "2020-09-15T21:36:33+00:00",
+    "emittedAt" : "2020-09-15T21:36:33.000Z",
     "at" : 20
   }, {
     "type" : "resume",
-    "emittedAt" : "2020-09-15T21:36:33+00:00",
+    "emittedAt" : "2020-09-15T21:36:33.000Z",
     "at" : 20
   }, {
     "type" : "seek.backward",
-    "emittedAt" : "2020-09-15T21:36:33+00:00",
+    "emittedAt" : "2020-09-15T21:36:33.000Z",
     "from" : 24,
     "to" : 20
   }, {
     "type" : "pause",
-    "emittedAt" : "2020-09-15T21:36:39+00:00",
+    "emittedAt" : "2020-09-15T21:36:39.000Z",
     "at" : 17
   }, {
     "type" : "resume",
-    "emittedAt" : "2020-09-15T21:36:39+00:00",
+    "emittedAt" : "2020-09-15T21:36:39.000Z",
     "at" : 17
   }, {
     "type" : "seek.forward",
-    "emittedAt" : "2020-09-15T21:36:39+00:00",
+    "emittedAt" : "2020-09-15T21:36:39.000Z",
     "from" : 17,
     "to" : 17
   }, {
     "type" : "pause",
-    "emittedAt" : "2020-09-15T21:36:41+00:00",
+    "emittedAt" : "2020-09-15T21:36:41.000Z",
     "at" : 19
   }, {
     "type" : "ready",
-    "emittedAt" : "2020-09-17T09:20:47+00:00",
+    "emittedAt" : "2020-09-17T09:20:47.000Z",
     "at" : 0
   }, {
     "type" : "ready",
-    "emittedAt" : "2020-09-17T09:41:01+00:00",
+    "emittedAt" : "2020-09-17T09:41:01.000Z",
     "at" : 0
   }, {
     "type" : "ready",
-    "emittedAt" : "2020-09-17T09:41:08+00:00",
+    "emittedAt" : "2020-09-17T09:41:08.000Z",
     "at" : 0
   }, {
     "type" : "play",
-    "emittedAt" : "2020-09-17T09:41:10+00:00",
+    "emittedAt" : "2020-09-17T09:41:10.000Z",
     "at" : 0
   }, {
     "type" : "pause",
-    "emittedAt" : "2020-09-17T09:41:12+00:00",
+    "emittedAt" : "2020-09-17T09:41:12.000Z",
     "at" : 1
   }, {
     "type" : "resume",
-    "emittedAt" : "2020-09-17T09:41:13+00:00",
+    "emittedAt" : "2020-09-17T09:41:13.000Z",
     "at" : 1
   }, {
     "type" : "pause",
-    "emittedAt" : "2020-09-17T09:41:15+00:00",
+    "emittedAt" : "2020-09-17T09:41:15.000Z",
     "at" : 3
   } ],
   "pagination" : {
