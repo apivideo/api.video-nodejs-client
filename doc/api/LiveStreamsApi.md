@@ -36,7 +36,7 @@ Promise<[**void**](../model/.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to remove.
 
@@ -84,7 +84,7 @@ Promise<[**LiveStream**](../model/LiveStream.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique identifier for the live stream you want to delete. 
 
@@ -138,7 +138,7 @@ Promise<[**LiveStreamListResponse**](../model/LiveStreamListResponse.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const streamKey = '30087931-229e-42cf-b5f9-e91bcc1f7332'; // The unique stream key that allows you to stream videos.
         const name = 'My Video'; // You can filter live streams by their name or a part of their name.
@@ -191,7 +191,7 @@ Promise<[**LiveStream**](../model/LiveStream.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to watch.
 
@@ -240,7 +240,7 @@ Promise<[**LiveStream**](../model/LiveStream.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
         const liveStreamUpdatePayload = {
@@ -291,27 +291,17 @@ Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 ### Example
 ```js
-//install the module with npm or yarn
-//npm install @api.video/nodejs-client --save
-//yarn add @api.video/nodejs-client
-(async () => {
-    try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+// instantiate the client 
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
-        const liveStreamCreationPayload = {
-      name: "My Live Stream Video", // Add a name for your live stream here.
-      record: true, // Whether you are recording or not. True for record, false for not record.
-      _public: true, // BETA FEATURE Please limit all public = false ("private") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-      playerId: "pl4f4ferf5erfr5zed4fsdd", // The unique identifier for the player.
-    }; 
+const liveStreamCreationPayload = {
+    record: false, // Whether you are recording or not. True for record, false for not record.
+    name: "My Live Stream", // Add a name for your live stream here.
+    _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
+    playerId: "pl4f4ferf5erfr5zed4fsdd", // The unique identifier for the player.
+}; 
 
-        // LiveStream
-        const result = await client.liveStreams.create(liveStreamCreationPayload);
-        console.log(result);
-    } catch (e) {
-        console.error(e);
-    }
-})();
+const liveStream = await client.liveStreams.create(liveStreamCreationPayload);
 ```
 
 
@@ -351,7 +341,7 @@ Promise<[**LiveStream**](../model/LiveStream.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique ID for the live stream you want to upload.
         const file = 'BINARY_DATA_HERE'; // The image to be added as a thumbnail.
