@@ -34,7 +34,7 @@ Promise<[**void**](../model/.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to delete a chapter from.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
@@ -86,7 +86,7 @@ Promise<[**ChaptersListResponse**](../model/ChaptersListResponse.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to show a chapter for.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
@@ -137,7 +137,7 @@ Promise<[**Chapter**](../model/Chapter.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to show a chapter for.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
@@ -189,7 +189,7 @@ Promise<[**Chapter**](../model/Chapter.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to upload a chapter for.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.

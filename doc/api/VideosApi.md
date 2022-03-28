@@ -37,7 +37,7 @@ Promise<[**void**](../model/.md)>.
 ### Example
 ```js
 // instantiate the client 
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // the id of the video to delete
 await client.videos.delete(videoId); 
@@ -75,7 +75,7 @@ Promise<[**Video**](../model/Video.md)>.
 ### Example
 ```js
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want the status for.
 const result = await client.videos.getStatus(videoId); 
@@ -113,7 +113,7 @@ Promise<[**VideoStatus**](../model/VideoStatus.md)>.
 ### Example
 ```js
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want the status for.
 const result = await client.videos.getStatus(videoId); 
@@ -159,7 +159,7 @@ Promise<[**VideosListResponse**](../model/VideosListResponse.md)>.
 ### Example
 ```js
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 // list all videos (all pages)
 let allVideos = [];
@@ -214,7 +214,7 @@ Promise<[**Video**](../model/Video.md)>.
 ### Example
 ```js
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The video ID for the video you want to update.
 
@@ -273,7 +273,7 @@ Promise<[**Video**](../model/Video.md)>.
 ### Example
 ```js
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
 const videoThumbnailPickPayload = {
@@ -319,7 +319,7 @@ Promise<[**Video**](../model/Video.md)>.
 // The following example show how to do it from the backend, but you should rather use the standard upload method in this case.
 
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 const token = 'to4k0jvEUuaTdRAEjQ4Jfrgz'; // Enter the unique identifier for the token you want to use to upload a video.
 const file = './my-video.mp4'; // The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the "/videos" endpoint and add the "source" parameter when you create a new video.
@@ -396,7 +396,7 @@ Promise<[**Video**](../model/Video.md)>.
 ### Example
 ```js
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 // create a simple video
 const video = await client.videos.create({ title: "Maths video" });
@@ -470,7 +470,7 @@ Promise<[**Video**](../model/Video.md)>.
 ### Example
 ```js
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // Enter the videoId you want to use to upload your video.
 const file = './my-video.mp4'; // The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the "/videos" endpoint and add the "source" parameter when you create a new video.
@@ -557,7 +557,7 @@ Promise<[**Video**](../model/Video.md)>.
 ### Example
 ```js
 // instantiate the client
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 const videoId = 'videoId_example'; // Unique identifier of the chosen video 
 const file = './thumbnail.jpg'; // The image to be added as a thumbnail.

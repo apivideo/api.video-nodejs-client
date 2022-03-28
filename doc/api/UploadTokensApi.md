@@ -31,7 +31,7 @@ Promise<[**void**](../model/.md)>.
 ### Example
 ```js
 // instantiate the client 
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" }); 
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
 
 const uploadToken = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.
   
@@ -74,7 +74,7 @@ Promise<[**TokenListResponse**](../model/TokenListResponse.md)>.
 ### Example
 ```js
 // instantiate the client 
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" }); 
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
  
 const uploadTokens = await client.uploadTokens.list();
         
@@ -111,7 +111,7 @@ Promise<[**UploadToken**](../model/UploadToken.md)>.
 ### Example
 ```js
 // instantiate the client 
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" }); 
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
 
 const uploadTokenId = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the token you want information about.
 
@@ -150,7 +150,7 @@ Promise<[**UploadToken**](../model/UploadToken.md)>.
 ### Example
 ```js
 // instantiate the client 
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" }); 
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
 
 const tokenCreationPayload = {
   ttl: 56, // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.

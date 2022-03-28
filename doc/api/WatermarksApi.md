@@ -30,7 +30,7 @@ Promise<[**void**](../model/.md)>.
 ### Example
 ```js
 // instantiate the client 
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" }); 
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
 
 const watermarkId = 'watermark_1Bji68oeAAwR44dAb5ZhML'; // The watermark ID for the watermark you want to delete.
 
@@ -72,7 +72,7 @@ Promise<[**WatermarksListResponse**](../model/WatermarksListResponse.md)>.
 ### Example
 ```js
 // instantiate the client 
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" }); 
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
 
 // retrieve the first page of all watermarks
 const watermarks = await client.watermarks.list({});
@@ -114,7 +114,7 @@ Promise<[**Watermark**](../model/Watermark.md)>.
 ### Example
 ```js
 // instantiate the client 
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
 // Upload a watermark
 const watermark = await client.watermarks.upload('test/data/test.jpg');

@@ -37,7 +37,7 @@ Promise<[**void**](../model/.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklgc'; // The unique identifier for the video you want to delete a caption from.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
@@ -89,7 +89,7 @@ Promise<[**CaptionsListResponse**](../model/CaptionsListResponse.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want captions for.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
@@ -141,7 +141,7 @@ Promise<[**Caption**](../model/Caption.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want captions for.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
@@ -193,7 +193,7 @@ Promise<[**Caption**](../model/Caption.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to have automatic captions for.
         const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
@@ -250,7 +250,7 @@ Promise<[**Caption**](../model/Caption.md)>.
 //yarn add @api.video/nodejs-client
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to add a caption to.
         const language = 'en'; // A valid BCP 47 language representation.
