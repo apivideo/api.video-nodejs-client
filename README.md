@@ -25,7 +25,7 @@
     - [WebhooksApi](#webhooksapi)
   - [Models](#models)
   - [Authorization](#authorization)
-    - [API token](#api-token)
+    - [API key](#api-key)
     - [Get the access token](#get-the-access-token)
     - [Public endpoints](#public-endpoints)
 - [Have you gotten use from this API client?](#have-you-gotten-use-from-this-api-client-)
@@ -67,7 +67,7 @@ const ApiVideoClient = require('@api.video/nodejs-client');
 
 (async () => {
     try {
-        const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+        const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
         // create a video
         const videoCreationPayload = {
@@ -88,189 +88,106 @@ const ApiVideoClient = require('@api.video/nodejs-client');
 
 ## API Endpoints
 
-All URIs are relative to *https://ws.api.video*
-
 
 ### CaptionsApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const captions = apiVideoClient.captions;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/api/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
-[**list**](doc/api/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
-[**get**](doc/api/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Show a caption
-[**update**](doc/api/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update caption
-[**upload**](doc/api/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
+[**delete()**](doc/api/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
+[**list()**](doc/api/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
+[**get()**](doc/api/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
+[**update()**](doc/api/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
+[**upload()**](doc/api/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 
 
 ### ChaptersApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const chapters = apiVideoClient.chapters;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/api/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
-[**list**](doc/api/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
-[**get**](doc/api/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Show a chapter
-[**upload**](doc/api/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
+[**delete()**](doc/api/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
+[**list()**](doc/api/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
+[**get()**](doc/api/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
+[**upload()**](doc/api/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
 ### LiveStreamsApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const liveStreams = apiVideoClient.liveStreams;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/api/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**deleteThumbnail**](doc/api/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
-[**list**](doc/api/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](doc/api/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
-[**update**](doc/api/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**create**](doc/api/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
-[**uploadThumbnail**](doc/api/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**delete()**](doc/api/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
+[**deleteThumbnail()**](doc/api/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**list()**](doc/api/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
+[**get()**](doc/api/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
+[**update()**](doc/api/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
+[**create()**](doc/api/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
+[**uploadThumbnail()**](doc/api/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 
 
 ### PlayerThemesApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const playerThemes = apiVideoClient.playerThemes;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/api/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
-[**deleteLogo**](doc/api/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](doc/api/PlayerThemesApi.md#list) | **GET** /players | List all player themes
-[**get**](doc/api/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
-[**update**](doc/api/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
-[**create**](doc/api/PlayerThemesApi.md#create) | **POST** /players | Create a player
-[**uploadLogo**](doc/api/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
+[**delete()**](doc/api/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
+[**deleteLogo()**](doc/api/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
+[**list()**](doc/api/PlayerThemesApi.md#list) | **GET** /players | List all player themes
+[**get()**](doc/api/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Retrieve a player
+[**update()**](doc/api/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
+[**create()**](doc/api/PlayerThemesApi.md#create) | **POST** /players | Create a player
+[**uploadLogo()**](doc/api/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
 
 
 ### RawStatisticsApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const rawStatistics = apiVideoClient.rawStatistics;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listLiveStreamSessions**](doc/api/RawStatisticsApi.md#listLiveStreamSessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**listSessionEvents**](doc/api/RawStatisticsApi.md#listSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**listVideoSessions**](doc/api/RawStatisticsApi.md#listVideoSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+[**listLiveStreamSessions()**](doc/api/RawStatisticsApi.md#listLiveStreamSessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
+[**listSessionEvents()**](doc/api/RawStatisticsApi.md#listSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
+[**listVideoSessions()**](doc/api/RawStatisticsApi.md#listVideoSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
 
 
 ### UploadTokensApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const uploadTokens = apiVideoClient.uploadTokens;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteToken**](doc/api/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**list**](doc/api/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken**](doc/api/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Show upload token
-[**createToken**](doc/api/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
+[**deleteToken()**](doc/api/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
+[**list()**](doc/api/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
+[**getToken()**](doc/api/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
+[**createToken()**](doc/api/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 
 
 ### VideosApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const videos = apiVideoClient.videos;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/api/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
-[**get**](doc/api/VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**getStatus**](doc/api/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Show video status
-[**list**](doc/api/VideosApi.md#list) | **GET** /videos | List all videos
-[**update**](doc/api/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
-[**pickThumbnail**](doc/api/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
-[**uploadWithUploadToken**](doc/api/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an upload token
-[**create**](doc/api/VideosApi.md#create) | **POST** /videos | Create a video
-[**upload**](doc/api/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
-[**uploadThumbnail**](doc/api/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
+[**delete()**](doc/api/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
+[**get()**](doc/api/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video
+[**getStatus()**](doc/api/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status
+[**list()**](doc/api/VideosApi.md#list) | **GET** /videos | List all videos
+[**update()**](doc/api/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
+[**pickThumbnail()**](doc/api/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
+[**uploadWithUploadToken()**](doc/api/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an upload token
+[**create()**](doc/api/VideosApi.md#create) | **POST** /videos | Create a video
+[**upload()**](doc/api/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
+[**uploadThumbnail()**](doc/api/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
 
 
 ### WatermarksApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const watermarks = apiVideoClient.watermarks;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/api/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
-[**list**](doc/api/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
-[**upload**](doc/api/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
+[**delete()**](doc/api/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
+[**list()**](doc/api/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
+[**upload()**](doc/api/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
 
 
 ### WebhooksApi
 
-```js
-const ApiVideoClient = require('@api.video/nodejs-client');
-
-const apiVideoClient = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
-const webhooks = apiVideoClient.webhooks;
-```
-
-#### Endpoints
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](doc/api/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
-[**get**](doc/api/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Show Webhook details
-[**list**](doc/api/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
-[**create**](doc/api/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
+[**delete()**](doc/api/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
+[**get()**](doc/api/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
+[**list()**](doc/api/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
+[**create()**](doc/api/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
 
 
 
@@ -347,27 +264,27 @@ Method | HTTP request | Description
 
 ## Authorization
 
-### API token
+### API key
 
-Most endpoints required to be authenticated using the API token mechanism described in our [documentation](https://docs.api.video/reference#authentication).
+Most endpoints required to be authenticated using the API key mechanism described in our [documentation](https://docs.api.video/reference#authentication).
 The access token generation mechanism is automatically handled by the client.
 
-All you have to do is provide an API token when instantiating the ApiVideoClient:
+All you have to do is provide an API key when instantiating the ApiVideoClient:
 ```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 ```
 
 ### Get the access token
 
 If you need to access the access-token value obtained using the API key, you can use the getAccessToken() method of the client:
 ```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_TOKEN" });
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 const accessToken = await client.getAccessToken();
 ```
 
 ### Public endpoints
 
-Some endpoints don't require authentication. These one can be called with an ApiVideoClient instantiated without API token:
+Some endpoints don't require authentication. These one can be called with an ApiVideoClient instantiated without API key:
 ```js
 const client = new ApiVideoClient();
 ```

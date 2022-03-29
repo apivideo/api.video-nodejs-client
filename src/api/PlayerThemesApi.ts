@@ -77,6 +77,7 @@ export default class PlayerThemesApi {
   }
 
   /**
+   * Delete the logo associated to a player.
    * Delete logo
    * @param playerId The unique identifier for the player.
    */
@@ -188,7 +189,7 @@ export default class PlayerThemesApi {
 
   /**
    * Use a player ID to retrieve details about the player and display it for viewers.
-   * Show a player
+   * Retrieve a player
    * @param playerId The unique identifier for the player you want to retrieve.
    */
   public async get(playerId: string): Promise<PlayerTheme> {
@@ -222,7 +223,7 @@ export default class PlayerThemesApi {
   }
 
   /**
-   * Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
+   * Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
    * Update a player
    * @param playerId The unique identifier for the player.
    * @param playerThemeUpdatePayload
