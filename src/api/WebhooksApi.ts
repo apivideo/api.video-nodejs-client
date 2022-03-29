@@ -41,7 +41,7 @@ export default class WebhooksApi {
   }
 
   /**
-   * This endpoint will delete the indicated webhook.
+   * This method will delete the indicated webhook.
    * Delete a Webhook
    * @param webhookId The webhook you wish to delete.
    */
@@ -76,8 +76,8 @@ export default class WebhooksApi {
   }
 
   /**
-   * This call provides the same JSON information provided on Webjhook creation.
-   * Show Webhook details
+   * This call provides the same JSON information provided on Webhook creation.
+   * Retrieve Webhook details
    * @param webhookId The unique webhook you wish to retreive details on.
    */
   public async get(webhookId: string): Promise<Webhook> {
@@ -111,7 +111,9 @@ export default class WebhooksApi {
   }
 
   /**
-   * Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
+   * Thie method returns a list of your webhooks (with all their details). 
+
+You can filter what the webhook list that the API returns using the parameters described below.
    * List all webhooks
    * @param {Object} searchParams
    * @param { string } searchParams.events The webhook event that you wish to filter on.
@@ -174,7 +176,7 @@ export default class WebhooksApi {
   }
 
   /**
-   * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \\\"type\\\": \\\"video.encoding.quality.completed\\\", \\\"emittedAt\\\": \\\"2021-01-29T16:46:25.217+01:00\\\", \\\"videoId\\\": \\\"viXXXXXXXX\\\", \\\"encoding\\\": \\\"hls\\\", \\\"quality\\\": \\\"720p\\\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
+   * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\", \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\", \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
    * Create Webhook
    * @param webhooksCreationPayload
    */
