@@ -41,6 +41,94 @@ export default class UploadTokensApi {
   }
 
   /**
+   * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+   * Generate an upload token
+   * @param tokenCreationPayload
+   */
+  public async createToken(
+    tokenCreationPayload: TokenCreationPayload = {}
+  ): Promise<UploadToken> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (tokenCreationPayload === null || tokenCreationPayload === undefined) {
+      throw new Error(
+        'Required parameter tokenCreationPayload was null or undefined when calling createToken.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/upload-tokens'.substring(1);
+
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      'application/json',
+    ]);
+    queryParams.headers['Content-Type'] = contentType;
+
+    queryParams.body = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(
+        tokenCreationPayload,
+        'TokenCreationPayload',
+        ''
+      ),
+      contentType
+    );
+
+    queryParams.method = 'POST';
+
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'UploadToken',
+            ''
+          ) as UploadToken
+      );
+  }
+
+  /**
+   * You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+   * Retrieve upload token
+   * @param uploadToken The unique identifier for the token you want information about.
+   */
+  public async getToken(uploadToken: string): Promise<UploadToken> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (uploadToken === null || uploadToken === undefined) {
+      throw new Error(
+        'Required parameter uploadToken was null or undefined when calling getToken.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/upload-tokens/{uploadToken}'
+      .substring(1)
+      .replace(
+        '{' + 'uploadToken' + '}',
+        encodeURIComponent(String(uploadToken))
+      );
+
+    queryParams.method = 'GET';
+
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'UploadToken',
+            ''
+          ) as UploadToken
+      );
+  }
+
+  /**
    * Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
    * Delete an upload token
    * @param uploadToken The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.
@@ -147,94 +235,6 @@ export default class UploadTokensApi {
             'TokenListResponse',
             ''
           ) as TokenListResponse
-      );
-  }
-
-  /**
-   * You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
-   * Retrieve upload token
-   * @param uploadToken The unique identifier for the token you want information about.
-   */
-  public async getToken(uploadToken: string): Promise<UploadToken> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (uploadToken === null || uploadToken === undefined) {
-      throw new Error(
-        'Required parameter uploadToken was null or undefined when calling getToken.'
-      );
-    }
-    // Path Params
-    const localVarPath = '/upload-tokens/{uploadToken}'
-      .substring(1)
-      .replace(
-        '{' + 'uploadToken' + '}',
-        encodeURIComponent(String(uploadToken))
-      );
-
-    queryParams.method = 'GET';
-
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'UploadToken',
-            ''
-          ) as UploadToken
-      );
-  }
-
-  /**
-   * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-   * Generate an upload token
-   * @param tokenCreationPayload
-   */
-  public async createToken(
-    tokenCreationPayload: TokenCreationPayload = {}
-  ): Promise<UploadToken> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (tokenCreationPayload === null || tokenCreationPayload === undefined) {
-      throw new Error(
-        'Required parameter tokenCreationPayload was null or undefined when calling createToken.'
-      );
-    }
-    // Path Params
-    const localVarPath = '/upload-tokens'.substring(1);
-
-    // Body Params
-    const contentType = ObjectSerializer.getPreferredMediaType([
-      'application/json',
-    ]);
-    queryParams.headers['Content-Type'] = contentType;
-
-    queryParams.body = ObjectSerializer.stringify(
-      ObjectSerializer.serialize(
-        tokenCreationPayload,
-        'TokenCreationPayload',
-        ''
-      ),
-      contentType
-    );
-
-    queryParams.method = 'POST';
-
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'UploadToken',
-            ''
-          ) as UploadToken
       );
   }
 }

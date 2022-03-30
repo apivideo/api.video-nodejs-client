@@ -91,103 +91,103 @@ const ApiVideoClient = require('@api.video/nodejs-client');
 
 ### CaptionsApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete()**](doc/api/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
-[**list()**](doc/api/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
-[**get()**](doc/api/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
-[**update()**](doc/api/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
-[**upload()**](doc/api/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
+[**upload()**](doc/api/CaptionsApi.md#upload) | Upload a caption | **POST** /videos/{videoId}/captions/{language}
+[**get()**](doc/api/CaptionsApi.md#get) | Retrieve a caption | **GET** /videos/{videoId}/captions/{language}
+[**update()**](doc/api/CaptionsApi.md#update) | Update a caption | **PATCH** /videos/{videoId}/captions/{language}
+[**delete()**](doc/api/CaptionsApi.md#delete) | Delete a caption | **DELETE** /videos/{videoId}/captions/{language}
+[**list()**](doc/api/CaptionsApi.md#list) | List video captions | **GET** /videos/{videoId}/captions
 
 
 ### ChaptersApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete()**](doc/api/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
-[**list()**](doc/api/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
-[**get()**](doc/api/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
-[**upload()**](doc/api/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
+[**upload()**](doc/api/ChaptersApi.md#upload) | Upload a chapter | **POST** /videos/{videoId}/chapters/{language}
+[**get()**](doc/api/ChaptersApi.md#get) | Retrieve a chapter | **GET** /videos/{videoId}/chapters/{language}
+[**delete()**](doc/api/ChaptersApi.md#delete) | Delete a chapter | **DELETE** /videos/{videoId}/chapters/{language}
+[**list()**](doc/api/ChaptersApi.md#list) | List video chapters | **GET** /videos/{videoId}/chapters
 
 
 ### LiveStreamsApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete()**](doc/api/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**deleteThumbnail()**](doc/api/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
-[**list()**](doc/api/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
-[**get()**](doc/api/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
-[**update()**](doc/api/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**create()**](doc/api/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
-[**uploadThumbnail()**](doc/api/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**create()**](doc/api/LiveStreamsApi.md#create) | Create live stream | **POST** /live-streams
+[**get()**](doc/api/LiveStreamsApi.md#get) | Retrieve live stream | **GET** /live-streams/{liveStreamId}
+[**update()**](doc/api/LiveStreamsApi.md#update) | Update a live stream | **PATCH** /live-streams/{liveStreamId}
+[**delete()**](doc/api/LiveStreamsApi.md#delete) | Delete a live stream | **DELETE** /live-streams/{liveStreamId}
+[**list()**](doc/api/LiveStreamsApi.md#list) | List all live streams | **GET** /live-streams
+[**uploadThumbnail()**](doc/api/LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /live-streams/{liveStreamId}/thumbnail
+[**deleteThumbnail()**](doc/api/LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** /live-streams/{liveStreamId}/thumbnail
 
 
 ### PlayerThemesApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete()**](doc/api/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
-[**deleteLogo()**](doc/api/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list()**](doc/api/PlayerThemesApi.md#list) | **GET** /players | List all player themes
-[**get()**](doc/api/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Retrieve a player
-[**update()**](doc/api/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
-[**create()**](doc/api/PlayerThemesApi.md#create) | **POST** /players | Create a player
-[**uploadLogo()**](doc/api/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
+[**create()**](doc/api/PlayerThemesApi.md#create) | Create a player | **POST** /players
+[**get()**](doc/api/PlayerThemesApi.md#get) | Retrieve a player | **GET** /players/{playerId}
+[**update()**](doc/api/PlayerThemesApi.md#update) | Update a player | **PATCH** /players/{playerId}
+[**delete()**](doc/api/PlayerThemesApi.md#delete) | Delete a player | **DELETE** /players/{playerId}
+[**list()**](doc/api/PlayerThemesApi.md#list) | List all player themes | **GET** /players
+[**uploadLogo()**](doc/api/PlayerThemesApi.md#uploadLogo) | Upload a logo | **POST** /players/{playerId}/logo
+[**deleteLogo()**](doc/api/PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** /players/{playerId}/logo
 
 
 ### RawStatisticsApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**listLiveStreamSessions()**](doc/api/RawStatisticsApi.md#listLiveStreamSessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**listSessionEvents()**](doc/api/RawStatisticsApi.md#listSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**listVideoSessions()**](doc/api/RawStatisticsApi.md#listVideoSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+[**listLiveStreamSessions()**](doc/api/RawStatisticsApi.md#listLiveStreamSessions) | List live stream player sessions | **GET** /analytics/live-streams/{liveStreamId}
+[**listSessionEvents()**](doc/api/RawStatisticsApi.md#listSessionEvents) | List player session events | **GET** /analytics/sessions/{sessionId}/events
+[**listVideoSessions()**](doc/api/RawStatisticsApi.md#listVideoSessions) | List video player sessions | **GET** /analytics/videos/{videoId}
 
 
 ### UploadTokensApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**deleteToken()**](doc/api/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**list()**](doc/api/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken()**](doc/api/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
-[**createToken()**](doc/api/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
+[**createToken()**](doc/api/UploadTokensApi.md#createToken) | Generate an upload token | **POST** /upload-tokens
+[**getToken()**](doc/api/UploadTokensApi.md#getToken) | Retrieve upload token | **GET** /upload-tokens/{uploadToken}
+[**deleteToken()**](doc/api/UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** /upload-tokens/{uploadToken}
+[**list()**](doc/api/UploadTokensApi.md#list) | List all active upload tokens. | **GET** /upload-tokens
 
 
 ### VideosApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete()**](doc/api/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
-[**get()**](doc/api/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video
-[**getStatus()**](doc/api/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status
-[**list()**](doc/api/VideosApi.md#list) | **GET** /videos | List all videos
-[**update()**](doc/api/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
-[**pickThumbnail()**](doc/api/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
-[**uploadWithUploadToken()**](doc/api/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an upload token
-[**create()**](doc/api/VideosApi.md#create) | **POST** /videos | Create a video
-[**upload()**](doc/api/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
-[**uploadThumbnail()**](doc/api/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
+[**create()**](doc/api/VideosApi.md#create) | Create a video | **POST** /videos
+[**upload()**](doc/api/VideosApi.md#upload) | Upload a video | **POST** /videos/{videoId}/source
+[**uploadWithUploadToken()**](doc/api/VideosApi.md#uploadWithUploadToken) | Upload with an upload token | **POST** /upload
+[**get()**](doc/api/VideosApi.md#get) | Retrieve a video | **GET** /videos/{videoId}
+[**update()**](doc/api/VideosApi.md#update) | Update a video | **PATCH** /videos/{videoId}
+[**delete()**](doc/api/VideosApi.md#delete) | Delete a video | **DELETE** /videos/{videoId}
+[**list()**](doc/api/VideosApi.md#list) | List all videos | **GET** /videos
+[**uploadThumbnail()**](doc/api/VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /videos/{videoId}/thumbnail
+[**pickThumbnail()**](doc/api/VideosApi.md#pickThumbnail) | Pick a thumbnail | **PATCH** /videos/{videoId}/thumbnail
+[**getStatus()**](doc/api/VideosApi.md#getStatus) | Retrieve video status | **GET** /videos/{videoId}/status
 
 
 ### WatermarksApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete()**](doc/api/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
-[**list()**](doc/api/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
-[**upload()**](doc/api/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
+[**upload()**](doc/api/WatermarksApi.md#upload) | Upload a watermark | **POST** /watermarks
+[**delete()**](doc/api/WatermarksApi.md#delete) | Delete a watermark | **DELETE** /watermarks/{watermarkId}
+[**list()**](doc/api/WatermarksApi.md#list) | List all watermarks | **GET** /watermarks
 
 
 ### WebhooksApi
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete()**](doc/api/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
-[**get()**](doc/api/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
-[**list()**](doc/api/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
-[**create()**](doc/api/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
+[**create()**](doc/api/WebhooksApi.md#create) | Create Webhook | **POST** /webhooks
+[**get()**](doc/api/WebhooksApi.md#get) | Retrieve Webhook details | **GET** /webhooks/{webhookId}
+[**delete()**](doc/api/WebhooksApi.md#delete) | Delete a Webhook | **DELETE** /webhooks/{webhookId}
+[**list()**](doc/api/WebhooksApi.md#list) | List all webhooks | **GET** /webhooks
 
 
 

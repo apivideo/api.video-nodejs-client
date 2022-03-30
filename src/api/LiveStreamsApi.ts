@@ -42,65 +42,42 @@ export default class LiveStreamsApi {
   }
 
   /**
-   * If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
-   * Delete a live stream
-   * @param liveStreamId The unique ID for the live stream that you want to remove.
+   * A live stream will give you the 'connection point' to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+   * Create live stream
+   * @param liveStreamCreationPayload
    */
-  public async delete(liveStreamId: string): Promise<void> {
+  public async create(
+    liveStreamCreationPayload: LiveStreamCreationPayload
+  ): Promise<LiveStream> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
-    if (liveStreamId === null || liveStreamId === undefined) {
+    if (
+      liveStreamCreationPayload === null ||
+      liveStreamCreationPayload === undefined
+    ) {
       throw new Error(
-        'Required parameter liveStreamId was null or undefined when calling delete.'
+        'Required parameter liveStreamCreationPayload was null or undefined when calling create.'
       );
     }
     // Path Params
-    const localVarPath = '/live-streams/{liveStreamId}'
-      .substring(1)
-      .replace(
-        '{' + 'liveStreamId' + '}',
-        encodeURIComponent(String(liveStreamId))
-      );
+    const localVarPath = '/live-streams'.substring(1);
 
-    queryParams.method = 'DELETE';
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      'application/json',
+    ]);
+    queryParams.headers['Content-Type'] = contentType;
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
-  }
+    queryParams.body = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(
+        liveStreamCreationPayload,
+        'LiveStreamCreationPayload',
+        ''
+      ),
+      contentType
+    );
 
-  /**
-   * Send the unique identifier for a live stream to delete its thumbnail.
-   * Delete a thumbnail
-   * @param liveStreamId The unique identifier of the live stream whose thumbnail you want to delete.
-   */
-  public async deleteThumbnail(liveStreamId: string): Promise<LiveStream> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (liveStreamId === null || liveStreamId === undefined) {
-      throw new Error(
-        'Required parameter liveStreamId was null or undefined when calling deleteThumbnail.'
-      );
-    }
-    // Path Params
-    const localVarPath = '/live-streams/{liveStreamId}/thumbnail'
-      .substring(1)
-      .replace(
-        '{' + 'liveStreamId' + '}',
-        encodeURIComponent(String(liveStreamId))
-      );
-
-    queryParams.method = 'DELETE';
+    queryParams.method = 'POST';
 
     return this.httpClient
       .call(localVarPath, queryParams)
@@ -114,96 +91,6 @@ export default class LiveStreamsApi {
             'LiveStream',
             ''
           ) as LiveStream
-      );
-  }
-
-  /**
-   * With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
-   * List all live streams
-   * @param {Object} searchParams
-   * @param { string } searchParams.streamKey The unique stream key that allows you to stream videos.
-   * @param { string } searchParams.name You can filter live streams by their name or a part of their name.
-   * @param { string } searchParams.sortBy Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format.
-   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
-   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
-   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
-   */
-  public async list({
-    streamKey,
-    name,
-    sortBy,
-    sortOrder,
-    currentPage,
-    pageSize,
-  }: {
-    streamKey?: string;
-    name?: string;
-    sortBy?: string;
-    sortOrder?: 'asc' | 'desc';
-    currentPage?: number;
-    pageSize?: number;
-  } = {}): Promise<LiveStreamListResponse> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    // Path Params
-    const localVarPath = '/live-streams'.substring(1);
-
-    // Query Params
-    const urlSearchParams = new URLSearchParams();
-
-    if (streamKey !== undefined) {
-      urlSearchParams.append(
-        'streamKey',
-        ObjectSerializer.serialize(streamKey, 'string', '')
-      );
-    }
-    if (name !== undefined) {
-      urlSearchParams.append(
-        'name',
-        ObjectSerializer.serialize(name, 'string', '')
-      );
-    }
-    if (sortBy !== undefined) {
-      urlSearchParams.append(
-        'sortBy',
-        ObjectSerializer.serialize(sortBy, 'string', '')
-      );
-    }
-    if (sortOrder !== undefined) {
-      urlSearchParams.append(
-        'sortOrder',
-        ObjectSerializer.serialize(sortOrder, "'asc' | 'desc'", '')
-      );
-    }
-    if (currentPage !== undefined) {
-      urlSearchParams.append(
-        'currentPage',
-        ObjectSerializer.serialize(currentPage, 'number', '')
-      );
-    }
-    if (pageSize !== undefined) {
-      urlSearchParams.append(
-        'pageSize',
-        ObjectSerializer.serialize(pageSize, 'number', '')
-      );
-    }
-
-    queryParams.searchParams = urlSearchParams;
-
-    queryParams.method = 'GET';
-
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'LiveStreamListResponse',
-            ''
-          ) as LiveStreamListResponse
       );
   }
 
@@ -311,42 +198,27 @@ export default class LiveStreamsApi {
   }
 
   /**
-   * A live stream will give you the 'connection point' to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
-   * Create live stream
-   * @param liveStreamCreationPayload
+   * If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
+   * Delete a live stream
+   * @param liveStreamId The unique ID for the live stream that you want to remove.
    */
-  public async create(
-    liveStreamCreationPayload: LiveStreamCreationPayload
-  ): Promise<LiveStream> {
+  public async delete(liveStreamId: string): Promise<void> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
-    if (
-      liveStreamCreationPayload === null ||
-      liveStreamCreationPayload === undefined
-    ) {
+    if (liveStreamId === null || liveStreamId === undefined) {
       throw new Error(
-        'Required parameter liveStreamCreationPayload was null or undefined when calling create.'
+        'Required parameter liveStreamId was null or undefined when calling delete.'
       );
     }
     // Path Params
-    const localVarPath = '/live-streams'.substring(1);
+    const localVarPath = '/live-streams/{liveStreamId}'
+      .substring(1)
+      .replace(
+        '{' + 'liveStreamId' + '}',
+        encodeURIComponent(String(liveStreamId))
+      );
 
-    // Body Params
-    const contentType = ObjectSerializer.getPreferredMediaType([
-      'application/json',
-    ]);
-    queryParams.headers['Content-Type'] = contentType;
-
-    queryParams.body = ObjectSerializer.stringify(
-      ObjectSerializer.serialize(
-        liveStreamCreationPayload,
-        'LiveStreamCreationPayload',
-        ''
-      ),
-      contentType
-    );
-
-    queryParams.method = 'POST';
+    queryParams.method = 'DELETE';
 
     return this.httpClient
       .call(localVarPath, queryParams)
@@ -357,9 +229,99 @@ export default class LiveStreamsApi {
               response.body,
               response.headers['content-type']
             ),
-            'LiveStream',
+            'void',
             ''
-          ) as LiveStream
+          ) as void
+      );
+  }
+
+  /**
+   * With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
+   * List all live streams
+   * @param {Object} searchParams
+   * @param { string } searchParams.streamKey The unique stream key that allows you to stream videos.
+   * @param { string } searchParams.name You can filter live streams by their name or a part of their name.
+   * @param { string } searchParams.sortBy Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async list({
+    streamKey,
+    name,
+    sortBy,
+    sortOrder,
+    currentPage,
+    pageSize,
+  }: {
+    streamKey?: string;
+    name?: string;
+    sortBy?: string;
+    sortOrder?: 'asc' | 'desc';
+    currentPage?: number;
+    pageSize?: number;
+  } = {}): Promise<LiveStreamListResponse> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    // Path Params
+    const localVarPath = '/live-streams'.substring(1);
+
+    // Query Params
+    const urlSearchParams = new URLSearchParams();
+
+    if (streamKey !== undefined) {
+      urlSearchParams.append(
+        'streamKey',
+        ObjectSerializer.serialize(streamKey, 'string', '')
+      );
+    }
+    if (name !== undefined) {
+      urlSearchParams.append(
+        'name',
+        ObjectSerializer.serialize(name, 'string', '')
+      );
+    }
+    if (sortBy !== undefined) {
+      urlSearchParams.append(
+        'sortBy',
+        ObjectSerializer.serialize(sortBy, 'string', '')
+      );
+    }
+    if (sortOrder !== undefined) {
+      urlSearchParams.append(
+        'sortOrder',
+        ObjectSerializer.serialize(sortOrder, "'asc' | 'desc'", '')
+      );
+    }
+    if (currentPage !== undefined) {
+      urlSearchParams.append(
+        'currentPage',
+        ObjectSerializer.serialize(currentPage, 'number', '')
+      );
+    }
+    if (pageSize !== undefined) {
+      urlSearchParams.append(
+        'pageSize',
+        ObjectSerializer.serialize(pageSize, 'number', '')
+      );
+    }
+
+    queryParams.searchParams = urlSearchParams;
+
+    queryParams.method = 'GET';
+
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'LiveStreamListResponse',
+            ''
+          ) as LiveStreamListResponse
       );
   }
 
@@ -408,6 +370,44 @@ export default class LiveStreamsApi {
     );
 
     queryParams.body = formData;
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'LiveStream',
+            ''
+          ) as LiveStream
+      );
+  }
+
+  /**
+   * Send the unique identifier for a live stream to delete its thumbnail.
+   * Delete a thumbnail
+   * @param liveStreamId The unique identifier of the live stream whose thumbnail you want to delete.
+   */
+  public async deleteThumbnail(liveStreamId: string): Promise<LiveStream> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (liveStreamId === null || liveStreamId === undefined) {
+      throw new Error(
+        'Required parameter liveStreamId was null or undefined when calling deleteThumbnail.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/live-streams/{liveStreamId}/thumbnail'
+      .substring(1)
+      .replace(
+        '{' + 'liveStreamId' + '}',
+        encodeURIComponent(String(liveStreamId))
+      );
+
+    queryParams.method = 'DELETE';
+
     return this.httpClient
       .call(localVarPath, queryParams)
       .then(

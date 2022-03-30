@@ -41,24 +41,42 @@ export default class WebhooksApi {
   }
 
   /**
-   * This method will delete the indicated webhook.
-   * Delete a Webhook
-   * @param webhookId The webhook you wish to delete.
+   * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\", \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\", \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
+   * Create Webhook
+   * @param webhooksCreationPayload
    */
-  public async delete(webhookId: string): Promise<void> {
+  public async create(
+    webhooksCreationPayload: WebhooksCreationPayload
+  ): Promise<Webhook> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
-    if (webhookId === null || webhookId === undefined) {
+    if (
+      webhooksCreationPayload === null ||
+      webhooksCreationPayload === undefined
+    ) {
       throw new Error(
-        'Required parameter webhookId was null or undefined when calling delete.'
+        'Required parameter webhooksCreationPayload was null or undefined when calling create.'
       );
     }
     // Path Params
-    const localVarPath = '/webhooks/{webhookId}'
-      .substring(1)
-      .replace('{' + 'webhookId' + '}', encodeURIComponent(String(webhookId)));
+    const localVarPath = '/webhooks'.substring(1);
 
-    queryParams.method = 'DELETE';
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      'application/json',
+    ]);
+    queryParams.headers['Content-Type'] = contentType;
+
+    queryParams.body = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(
+        webhooksCreationPayload,
+        'WebhooksCreationPayload',
+        ''
+      ),
+      contentType
+    );
+
+    queryParams.method = 'POST';
 
     return this.httpClient
       .call(localVarPath, queryParams)
@@ -69,9 +87,9 @@ export default class WebhooksApi {
               response.body,
               response.headers['content-type']
             ),
-            'void',
+            'Webhook',
             ''
-          ) as void
+          ) as Webhook
       );
   }
 
@@ -107,6 +125,41 @@ export default class WebhooksApi {
             'Webhook',
             ''
           ) as Webhook
+      );
+  }
+
+  /**
+   * This method will delete the indicated webhook.
+   * Delete a Webhook
+   * @param webhookId The webhook you wish to delete.
+   */
+  public async delete(webhookId: string): Promise<void> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (webhookId === null || webhookId === undefined) {
+      throw new Error(
+        'Required parameter webhookId was null or undefined when calling delete.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/webhooks/{webhookId}'
+      .substring(1)
+      .replace('{' + 'webhookId' + '}', encodeURIComponent(String(webhookId)));
+
+    queryParams.method = 'DELETE';
+
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'void',
+            ''
+          ) as void
       );
   }
 
@@ -172,59 +225,6 @@ You can filter what the webhook list that the API returns using the parameters d
             'WebhooksListResponse',
             ''
           ) as WebhooksListResponse
-      );
-  }
-
-  /**
-   * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\", \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\", \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
-   * Create Webhook
-   * @param webhooksCreationPayload
-   */
-  public async create(
-    webhooksCreationPayload: WebhooksCreationPayload
-  ): Promise<Webhook> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (
-      webhooksCreationPayload === null ||
-      webhooksCreationPayload === undefined
-    ) {
-      throw new Error(
-        'Required parameter webhooksCreationPayload was null or undefined when calling create.'
-      );
-    }
-    // Path Params
-    const localVarPath = '/webhooks'.substring(1);
-
-    // Body Params
-    const contentType = ObjectSerializer.getPreferredMediaType([
-      'application/json',
-    ]);
-    queryParams.headers['Content-Type'] = contentType;
-
-    queryParams.body = ObjectSerializer.stringify(
-      ObjectSerializer.serialize(
-        webhooksCreationPayload,
-        'WebhooksCreationPayload',
-        ''
-      ),
-      contentType
-    );
-
-    queryParams.method = 'POST';
-
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Webhook',
-            ''
-          ) as Webhook
       );
   }
 }

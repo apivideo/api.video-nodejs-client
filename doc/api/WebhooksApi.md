@@ -4,107 +4,11 @@ All URIs are relative to *https://ws.api.video*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
-| [**delete()**](WebhooksApi.md#delete) | Delete a Webhook | **DELETE** /webhooks/{webhookId} |
-| [**get()**](WebhooksApi.md#get) | Retrieve Webhook details | **GET** /webhooks/{webhookId} |
-| [**list()**](WebhooksApi.md#list) | List all webhooks | **GET** /webhooks |
 | [**create()**](WebhooksApi.md#create) | Create Webhook | **POST** /webhooks |
+| [**get()**](WebhooksApi.md#get) | Retrieve Webhook details | **GET** /webhooks/{webhookId} |
+| [**delete()**](WebhooksApi.md#delete) | Delete a Webhook | **DELETE** /webhooks/{webhookId} |
+| [**list()**](WebhooksApi.md#list) | List all webhooks | **GET** /webhooks |
 
-
-<a name="delete"></a>
-## **`delete()` - Delete a Webhook**
-
-
-This method will delete the indicated webhook.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **webhookId** | **string**| **yes**| The webhook you wish to delete. |
-
-
-### Return type
-
-Promise<[**void**](../model/.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const webhookId = 'webhookId_example'; // The webhook you wish to delete.
-await client.webhooks.delete(webhookId); 
-```
-
-
----
-
-<a name="get"></a>
-## **`get()` - Retrieve Webhook details**
-
-
-This call provides the same JSON information provided on Webhook creation.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **webhookId** | **string**| **yes**| The unique webhook you wish to retreive details on. |
-
-
-### Return type
-
-Promise<[**Webhook**](../model/Webhook.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const webhookId = 'webhookId_example'; // The unique webhook you wish to retreive details on.
-
-const webhook = await client.webhooks.get(webhookId); 
-```
-
-
----
-
-<a name="list"></a>
-## **`list()` - List all webhooks**
-
-
-Thie method returns a list of your webhooks (with all their details). 
-
-You can filter what the webhook list that the API returns using the parameters described below.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **events** | **string**| no| The webhook event that you wish to filter on. |
- | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
- | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |
-
-
-### Return type
-
-Promise<[**WebhooksListResponse**](../model/WebhooksListResponse.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const events = 'video.encoding.quality.completed'; // The webhook event that you wish to filter on.
-const currentPage = 2; // Choose the number of search results to return per page. Minimum value: 1
-const pageSize = 30; // Results per page. Allowed values 1-100, default is 25.
-
-// WebhooksListResponse
-const webhooks = await client.webhooks.list({ events, currentPage, pageSize }); 
-```
-
-
----
 
 <a name="create"></a>
 ## **`create()` - Create Webhook**
@@ -142,6 +46,101 @@ const webhooksCreationPayload = {
 }; 
 
 const webhook = await client.webhooks.create(webhooksCreationPayload); 
+```
+
+
+---
+
+<a name="get"></a>
+## **`get()` - Retrieve Webhook details**
+
+
+This call provides the same JSON information provided on Webhook creation.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **webhookId** | **string**| **yes**| The unique webhook you wish to retreive details on. |
+
+
+### Return type
+
+Promise<[**Webhook**](../model/Webhook.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const webhookId = 'webhookId_example'; // The unique webhook you wish to retreive details on.
+
+const webhook = await client.webhooks.get(webhookId); 
+```
+
+
+---
+
+<a name="delete"></a>
+## **`delete()` - Delete a Webhook**
+
+
+This method will delete the indicated webhook.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **webhookId** | **string**| **yes**| The webhook you wish to delete. |
+
+
+### Return type
+
+Promise<[**void**](../model/.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const webhookId = 'webhookId_example'; // The webhook you wish to delete.
+await client.webhooks.delete(webhookId); 
+```
+
+
+---
+
+<a name="list"></a>
+## **`list()` - List all webhooks**
+
+
+Thie method returns a list of your webhooks (with all their details). 
+
+You can filter what the webhook list that the API returns using the parameters described below.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **events** | **string**| no| The webhook event that you wish to filter on. |
+ | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
+ | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |
+
+
+### Return type
+
+Promise<[**WebhooksListResponse**](../model/WebhooksListResponse.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const events = 'video.encoding.quality.completed'; // The webhook event that you wish to filter on.
+const currentPage = 2; // Choose the number of search results to return per page. Minimum value: 1
+const pageSize = 30; // Results per page. Allowed values 1-100, default is 25.
+ 
+const webhooks = await client.webhooks.list({ events, currentPage, pageSize }); 
 ```
 
 

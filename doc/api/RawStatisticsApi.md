@@ -36,8 +36,7 @@ const liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for th
 const period = '2019-01-01'; // Period must have one of the following formats:  - For a day : "2018-01-01", - For a week: "2018-W01", - For a month: "2018-01" - For a year: "2018"  For a range period: -  Date range: "2018-01-01/2018-01-15" 
 const currentPage = 2; // Choose the number of search results to return per page. Minimum value: 1
 const pageSize = 30; // Results per page. Allowed values 1-100, default is 25.
-
-// RawStatisticsListLiveStreamAnalyticsResponse
+ 
 const liveStreamSessions = await client.rawStatistics.listLiveStreamSessions({ liveStreamId, period, currentPage, pageSize })
 ```
 
