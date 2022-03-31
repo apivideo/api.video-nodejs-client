@@ -4,14 +4,130 @@ All URIs are relative to *https://ws.api.video*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
-| [**delete()**](LiveStreamsApi.md#delete) | Delete a live stream | **DELETE** /live-streams/{liveStreamId} |
-| [**deleteThumbnail()**](LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** /live-streams/{liveStreamId}/thumbnail |
-| [**list()**](LiveStreamsApi.md#list) | List all live streams | **GET** /live-streams |
+| [**create()**](LiveStreamsApi.md#create) | Create live stream | **POST** /live-streams |
 | [**get()**](LiveStreamsApi.md#get) | Retrieve live stream | **GET** /live-streams/{liveStreamId} |
 | [**update()**](LiveStreamsApi.md#update) | Update a live stream | **PATCH** /live-streams/{liveStreamId} |
-| [**create()**](LiveStreamsApi.md#create) | Create live stream | **POST** /live-streams |
+| [**delete()**](LiveStreamsApi.md#delete) | Delete a live stream | **DELETE** /live-streams/{liveStreamId} |
+| [**list()**](LiveStreamsApi.md#list) | List all live streams | **GET** /live-streams |
 | [**uploadThumbnail()**](LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /live-streams/{liveStreamId}/thumbnail |
+| [**deleteThumbnail()**](LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** /live-streams/{liveStreamId}/thumbnail |
 
+
+<a name="create"></a>
+## **`create()` - Create live stream**
+
+
+A live stream will give you the 'connection point' to RTMP your video stream to api.video. 
+
+It will also give you the details for viewers to watch the same livestream.  
+
+The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. 
+
+See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. 
+
+Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
+
+Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **liveStreamCreationPayload** | [**LiveStreamCreationPayload**](../model/LiveStreamCreationPayload.md)| **yes**|  |
+
+
+### Return type
+
+Promise<[**LiveStream**](../model/LiveStream.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const liveStreamCreationPayload = {
+    record: false, // Whether you are recording or not. True for record, false for not record.
+    name: "My Live Stream", // Add a name for your live stream here.
+    _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
+    playerId: "pl4f4ferf5erfr5zed4fsdd", // The unique identifier for the player.
+}; 
+
+const liveStream = await client.liveStreams.create(liveStreamCreationPayload);
+```
+
+
+---
+
+<a name="get"></a>
+## **`get()` - Retrieve live stream**
+
+
+Supply a liveStreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **liveStreamId** | **string**| **yes**| The unique ID for the live stream you want to watch. |
+
+
+### Return type
+
+Promise<[**LiveStream**](../model/LiveStream.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to retrieve.
+
+const liveStream = await client.liveStreams.get(liveStreamId);
+```
+
+
+---
+
+<a name="update"></a>
+## **`update()` - Update a live stream**
+
+
+Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). 
+
+NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    
+
+The public=false "private livestream" is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **liveStreamId** | **string**| **yes**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
+ | **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](../model/LiveStreamUpdatePayload.md)| **yes**|  |
+
+
+### Return type
+
+Promise<[**LiveStream**](../model/LiveStream.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
+const liveStreamUpdatePayload = {
+  name: "My Live Stream Video", // The name you want to use for your live stream.
+  _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
+  record: true, // Use this to indicate whether you want the recording on or off. On is true, off is false.
+  playerId: "pl45KFKdlddgk654dspkze", // The unique ID for the player associated with a live stream that you want to update.
+};
+
+const liveStream = await client.liveStreams.update(liveStreamId, liveStreamUpdatePayload); 
+```
+
+
+---
 
 <a name="delete"></a>
 ## **`delete()` - Delete a live stream**
@@ -39,36 +155,6 @@ const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique identifier of the
 
 const liveStream = await client.liveStreams.deleteThumbnail(liveStreamId);
     
-```
-
-
----
-
-<a name="deleteThumbnail"></a>
-## **`deleteThumbnail()` - Delete a thumbnail**
-
-
-Send the unique identifier for a live stream to delete its thumbnail.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **liveStreamId** | **string**| **yes**| The unique identifier of the live stream whose thumbnail you want to delete. |
-
-
-### Return type
-
-Promise<[**LiveStream**](../model/LiveStream.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to watch.
-
-const liveStream = await client.liveStreams.get(liveStreamId);
 ```
 
 
@@ -118,125 +204,9 @@ const liveStreams2 = await client.liveStreams.list({
 const liveStreams3 = await client.liveStreams.list({
   sortBy: 'name',
   sortOrder: 'desc',
-  currentPage: '2',
-  pageSize: '30'
+  currentPage: 2,
+  pageSize: 30
 });
-```
-
-
----
-
-<a name="get"></a>
-## **`get()` - Retrieve live stream**
-
-
-Supply a liveStreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **liveStreamId** | **string**| **yes**| The unique ID for the live stream you want to watch. |
-
-
-### Return type
-
-Promise<[**LiveStream**](../model/LiveStream.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to watch.
-
-const liveStream = await client.liveStreams.get(liveStreamId);
-```
-
-
----
-
-<a name="update"></a>
-## **`update()` - Update a live stream**
-
-
-Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). 
-
-NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    
-
-The public=false "private livestream" is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **liveStreamId** | **string**| **yes**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
- | **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](../model/LiveStreamUpdatePayload.md)| **yes**|  |
-
-
-### Return type
-
-Promise<[**LiveStream**](../model/LiveStream.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
-const liveStreamUpdatePayload = {
-  name: "My Live Stream Video", // The name you want to use for your live stream.
-  _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
-  record: true, // Use this to indicate whether you want the recording on or off. On is true, off is false.
-  playerId: "pl45KFKdlddgk654dspkze", // The unique ID for the player associated with a live stream that you want to update.
-};
-
-const liveStream = await client.liveStreams.update(liveStreamId, liveStreamUpdatePayload); 
-```
-
-
----
-
-<a name="create"></a>
-## **`create()` - Create live stream**
-
-
-A live stream will give you the 'connection point' to RTMP your video stream to api.video. 
-
-It will also give you the details for viewers to watch the same livestream.  
-
-The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. 
-
-See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. 
-
-Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
-
-Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **liveStreamCreationPayload** | [**LiveStreamCreationPayload**](../model/LiveStreamCreationPayload.md)| **yes**|  |
-
-
-### Return type
-
-Promise<[**LiveStream**](../model/LiveStream.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamCreationPayload = {
-    record: false, // Whether you are recording or not. True for record, false for not record.
-    name: "My Live Stream", // Add a name for your live stream here.
-    _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
-    playerId: "pl4f4ferf5erfr5zed4fsdd", // The unique identifier for the player.
-}; 
-
-const liveStream = await client.liveStreams.create(liveStreamCreationPayload);
 ```
 
 
@@ -269,6 +239,36 @@ const liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique ID for the live s
 const file = './thumbnail.jpg'; // The image to be added as a thumbnail.
 
 const livestream = await client.liveStreams.uploadThumbnail(liveStreamId, file);
+```
+
+
+---
+
+<a name="deleteThumbnail"></a>
+## **`deleteThumbnail()` - Delete a thumbnail**
+
+
+Send the unique identifier for a live stream to delete its thumbnail.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **liveStreamId** | **string**| **yes**| The unique identifier of the live stream whose thumbnail you want to delete. |
+
+
+### Return type
+
+Promise<[**LiveStream**](../model/LiveStream.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream whose thumbnail you want to delete.
+
+const liveStream = await client.liveStreams.deleteThumbnail(liveStreamId); 
 ```
 
 

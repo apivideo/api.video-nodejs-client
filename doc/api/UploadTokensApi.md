@@ -4,11 +4,73 @@ All URIs are relative to *https://ws.api.video*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
+| [**createToken()**](UploadTokensApi.md#createToken) | Generate an upload token | **POST** /upload-tokens |
+| [**getToken()**](UploadTokensApi.md#getToken) | Retrieve upload token | **GET** /upload-tokens/{uploadToken} |
 | [**deleteToken()**](UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** /upload-tokens/{uploadToken} |
 | [**list()**](UploadTokensApi.md#list) | List all active upload tokens. | **GET** /upload-tokens |
-| [**getToken()**](UploadTokensApi.md#getToken) | Retrieve upload token | **GET** /upload-tokens/{uploadToken} |
-| [**createToken()**](UploadTokensApi.md#createToken) | Generate an upload token | **POST** /upload-tokens |
 
+
+<a name="createToken"></a>
+## **`createToken()` - Generate an upload token**
+
+
+Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **tokenCreationPayload** | [**TokenCreationPayload**](../model/TokenCreationPayload.md)| **yes**|  |
+
+
+### Return type
+
+Promise<[**UploadToken**](../model/UploadToken.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
+
+const tokenCreationPayload = {
+  ttl: 56, // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
+}; 
+
+const uploadToken = await client.uploadTokens.createToken(tokenCreationPayload);
+```
+
+
+---
+
+<a name="getToken"></a>
+## **`getToken()` - Retrieve upload token**
+
+
+You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **uploadToken** | **string**| **yes**| The unique identifier for the token you want information about. |
+
+
+### Return type
+
+Promise<[**UploadToken**](../model/UploadToken.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
+
+const uploadTokenId = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the token you want information about.
+
+const uploadToken = await client.uploadTokens.getToken(uploadTokenId);
+```
+
+
+---
 
 <a name="deleteToken"></a>
 ## **`deleteToken()` - Delete an upload token**
@@ -69,68 +131,6 @@ const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
  
 const uploadTokens = await client.uploadTokens.list();
         
-```
-
-
----
-
-<a name="getToken"></a>
-## **`getToken()` - Retrieve upload token**
-
-
-You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **uploadToken** | **string**| **yes**| The unique identifier for the token you want information about. |
-
-
-### Return type
-
-Promise<[**UploadToken**](../model/UploadToken.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
-
-const uploadTokenId = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the token you want information about.
-
-const uploadToken = await client.uploadTokens.getToken(uploadTokenId);
-```
-
-
----
-
-<a name="createToken"></a>
-## **`createToken()` - Generate an upload token**
-
-
-Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **tokenCreationPayload** | [**TokenCreationPayload**](../model/TokenCreationPayload.md)| **yes**|  |
-
-
-### Return type
-
-Promise<[**UploadToken**](../model/UploadToken.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
-
-const tokenCreationPayload = {
-  ttl: 56, // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
-}; 
-
-const uploadToken = await client.uploadTokens.createToken(tokenCreationPayload);
 ```
 
 

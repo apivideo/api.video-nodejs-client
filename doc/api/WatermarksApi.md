@@ -4,10 +4,51 @@ All URIs are relative to *https://ws.api.video*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
+| [**upload()**](WatermarksApi.md#upload) | Upload a watermark | **POST** /watermarks |
 | [**delete()**](WatermarksApi.md#delete) | Delete a watermark | **DELETE** /watermarks/{watermarkId} |
 | [**list()**](WatermarksApi.md#list) | List all watermarks | **GET** /watermarks |
-| [**upload()**](WatermarksApi.md#upload) | Upload a watermark | **POST** /watermarks |
 
+
+<a name="upload"></a>
+## **`upload()` - Upload a watermark**
+
+
+Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **file** | **string**| **yes**| The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. |
+
+
+### Return type
+
+Promise<[**Watermark**](../model/Watermark.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+// Upload a watermark
+const watermark = await client.watermarks.upload('test/data/test.jpg');
+
+// create a video with watermark
+const watermarkVideo = await client.videos.create({
+  title: 'Nodejs - watermark',
+  watermark: {
+    id: watermark.watermarkId,
+    top: '0px',
+    left: '0px',
+    width: '100px',
+    height: '100px',
+  },
+});
+```
+
+
+---
 
 <a name="delete"></a>
 ## **`delete()` - Delete a watermark**
@@ -70,47 +111,6 @@ const watermarks = await client.watermarks.list({});
 // retrieve the 5 first watermarks, ordered by creation date
 const watermarks2 = await client.watermarks.list({});
 createdAt
-```
-
-
----
-
-<a name="upload"></a>
-## **`upload()` - Upload a watermark**
-
-
-Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **file** | **string**| **yes**| The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. |
-
-
-### Return type
-
-Promise<[**Watermark**](../model/Watermark.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-// Upload a watermark
-const watermark = await client.watermarks.upload('test/data/test.jpg');
-
-// create a video with watermark
-const watermarkVideo = await client.videos.create({
-  title: 'Nodejs - watermark',
-  watermark: {
-    id: watermark.watermarkId,
-    top: '0px',
-    left: '0px',
-    width: '100px',
-    height: '100px',
-  },
-});
 ```
 
 

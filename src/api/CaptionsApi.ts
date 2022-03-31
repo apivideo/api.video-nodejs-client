@@ -41,23 +41,36 @@ export default class CaptionsApi {
   }
 
   /**
-   * Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
-   * Delete a caption
-   * @param videoId The unique identifier for the video you want to delete a caption from.
-   * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+   * Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
+   * Upload a caption
+   * @param videoId The unique identifier for the video you want to add a caption to.
+   * @param language A valid BCP 47 language representation.
+   * @param file The video text track (VTT) you want to upload.
    */
-  public async delete(videoId: string, language: string): Promise<void> {
+  public async upload(
+    videoId: string,
+    language: string,
+    file: string
+  ): Promise<Caption> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
       throw new Error(
-        'Required parameter videoId was null or undefined when calling delete.'
+        'Required parameter videoId was null or undefined when calling upload.'
       );
     }
     if (language === null || language === undefined) {
       throw new Error(
-        'Required parameter language was null or undefined when calling delete.'
+        'Required parameter language was null or undefined when calling upload.'
       );
+    }
+    if (!existsSync(file)) {
+      throw new Error(`${file} must be a readable source file`);
+    }
+
+    const length = statSync(file).size;
+    if (length <= 0) {
+      throw new Error(`${file} is empty`);
     }
     // Path Params
     const localVarPath = '/videos/{videoId}/captions/{language}'
@@ -65,8 +78,18 @@ export default class CaptionsApi {
       .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)))
       .replace('{' + 'language' + '}', encodeURIComponent(String(language)));
 
-    queryParams.method = 'DELETE';
+    queryParams.method = 'POST';
 
+    const formData = new FormData();
+
+    const filename = path.basename(file);
+    formData.append(
+      filename,
+      Buffer.isBuffer(file) ? file : createReadStream(file),
+      filename
+    );
+
+    queryParams.body = formData;
     return this.httpClient
       .call(localVarPath, queryParams)
       .then(
@@ -76,73 +99,9 @@ export default class CaptionsApi {
               response.body,
               response.headers['content-type']
             ),
-            'void',
+            'Caption',
             ''
-          ) as void
-      );
-  }
-
-  /**
-   * Retrieve a list of available captions for the videoId you provide.
-   * List video captions
-   * @param {Object} searchParams
-   * @param { string } searchParams.videoId The unique identifier for the video you want to retrieve a list of captions for.
-   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
-   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
-   */
-  public async list({
-    videoId,
-    currentPage,
-    pageSize,
-  }: {
-    videoId: string;
-    currentPage?: number;
-    pageSize?: number;
-  }): Promise<CaptionsListResponse> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (videoId === null || videoId === undefined) {
-      throw new Error(
-        'Required parameter videoId was null or undefined when calling list.'
-      );
-    }
-    // Path Params
-    const localVarPath = '/videos/{videoId}/captions'
-      .substring(1)
-      .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)));
-
-    // Query Params
-    const urlSearchParams = new URLSearchParams();
-
-    if (currentPage !== undefined) {
-      urlSearchParams.append(
-        'currentPage',
-        ObjectSerializer.serialize(currentPage, 'number', '')
-      );
-    }
-    if (pageSize !== undefined) {
-      urlSearchParams.append(
-        'pageSize',
-        ObjectSerializer.serialize(pageSize, 'number', '')
-      );
-    }
-
-    queryParams.searchParams = urlSearchParams;
-
-    queryParams.method = 'GET';
-
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'CaptionsListResponse',
-            ''
-          ) as CaptionsListResponse
+          ) as Caption
       );
   }
 
@@ -258,36 +217,23 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
   }
 
   /**
-   * Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
-   * Upload a caption
-   * @param videoId The unique identifier for the video you want to add a caption to.
-   * @param language A valid BCP 47 language representation.
-   * @param file The video text track (VTT) you want to upload.
+   * Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
+   * Delete a caption
+   * @param videoId The unique identifier for the video you want to delete a caption from.
+   * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
    */
-  public async upload(
-    videoId: string,
-    language: string,
-    file: string
-  ): Promise<Caption> {
+  public async delete(videoId: string, language: string): Promise<void> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
       throw new Error(
-        'Required parameter videoId was null or undefined when calling upload.'
+        'Required parameter videoId was null or undefined when calling delete.'
       );
     }
     if (language === null || language === undefined) {
       throw new Error(
-        'Required parameter language was null or undefined when calling upload.'
+        'Required parameter language was null or undefined when calling delete.'
       );
-    }
-    if (!existsSync(file)) {
-      throw new Error(`${file} must be a readable source file`);
-    }
-
-    const length = statSync(file).size;
-    if (length <= 0) {
-      throw new Error(`${file} is empty`);
     }
     // Path Params
     const localVarPath = '/videos/{videoId}/captions/{language}'
@@ -295,18 +241,8 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
       .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)))
       .replace('{' + 'language' + '}', encodeURIComponent(String(language)));
 
-    queryParams.method = 'POST';
+    queryParams.method = 'DELETE';
 
-    const formData = new FormData();
-
-    const filename = path.basename(file);
-    formData.append(
-      filename,
-      Buffer.isBuffer(file) ? file : createReadStream(file),
-      filename
-    );
-
-    queryParams.body = formData;
     return this.httpClient
       .call(localVarPath, queryParams)
       .then(
@@ -316,9 +252,73 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
               response.body,
               response.headers['content-type']
             ),
-            'Caption',
+            'void',
             ''
-          ) as Caption
+          ) as void
+      );
+  }
+
+  /**
+   * Retrieve a list of available captions for the videoId you provide.
+   * List video captions
+   * @param {Object} searchParams
+   * @param { string } searchParams.videoId The unique identifier for the video you want to retrieve a list of captions for.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async list({
+    videoId,
+    currentPage,
+    pageSize,
+  }: {
+    videoId: string;
+    currentPage?: number;
+    pageSize?: number;
+  }): Promise<CaptionsListResponse> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (videoId === null || videoId === undefined) {
+      throw new Error(
+        'Required parameter videoId was null or undefined when calling list.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/videos/{videoId}/captions'
+      .substring(1)
+      .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)));
+
+    // Query Params
+    const urlSearchParams = new URLSearchParams();
+
+    if (currentPage !== undefined) {
+      urlSearchParams.append(
+        'currentPage',
+        ObjectSerializer.serialize(currentPage, 'number', '')
+      );
+    }
+    if (pageSize !== undefined) {
+      urlSearchParams.append(
+        'pageSize',
+        ObjectSerializer.serialize(pageSize, 'number', '')
+      );
+    }
+
+    queryParams.searchParams = urlSearchParams;
+
+    queryParams.method = 'GET';
+
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'CaptionsListResponse',
+            ''
+          ) as CaptionsListResponse
       );
   }
 }

@@ -42,135 +42,42 @@ export default class PlayerThemesApi {
   }
 
   /**
-   * Delete a player if you no longer need it. You can delete any player that you have the player ID for.
-   * Delete a player
-   * @param playerId The unique identifier for the player you want to delete.
+   * Create a player for your video, and customise it.
+   * Create a player
+   * @param playerThemeCreationPayload
    */
-  public async delete(playerId: string): Promise<void> {
+  public async create(
+    playerThemeCreationPayload: PlayerThemeCreationPayload = {}
+  ): Promise<PlayerTheme> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
-    if (playerId === null || playerId === undefined) {
+    if (
+      playerThemeCreationPayload === null ||
+      playerThemeCreationPayload === undefined
+    ) {
       throw new Error(
-        'Required parameter playerId was null or undefined when calling delete.'
+        'Required parameter playerThemeCreationPayload was null or undefined when calling create.'
       );
     }
-    // Path Params
-    const localVarPath = '/players/{playerId}'
-      .substring(1)
-      .replace('{' + 'playerId' + '}', encodeURIComponent(String(playerId)));
-
-    queryParams.method = 'DELETE';
-
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
-  }
-
-  /**
-   * Delete the logo associated to a player.
-   * Delete logo
-   * @param playerId The unique identifier for the player.
-   */
-  public async deleteLogo(playerId: string): Promise<void> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (playerId === null || playerId === undefined) {
-      throw new Error(
-        'Required parameter playerId was null or undefined when calling deleteLogo.'
-      );
-    }
-    // Path Params
-    const localVarPath = '/players/{playerId}/logo'
-      .substring(1)
-      .replace('{' + 'playerId' + '}', encodeURIComponent(String(playerId)));
-
-    queryParams.method = 'DELETE';
-
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
-  }
-
-  /**
-   * Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
-   * List all player themes
-   * @param {Object} searchParams
-   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
-   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
-   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
-   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
-   */
-  public async list({
-    sortBy,
-    sortOrder,
-    currentPage,
-    pageSize,
-  }: {
-    sortBy?: 'name' | 'createdAt' | 'updatedAt';
-    sortOrder?: 'asc' | 'desc';
-    currentPage?: number;
-    pageSize?: number;
-  } = {}): Promise<PlayerThemesListResponse> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
     // Path Params
     const localVarPath = '/players'.substring(1);
 
-    // Query Params
-    const urlSearchParams = new URLSearchParams();
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      'application/json',
+    ]);
+    queryParams.headers['Content-Type'] = contentType;
 
-    if (sortBy !== undefined) {
-      urlSearchParams.append(
-        'sortBy',
-        ObjectSerializer.serialize(
-          sortBy,
-          "'name' | 'createdAt' | 'updatedAt'",
-          ''
-        )
-      );
-    }
-    if (sortOrder !== undefined) {
-      urlSearchParams.append(
-        'sortOrder',
-        ObjectSerializer.serialize(sortOrder, "'asc' | 'desc'", '')
-      );
-    }
-    if (currentPage !== undefined) {
-      urlSearchParams.append(
-        'currentPage',
-        ObjectSerializer.serialize(currentPage, 'number', '')
-      );
-    }
-    if (pageSize !== undefined) {
-      urlSearchParams.append(
-        'pageSize',
-        ObjectSerializer.serialize(pageSize, 'number', '')
-      );
-    }
+    queryParams.body = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(
+        playerThemeCreationPayload,
+        'PlayerThemeCreationPayload',
+        ''
+      ),
+      contentType
+    );
 
-    queryParams.searchParams = urlSearchParams;
-
-    queryParams.method = 'GET';
+    queryParams.method = 'POST';
 
     return this.httpClient
       .call(localVarPath, queryParams)
@@ -181,9 +88,9 @@ export default class PlayerThemesApi {
               response.body,
               response.headers['content-type']
             ),
-            'PlayerThemesListResponse',
+            'PlayerTheme',
             ''
-          ) as PlayerThemesListResponse
+          ) as PlayerTheme
       );
   }
 
@@ -285,42 +192,24 @@ export default class PlayerThemesApi {
   }
 
   /**
-   * Create a player for your video, and customise it.
-   * Create a player
-   * @param playerThemeCreationPayload
+   * Delete a player if you no longer need it. You can delete any player that you have the player ID for.
+   * Delete a player
+   * @param playerId The unique identifier for the player you want to delete.
    */
-  public async create(
-    playerThemeCreationPayload: PlayerThemeCreationPayload = {}
-  ): Promise<PlayerTheme> {
+  public async delete(playerId: string): Promise<void> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
-    if (
-      playerThemeCreationPayload === null ||
-      playerThemeCreationPayload === undefined
-    ) {
+    if (playerId === null || playerId === undefined) {
       throw new Error(
-        'Required parameter playerThemeCreationPayload was null or undefined when calling create.'
+        'Required parameter playerId was null or undefined when calling delete.'
       );
     }
     // Path Params
-    const localVarPath = '/players'.substring(1);
+    const localVarPath = '/players/{playerId}'
+      .substring(1)
+      .replace('{' + 'playerId' + '}', encodeURIComponent(String(playerId)));
 
-    // Body Params
-    const contentType = ObjectSerializer.getPreferredMediaType([
-      'application/json',
-    ]);
-    queryParams.headers['Content-Type'] = contentType;
-
-    queryParams.body = ObjectSerializer.stringify(
-      ObjectSerializer.serialize(
-        playerThemeCreationPayload,
-        'PlayerThemeCreationPayload',
-        ''
-      ),
-      contentType
-    );
-
-    queryParams.method = 'POST';
+    queryParams.method = 'DELETE';
 
     return this.httpClient
       .call(localVarPath, queryParams)
@@ -331,9 +220,85 @@ export default class PlayerThemesApi {
               response.body,
               response.headers['content-type']
             ),
-            'PlayerTheme',
+            'void',
             ''
-          ) as PlayerTheme
+          ) as void
+      );
+  }
+
+  /**
+   * Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+   * List all player themes
+   * @param {Object} searchParams
+   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async list({
+    sortBy,
+    sortOrder,
+    currentPage,
+    pageSize,
+  }: {
+    sortBy?: 'name' | 'createdAt' | 'updatedAt';
+    sortOrder?: 'asc' | 'desc';
+    currentPage?: number;
+    pageSize?: number;
+  } = {}): Promise<PlayerThemesListResponse> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    // Path Params
+    const localVarPath = '/players'.substring(1);
+
+    // Query Params
+    const urlSearchParams = new URLSearchParams();
+
+    if (sortBy !== undefined) {
+      urlSearchParams.append(
+        'sortBy',
+        ObjectSerializer.serialize(
+          sortBy,
+          "'name' | 'createdAt' | 'updatedAt'",
+          ''
+        )
+      );
+    }
+    if (sortOrder !== undefined) {
+      urlSearchParams.append(
+        'sortOrder',
+        ObjectSerializer.serialize(sortOrder, "'asc' | 'desc'", '')
+      );
+    }
+    if (currentPage !== undefined) {
+      urlSearchParams.append(
+        'currentPage',
+        ObjectSerializer.serialize(currentPage, 'number', '')
+      );
+    }
+    if (pageSize !== undefined) {
+      urlSearchParams.append(
+        'pageSize',
+        ObjectSerializer.serialize(pageSize, 'number', '')
+      );
+    }
+
+    queryParams.searchParams = urlSearchParams;
+
+    queryParams.method = 'GET';
+
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'PlayerThemesListResponse',
+            ''
+          ) as PlayerThemesListResponse
       );
   }
 
@@ -397,6 +362,41 @@ export default class PlayerThemesApi {
             'PlayerTheme',
             ''
           ) as PlayerTheme
+      );
+  }
+
+  /**
+   * Delete the logo associated to a player.
+   * Delete logo
+   * @param playerId The unique identifier for the player.
+   */
+  public async deleteLogo(playerId: string): Promise<void> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (playerId === null || playerId === undefined) {
+      throw new Error(
+        'Required parameter playerId was null or undefined when calling deleteLogo.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/players/{playerId}/logo'
+      .substring(1)
+      .replace('{' + 'playerId' + '}', encodeURIComponent(String(playerId)));
+
+    queryParams.method = 'DELETE';
+
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'void',
+            ''
+          ) as void
       );
   }
 }

@@ -4,75 +4,44 @@ All URIs are relative to *https://ws.api.video*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
-| [**delete()**](CaptionsApi.md#delete) | Delete a caption | **DELETE** /videos/{videoId}/captions/{language} |
-| [**list()**](CaptionsApi.md#list) | List video captions | **GET** /videos/{videoId}/captions |
+| [**upload()**](CaptionsApi.md#upload) | Upload a caption | **POST** /videos/{videoId}/captions/{language} |
 | [**get()**](CaptionsApi.md#get) | Retrieve a caption | **GET** /videos/{videoId}/captions/{language} |
 | [**update()**](CaptionsApi.md#update) | Update a caption | **PATCH** /videos/{videoId}/captions/{language} |
-| [**upload()**](CaptionsApi.md#upload) | Upload a caption | **POST** /videos/{videoId}/captions/{language} |
+| [**delete()**](CaptionsApi.md#delete) | Delete a caption | **DELETE** /videos/{videoId}/captions/{language} |
+| [**list()**](CaptionsApi.md#list) | List video captions | **GET** /videos/{videoId}/captions |
 
 
-<a name="delete"></a>
-## **`delete()` - Delete a caption**
+<a name="upload"></a>
+## **`upload()` - Upload a caption**
 
 
-Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
+Upload a VTT file to add captions to your video.
+
+ Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
 
 ### Parameters
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **videoId** | **string**| **yes**| The unique identifier for the video you want to delete a caption from. |
- | **language** | **string**| **yes**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
+ | **videoId** | **string**| **yes**| The unique identifier for the video you want to add a caption to. |
+ | **language** | **string**| **yes**| A valid BCP 47 language representation. |
+ | **file** | **string**| **yes**| The video text track (VTT) you want to upload. |
 
 
 ### Return type
 
-Promise<[**void**](../model/.md)>.
+Promise<[**Caption**](../model/Caption.md)>.
 
 
 ### Example
 ```js
 const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
-const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklgc'; // The unique identifier for the video you want to delete a caption from.
-const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to add a caption to.
+const language = 'en'; // A valid BCP 47 language representation.
+const file = './en.vtt'; // The video text track (VTT) you want to upload.
 
-await client.captions.delete(videoId, language);
- 
-```
-
-
----
-
-<a name="list"></a>
-## **`list()` - List video captions**
-
-
-Retrieve a list of available captions for the videoId you provide.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **videoId** | **string**| **yes**| The unique identifier for the video you want to retrieve a list of captions for. |
- | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
- | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |
-
-
-### Return type
-
-Promise<[**CaptionsListResponse**](../model/CaptionsListResponse.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const captions = await client.captions.list({
-  videoId 'vi4k0jvEUuaTdRAEjQ4Prklg', // The unique identifier for the video you want to retrieve a list of captions for.
-  currentPage: 2, // Choose the number of search results to return per page. Minimum value: 1
-  pageSize: 30, // Results per page. Allowed values 1-100, default is 25.
-); 
+const caption = await client.captions.upload(videoId, language, file); 
 ```
 
 
@@ -149,37 +118,68 @@ const caption = await client.captions.update(videoId, language, captionsUpdatePa
 
 ---
 
-<a name="upload"></a>
-## **`upload()` - Upload a caption**
+<a name="delete"></a>
+## **`delete()` - Delete a caption**
 
 
-Upload a VTT file to add captions to your video.
-
- Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
+Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
 
 ### Parameters
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **videoId** | **string**| **yes**| The unique identifier for the video you want to add a caption to. |
- | **language** | **string**| **yes**| A valid BCP 47 language representation. |
- | **file** | **string**| **yes**| The video text track (VTT) you want to upload. |
+ | **videoId** | **string**| **yes**| The unique identifier for the video you want to delete a caption from. |
+ | **language** | **string**| **yes**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
 
 
 ### Return type
 
-Promise<[**Caption**](../model/Caption.md)>.
+Promise<[**void**](../model/.md)>.
 
 
 ### Example
 ```js
 const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
 
-const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to add a caption to.
-const language = 'en'; // A valid BCP 47 language representation.
-const file = './en.vtt'; // The video text track (VTT) you want to upload.
+const videoId = 'vi4k0jvEUuaTdRAEjQ4Prklgc'; // The unique identifier for the video you want to delete a caption from.
+const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
 
-const caption = await client.captions.upload(videoId, language, file); 
+await client.captions.delete(videoId, language);
+ 
+```
+
+
+---
+
+<a name="list"></a>
+## **`list()` - List video captions**
+
+
+Retrieve a list of available captions for the videoId you provide.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **videoId** | **string**| **yes**| The unique identifier for the video you want to retrieve a list of captions for. |
+ | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
+ | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |
+
+
+### Return type
+
+Promise<[**CaptionsListResponse**](../model/CaptionsListResponse.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const captions = await client.captions.list({
+  videoId 'vi4k0jvEUuaTdRAEjQ4Prklg', // The unique identifier for the video you want to retrieve a list of captions for.
+  currentPage: 2, // Choose the number of search results to return per page. Minimum value: 1
+  pageSize: 30, // Results per page. Allowed values 1-100, default is 25.
+); 
 ```
 
 

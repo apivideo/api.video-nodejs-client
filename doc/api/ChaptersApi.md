@@ -4,11 +4,81 @@ All URIs are relative to *https://ws.api.video*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
+| [**upload()**](ChaptersApi.md#upload) | Upload a chapter | **POST** /videos/{videoId}/chapters/{language} |
+| [**get()**](ChaptersApi.md#get) | Retrieve a chapter | **GET** /videos/{videoId}/chapters/{language} |
 | [**delete()**](ChaptersApi.md#delete) | Delete a chapter | **DELETE** /videos/{videoId}/chapters/{language} |
 | [**list()**](ChaptersApi.md#list) | List video chapters | **GET** /videos/{videoId}/chapters |
-| [**get()**](ChaptersApi.md#get) | Retrieve a chapter | **GET** /videos/{videoId}/chapters/{language} |
-| [**upload()**](ChaptersApi.md#upload) | Upload a chapter | **POST** /videos/{videoId}/chapters/{language} |
 
+
+<a name="upload"></a>
+## **`upload()` - Upload a chapter**
+
+
+Upload a VTT file to add chapters to your video.
+
+Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **videoId** | **string**| **yes**| The unique identifier for the video you want to upload a chapter for. |
+ | **language** | **string**| **yes**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
+ | **file** | **string**| **yes**| The VTT file describing the chapters you want to upload. |
+
+
+### Return type
+
+Promise<[**Chapter**](../model/Chapter.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to upload a chapter for.
+const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+const file = './en.vtt'; // The VTT file describing the chapters you want to upload.
+
+const chapter = await client.chapters.upload(videoId, language, file); 
+```
+
+
+---
+
+<a name="get"></a>
+## **`get()` - Retrieve a chapter**
+
+
+Retrieve a chapter for a video in a specific language. 
+
+Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **videoId** | **string**| **yes**| The unique identifier for the video you want to show a chapter for. |
+ | **language** | **string**| **yes**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
+
+
+### Return type
+
+Promise<[**Chapter**](../model/Chapter.md)>.
+
+
+### Example
+```js
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to show a chapter for.
+const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+
+const chapter = await client.chapters.get(videoId, language); 
+```
+
+
+---
 
 <a name="delete"></a>
 ## **`delete()` - Delete a chapter**
@@ -71,76 +141,6 @@ const captions = await client.chapters.list({
   currentPage: 2, // Choose the number of search results to return per page. Minimum value: 1
   pageSize: 30, // Results per page. Allowed values 1-100, default is 25.
 );  
-```
-
-
----
-
-<a name="get"></a>
-## **`get()` - Retrieve a chapter**
-
-
-Retrieve a chapter for a video in a specific language. 
-
-Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **videoId** | **string**| **yes**| The unique identifier for the video you want to show a chapter for. |
- | **language** | **string**| **yes**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
-
-
-### Return type
-
-Promise<[**Chapter**](../model/Chapter.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to show a chapter for.
-const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-
-const chapter = await client.chapters.get(videoId, language); 
-```
-
-
----
-
-<a name="upload"></a>
-## **`upload()` - Upload a chapter**
-
-
-Upload a VTT file to add chapters to your video.
-
-Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **videoId** | **string**| **yes**| The unique identifier for the video you want to upload a chapter for. |
- | **language** | **string**| **yes**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
- | **file** | **string**| **yes**| The VTT file describing the chapters you want to upload. |
-
-
-### Return type
-
-Promise<[**Chapter**](../model/Chapter.md)>.
-
-
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to upload a chapter for.
-const language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-const file = './en.vtt'; // The VTT file describing the chapters you want to upload.
-
-const chapter = await client.chapters.upload(videoId, language, file); 
 ```
 
 

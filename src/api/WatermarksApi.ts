@@ -40,6 +40,52 @@ export default class WatermarksApi {
   }
 
   /**
+   * Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+   * Upload a watermark
+   * @param file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.
+   */
+  public async upload(file: string): Promise<Watermark> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (!existsSync(file)) {
+      throw new Error(`${file} must be a readable source file`);
+    }
+
+    const length = statSync(file).size;
+    if (length <= 0) {
+      throw new Error(`${file} is empty`);
+    }
+    // Path Params
+    const localVarPath = '/watermarks'.substring(1);
+
+    queryParams.method = 'POST';
+
+    const formData = new FormData();
+
+    const filename = path.basename(file);
+    formData.append(
+      filename,
+      Buffer.isBuffer(file) ? file : createReadStream(file),
+      filename
+    );
+
+    queryParams.body = formData;
+    return this.httpClient
+      .call(localVarPath, queryParams)
+      .then(
+        (response) =>
+          ObjectSerializer.deserialize(
+            ObjectSerializer.parse(
+              response.body,
+              response.headers['content-type']
+            ),
+            'Watermark',
+            ''
+          ) as Watermark
+      );
+  }
+
+  /**
    * Delete a watermark. A watermark is a static image, directly burnt-into a video.
    * Delete a watermark
    * @param watermarkId The watermark ID for the watermark you want to delete.
@@ -146,52 +192,6 @@ export default class WatermarksApi {
             'WatermarksListResponse',
             ''
           ) as WatermarksListResponse
-      );
-  }
-
-  /**
-   * Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
-   * Upload a watermark
-   * @param file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.
-   */
-  public async upload(file: string): Promise<Watermark> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (!existsSync(file)) {
-      throw new Error(`${file} must be a readable source file`);
-    }
-
-    const length = statSync(file).size;
-    if (length <= 0) {
-      throw new Error(`${file} is empty`);
-    }
-    // Path Params
-    const localVarPath = '/watermarks'.substring(1);
-
-    queryParams.method = 'POST';
-
-    const formData = new FormData();
-
-    const filename = path.basename(file);
-    formData.append(
-      filename,
-      Buffer.isBuffer(file) ? file : createReadStream(file),
-      filename
-    );
-
-    queryParams.body = formData;
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Watermark',
-            ''
-          ) as Watermark
       );
   }
 }
