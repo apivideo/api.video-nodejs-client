@@ -34,7 +34,7 @@ export default class Video {
   /**
    * The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.
    */
-  'publishedAt'?: string;
+  'publishedAt'?: Date;
   /**
    * The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.
    */
@@ -96,8 +96,8 @@ export default class Video {
     {
       name: 'publishedAt',
       baseName: 'publishedAt',
-      type: 'string',
-      format: '',
+      type: 'Date',
+      format: 'date-time',
     },
     {
       name: 'updatedAt',

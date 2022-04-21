@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.2.6] - 2022-04-21
+- Fix `video.publishedAt` type
+
 ## [2.2.5] - 2022-03-21
 - Add `ingest.receivedParts` attribute in GET /videos/{video_id}/status
 
