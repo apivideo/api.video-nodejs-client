@@ -215,7 +215,7 @@ The uploaded image maximum size should be 200x100 and its weight should be 100KB
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **playerId** | **string**| **yes**| The unique identifier for the player. |
- | **file** | **string**| **yes**| The name of the file you want to use for your logo. |
+ | **file** | **string \| Readable \| Buffer**| **yes**| The name of the file you want to use for your logo. |
  | **link** | **string**| no| A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. |
 
 

@@ -24,7 +24,7 @@ Chapters help break the video into sections. Read our [tutorial](https://api.vid
 | ------------- | ------------- | ------------- | ------------- |
  | **videoId** | **string**| **yes**| The unique identifier for the video you want to upload a chapter for. |
  | **language** | **string**| **yes**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
- | **file** | **string**| **yes**| The VTT file describing the chapters you want to upload. |
+ | **file** | **string \| Readable \| Buffer**| **yes**| The VTT file describing the chapters you want to upload. |
 
 
 ### Return type

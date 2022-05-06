@@ -41,11 +41,7 @@ import PlayerThemeAssets from './model/PlayerThemeAssets';
 import PlayerThemeCreationPayload from './model/PlayerThemeCreationPayload';
 import PlayerThemeUpdatePayload from './model/PlayerThemeUpdatePayload';
 import PlayerThemesListResponse from './model/PlayerThemesListResponse';
-import Quality, {
-  QualityTypeEnum,
-  QualityQualityEnum,
-  QualityStatusEnum,
-} from './model/Quality';
+import Quality from './model/Quality';
 import RawStatisticsListLiveStreamAnalyticsResponse from './model/RawStatisticsListLiveStreamAnalyticsResponse';
 import RawStatisticsListPlayerSessionEventsResponse from './model/RawStatisticsListPlayerSessionEventsResponse';
 import RawStatisticsListSessionsResponse from './model/RawStatisticsListSessionsResponse';
@@ -70,9 +66,7 @@ import VideoSourceLiveStreamLink from './model/VideoSourceLiveStreamLink';
 import VideoStatus from './model/VideoStatus';
 import VideoStatusEncoding from './model/VideoStatusEncoding';
 import VideoStatusEncodingMetadata from './model/VideoStatusEncodingMetadata';
-import VideoStatusIngest, {
-  VideoStatusIngestStatusEnum,
-} from './model/VideoStatusIngest';
+import VideoStatusIngest from './model/VideoStatusIngest';
 import VideoStatusIngestReceivedParts from './model/VideoStatusIngestReceivedParts';
 import VideoThumbnailPickPayload from './model/VideoThumbnailPickPayload';
 import VideoUpdatePayload from './model/VideoUpdatePayload';
@@ -108,7 +102,7 @@ const enumsMap: Set<string> = new Set<string>([
   'VideoStatusIngestStatusEnum',
 ]);
 
-let typeMap: { [index: string]: any } = {
+const typeMap: { [index: string]: any } = {
   AccessToken: AccessToken,
   AuthenticatePayload: AuthenticatePayload,
   BadRequest: BadRequest,
@@ -205,9 +199,9 @@ export default class ObjectSerializer {
       // string.startsWith pre es6
       let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
       subType = subType.substring(0, subType.length - 1); // Type> => Type
-      let transformedData: any[] = [];
-      for (let index in data) {
-        let date = data[index];
+      const transformedData: any[] = [];
+      for (const index in data) {
+        const date = data[index];
         transformedData.push(ObjectSerializer.serialize(date, subType, format));
       }
       return transformedData;
@@ -235,10 +229,10 @@ export default class ObjectSerializer {
       type = this.findCorrectType(data, type);
 
       // get the map for the correct type.
-      let attributeTypes = typeMap[type].getAttributeTypeMap();
-      let instance: { [index: string]: any } = {};
-      for (let index in attributeTypes) {
-        let attributeType = attributeTypes[index];
+      const attributeTypes = typeMap[type].getAttributeTypeMap();
+      const instance: { [index: string]: any } = {};
+      for (const index in attributeTypes) {
+        const attributeType = attributeTypes[index];
         instance[attributeType.baseName] = ObjectSerializer.serialize(
           data[attributeType.name],
           attributeType.type,
@@ -260,9 +254,9 @@ export default class ObjectSerializer {
       // string.startsWith pre es6
       let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
       subType = subType.substring(0, subType.length - 1); // Type> => Type
-      let transformedData: any[] = [];
-      for (let index in data) {
-        let date = data[index];
+      const transformedData: any[] = [];
+      for (const index in data) {
+        const date = data[index];
         transformedData.push(
           ObjectSerializer.deserialize(date, subType, format)
         );
@@ -280,10 +274,10 @@ export default class ObjectSerializer {
         // dont know the type
         return data;
       }
-      let instance = new typeMap[type]();
-      let attributeTypes = typeMap[type].getAttributeTypeMap();
-      for (let index in attributeTypes) {
-        let attributeType = attributeTypes[index];
+      const instance = new typeMap[type]();
+      const attributeTypes = typeMap[type].getAttributeTypeMap();
+      for (const index in attributeTypes) {
+        const attributeType = attributeTypes[index];
         instance[attributeType.name] = ObjectSerializer.deserialize(
           data[attributeType.baseName],
           attributeType.type,
@@ -325,7 +319,7 @@ export default class ObjectSerializer {
       .map(this.normalizeMediaType)
       .filter((mt) => mt);
     let selectedMediaType: string | undefined = undefined;
-    let selectedRank: number = -Infinity;
+    let selectedRank = -Infinity;
     for (const mediaType of normalMediaTypes) {
       if (supportedMediaTypes[mediaType!] > selectedRank) {
         selectedMediaType = mediaType;

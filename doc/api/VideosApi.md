@@ -115,7 +115,7 @@ The latter allows you to split a video source into X chunks and send those chunk
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **videoId** | **string**| **yes**| Enter the videoId you want to use to upload your video. |
- | **file** | **string**| **yes**| The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. |
+ | **file** | **string \| Readable \| Buffer**| **yes**| The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. |
 | **progressListener** | **(event: UploadProgressEvent) => void \| undefined** | no | Optional upload progress listener |
 
 ### Return type
@@ -186,7 +186,7 @@ This method allows you to send a video using an upload token. Upload tokens are 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **token** | **string**| **yes**| The unique identifier for the token you want to use to upload a video. |
- | **file** | **string**| **yes**| The path to the video you want to upload. |
+ | **file** | **string \| Readable \| Buffer**| **yes**| The path to the video you want to upload. |
 | **progressListener** | **(event: UploadProgressEvent) => void \| undefined** | no | Optional upload progress listener |
 
 ### Return type
@@ -417,7 +417,7 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **videoId** | **string**| **yes**| Unique identifier of the chosen video  |
- | **file** | **string**| **yes**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. |
+ | **file** | **string \| Readable \| Buffer**| **yes**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. |
 
 
 ### Return type

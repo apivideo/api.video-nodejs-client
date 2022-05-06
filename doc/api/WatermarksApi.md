@@ -19,7 +19,7 @@ Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a s
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **file** | **string**| **yes**| The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. |
+ | **file** | **string \| Readable \| Buffer**| **yes**| The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. |
 
 
 ### Return type
