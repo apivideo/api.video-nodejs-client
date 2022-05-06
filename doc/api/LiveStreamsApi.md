@@ -223,7 +223,7 @@ Upload an image to use as a backdrop for your livestream. Tutorials that [update
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **liveStreamId** | **string**| **yes**| The unique ID for the live stream you want to upload. |
- | **file** | **string**| **yes**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. |
+ | **file** | **string \| Readable \| Buffer**| **yes**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. |
 
 
 ### Return type

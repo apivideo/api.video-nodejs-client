@@ -10,24 +10,15 @@
  */
 
 import path from 'path';
-import {
-  existsSync,
-  statSync,
-  createReadStream,
-  openSync,
-  read,
-  closeSync,
-} from 'fs';
-import { promisify } from 'util';
+import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
-import ProgressiveSession from '../model/ProgressiveSession';
-import BadRequest from '../model/BadRequest';
 import Chapter from '../model/Chapter';
 import ChaptersListResponse from '../model/ChaptersListResponse';
-import NotFound from '../model/NotFound';
+import { Readable } from 'stream';
+import { readableToBuffer } from '../HttpClient';
 
 /**
  * no description
@@ -49,7 +40,7 @@ export default class ChaptersApi {
   public async upload(
     videoId: string,
     language: string,
-    file: string
+    file: string | Readable | Buffer
   ): Promise<Chapter> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
@@ -63,14 +54,16 @@ export default class ChaptersApi {
         'Required parameter language was null or undefined when calling upload.'
       );
     }
-    if (!existsSync(file)) {
-      throw new Error(`${file} must be a readable source file`);
+    let fileName = 'file';
+    let fileBuffer = file;
+    if (typeof file === 'string') {
+      fileName = path.basename(file);
+      fileBuffer = createReadStream(file);
+    }
+    if (file instanceof Readable) {
+      fileBuffer = await readableToBuffer(file);
     }
 
-    const length = statSync(file).size;
-    if (length <= 0) {
-      throw new Error(`${file} is empty`);
-    }
     // Path Params
     const localVarPath = '/videos/{videoId}/chapters/{language}'
       .substring(1)
@@ -81,12 +74,7 @@ export default class ChaptersApi {
 
     const formData = new FormData();
 
-    const filename = path.basename(file);
-    formData.append(
-      filename,
-      Buffer.isBuffer(file) ? file : createReadStream(file),
-      filename
-    );
+    formData.append(fileName, fileBuffer, fileName);
 
     queryParams.body = formData;
     return this.httpClient

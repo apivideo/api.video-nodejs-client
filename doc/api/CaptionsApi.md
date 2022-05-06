@@ -25,7 +25,7 @@ Upload a VTT file to add captions to your video.
 | ------------- | ------------- | ------------- | ------------- |
  | **videoId** | **string**| **yes**| The unique identifier for the video you want to add a caption to. |
  | **language** | **string**| **yes**| A valid BCP 47 language representation. |
- | **file** | **string**| **yes**| The video text track (VTT) you want to upload. |
+ | **file** | **string \| Readable \| Buffer**| **yes**| The video text track (VTT) you want to upload. |
 
 
 ### Return type

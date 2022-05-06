@@ -10,26 +10,17 @@
  */
 
 import path from 'path';
-import {
-  existsSync,
-  statSync,
-  createReadStream,
-  openSync,
-  read,
-  closeSync,
-} from 'fs';
-import { promisify } from 'util';
+import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
-import ProgressiveSession from '../model/ProgressiveSession';
-import BadRequest from '../model/BadRequest';
-import NotFound from '../model/NotFound';
 import PlayerTheme from '../model/PlayerTheme';
 import PlayerThemeCreationPayload from '../model/PlayerThemeCreationPayload';
 import PlayerThemeUpdatePayload from '../model/PlayerThemeUpdatePayload';
 import PlayerThemesListResponse from '../model/PlayerThemesListResponse';
+import { Readable } from 'stream';
+import { readableToBuffer } from '../HttpClient';
 
 /**
  * no description
@@ -311,7 +302,7 @@ export default class PlayerThemesApi {
    */
   public async uploadLogo(
     playerId: string,
-    file: string,
+    file: string | Readable | Buffer,
     link?: string
   ): Promise<PlayerTheme> {
     const queryParams: QueryOptions = {};
@@ -321,14 +312,16 @@ export default class PlayerThemesApi {
         'Required parameter playerId was null or undefined when calling uploadLogo.'
       );
     }
-    if (!existsSync(file)) {
-      throw new Error(`${file} must be a readable source file`);
+    let fileName = 'file';
+    let fileBuffer = file;
+    if (typeof file === 'string') {
+      fileName = path.basename(file);
+      fileBuffer = createReadStream(file);
+    }
+    if (file instanceof Readable) {
+      fileBuffer = await readableToBuffer(file);
     }
 
-    const length = statSync(file).size;
-    if (length <= 0) {
-      throw new Error(`${file} is empty`);
-    }
     // Path Params
     const localVarPath = '/players/{playerId}/logo'
       .substring(1)
@@ -338,12 +331,7 @@ export default class PlayerThemesApi {
 
     const formData = new FormData();
 
-    const filename = path.basename(file);
-    formData.append(
-      filename,
-      Buffer.isBuffer(file) ? file : createReadStream(file),
-      filename
-    );
+    formData.append(fileName, fileBuffer, fileName);
 
     if (typeof link !== undefined) {
       formData.append('link', link);

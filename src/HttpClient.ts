@@ -19,6 +19,8 @@ import got, {
 import ObjectSerializer from './ObjectSerializer';
 import ApiVideoError from './ApiVideoError';
 import AccessToken from './model/AccessToken';
+import { Readable, Stream } from 'stream';
+import FormData from 'form-data';
 
 export type QueryOptions = Got | ExtendOptions;
 
@@ -44,7 +46,7 @@ export default class HttpClient {
     this.tokenType = 'Bearer';
     this.headers = {
       Accept: 'application/json, */*;q=0.8',
-      'AV-Origin-Client': 'nodejs:2.2.6',
+      'AV-Origin-Client': 'nodejs:2.2.7',
       ...(params.applicationName
         ? {
             'AV-Origin-App': `${params.applicationName}${
@@ -159,4 +161,27 @@ export default class HttpClient {
   call(path: string, queryOptions?: QueryOptions) {
     return this.baseRequest.extend(queryOptions || {})(path);
   }
+}
+
+export async function readableToBuffer(readable: Readable): Promise<Buffer> {
+  const writableStream = new Stream.Writable({
+    defaultEncoding: 'utf-8',
+  });
+  const data: Buffer[] = [];
+  writableStream._write = (chunk, encoding, next) => {
+    data.push(Buffer.from(chunk, encoding));
+    next();
+  };
+
+  return new Promise((resolve, reject) => {
+    Stream.pipeline(readable, writableStream, async (err) => {
+      if (err) {
+        reject(err);
+      }
+      const form = new FormData();
+
+      const buffer = Buffer.concat(data);
+      resolve(buffer);
+    });
+  });
 }

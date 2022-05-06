@@ -10,22 +10,12 @@
  */
 
 import path from 'path';
-import {
-  existsSync,
-  statSync,
-  createReadStream,
-  openSync,
-  read,
-  closeSync,
-} from 'fs';
-import { promisify } from 'util';
+import { existsSync, statSync, createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
 import ProgressiveSession from '../model/ProgressiveSession';
-import BadRequest from '../model/BadRequest';
-import NotFound from '../model/NotFound';
 import Video from '../model/Video';
 import VideoCreationPayload from '../model/VideoCreationPayload';
 import VideoStatus from '../model/VideoStatus';
@@ -33,6 +23,8 @@ import VideoThumbnailPickPayload from '../model/VideoThumbnailPickPayload';
 import VideoUpdatePayload from '../model/VideoUpdatePayload';
 import VideosListResponse from '../model/VideosListResponse';
 import UploadProgressEvent from '../model/UploadProgressEvent';
+import { Readable } from 'stream';
+import { readableToBuffer } from '../HttpClient';
 
 /**
  * no description
@@ -137,6 +129,7 @@ export default class VideosApi {
             'Required parameter videoId was null or undefined when calling upload.'
           );
         }
+
         if (!existsSync(file)) {
           throw new Error(`${file} must be a readable source file`);
         }
@@ -291,8 +284,6 @@ The latter allows you to split a video source into X chunks and send those chunk
         uploadChunkSize = length - offset;
       }
 
-      console.log(`Uploading ${offset}-${offset + uploadChunkSize}...`);
-
       const filename = path.basename(file);
       const chunkFormData = new FormData();
       stream = createReadStream(file, {
@@ -385,6 +376,7 @@ The latter allows you to split a video source into X chunks and send those chunk
             'Required parameter token was null or undefined when calling uploadWithUploadToken.'
           );
         }
+
         if (!existsSync(file)) {
           throw new Error(`${file} must be a readable source file`);
         }
@@ -547,8 +539,6 @@ The latter allows you to split a video source into X chunks and send those chunk
       if (offset + uploadChunkSize > length) {
         uploadChunkSize = length - offset;
       }
-
-      console.log(`Uploading ${offset}-${offset + uploadChunkSize}...`);
 
       const filename = path.basename(file);
       const chunkFormData = new FormData();
@@ -873,7 +863,10 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
    * @param videoId Unique identifier of the chosen video 
    * @param file The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
    */
-  public async uploadThumbnail(videoId: string, file: string): Promise<Video> {
+  public async uploadThumbnail(
+    videoId: string,
+    file: string | Readable | Buffer
+  ): Promise<Video> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -881,14 +874,16 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
         'Required parameter videoId was null or undefined when calling uploadThumbnail.'
       );
     }
-    if (!existsSync(file)) {
-      throw new Error(`${file} must be a readable source file`);
+    let fileName = 'file';
+    let fileBuffer = file;
+    if (typeof file === 'string') {
+      fileName = path.basename(file);
+      fileBuffer = createReadStream(file);
+    }
+    if (file instanceof Readable) {
+      fileBuffer = await readableToBuffer(file);
     }
 
-    const length = statSync(file).size;
-    if (length <= 0) {
-      throw new Error(`${file} is empty`);
-    }
     // Path Params
     const localVarPath = '/videos/{videoId}/thumbnail'
       .substring(1)
@@ -898,12 +893,7 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
 
     const formData = new FormData();
 
-    const filename = path.basename(file);
-    formData.append(
-      filename,
-      Buffer.isBuffer(file) ? file : createReadStream(file),
-      filename
-    );
+    formData.append(fileName, fileBuffer, fileName);
 
     queryParams.body = formData;
     return this.httpClient
