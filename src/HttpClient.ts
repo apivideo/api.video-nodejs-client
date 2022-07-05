@@ -39,6 +39,8 @@ export default class HttpClient {
     chunkSize: number;
     applicationName?: string;
     applicationVersion?: string;
+    sdkName?: string;
+    sdkVersion?: string;
   }) {
     this.apiKey = params.apiKey;
     this.baseUri = params.baseUri;
@@ -46,12 +48,15 @@ export default class HttpClient {
     this.tokenType = 'Bearer';
     this.headers = {
       Accept: 'application/json, */*;q=0.8',
-      'AV-Origin-Client': 'nodejs:2.2.7',
-      ...(params.applicationName
+      'AV-Origin-Client': 'nodejs:2.2.8',
+      ...(params.applicationName && params.applicationVersion
         ? {
-            'AV-Origin-App': `${params.applicationName}${
-              params.applicationVersion ? ':' + params.applicationVersion : ''
-            }`,
+            'AV-Origin-App': `${params.applicationName}:${params.applicationVersion}`,
+          }
+        : {}),
+      ...(params.sdkName && params.sdkVersion
+        ? {
+            'AV-Origin-Sdk': `${params.sdkName}:${params.sdkVersion}`,
           }
         : {}),
     };

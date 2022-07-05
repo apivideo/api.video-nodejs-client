@@ -50,9 +50,19 @@ describe('ApiVideoClient', () => {
 
   it('should validate the application name value', () => {
     expect(
-      () => new ApiVideoClient({ applicationName: 'application name' })
+      () => new ApiVideoClient({ applicationName: 'applicationname' })
     ).to.throw(
-      "Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
+      'application version is mandatory when application name is set.'
+    );
+
+    expect(
+      () =>
+        new ApiVideoClient({
+          applicationName: 'application name',
+          applicationVersion: '1.0.0',
+        })
+    ).to.throw(
+      "Invalid application name value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
     );
 
     expect(
@@ -60,17 +70,22 @@ describe('ApiVideoClient', () => {
         new ApiVideoClient({
           applicationName:
             '012345678901234567890123456789012345678901234567891',
+          applicationVersion: '1.0.0',
         })
     ).to.throw(
-      "Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
+      "Invalid application name value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
     );
 
     expect(
-      () => new ApiVideoClient({ applicationName: 'my-great-application1' })
+      () =>
+        new ApiVideoClient({
+          applicationName: 'my-great-application1',
+          applicationVersion: '0.1.1',
+        })
     ).not.to.throw();
 
     expect(() => new ApiVideoClient({ applicationVersion: '1.0.0' })).to.throw(
-      'applicationName is mandatory when applicationVersion is set.'
+      'application name is mandatory when application version is set.'
     );
 
     expect(
@@ -80,7 +95,7 @@ describe('ApiVideoClient', () => {
           applicationVersion: '1.1234.0',
         })
     ).to.throw(
-      'Invalid applicationVersion value. The version should match the xxx[.yyy][.zzz] pattern.'
+      'Invalid application version value. The version should match the xxx[.yyy][.zzz] pattern.'
     );
 
     expect(
