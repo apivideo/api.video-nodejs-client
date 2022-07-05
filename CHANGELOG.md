@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.2.8] - 2022-07-05
+- Add SDK origin header
+
 ## [2.2.7] - 2022-05-06
 - Upload methods (except for videos upload) now accept Readable and Buffer in addition to the file path.
 

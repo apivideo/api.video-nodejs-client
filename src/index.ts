@@ -44,6 +44,8 @@ class ApiVideoClient {
     chunkSize?: number;
     applicationName?: string;
     applicationVersion?: string;
+    sdkName?: string;
+    sdkVersion?: string;
   }) {
     if (
       params.chunkSize &&
@@ -58,27 +60,13 @@ class ApiVideoClient {
       );
     }
 
-    if (params.applicationVersion && !params.applicationName) {
-      throw new Error(
-        'applicationName is mandatory when applicationVersion is set.'
-      );
-    }
-    if (
-      params.applicationName &&
-      !/^[\w-]{1,50}$/.test(params.applicationName)
-    ) {
-      throw new Error(
-        "Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
-      );
-    }
-    if (
-      params.applicationVersion &&
-      !/^\d{1,3}(\.\d{1,3}(\.\d{1,3})?)?$/.test(params.applicationVersion)
-    ) {
-      throw new Error(
-        'Invalid applicationVersion value. The version should match the xxx[.yyy][.zzz] pattern.'
-      );
-    }
+    this.validateOrigin(
+      'application',
+      params.applicationName,
+      params.applicationVersion
+    );
+
+    this.validateOrigin('sdk', params.sdkName, params.sdkVersion);
 
     this.httpClient = new HttpClient({
       ...params,
@@ -171,6 +159,30 @@ class ApiVideoClient {
    */
   public get webhooks(): WebhooksApi {
     return this._webhooks;
+  }
+
+  private validateOrigin(type: string, name?: string, version?: string) {
+    if (name && !version) {
+      throw new Error(
+        `${type} version is mandatory when ${type} name is set.'`
+      );
+    } else if (!name && version) {
+      throw new Error(
+        `${type} name is mandatory when ${type} version is set.'`
+      );
+    } else if (name && version) {
+      if (!/^[\w-]{1,50}$/.test(name)) {
+        throw new Error(
+          `Invalid ${type} name value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50.`
+        );
+      }
+
+      if (!/^\d{1,3}(\.\d{1,3}(\.\d{1,3})?)?$/.test(version)) {
+        throw new Error(
+          `Invalid ${type} version value. The version should match the xxx[.yyy][.zzz] pattern.`
+        );
+      }
+    }
   }
 }
 
