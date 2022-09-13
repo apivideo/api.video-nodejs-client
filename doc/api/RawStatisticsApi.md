@@ -18,7 +18,7 @@ All URIs are relative to *https://ws.api.video*
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **liveStreamId** | **string**| **yes**| The unique identifier for the live stream you want to retrieve analytics for. |
- | **period** | **string**| no| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  |
+ | **period** | **string**| **yes**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  |
  | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
  | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |
 
@@ -88,7 +88,7 @@ Retrieve all available user sessions for a specific video. Tutorials that use th
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **videoId** | **string**| **yes**| The unique identifier for the video you want to retrieve session information for. |
- | **period** | **string**| no| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  |
+ | **period** | **string**| **yes**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  |
  | **metadata** | **{ [key: string]: string; }**| no| Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. |
  | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
  | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |

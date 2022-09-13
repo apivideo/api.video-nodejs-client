@@ -27,7 +27,7 @@ export default class AuthenticationApi {
 
   /**
    * To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the [authentication endpoint](https://api.video/blog/endpoints/authenticate)
-   * Authenticate
+   * Advanced - Authenticate (1/2)
    * @param authenticatePayload
    */
   public async authenticate(
@@ -77,7 +77,7 @@ export default class AuthenticationApi {
 
   /**
    * Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.
-   * Refresh token
+   * Advanced - Refresh token (2/2)
    * @param refreshTokenPayload
    */
   public async refresh(
