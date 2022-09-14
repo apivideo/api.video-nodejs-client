@@ -41,7 +41,7 @@ export default class RawStatisticsApi {
     pageSize,
   }: {
     liveStreamId: string;
-    period?: string;
+    period: string;
     currentPage?: number;
     pageSize?: number;
   }): Promise<RawStatisticsListLiveStreamAnalyticsResponse> {
@@ -50,6 +50,11 @@ export default class RawStatisticsApi {
     if (liveStreamId === null || liveStreamId === undefined) {
       throw new Error(
         'Required parameter liveStreamId was null or undefined when calling listLiveStreamSessions.'
+      );
+    }
+    if (period === null || period === undefined) {
+      throw new Error(
+        'Required parameter period was null or undefined when calling listLiveStreamSessions.'
       );
     }
     // Path Params
@@ -183,7 +188,7 @@ export default class RawStatisticsApi {
     pageSize,
   }: {
     videoId: string;
-    period?: string;
+    period: string;
     metadata?: { [key: string]: string };
     currentPage?: number;
     pageSize?: number;
@@ -193,6 +198,11 @@ export default class RawStatisticsApi {
     if (videoId === null || videoId === undefined) {
       throw new Error(
         'Required parameter videoId was null or undefined when calling listVideoSessions.'
+      );
+    }
+    if (period === null || period === undefined) {
+      throw new Error(
+        'Required parameter period was null or undefined when calling listVideoSessions.'
       );
     }
     // Path Params
