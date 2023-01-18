@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.3.1] - 2023-01-18
+- fix unit tests
+
 ## [2.3.0] - 2023-01-18
 - fix ES6 import of the client
 

@@ -63,7 +63,7 @@ npm run build
 ## Code sample
 
 ```typescript
-const ApiVideoClient = require('@api.video/nodejs-client');
+const ApiVideoClient = require('@api.video/nodejs-client').default;
 
 (async () => {
     try {

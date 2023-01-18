@@ -187,4 +187,3 @@ class ApiVideoClient {
 }
 
 export default ApiVideoClient;
-module.exports = ApiVideoClient;

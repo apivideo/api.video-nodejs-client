@@ -3,11 +3,11 @@
   "compilerOptions": {
     "baseUrl": "src",
     "declaration": true,
-    "module": "esnext",
-    "outDir": "lib/mjs",
-    "target": "esnext"
+    "module": "commonjs",
+    "outDir": "lib/test",
+    "target": "es2015"
   },
   "include": [
-    "./src"
+    "./test/"
   ]
 }
