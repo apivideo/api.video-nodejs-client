@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "api.video nodejs API client",
    "keywords": [
     "api.video",
@@ -16,13 +16,25 @@
     "type": "git",
     "url": "https://github.com/apivideo/api.video-nodejs-client"
   },
-  "main": "./lib/index.js",
-  "typings": "./lib/index.d.ts",
-  "files": ["lib/", "doc/", "test/sandbox.spec.ts"],
+  "main": "lib/cjs/index.js",
+  "module": "lib/mjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./lib/mjs/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
+  "typings": "./lib/mjs/index.d.ts",
+  "files": [
+    "lib/",
+    "doc/",
+    "test/sandbox.spec.ts"
+  ],
   "scripts": {
-    "prepublishOnly": "tsc",
-    "test": "mocha --reporter spec --require ts-node/register --require tsconfig-paths/register test/**/*.spec.ts --exclude test/sandbox.spec.ts",
-    "test:sandbox": "mocha --timeout 300000 --reporter spec --require ts-node/register --require tsconfig-paths/register test/sandbox.spec.ts",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && bash ./fixup",
+    "prepublishOnly": "npm run build",
+    "test": "tsc -p tsconfig-test.json && mocha --reporter spec lib/test/test/**/*.spec.js --exclude lib/test/test/sandbox.spec.js",
+    "test:sandbox": "mocha --timeout 300000 --reporter spec lib/test/test/sandbox.spec.js",
     "eslint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\" && npx eslint src/ test/ --fix"
   },
@@ -31,7 +43,7 @@
     "got": "^11.8.1"
   },
   "devDependencies": {
-    "@tsconfig/node14": "^1.0.0",
+    "@tsconfig/node14": "^1.0.3",
     "@types/chai": "^4.2.17",
     "@types/got": "^9.6.11",
     "@types/mocha": "^9.0.0",
