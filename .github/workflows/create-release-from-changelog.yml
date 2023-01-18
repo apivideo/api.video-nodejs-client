@@ -6,7 +6,7 @@ on:
       - 'CHANGELOG.md'
 
 jobs:
-  update-documentation:
+  create-draft-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,4 +15,3 @@ jobs:
         with:
           github-auth-token: ${{ secrets.GITHUB_TOKEN }}
           prefix: v
-
