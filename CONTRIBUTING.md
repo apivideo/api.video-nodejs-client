@@ -17,18 +17,14 @@ The following is a set of guidelines for contributing to api.video and its packa
     - [Suggesting enhancements](#suggesting-enhancements)
       - [How do I submit a (good) enhancement suggestion?](#how-do-i-submit-a-good-enhancement-suggestion)
     - [Pull requests](#pull-requests)
-  - [Style guides](#style-guides)
-    - [Git commit messages](#git-commit-messages)
-    - [Documentation style guide](#documentation-style-guide)
   - [Additional notes](#additional-notes)
-    - [Issue and pull request labels](#issue-and-pull-request-labels)
+    - [Issue labels](#issue-labels)
       - [Type of issue and issue state](#type-of-issue-and-issue-state)
       - [Topic categories](#topic-categories)
-      - [Pull request labels](#pull-request-labels)
-  
+
 ## Code of conduct
 
-This project and everyone participating in it is governed by the [api.video Code of Conduct](https://github.com/apivideo/.github/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [help@api.video](mailto:help@api.video).
+This project and everyone participating in it is governed by the [api.video Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [help@api.video](mailto:help@api.video).
 
 ## I just have a question!
 
@@ -104,55 +100,15 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 
 ### Pull requests
 
-The process described here has several goals:
-
-- Maintain api.video's quality
-- Fix problems that are important to users
-- Engage the community in working toward the best possible api.video
-- Enable a sustainable system for api.video's maintainers to review contributions
-
-Please follow these steps to have your contribution considered by the maintainers:
-
-1. Explain what, why and how you resolved the issue. If you have a related issue, please mention it.
-2. Follow the [style guides](#style-guides)
-3. After you submit your pull request, verify that all [status checks](https://help.github.com/articles/about-status-checks/) are passing <details><summary>What if the status checks are failing?</summary>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details>
-
-While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.
-
-## Style guides
-
-### Git commit messages
-
-* Use the present tense ("Add feature" not "Added feature")
-* Limit the first line to 72 characters or less
-* Reference issues and pull requests after the first line
-* Consider starting the commit message with an applicable emoji:
-    * :art: `:art:` when improving the format/structure of the code
-    * :racehorse: `:racehorse:` when improving performance
-    * :non-potable_water: `:non-potable_water:` when plugging memory leaks
-    * :memo: `:memo:` when writing docs
-    * :penguin: `:penguin:` when fixing something on Linux
-    * :apple: `:apple:` when fixing something on macOS
-    * :checkered_flag: `:checkered_flag:` when fixing something on Windows
-    * :bug: `:bug:` when fixing a bug
-    * :fire: `:fire:` when removing code or files
-    * :green_heart: `:green_heart:` when fixing the CI build
-    * :white_check_mark: `:white_check_mark:` when adding tests
-    * :lock: `:lock:` when dealing with security
-    * :arrow_up: `:arrow_up:` when upgrading dependencies
-    * :arrow_down: `:arrow_down:` when downgrading dependencies
-    * :shirt: `:shirt:` when removing linter warnings
-
-### Documentation style guide
-
-* Use [Markdown](https://daringfireball.net/projects/markdown).
-
+Since this API client is generated from an OpenAPI description, we cannot accept pull requests made directly to the repository. 
+If you want to contribute, you can open a pull request on the repository of our [client generator](https://github.com/apivideo/api.video-api-client-generator). 
+Otherwise, you can also simply open an issue detailing your need on this repository.
 
 ## Additional notes
 
-### Issue and pull request labels
+### Issue labels
 
-This section lists the labels we use to help us track and manage issues and pull requests on all api.video repositories.
+This section lists the labels we use to help us track and manage issues on all api.video repositories.
 
 [GitHub search](https://help.github.com/articles/searching-issues/) makes it easy to use labels for finding groups of issues or pull requests you're interested in. We encourage you to read about [other search filters](https://help.github.com/articles/searching-issues/) which will help you write more focused queries.
 
@@ -188,15 +144,6 @@ This section lists the labels we use to help us track and manage issues and pull
 | `ui` | [search][search-apivideo-org-label-ui] | Related to visual design. |
 | `api` | [search][search-apivideo-org-label-api] | Related to api.video's public APIs. |
 
-#### Pull request labels
-
-| Label name | `apivideo` :mag_right: | Description
-| --- | --- | --- |
-| `work-in-progress` | [search][search-apivideo-org-label-work-in-progress] | Pull requests which are still being worked on, more changes will follow. |
-| `needs-review` | [search][search-apivideo-org-label-needs-review] | Pull requests which need code review, and approval from maintainers or api.video team. |
-| `under-review` | [search][search-apivideo-org-label-under-review] | Pull requests being reviewed by maintainers or api.video team. |
-| `requires-changes` | [search][search-apivideo-org-label-requires-changes] | Pull requests which need to be updated based on review comments and then reviewed again. |
-| `needs-testing` | [search][search-apivideo-org-label-needs-testing] | Pull requests which need manual testing. |
 
 [search-apivideo-org-label-enhancement]: https://github.com/search?q=is%3Aopen+is%3Aissue+user%3Aapivideo+label%3Aenhancement
 [search-apivideo-org-label-bug]: https://github.com/search?q=is%3Aopen+is%3Aissue+user%3Aapivideo+label%3Abug
