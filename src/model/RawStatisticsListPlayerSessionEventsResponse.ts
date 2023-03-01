@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Pagination from './Pagination';
-import PlayerSessionEvent from './PlayerSessionEvent';
+import AttributeType from './AttributeType.js';
+import Pagination from './Pagination.js';
+import PlayerSessionEvent from './PlayerSessionEvent.js';
 
 export default class RawStatisticsListPlayerSessionEventsResponse {
   'data': Array<PlayerSessionEvent>;

@@ -16,9 +16,9 @@ import got, {
   Headers,
   RequestError,
 } from 'got';
-import ObjectSerializer from './ObjectSerializer';
-import ApiVideoError from './ApiVideoError';
-import AccessToken from './model/AccessToken';
+import ObjectSerializer from './ObjectSerializer.js';
+import ApiVideoError from './ApiVideoError.js';
+import AccessToken from './model/AccessToken.js';
 import { Readable, Stream } from 'stream';
 import FormData from 'form-data';
 
@@ -48,7 +48,7 @@ export default class HttpClient {
     this.tokenType = 'Bearer';
     this.headers = {
       Accept: 'application/json, */*;q=0.8',
-      'AV-Origin-Client': 'nodejs:2.3.1',
+      'AV-Origin-Client': 'nodejs:2.3.2',
       ...(params.applicationName && params.applicationVersion
         ? {
             'AV-Origin-App': `${params.applicationName}:${params.applicationVersion}`,

@@ -13,12 +13,12 @@ import path from 'path';
 import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
-import Watermark from '../model/Watermark';
-import WatermarksListResponse from '../model/WatermarksListResponse';
+import ObjectSerializer from '../ObjectSerializer.js';
+import HttpClient, { QueryOptions } from '../HttpClient.js';
+import Watermark from '../model/Watermark.js';
+import WatermarksListResponse from '../model/WatermarksListResponse.js';
 import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient';
+import { readableToBuffer } from '../HttpClient.js';
 
 /**
  * no description

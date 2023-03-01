@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.3.2] - 2023-03-01
+- fix import issues
+
 ## [2.3.1] - 2023-01-18
 - fix unit tests
 

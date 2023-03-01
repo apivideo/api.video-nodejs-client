@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
+import AttributeType from './AttributeType.js';
 
 /**
  * What kind of browser the viewer is using for the live stream session.

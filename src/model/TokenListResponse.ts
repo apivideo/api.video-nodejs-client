@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Pagination from './Pagination';
-import UploadToken from './UploadToken';
+import AttributeType from './AttributeType.js';
+import Pagination from './Pagination.js';
+import UploadToken from './UploadToken.js';
 
 export default class TokenListResponse {
   'data': Array<UploadToken>;

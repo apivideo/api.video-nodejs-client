@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import LiveStream from './LiveStream';
-import Pagination from './Pagination';
+import AttributeType from './AttributeType.js';
+import LiveStream from './LiveStream.js';
+import Pagination from './Pagination.js';
 
 export default class LiveStreamListResponse {
   'data': Array<LiveStream>;

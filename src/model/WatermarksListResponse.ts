@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Pagination from './Pagination';
-import Watermark from './Watermark';
+import AttributeType from './AttributeType.js';
+import Pagination from './Pagination.js';
+import Watermark from './Watermark.js';
 
 export default class WatermarksListResponse {
   'data': Array<Watermark>;

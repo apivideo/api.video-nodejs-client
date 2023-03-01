@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
+import AttributeType from './AttributeType.js';
 
 /**
  * What type of device the user is on when in the video session.

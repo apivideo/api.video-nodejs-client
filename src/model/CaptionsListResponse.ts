@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Caption from './Caption';
-import Pagination from './Pagination';
+import AttributeType from './AttributeType.js';
+import Caption from './Caption.js';
+import Pagination from './Pagination.js';
 
 export default class CaptionsListResponse {
   'data': Array<Caption>;

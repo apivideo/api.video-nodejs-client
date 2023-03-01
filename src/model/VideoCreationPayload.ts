@@ -9,10 +9,10 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Metadata from './Metadata';
-import VideoClip from './VideoClip';
-import VideoWatermark from './VideoWatermark';
+import AttributeType from './AttributeType.js';
+import Metadata from './Metadata.js';
+import VideoClip from './VideoClip.js';
+import VideoWatermark from './VideoWatermark.js';
 
 export default class VideoCreationPayload {
   /**

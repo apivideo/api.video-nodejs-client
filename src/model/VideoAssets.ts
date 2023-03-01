@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
+import AttributeType from './AttributeType.js';
 
 /**
  * Collection of details about the video object that you can use to work with the video object.

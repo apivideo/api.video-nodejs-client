@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "api.video nodejs API client",
    "keywords": [
     "api.video",
@@ -16,15 +16,15 @@
     "type": "git",
     "url": "https://github.com/apivideo/api.video-nodejs-client"
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/mjs/index.js",
+  "main": "lib/cjs/index-cjs.js",
+  "module": "lib/index.js",
   "exports": {
     ".": {
-      "import": "./lib/mjs/index.js",
-      "require": "./lib/cjs/index.js"
+      "import": "./lib/index.js",
+      "require": "./lib/cjs/index-cjs.js"
     }
   },
-  "typings": "./lib/mjs/index.d.ts",
+  "typings": "./lib/index.d.ts",
   "files": [
     "lib/",
     "doc/",

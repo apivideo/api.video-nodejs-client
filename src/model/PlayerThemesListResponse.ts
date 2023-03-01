@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Pagination from './Pagination';
-import PlayerTheme from './PlayerTheme';
+import AttributeType from './AttributeType.js';
+import Pagination from './Pagination.js';
+import PlayerTheme from './PlayerTheme.js';
 
 export default class PlayerThemesListResponse {
   'data': Array<PlayerTheme>;

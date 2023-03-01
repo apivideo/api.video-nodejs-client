@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import BytesRange from './BytesRange';
-import VideoStatusIngestReceivedParts from './VideoStatusIngestReceivedParts';
+import AttributeType from './AttributeType.js';
+import BytesRange from './BytesRange.js';
+import VideoStatusIngestReceivedParts from './VideoStatusIngestReceivedParts.js';
 
 /**
  * Details about the capturing, transferring, and storing of your video for use immediately or in the future.

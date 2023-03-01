@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Quality from './Quality';
-import VideoStatusEncodingMetadata from './VideoStatusEncodingMetadata';
+import AttributeType from './AttributeType.js';
+import Quality from './Quality.js';
+import VideoStatusEncodingMetadata from './VideoStatusEncodingMetadata.js';
 
 export default class VideoStatusEncoding {
   /**

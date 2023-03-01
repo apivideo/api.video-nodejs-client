@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Pagination from './Pagination';
-import Video from './Video';
+import AttributeType from './AttributeType.js';
+import Pagination from './Pagination.js';
+import Video from './Video.js';
 
 export default class VideosListResponse {
   'data': Array<Video>;

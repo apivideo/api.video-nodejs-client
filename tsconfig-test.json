@@ -8,6 +8,10 @@
     "target": "es2015"
   },
   "include": [
-    "./test/"
+    "./src",
+    "./test"
+  ],
+  "exclude": [
+    "./src/index.ts"
   ]
 }

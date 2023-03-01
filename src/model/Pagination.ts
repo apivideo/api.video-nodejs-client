@@ -9,8 +9,8 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import PaginationLink from './PaginationLink';
+import AttributeType from './AttributeType.js';
+import PaginationLink from './PaginationLink.js';
 
 export default class Pagination {
   /**

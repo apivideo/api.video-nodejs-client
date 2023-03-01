@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
+import AttributeType from './AttributeType.js';
 
 export default class Chapter {
   'uri'?: string;

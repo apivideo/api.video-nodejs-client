@@ -9,17 +9,85 @@
  * Do not edit the class manually.
  */
 
-import HttpClient from './HttpClient';
+import HttpClient from './HttpClient.js';
 
-import CaptionsApi from './api/CaptionsApi';
-import ChaptersApi from './api/ChaptersApi';
-import LiveStreamsApi from './api/LiveStreamsApi';
-import PlayerThemesApi from './api/PlayerThemesApi';
-import RawStatisticsApi from './api/RawStatisticsApi';
-import UploadTokensApi from './api/UploadTokensApi';
-import VideosApi from './api/VideosApi';
-import WatermarksApi from './api/WatermarksApi';
-import WebhooksApi from './api/WebhooksApi';
+import CaptionsApi from './api/CaptionsApi.js';
+import ChaptersApi from './api/ChaptersApi.js';
+import LiveStreamsApi from './api/LiveStreamsApi.js';
+import PlayerThemesApi from './api/PlayerThemesApi.js';
+import RawStatisticsApi from './api/RawStatisticsApi.js';
+import UploadTokensApi from './api/UploadTokensApi.js';
+import VideosApi from './api/VideosApi.js';
+import WatermarksApi from './api/WatermarksApi.js';
+import WebhooksApi from './api/WebhooksApi.js';
+
+import AccessToken from './model/AccessToken.js';
+import AuthenticatePayload from './model/AuthenticatePayload.js';
+import BadRequest from './model/BadRequest.js';
+import BytesRange from './model/BytesRange.js';
+import Caption from './model/Caption.js';
+import CaptionsListResponse from './model/CaptionsListResponse.js';
+import CaptionsUpdatePayload from './model/CaptionsUpdatePayload.js';
+import Chapter from './model/Chapter.js';
+import ChaptersListResponse from './model/ChaptersListResponse.js';
+import Link from './model/Link.js';
+import LiveStream from './model/LiveStream.js';
+import LiveStreamAssets from './model/LiveStreamAssets.js';
+import LiveStreamCreationPayload from './model/LiveStreamCreationPayload.js';
+import LiveStreamListResponse from './model/LiveStreamListResponse.js';
+import LiveStreamSession from './model/LiveStreamSession.js';
+import LiveStreamSessionClient from './model/LiveStreamSessionClient.js';
+import LiveStreamSessionDevice from './model/LiveStreamSessionDevice.js';
+import LiveStreamSessionLocation from './model/LiveStreamSessionLocation.js';
+import LiveStreamSessionReferrer from './model/LiveStreamSessionReferrer.js';
+import LiveStreamSessionSession from './model/LiveStreamSessionSession.js';
+import LiveStreamUpdatePayload from './model/LiveStreamUpdatePayload.js';
+import Metadata from './model/Metadata.js';
+import NotFound from './model/NotFound.js';
+import Pagination from './model/Pagination.js';
+import PaginationLink from './model/PaginationLink.js';
+import PlayerSessionEvent from './model/PlayerSessionEvent.js';
+import PlayerTheme from './model/PlayerTheme.js';
+import PlayerThemeAssets from './model/PlayerThemeAssets.js';
+import PlayerThemeCreationPayload from './model/PlayerThemeCreationPayload.js';
+import PlayerThemeUpdatePayload from './model/PlayerThemeUpdatePayload.js';
+import PlayerThemesListResponse from './model/PlayerThemesListResponse.js';
+import Quality from './model/Quality.js';
+import RawStatisticsListLiveStreamAnalyticsResponse from './model/RawStatisticsListLiveStreamAnalyticsResponse.js';
+import RawStatisticsListPlayerSessionEventsResponse from './model/RawStatisticsListPlayerSessionEventsResponse.js';
+import RawStatisticsListSessionsResponse from './model/RawStatisticsListSessionsResponse.js';
+import RefreshTokenPayload from './model/RefreshTokenPayload.js';
+import TokenCreationPayload from './model/TokenCreationPayload.js';
+import TokenListResponse from './model/TokenListResponse.js';
+import UploadToken from './model/UploadToken.js';
+import Video from './model/Video.js';
+import VideoAssets from './model/VideoAssets.js';
+import VideoClip from './model/VideoClip.js';
+import VideoCreationPayload from './model/VideoCreationPayload.js';
+import VideoSession from './model/VideoSession.js';
+import VideoSessionClient from './model/VideoSessionClient.js';
+import VideoSessionDevice from './model/VideoSessionDevice.js';
+import VideoSessionLocation from './model/VideoSessionLocation.js';
+import VideoSessionOs from './model/VideoSessionOs.js';
+import VideoSessionReferrer from './model/VideoSessionReferrer.js';
+import VideoSessionSession from './model/VideoSessionSession.js';
+import VideoSource from './model/VideoSource.js';
+import VideoSourceLiveStream from './model/VideoSourceLiveStream.js';
+import VideoSourceLiveStreamLink from './model/VideoSourceLiveStreamLink.js';
+import VideoStatus from './model/VideoStatus.js';
+import VideoStatusEncoding from './model/VideoStatusEncoding.js';
+import VideoStatusEncodingMetadata from './model/VideoStatusEncodingMetadata.js';
+import VideoStatusIngest from './model/VideoStatusIngest.js';
+import VideoStatusIngestReceivedParts from './model/VideoStatusIngestReceivedParts.js';
+import VideoThumbnailPickPayload from './model/VideoThumbnailPickPayload.js';
+import VideoUpdatePayload from './model/VideoUpdatePayload.js';
+import VideoWatermark from './model/VideoWatermark.js';
+import VideosListResponse from './model/VideosListResponse.js';
+import Watermark from './model/Watermark.js';
+import WatermarksListResponse from './model/WatermarksListResponse.js';
+import Webhook from './model/Webhook.js';
+import WebhooksCreationPayload from './model/WebhooksCreationPayload.js';
+import WebhooksListResponse from './model/WebhooksListResponse.js';
 
 const PRODUCTION_BASE_URI = 'https://ws.api.video';
 const DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
@@ -185,5 +253,84 @@ class ApiVideoClient {
     }
   }
 }
+
+export {
+  CaptionsApi,
+  ChaptersApi,
+  LiveStreamsApi,
+  PlayerThemesApi,
+  RawStatisticsApi,
+  UploadTokensApi,
+  VideosApi,
+  WatermarksApi,
+  WebhooksApi,
+  AccessToken,
+  AuthenticatePayload,
+  BadRequest,
+  BytesRange,
+  Caption,
+  CaptionsListResponse,
+  CaptionsUpdatePayload,
+  Chapter,
+  ChaptersListResponse,
+  Link,
+  LiveStream,
+  LiveStreamAssets,
+  LiveStreamCreationPayload,
+  LiveStreamListResponse,
+  LiveStreamSession,
+  LiveStreamSessionClient,
+  LiveStreamSessionDevice,
+  LiveStreamSessionLocation,
+  LiveStreamSessionReferrer,
+  LiveStreamSessionSession,
+  LiveStreamUpdatePayload,
+  Metadata,
+  NotFound,
+  Pagination,
+  PaginationLink,
+  PlayerSessionEvent,
+  PlayerTheme,
+  PlayerThemeAssets,
+  PlayerThemeCreationPayload,
+  PlayerThemeUpdatePayload,
+  PlayerThemesListResponse,
+  Quality,
+  RawStatisticsListLiveStreamAnalyticsResponse,
+  RawStatisticsListPlayerSessionEventsResponse,
+  RawStatisticsListSessionsResponse,
+  RefreshTokenPayload,
+  TokenCreationPayload,
+  TokenListResponse,
+  UploadToken,
+  Video,
+  VideoAssets,
+  VideoClip,
+  VideoCreationPayload,
+  VideoSession,
+  VideoSessionClient,
+  VideoSessionDevice,
+  VideoSessionLocation,
+  VideoSessionOs,
+  VideoSessionReferrer,
+  VideoSessionSession,
+  VideoSource,
+  VideoSourceLiveStream,
+  VideoSourceLiveStreamLink,
+  VideoStatus,
+  VideoStatusEncoding,
+  VideoStatusEncodingMetadata,
+  VideoStatusIngest,
+  VideoStatusIngestReceivedParts,
+  VideoThumbnailPickPayload,
+  VideoUpdatePayload,
+  VideoWatermark,
+  VideosListResponse,
+  Watermark,
+  WatermarksListResponse,
+  Webhook,
+  WebhooksCreationPayload,
+  WebhooksListResponse,
+};
 
 export default ApiVideoClient;

@@ -9,13 +9,13 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import LiveStreamSessionClient from './LiveStreamSessionClient';
-import LiveStreamSessionDevice from './LiveStreamSessionDevice';
-import LiveStreamSessionLocation from './LiveStreamSessionLocation';
-import LiveStreamSessionReferrer from './LiveStreamSessionReferrer';
-import LiveStreamSessionSession from './LiveStreamSessionSession';
-import VideoSessionOs from './VideoSessionOs';
+import AttributeType from './AttributeType.js';
+import LiveStreamSessionClient from './LiveStreamSessionClient.js';
+import LiveStreamSessionDevice from './LiveStreamSessionDevice.js';
+import LiveStreamSessionLocation from './LiveStreamSessionLocation.js';
+import LiveStreamSessionReferrer from './LiveStreamSessionReferrer.js';
+import LiveStreamSessionSession from './LiveStreamSessionSession.js';
+import VideoSessionOs from './VideoSessionOs.js';
 
 export default class LiveStreamSession {
   'session'?: LiveStreamSessionSession;

@@ -9,8 +9,8 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import LiveStreamAssets from './LiveStreamAssets';
+import AttributeType from './AttributeType.js';
+import LiveStreamAssets from './LiveStreamAssets.js';
 
 export default class LiveStream {
   /**
