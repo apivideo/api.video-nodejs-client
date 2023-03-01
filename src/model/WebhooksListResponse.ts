@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Pagination from './Pagination';
-import Webhook from './Webhook';
+import AttributeType from './AttributeType.js';
+import Pagination from './Pagination.js';
+import Webhook from './Webhook.js';
 
 export default class WebhooksListResponse {
   'data': Array<Webhook>;

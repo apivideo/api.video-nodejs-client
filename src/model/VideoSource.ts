@@ -9,8 +9,8 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import VideoSourceLiveStream from './VideoSourceLiveStream';
+import AttributeType from './AttributeType.js';
+import VideoSourceLiveStream from './VideoSourceLiveStream.js';
 
 /**
  * Source information about the video.

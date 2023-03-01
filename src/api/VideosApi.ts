@@ -13,18 +13,18 @@ import path from 'path';
 import { existsSync, statSync, createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
-import ProgressiveSession from '../model/ProgressiveSession';
-import Video from '../model/Video';
-import VideoCreationPayload from '../model/VideoCreationPayload';
-import VideoStatus from '../model/VideoStatus';
-import VideoThumbnailPickPayload from '../model/VideoThumbnailPickPayload';
-import VideoUpdatePayload from '../model/VideoUpdatePayload';
-import VideosListResponse from '../model/VideosListResponse';
-import UploadProgressEvent from '../model/UploadProgressEvent';
+import ObjectSerializer from '../ObjectSerializer.js';
+import HttpClient, { QueryOptions } from '../HttpClient.js';
+import ProgressiveSession from '../model/ProgressiveSession.js';
+import Video from '../model/Video.js';
+import VideoCreationPayload from '../model/VideoCreationPayload.js';
+import VideoStatus from '../model/VideoStatus.js';
+import VideoThumbnailPickPayload from '../model/VideoThumbnailPickPayload.js';
+import VideoUpdatePayload from '../model/VideoUpdatePayload.js';
+import VideosListResponse from '../model/VideosListResponse.js';
+import UploadProgressEvent from '../model/UploadProgressEvent.js';
 import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient';
+import { readableToBuffer } from '../HttpClient.js';
 
 /**
  * no description

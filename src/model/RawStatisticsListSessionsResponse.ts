@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Pagination from './Pagination';
-import VideoSession from './VideoSession';
+import AttributeType from './AttributeType.js';
+import Pagination from './Pagination.js';
+import VideoSession from './VideoSession.js';
 
 export default class RawStatisticsListSessionsResponse {
   'data': Array<VideoSession>;

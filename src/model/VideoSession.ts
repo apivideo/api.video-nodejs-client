@@ -9,13 +9,13 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import VideoSessionClient from './VideoSessionClient';
-import VideoSessionDevice from './VideoSessionDevice';
-import VideoSessionLocation from './VideoSessionLocation';
-import VideoSessionOs from './VideoSessionOs';
-import VideoSessionReferrer from './VideoSessionReferrer';
-import VideoSessionSession from './VideoSessionSession';
+import AttributeType from './AttributeType.js';
+import VideoSessionClient from './VideoSessionClient.js';
+import VideoSessionDevice from './VideoSessionDevice.js';
+import VideoSessionLocation from './VideoSessionLocation.js';
+import VideoSessionOs from './VideoSessionOs.js';
+import VideoSessionReferrer from './VideoSessionReferrer.js';
+import VideoSessionSession from './VideoSessionSession.js';
 
 export default class VideoSession {
   'session'?: VideoSessionSession;

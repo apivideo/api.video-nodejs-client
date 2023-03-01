@@ -9,11 +9,11 @@
  * Do not edit the class manually.
  */
 
-import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
-import AccessToken from '../model/AccessToken';
-import AuthenticatePayload from '../model/AuthenticatePayload';
-import RefreshTokenPayload from '../model/RefreshTokenPayload';
+import ObjectSerializer from '../ObjectSerializer.js';
+import HttpClient, { QueryOptions } from '../HttpClient.js';
+import AccessToken from '../model/AccessToken.js';
+import AuthenticatePayload from '../model/AuthenticatePayload.js';
+import RefreshTokenPayload from '../model/RefreshTokenPayload.js';
 
 /**
  * no description

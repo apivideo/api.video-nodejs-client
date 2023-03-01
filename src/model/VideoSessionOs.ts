@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
+import AttributeType from './AttributeType.js';
 
 /**
  * The operating system the viewer is on.

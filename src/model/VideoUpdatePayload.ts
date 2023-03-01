@@ -9,8 +9,8 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Metadata from './Metadata';
+import AttributeType from './AttributeType.js';
+import Metadata from './Metadata.js';
 
 export default class VideoUpdatePayload {
   /**

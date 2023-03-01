@@ -13,14 +13,14 @@ import path from 'path';
 import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
-import PlayerTheme from '../model/PlayerTheme';
-import PlayerThemeCreationPayload from '../model/PlayerThemeCreationPayload';
-import PlayerThemeUpdatePayload from '../model/PlayerThemeUpdatePayload';
-import PlayerThemesListResponse from '../model/PlayerThemesListResponse';
+import ObjectSerializer from '../ObjectSerializer.js';
+import HttpClient, { QueryOptions } from '../HttpClient.js';
+import PlayerTheme from '../model/PlayerTheme.js';
+import PlayerThemeCreationPayload from '../model/PlayerThemeCreationPayload.js';
+import PlayerThemeUpdatePayload from '../model/PlayerThemeUpdatePayload.js';
+import PlayerThemesListResponse from '../model/PlayerThemesListResponse.js';
 import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient';
+import { readableToBuffer } from '../HttpClient.js';
 
 /**
  * no description

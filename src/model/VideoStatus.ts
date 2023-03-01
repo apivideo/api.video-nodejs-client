@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import VideoStatusEncoding from './VideoStatusEncoding';
-import VideoStatusIngest from './VideoStatusIngest';
+import AttributeType from './AttributeType.js';
+import VideoStatusEncoding from './VideoStatusEncoding.js';
+import VideoStatusIngest from './VideoStatusIngest.js';
 
 export default class VideoStatus {
   'ingest'?: VideoStatusIngest;

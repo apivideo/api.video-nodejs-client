@@ -9,10 +9,10 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Metadata from './Metadata';
-import VideoAssets from './VideoAssets';
-import VideoSource from './VideoSource';
+import AttributeType from './AttributeType.js';
+import Metadata from './Metadata.js';
+import VideoAssets from './VideoAssets.js';
+import VideoSource from './VideoSource.js';
 
 export default class Video {
   /**

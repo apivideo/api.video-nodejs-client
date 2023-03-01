@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import LiveStreamSession from './LiveStreamSession';
-import Pagination from './Pagination';
+import AttributeType from './AttributeType.js';
+import LiveStreamSession from './LiveStreamSession.js';
+import Pagination from './Pagination.js';
 
 export default class RawStatisticsListLiveStreamAnalyticsResponse {
   'data': Array<LiveStreamSession>;

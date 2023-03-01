@@ -9,8 +9,8 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import PlayerThemeAssets from './PlayerThemeAssets';
+import AttributeType from './AttributeType.js';
+import PlayerThemeAssets from './PlayerThemeAssets.js';
 
 export default class PlayerTheme {
   /**

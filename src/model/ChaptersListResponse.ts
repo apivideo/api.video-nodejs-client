@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import AttributeType from './AttributeType';
-import Chapter from './Chapter';
-import Pagination from './Pagination';
+import AttributeType from './AttributeType.js';
+import Chapter from './Chapter.js';
+import Pagination from './Pagination.js';
 
 export default class ChaptersListResponse {
   'data': Array<Chapter>;
