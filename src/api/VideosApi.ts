@@ -214,6 +214,7 @@ The latter allows you to split a video source into X chunks and send those chunk
   ): Promise<Video> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
+    const toRelay: { [key: string]: string | undefined } = {};
     if (videoId === null || videoId === undefined) {
       throw new Error(
         'Required parameter videoId was null or undefined when calling upload.'
@@ -268,7 +269,7 @@ The latter allows you to split a video source into X chunks and send those chunk
       );
     }
     let uploadChunkSize = chunkSize;
-    let lastBody;
+    let lastBody: Video | undefined = undefined;
     let stream;
     let chunkNumber = 0;
 
@@ -291,6 +292,12 @@ The latter allows you to split a video source into X chunks and send those chunk
         end: uploadChunkSize + offset - 1,
       });
       chunkFormData.append(filename, stream, filename);
+
+      Object.keys(toRelay).forEach((key) => {
+        if (toRelay[key] !== undefined) {
+          chunkFormData.append(key, toRelay[key]);
+        }
+      });
 
       queryParams.body = chunkFormData;
       queryParams.headers['Content-Range'] = `part ${part}/${partsCount}`;
@@ -326,6 +333,12 @@ The latter allows you to split a video source into X chunks and send those chunk
           ) as Video
       );
 
+      Object.keys(toRelay).forEach((key) => {
+        if ((lastBody as unknown as any)[key] !== undefined) {
+          toRelay[key] = (lastBody as unknown as any)[key];
+        }
+      });
+
       stream.close();
     }
 
@@ -336,17 +349,20 @@ The latter allows you to split a video source into X chunks and send those chunk
    * Upload with an upload token
    * This will create a progressive upload session.
    * @param token The unique identifier for the token you want to use to upload a video.
+   * @param videoId optional videoId value
    */
   public createUploadWithUploadTokenProgressiveSession(
-    token: string
+    token: string,
+    videoId?: string
   ): ProgressiveSession<Video> {
     class UploadWithUploadTokenProgressiveSession<Type> {
       private httpClient: HttpClient;
       private currentPart = 1;
       private videoId?: string;
 
-      constructor(httpClient: HttpClient) {
+      constructor(httpClient: HttpClient, videoId?: string) {
         this.httpClient = httpClient;
+        this.videoId = videoId;
       }
 
       uploadPart(
@@ -445,7 +461,10 @@ The latter allows you to split a video source into X chunks and send those chunk
       }
     }
 
-    return new UploadWithUploadTokenProgressiveSession<Video>(this.httpClient);
+    return new UploadWithUploadTokenProgressiveSession<Video>(
+      this.httpClient,
+      videoId
+    );
   }
   /**
    * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).
@@ -456,10 +475,14 @@ The latter allows you to split a video source into X chunks and send those chunk
   public async uploadWithUploadToken(
     token: string,
     file: string,
-    progressListener?: (event: UploadProgressEvent) => void
+    progressListener?: (event: UploadProgressEvent) => void,
+    videoId?: string
   ): Promise<Video> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
+    const toRelay: { [key: string]: string | undefined } = {
+      videoId,
+    };
     if (token === null || token === undefined) {
       throw new Error(
         'Required parameter token was null or undefined when calling uploadWithUploadToken.'
@@ -492,6 +515,11 @@ The latter allows you to split a video source into X chunks and send those chunk
 
     const formData = new FormData();
 
+    Object.keys(toRelay).forEach((key) => {
+      if (toRelay[key] !== undefined) {
+        formData.append(key, toRelay[key]);
+      }
+    });
     const chunkSize = this.httpClient.getChunkSize();
     // Upload in a single request when file is small enough
     if (chunkSize > length) {
@@ -524,7 +552,7 @@ The latter allows you to split a video source into X chunks and send those chunk
       );
     }
     let uploadChunkSize = chunkSize;
-    let lastBody;
+    let lastBody: Video | undefined = undefined;
     let stream;
     let chunkNumber = 0;
 
@@ -547,6 +575,12 @@ The latter allows you to split a video source into X chunks and send those chunk
         end: uploadChunkSize + offset - 1,
       });
       chunkFormData.append(filename, stream, filename);
+
+      Object.keys(toRelay).forEach((key) => {
+        if (toRelay[key] !== undefined) {
+          chunkFormData.append(key, toRelay[key]);
+        }
+      });
 
       queryParams.body = chunkFormData;
       queryParams.headers['Content-Range'] = `part ${part}/${partsCount}`;
@@ -581,6 +615,12 @@ The latter allows you to split a video source into X chunks and send those chunk
             ''
           ) as Video
       );
+
+      Object.keys(toRelay).forEach((key) => {
+        if ((lastBody as unknown as any)[key] !== undefined) {
+          toRelay[key] = (lastBody as unknown as any)[key];
+        }
+      });
 
       stream.close();
     }
