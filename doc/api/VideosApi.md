@@ -188,6 +188,7 @@ This method allows you to send a video using an upload token. Upload tokens are 
  | **token** | **string**| **yes**| The unique identifier for the token you want to use to upload a video. |
  | **file** | **string \| Readable \| Buffer**| **yes**| The path to the video you want to upload. |
 | **progressListener** | **(event: UploadProgressEvent) => void \| undefined** | no | Optional upload progress listener |
+| **videoId** | **string \| undefined** | no | Optional videoId |
 
 ### Return type
 

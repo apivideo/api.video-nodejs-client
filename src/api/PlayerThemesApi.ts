@@ -332,7 +332,6 @@ export default class PlayerThemesApi {
     const formData = new FormData();
 
     formData.append(fileName, fileBuffer, fileName);
-
     if (typeof link !== undefined) {
       formData.append('link', link);
     }
