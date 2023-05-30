@@ -33,11 +33,11 @@ export default class VideoWatermark {
    */
   'right'?: string;
   /**
-   * Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use initial
+   * Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use `initial`.
    */
   'width'?: string;
   /**
-   * Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use initial
+   * Height of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use `initial`.
    */
   'height'?: string;
   /**

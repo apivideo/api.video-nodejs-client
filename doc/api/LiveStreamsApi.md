@@ -17,17 +17,7 @@ All URIs are relative to *https://ws.api.video*
 ## **`create()` - Create live stream**
 
 
-A live stream will give you the 'connection point' to RTMP your video stream to api.video. 
-
-It will also give you the details for viewers to watch the same livestream.  
-
-The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. 
-
-See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. 
-
-Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
-
-Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+Creates a livestream object.
 
 ### Parameters
 
@@ -62,7 +52,7 @@ const liveStream = await client.liveStreams.create(liveStreamCreationPayload);
 ## **`get()` - Retrieve live stream**
 
 
-Supply a liveStreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
+Get a livestream by id.
 
 ### Parameters
 
@@ -92,11 +82,7 @@ const liveStream = await client.liveStreams.get(liveStreamId);
 ## **`update()` - Update a live stream**
 
 
-Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). 
-
-NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    
-
-The public=false "private livestream" is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
+Updates the livestream object.
 
 ### Parameters
 
@@ -164,7 +150,7 @@ const liveStream = await client.liveStreams.deleteThumbnail(liveStreamId);
 ## **`list()` - List all live streams**
 
 
-With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
+Get the list of livestreams on the workspace.
 
 ### Parameters
 
@@ -216,7 +202,7 @@ const liveStreams3 = await client.liveStreams.list({
 ## **`uploadThumbnail()` - Upload a thumbnail**
 
 
-Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
+Upload the thumbnail for the livestream.
 
 ### Parameters
 

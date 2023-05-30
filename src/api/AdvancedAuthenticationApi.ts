@@ -18,7 +18,7 @@ import RefreshTokenPayload from '../model/RefreshTokenPayload.js';
 /**
  * no description
  */
-export default class AuthenticationApi {
+export default class AdvancedAuthenticationApi {
   private httpClient: HttpClient;
 
   constructor(httpClient: HttpClient) {
@@ -26,8 +26,8 @@ export default class AuthenticationApi {
   }
 
   /**
-   * To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the [authentication endpoint](https://api.video/blog/endpoints/authenticate)
-   * Advanced - Authenticate (1/2)
+   * Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+   * Get Bearer Token
    * @param authenticatePayload
    */
   public async authenticate(
@@ -76,8 +76,8 @@ export default class AuthenticationApi {
   }
 
   /**
-   * Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.
-   * Advanced - Refresh token (2/2)
+   * Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+   * Refresh Bearer Token
    * @param refreshTokenPayload
    */
   public async refresh(

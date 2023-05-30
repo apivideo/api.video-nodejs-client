@@ -4,37 +4,23 @@ All URIs are relative to *https://ws.api.video*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
-| [**create()**](VideosApi.md#create) | Create a video | **POST** /videos |
+| [**create()**](VideosApi.md#create) | Create a video object | **POST** /videos |
 | [**upload()**](VideosApi.md#upload) | Upload a video | **POST** /videos/{videoId}/source |
-| [**uploadWithUploadToken()**](VideosApi.md#uploadWithUploadToken) | Upload with an upload token | **POST** /upload |
-| [**get()**](VideosApi.md#get) | Retrieve a video | **GET** /videos/{videoId} |
-| [**update()**](VideosApi.md#update) | Update a video | **PATCH** /videos/{videoId} |
-| [**delete()**](VideosApi.md#delete) | Delete a video | **DELETE** /videos/{videoId} |
-| [**list()**](VideosApi.md#list) | List all videos | **GET** /videos |
+| [**uploadWithUploadToken()**](VideosApi.md#uploadWithUploadToken) | Upload with an delegated upload token | **POST** /upload |
+| [**get()**](VideosApi.md#get) | Retrieve a video object | **GET** /videos/{videoId} |
+| [**update()**](VideosApi.md#update) | Update a video object | **PATCH** /videos/{videoId} |
+| [**delete()**](VideosApi.md#delete) | Delete a video object | **DELETE** /videos/{videoId} |
+| [**list()**](VideosApi.md#list) | List all video objects | **GET** /videos |
 | [**uploadThumbnail()**](VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /videos/{videoId}/thumbnail |
-| [**pickThumbnail()**](VideosApi.md#pickThumbnail) | Pick a thumbnail | **PATCH** /videos/{videoId}/thumbnail |
-| [**getStatus()**](VideosApi.md#getStatus) | Retrieve video status | **GET** /videos/{videoId}/status |
+| [**pickThumbnail()**](VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** /videos/{videoId}/thumbnail |
+| [**getStatus()**](VideosApi.md#getStatus) | Retrieve video status and details | **GET** /videos/{videoId}/status |
 
 
 <a name="create"></a>
-## **`create()` - Create a video**
+## **`create()` - Create a video object**
 
 
-We have tutorials on:
-
-* [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial)
-
-* [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos)
-
-* [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices)
-
-* [Private videos](https://api.video/blog/tutorials/tutorial-private-videos)
-
-* [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)
-
-
-
-* Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.
+Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1).
 
 
 
@@ -176,7 +162,7 @@ console.log(result);
 ---
 
 <a name="uploadWithUploadToken"></a>
-## **`uploadWithUploadToken()` - Upload with an upload token**
+## **`uploadWithUploadToken()` - Upload with an delegated upload token**
 
 
 This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).
@@ -237,7 +223,7 @@ console.log(result);
 ---
 
 <a name="get"></a>
-## **`get()` - Retrieve a video**
+## **`get()` - Retrieve a video object**
 
 
 This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
@@ -266,10 +252,10 @@ const result = await client.videos.get(videoId);
 ---
 
 <a name="update"></a>
-## **`update()` - Update a video**
+## **`update()` - Update a video object**
 
 
-Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
 
 
 
@@ -281,7 +267,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **videoId** | **string**| **yes**| The video ID for the video you want to delete. |
+ | **videoId** | **string**| **yes**| The video ID for the video you want to update. |
  | **videoUpdatePayload** | [**VideoUpdatePayload**](../model/VideoUpdatePayload.md)| **yes**|  |
 
 
@@ -316,7 +302,7 @@ const updatedVideo = await client.videos.update(videoId, videoUpdatePayload);
 ---
 
 <a name="delete"></a>
-## **`delete()` - Delete a video**
+## **`delete()` - Delete a video object**
 
 
 If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
@@ -345,7 +331,7 @@ await client.videos.delete(videoId);
 ---
 
 <a name="list"></a>
-## **`list()` - List all videos**
+## **`list()` - List all video objects**
 
 
 This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
@@ -439,7 +425,7 @@ const video = await client.videos.uploadThumbnail(videoId, file);
 ---
 
 <a name="pickThumbnail"></a>
-## **`pickThumbnail()` - Pick a thumbnail**
+## **`pickThumbnail()` - Set a thumbnail**
 
 
 Pick a thumbnail from the given time code. 
@@ -483,7 +469,7 @@ const video = await client.videos.pickThumbnail(videoId, videoThumbnailPickPaylo
 ---
 
 <a name="getStatus"></a>
-## **`getStatus()` - Retrieve video status**
+## **`getStatus()` - Retrieve video status and details**
 
 
 This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.

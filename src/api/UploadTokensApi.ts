@@ -27,7 +27,7 @@ export default class UploadTokensApi {
   }
 
   /**
-   * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+   * Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/reference/upload-tokens)
    * Generate an upload token
    * @param tokenCreationPayload
    */
@@ -77,7 +77,7 @@ export default class UploadTokensApi {
   }
 
   /**
-   * You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+   * Retrieve details about a specific upload token by id.
    * Retrieve upload token
    * @param uploadToken The unique identifier for the token you want information about.
    */
@@ -153,8 +153,8 @@ export default class UploadTokensApi {
   }
 
   /**
-   * A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-   * List all active upload tokens.
+   * Retrieve a list of all currently active delegated tokens.
+   * List all active upload tokens
    * @param {Object} searchParams
    * @param { &#39;createdAt&#39; | &#39;ttl&#39; } searchParams.sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.
    * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A.

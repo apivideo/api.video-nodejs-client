@@ -20,7 +20,7 @@ Webhooks can push notifications to your server, rather than polling api.video fo
 
 * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires.
 
-* ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true.
+* ```live-stream.broadcast.ended```  This event fires when a live stream has finished broadcasting.
 
 * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
 
@@ -55,7 +55,7 @@ const webhook = await client.webhooks.create(webhooksCreationPayload);
 ## **`get()` - Retrieve Webhook details**
 
 
-This call provides the same JSON information provided on Webhook creation.
+Retrieve webhook details by id.
 
 ### Parameters
 

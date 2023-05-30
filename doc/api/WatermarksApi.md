@@ -13,7 +13,7 @@ All URIs are relative to *https://ws.api.video*
 ## **`upload()` - Upload a watermark**
 
 
-Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+Create a new watermark by uploading a `JPG` or a `PNG` image.
 
 ### Parameters
 
@@ -54,7 +54,7 @@ const watermarkVideo = await client.videos.create({
 ## **`delete()` - Delete a watermark**
 
 
-Delete a watermark. A watermark is a static image, directly burnt-into a video.
+Delete a watermark.
 
 ### Parameters
 
@@ -84,7 +84,7 @@ client.watermarks.delete(watermarkId);
 ## **`list()` - List all watermarks**
 
 
-List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+List all watermarks associated with your workspace.
 
 ### Parameters
 
