@@ -37,8 +37,8 @@ export default class VideosApi {
   }
 
   /**
-   * We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.
-   * Create a video
+   * Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1).
+   * Create a video object
    * @param videoCreationPayload video to create
    */
   public async create(
@@ -333,7 +333,7 @@ The latter allows you to split a video source into X chunks and send those chunk
   }
 
   /**
-   * Upload with an upload token
+   * Upload with an delegated upload token
    * This will create a progressive upload session.
    * @param token The unique identifier for the token you want to use to upload a video.
    */
@@ -449,7 +449,7 @@ The latter allows you to split a video source into X chunks and send those chunk
   }
   /**
    * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).
-   * Upload with an upload token
+   * Upload with an delegated upload token
    * @param token The unique identifier for the token you want to use to upload a video.
    * @param file The path to the video you want to upload.
    */
@@ -590,7 +590,7 @@ The latter allows you to split a video source into X chunks and send those chunk
 
   /**
    * This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
-   * Retrieve a video
+   * Retrieve a video object
    * @param videoId The unique identifier for the video you want details about.
    */
   public async get(videoId: string): Promise<Video> {
@@ -624,15 +624,15 @@ The latter allows you to split a video source into X chunks and send those chunk
   }
 
   /**
-   * Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+   * Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
 
 
 
 NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
 
 
-   * Update a video
-   * @param videoId The video ID for the video you want to delete.
+   * Update a video object
+   * @param videoId The video ID for the video you want to update.
    * @param videoUpdatePayload 
    */
   public async update(
@@ -686,7 +686,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
   /**
    * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
-   * Delete a video
+   * Delete a video object
    * @param videoId The video ID for the video you want to delete.
    */
   public async delete(videoId: string): Promise<void> {
@@ -721,7 +721,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
   /**
    * This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
-   * List all videos
+   * List all video objects
    * @param {Object} searchParams
    * @param { string } searchParams.title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
    * @param { Array&lt;string&gt; } searchParams.tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
@@ -923,7 +923,7 @@ If you'd like to upload an image for your thumbnail, use the dedicated [method](
 There may be a short delay for the thumbnail to update.
 
 
-   * Pick a thumbnail
+   * Set a thumbnail
    * @param videoId Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
    * @param videoThumbnailPickPayload 
    */
@@ -985,7 +985,7 @@ There may be a short delay for the thumbnail to update.
 
   /**
    * This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
-   * Retrieve video status
+   * Retrieve video status and details
    * @param videoId The unique identifier for the video you want the status for.
    */
   public async getStatus(videoId: string): Promise<VideoStatus> {

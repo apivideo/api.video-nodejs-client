@@ -50,9 +50,7 @@ const chapter = await client.chapters.upload(videoId, language, file);
 ## **`get()` - Retrieve a chapter**
 
 
-Retrieve a chapter for a video in a specific language. 
-
-Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+Retrieve a chapter for by video id in a specific language. 
 
 ### Parameters
 
@@ -116,7 +114,7 @@ await client.chapters.delete(videoId, language);
 ## **`list()` - List video chapters**
 
 
-Retrieve a list of all chapters for a specified video.
+Retrieve a list of all chapters for by video id.
 
 ### Parameters
 

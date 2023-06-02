@@ -93,7 +93,7 @@ export default class ChaptersApi {
   }
 
   /**
-   * Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+   * Retrieve a chapter for by video id in a specific language.
    * Retrieve a chapter
    * @param videoId The unique identifier for the video you want to show a chapter for.
    * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
@@ -177,7 +177,7 @@ export default class ChaptersApi {
   }
 
   /**
-   * Retrieve a list of all chapters for a specified video.
+   * Retrieve a list of all chapters for by video id.
    * List video chapters
    * @param {Object} searchParams
    * @param { string } searchParams.videoId The unique identifier for the video you want to retrieve a list of chapters for.

@@ -32,7 +32,7 @@ export default class CaptionsApi {
   }
 
   /**
-   * Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
+   * Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)
    * Upload a caption
    * @param videoId The unique identifier for the video you want to add a caption to.
    * @param language A valid BCP 47 language representation.
@@ -205,7 +205,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
   }
 
   /**
-   * Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
+   * Delete a caption in a specific language by by video id.
    * Delete a caption
    * @param videoId The unique identifier for the video you want to delete a caption from.
    * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
@@ -247,7 +247,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
   }
 
   /**
-   * Retrieve a list of available captions for the videoId you provide.
+   * Retrieve a list of available captions by video id.
    * List video captions
    * @param {Object} searchParams
    * @param { string } searchParams.videoId The unique identifier for the video you want to retrieve a list of captions for.

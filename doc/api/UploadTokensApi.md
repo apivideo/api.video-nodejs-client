@@ -7,14 +7,14 @@ All URIs are relative to *https://ws.api.video*
 | [**createToken()**](UploadTokensApi.md#createToken) | Generate an upload token | **POST** /upload-tokens |
 | [**getToken()**](UploadTokensApi.md#getToken) | Retrieve upload token | **GET** /upload-tokens/{uploadToken} |
 | [**deleteToken()**](UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** /upload-tokens/{uploadToken} |
-| [**list()**](UploadTokensApi.md#list) | List all active upload tokens. | **GET** /upload-tokens |
+| [**list()**](UploadTokensApi.md#list) | List all active upload tokens | **GET** /upload-tokens |
 
 
 <a name="createToken"></a>
 ## **`createToken()` - Generate an upload token**
 
 
-Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/reference/upload-tokens)
 
 ### Parameters
 
@@ -46,7 +46,7 @@ const uploadToken = await client.uploadTokens.createToken(tokenCreationPayload);
 ## **`getToken()` - Retrieve upload token**
 
 
-You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+Retrieve details about a specific upload token by id.
 
 ### Parameters
 
@@ -103,12 +103,10 @@ await client.uploadTokens.deleteToken(uploadToken);
 ---
 
 <a name="list"></a>
-## **`list()` - List all active upload tokens.**
+## **`list()` - List all active upload tokens**
 
 
-A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
-
-Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+Retrieve a list of all currently active delegated tokens.
 
 ### Parameters
 
