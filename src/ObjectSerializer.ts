@@ -11,6 +11,7 @@
  */
 
 import AccessToken from './model/AccessToken.js';
+import AdditionalBadRequestErrors from './model/AdditionalBadRequestErrors.js';
 import AuthenticatePayload from './model/AuthenticatePayload.js';
 import BadRequest from './model/BadRequest.js';
 import BytesRange from './model/BytesRange.js';
@@ -104,6 +105,7 @@ const enumsMap: Set<string> = new Set<string>([
 
 const typeMap: { [index: string]: any } = {
   AccessToken: AccessToken,
+  AdditionalBadRequestErrors: AdditionalBadRequestErrors,
   AuthenticatePayload: AuthenticatePayload,
   BadRequest: BadRequest,
   BytesRange: BytesRange,

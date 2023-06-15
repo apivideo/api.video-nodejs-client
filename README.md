@@ -195,6 +195,7 @@ Method | Description | HTTP request
 ## Models
 
  - [AccessToken](doc/model/AccessToken.md)
+ - [AdditionalBadRequestErrors](doc/model/AdditionalBadRequestErrors.md)
  - [AuthenticatePayload](doc/model/AuthenticatePayload.md)
  - [BadRequest](doc/model/BadRequest.md)
  - [BytesRange](doc/model/BytesRange.md)
