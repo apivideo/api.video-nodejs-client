@@ -22,6 +22,7 @@ import WatermarksApi from './api/WatermarksApi.js';
 import WebhooksApi from './api/WebhooksApi.js';
 
 import AccessToken from './model/AccessToken.js';
+import AdditionalBadRequestErrors from './model/AdditionalBadRequestErrors.js';
 import AuthenticatePayload from './model/AuthenticatePayload.js';
 import BadRequest from './model/BadRequest.js';
 import BytesRange from './model/BytesRange.js';
@@ -265,6 +266,7 @@ export {
   WatermarksApi,
   WebhooksApi,
   AccessToken,
+  AdditionalBadRequestErrors,
   AuthenticatePayload,
   BadRequest,
   BytesRange,

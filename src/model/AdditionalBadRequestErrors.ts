@@ -10,9 +10,8 @@
  */
 
 import AttributeType from './AttributeType.js';
-import AdditionalBadRequestErrors from './AdditionalBadRequestErrors.js';
 
-export default class BadRequest {
+export default class AdditionalBadRequestErrors {
   /**
    * A link to the error documentation.
    */
@@ -29,10 +28,6 @@ export default class BadRequest {
    * The HTTP status code.
    */
   'status'?: number;
-  /**
-   * Returns any additional problems in the request in an array of objects.
-   */
-  'problems'?: Array<AdditionalBadRequestErrors>;
 
   static readonly discriminator?: string = undefined;
 
@@ -61,15 +56,9 @@ export default class BadRequest {
       type: 'number',
       format: '',
     },
-    {
-      name: 'problems',
-      baseName: 'problems',
-      type: 'Array<AdditionalBadRequestErrors>',
-      format: '',
-    },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
-    return BadRequest.attributeTypeMap;
+    return AdditionalBadRequestErrors.attributeTypeMap;
   }
 }
