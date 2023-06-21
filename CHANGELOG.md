@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.4.0] - 2023-06-19
+- Introducing new analytics endpoints
+
 ## [2.3.2] - 2023-03-01
 - fix import issues
 

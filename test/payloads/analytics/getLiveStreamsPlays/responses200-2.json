@@ -1,0 +1,29 @@
+{
+  "data" : [ {
+    "value" : "2023-06-10T10:00:00.000Z",
+    "plays" : 100
+  }, {
+    "value" : "2023-06-10T11:00:00.000Z",
+    "plays" : 10
+  }, {
+    "value" : "2023-06-10T12:00:00.000Z",
+    "plays" : 1
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "currentPageItems" : 3,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 3,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "/analytics/live-streams/plays?dimension=videoId&filter=liveStreamId:li3VooPMbQLWdPF26qfmNVX6&currentPage=1&pageSize=25"
+    }, {
+      "rel" : "first",
+      "uri" : "/analytics/live-streams/plays?dimension=videoId&filter=liveStreamId:li3VooPMbQLWdPF26qfmNVX6&currentPage=1&pageSize=25"
+    }, {
+      "rel" : "last",
+      "uri" : "/analytics/live-streams/plays?dimension=videoId&filter=liveStreamId:li3VooPMbQLWdPF26qfmNVX6&currentPage=1&pageSize=25"
+    } ]
+  }
+}

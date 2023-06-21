@@ -1,0 +1,7 @@
+{
+  "type" : "https://docs.api.video/reference/request-invalid-query-parameter",
+  "title" : "A query parameter is invalid.",
+  "status" : 400,
+  "detail" : "This value must be part of the following values: emittedAt,videoId,country,deviceType,operatingSystem,browser",
+  "name" : "dimension"
+}

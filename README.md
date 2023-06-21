@@ -14,6 +14,7 @@
   - [Code sample](#code-sample)
 - [Documentation](#documentation)
   - [API Endpoints](#api-endpoints)
+    - [AnalyticsApi](#analyticsapi)
     - [CaptionsApi](#captionsapi)
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
@@ -88,6 +89,14 @@ const ApiVideoClient = require('@api.video/nodejs-client');
 # Documentation
 
 ## API Endpoints
+
+
+### AnalyticsApi
+
+Method | Description | HTTP request
+------------- | ------------- | -------------
+[**getLiveStreamsPlays()**](doc/api/AnalyticsApi.md#getLiveStreamsPlays) | Get play events for live stream | **GET** /analytics/live-streams/plays
+[**getVideosPlays()**](doc/api/AnalyticsApi.md#getVideosPlays) | Get play events for video | **GET** /analytics/videos/plays
 
 
 ### CaptionsApi
@@ -196,6 +205,9 @@ Method | Description | HTTP request
 
  - [AccessToken](doc/model/AccessToken.md)
  - [AdditionalBadRequestErrors](doc/model/AdditionalBadRequestErrors.md)
+ - [AnalyticsData](doc/model/AnalyticsData.md)
+ - [AnalyticsPlays400Error](doc/model/AnalyticsPlays400Error.md)
+ - [AnalyticsPlaysResponse](doc/model/AnalyticsPlaysResponse.md)
  - [AuthenticatePayload](doc/model/AuthenticatePayload.md)
  - [BadRequest](doc/model/BadRequest.md)
  - [BytesRange](doc/model/BytesRange.md)

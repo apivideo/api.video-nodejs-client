@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import ApiVideoClient from '../src';
+import AnalyticsApi from '../src/api/AnalyticsApi';
 import CaptionsApi from '../src/api/CaptionsApi';
 import ChaptersApi from '../src/api/ChaptersApi';
 import LiveStreamsApi from '../src/api/LiveStreamsApi';
@@ -11,6 +12,10 @@ import WatermarksApi from '../src/api/WatermarksApi';
 import WebhooksApi from '../src/api/WebhooksApi';
 
 describe('ApiVideoClient', () => {
+  it('should use the AnalyticsApi class', () => {
+    const client = new ApiVideoClient({ apiKey: 'test' });
+    expect(client.analytics).instanceOf(AnalyticsApi);
+  });
   it('should use the CaptionsApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
     expect(client.captions).instanceOf(CaptionsApi);
