@@ -11,6 +11,7 @@
 
 import HttpClient from './HttpClient.js';
 
+import AnalyticsApi from './api/AnalyticsApi.js';
 import CaptionsApi from './api/CaptionsApi.js';
 import ChaptersApi from './api/ChaptersApi.js';
 import LiveStreamsApi from './api/LiveStreamsApi.js';
@@ -28,6 +29,7 @@ const MAX_CHUNK_SIZE = 128 * 1024 * 1024;
 
 class ApiVideoClient {
   private httpClient: HttpClient;
+  private _analytics: AnalyticsApi;
   private _captions: CaptionsApi;
   private _chapters: ChaptersApi;
   private _liveStreams: LiveStreamsApi;
@@ -74,6 +76,7 @@ class ApiVideoClient {
       chunkSize: params.chunkSize || DEFAULT_CHUNK_SIZE,
     });
 
+    this._analytics = new AnalyticsApi(this.httpClient);
     this._captions = new CaptionsApi(this.httpClient);
     this._chapters = new ChaptersApi(this.httpClient);
     this._liveStreams = new LiveStreamsApi(this.httpClient);
@@ -87,6 +90,14 @@ class ApiVideoClient {
 
   public async getAccessToken() {
     return this.httpClient.getAccessToken();
+  }
+
+  /**
+   * Get an AnalyticsApi instance
+   * @return AnalyticsApi
+   */
+  public get analytics(): AnalyticsApi {
+    return this._analytics;
   }
 
   /**

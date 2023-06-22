@@ -11,6 +11,7 @@
 
 import HttpClient from './HttpClient.js';
 
+import AnalyticsApi from './api/AnalyticsApi.js';
 import CaptionsApi from './api/CaptionsApi.js';
 import ChaptersApi from './api/ChaptersApi.js';
 import LiveStreamsApi from './api/LiveStreamsApi.js';
@@ -23,6 +24,9 @@ import WebhooksApi from './api/WebhooksApi.js';
 
 import AccessToken from './model/AccessToken.js';
 import AdditionalBadRequestErrors from './model/AdditionalBadRequestErrors.js';
+import AnalyticsData from './model/AnalyticsData.js';
+import AnalyticsPlays400Error from './model/AnalyticsPlays400Error.js';
+import AnalyticsPlaysResponse from './model/AnalyticsPlaysResponse.js';
 import AuthenticatePayload from './model/AuthenticatePayload.js';
 import BadRequest from './model/BadRequest.js';
 import BytesRange from './model/BytesRange.js';
@@ -97,6 +101,7 @@ const MAX_CHUNK_SIZE = 128 * 1024 * 1024;
 
 class ApiVideoClient {
   private httpClient: HttpClient;
+  private _analytics: AnalyticsApi;
   private _captions: CaptionsApi;
   private _chapters: ChaptersApi;
   private _liveStreams: LiveStreamsApi;
@@ -143,6 +148,7 @@ class ApiVideoClient {
       chunkSize: params.chunkSize || DEFAULT_CHUNK_SIZE,
     });
 
+    this._analytics = new AnalyticsApi(this.httpClient);
     this._captions = new CaptionsApi(this.httpClient);
     this._chapters = new ChaptersApi(this.httpClient);
     this._liveStreams = new LiveStreamsApi(this.httpClient);
@@ -156,6 +162,14 @@ class ApiVideoClient {
 
   public async getAccessToken() {
     return this.httpClient.getAccessToken();
+  }
+
+  /**
+   * Get an AnalyticsApi instance
+   * @return AnalyticsApi
+   */
+  public get analytics(): AnalyticsApi {
+    return this._analytics;
   }
 
   /**
@@ -256,6 +270,7 @@ class ApiVideoClient {
 }
 
 export {
+  AnalyticsApi,
   CaptionsApi,
   ChaptersApi,
   LiveStreamsApi,
@@ -267,6 +282,9 @@ export {
   WebhooksApi,
   AccessToken,
   AdditionalBadRequestErrors,
+  AnalyticsData,
+  AnalyticsPlays400Error,
+  AnalyticsPlaysResponse,
   AuthenticatePayload,
   BadRequest,
   BytesRange,
