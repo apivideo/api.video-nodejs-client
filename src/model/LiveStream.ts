@@ -11,6 +11,7 @@
 
 import AttributeType from './AttributeType.js';
 import LiveStreamAssets from './LiveStreamAssets.js';
+import RestreamsResponseObject from './RestreamsResponseObject.js';
 
 export default class LiveStream {
   /**
@@ -42,6 +43,10 @@ export default class LiveStream {
    * Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not.
    */
   'broadcasting'?: boolean;
+  /**
+   * Returns the list of RTMP restream destinations.
+   */
+  'restreams': Array<RestreamsResponseObject>;
   /**
    * When the player was created, presented in ISO-8601 format.
    */
@@ -100,6 +105,12 @@ export default class LiveStream {
       name: 'broadcasting',
       baseName: 'broadcasting',
       type: 'boolean',
+      format: '',
+    },
+    {
+      name: 'restreams',
+      baseName: 'restreams',
+      type: 'Array<RestreamsResponseObject>',
       format: '',
     },
     {

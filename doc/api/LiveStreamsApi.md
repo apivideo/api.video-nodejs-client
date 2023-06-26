@@ -31,19 +31,6 @@ Creates a livestream object.
 Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamCreationPayload = {
-    record: false, // Whether you are recording or not. True for record, false for not record.
-    name: "My Live Stream", // Add a name for your live stream here.
-    _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
-    playerId: "pl4f4ferf5erfr5zed4fsdd", // The unique identifier for the player.
-}; 
-
-const liveStream = await client.liveStreams.create(liveStreamCreationPayload);
-```
 
 
 ---
@@ -66,14 +53,6 @@ Get a livestream by id.
 Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to retrieve.
-
-const liveStream = await client.liveStreams.get(liveStreamId);
-```
 
 
 ---
@@ -97,20 +76,6 @@ Updates the livestream object.
 Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
-const liveStreamUpdatePayload = {
-  name: "My Live Stream Video", // The name you want to use for your live stream.
-  _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
-  record: true, // Use this to indicate whether you want the recording on or off. On is true, off is false.
-  playerId: "pl45KFKdlddgk654dspkze", // The unique ID for the player associated with a live stream that you want to update.
-};
-
-const liveStream = await client.liveStreams.update(liveStreamId, liveStreamUpdatePayload); 
-```
 
 
 ---

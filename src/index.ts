@@ -62,6 +62,8 @@ import RawStatisticsListLiveStreamAnalyticsResponse from './model/RawStatisticsL
 import RawStatisticsListPlayerSessionEventsResponse from './model/RawStatisticsListPlayerSessionEventsResponse.js';
 import RawStatisticsListSessionsResponse from './model/RawStatisticsListSessionsResponse.js';
 import RefreshTokenPayload from './model/RefreshTokenPayload.js';
+import RestreamsRequestObject from './model/RestreamsRequestObject.js';
+import RestreamsResponseObject from './model/RestreamsResponseObject.js';
 import TokenCreationPayload from './model/TokenCreationPayload.js';
 import TokenListResponse from './model/TokenListResponse.js';
 import UploadToken from './model/UploadToken.js';
@@ -320,6 +322,8 @@ export {
   RawStatisticsListPlayerSessionEventsResponse,
   RawStatisticsListSessionsResponse,
   RefreshTokenPayload,
+  RestreamsRequestObject,
+  RestreamsResponseObject,
   TokenCreationPayload,
   TokenListResponse,
   UploadToken,

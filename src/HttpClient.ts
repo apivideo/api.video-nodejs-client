@@ -48,7 +48,7 @@ export default class HttpClient {
     this.tokenType = 'Bearer';
     this.headers = {
       Accept: 'application/json, */*;q=0.8',
-      'AV-Origin-Client': 'nodejs:2.4.0',
+      'AV-Origin-Client': 'nodejs:2.5.0',
       ...(params.applicationName && params.applicationVersion
         ? {
             'AV-Origin-App': `${params.applicationName}:${params.applicationVersion}`,
