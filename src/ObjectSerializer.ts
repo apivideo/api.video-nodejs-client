@@ -36,6 +36,7 @@ import LiveStreamSessionReferrer from './model/LiveStreamSessionReferrer.js';
 import LiveStreamSessionSession from './model/LiveStreamSessionSession.js';
 import LiveStreamUpdatePayload from './model/LiveStreamUpdatePayload.js';
 import Metadata from './model/Metadata.js';
+import Model403ErrorSchema from './model/Model403ErrorSchema.js';
 import NotFound from './model/NotFound.js';
 import Pagination from './model/Pagination.js';
 import PaginationLink from './model/PaginationLink.js';
@@ -133,6 +134,7 @@ const typeMap: { [index: string]: any } = {
   LiveStreamSessionSession: LiveStreamSessionSession,
   LiveStreamUpdatePayload: LiveStreamUpdatePayload,
   Metadata: Metadata,
+  Model403ErrorSchema: Model403ErrorSchema,
   NotFound: NotFound,
   Pagination: Pagination,
   PaginationLink: PaginationLink,
