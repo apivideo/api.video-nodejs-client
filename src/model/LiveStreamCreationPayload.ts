@@ -10,6 +10,7 @@
  */
 
 import AttributeType from './AttributeType.js';
+import RestreamsRequestObject from './RestreamsRequestObject.js';
 
 export default class LiveStreamCreationPayload {
   /**
@@ -28,6 +29,10 @@ export default class LiveStreamCreationPayload {
    * The unique identifier for the player.
    */
   'playerId'?: string;
+  /**
+   * Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
+   */
+  'restreams'?: Array<RestreamsRequestObject>;
 
   static readonly discriminator?: string = undefined;
 
@@ -54,6 +59,12 @@ export default class LiveStreamCreationPayload {
       name: 'playerId',
       baseName: 'playerId',
       type: 'string',
+      format: '',
+    },
+    {
+      name: 'restreams',
+      baseName: 'restreams',
+      type: 'Array<RestreamsRequestObject>',
       format: '',
     },
   ];

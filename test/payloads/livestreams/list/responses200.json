@@ -4,6 +4,15 @@
     "createdAt" : "2020-01-31T10:17:47.000Z",
     "updatedAt" : "2020-03-09T13:19:43.000Z",
     "streamKey" : "30087931-229e-42cf-b5f9-e91bcc1f7332",
+    "restreams" : [ {
+      "name" : "YouTube",
+      "serverUrl" : "rtmp://youtube.broadcast.example.com",
+      "streamKey" : "cc1b4df0-d1c5-4064-a8f9-9f0368385188"
+    }, {
+      "name" : "Twitch",
+      "serverUrl" : "rtmp://twitch.broadcast.example.com",
+      "streamKey" : "cc1b4df0-d1c5-4064-a8f9-9f0368385188"
+    } ],
     "name" : "Live Stream From the browser",
     "public" : true,
     "record" : true,
@@ -19,6 +28,15 @@
     "createdAt" : "2020-07-29T10:45:35.000Z",
     "updatedAt" : "2020-07-29T10:45:35.000Z",
     "streamKey" : "cc1b4df0-d1c5-4064-a8f9-9f0368385135",
+    "restreams" : [ {
+      "name" : "YouTube",
+      "serverUrl" : "rtmp://youtube.broadcast.example.com",
+      "streamKey" : "cc1b4df0-d1c5-4064-a8f9-9f0368385135"
+    }, {
+      "name" : "Twitch",
+      "serverUrl" : "rtmp://twitch.broadcast.example.com",
+      "streamKey" : "cc1b4df0-d1c5-4064-a8f9-9f0368385135"
+    } ],
     "name" : "Live From New York",
     "public" : true,
     "record" : true,
