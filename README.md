@@ -244,6 +244,8 @@ Method | Description | HTTP request
  - [RawStatisticsListPlayerSessionEventsResponse](doc/model/RawStatisticsListPlayerSessionEventsResponse.md)
  - [RawStatisticsListSessionsResponse](doc/model/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](doc/model/RefreshTokenPayload.md)
+ - [RestreamsRequestObject](doc/model/RestreamsRequestObject.md)
+ - [RestreamsResponseObject](doc/model/RestreamsResponseObject.md)
  - [TokenCreationPayload](doc/model/TokenCreationPayload.md)
  - [TokenListResponse](doc/model/TokenListResponse.md)
  - [UploadToken](doc/model/UploadToken.md)

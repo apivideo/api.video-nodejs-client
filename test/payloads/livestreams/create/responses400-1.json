@@ -1,0 +1,7 @@
+{
+  "type" : "https://docs.api.video/reference/invalid-attribute",
+  "title" : "An attribute is invalid.",
+  "status" : 400,
+  "detail" : "Missing app name: rtmp://[host]/[app name].",
+  "name" : "restreams[0][serverUrl]"
+}

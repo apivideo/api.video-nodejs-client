@@ -51,6 +51,8 @@ import RawStatisticsListLiveStreamAnalyticsResponse from './model/RawStatisticsL
 import RawStatisticsListPlayerSessionEventsResponse from './model/RawStatisticsListPlayerSessionEventsResponse.js';
 import RawStatisticsListSessionsResponse from './model/RawStatisticsListSessionsResponse.js';
 import RefreshTokenPayload from './model/RefreshTokenPayload.js';
+import RestreamsRequestObject from './model/RestreamsRequestObject.js';
+import RestreamsResponseObject from './model/RestreamsResponseObject.js';
 import TokenCreationPayload from './model/TokenCreationPayload.js';
 import TokenListResponse from './model/TokenListResponse.js';
 import UploadToken from './model/UploadToken.js';
@@ -151,6 +153,8 @@ const typeMap: { [index: string]: any } = {
     RawStatisticsListPlayerSessionEventsResponse,
   RawStatisticsListSessionsResponse: RawStatisticsListSessionsResponse,
   RefreshTokenPayload: RefreshTokenPayload,
+  RestreamsRequestObject: RestreamsRequestObject,
+  RestreamsResponseObject: RestreamsResponseObject,
   TokenCreationPayload: TokenCreationPayload,
   TokenListResponse: TokenListResponse,
   UploadToken: UploadToken,

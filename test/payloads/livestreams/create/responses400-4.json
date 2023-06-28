@@ -1,0 +1,7 @@
+{
+  "type" : "https://docs.api.video/reference/invalid-attribute",
+  "title" : "An attribute is invalid.",
+  "status" : 400,
+  "detail" : "This value should not be null.",
+  "name" : "restreams[0][name]"
+}
