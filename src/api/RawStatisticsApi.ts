@@ -10,11 +10,11 @@
  */
 
 import { URLSearchParams } from 'url';
-import ObjectSerializer from '../ObjectSerializer.js';
-import HttpClient, { QueryOptions } from '../HttpClient.js';
-import RawStatisticsListLiveStreamAnalyticsResponse from '../model/RawStatisticsListLiveStreamAnalyticsResponse.js';
-import RawStatisticsListPlayerSessionEventsResponse from '../model/RawStatisticsListPlayerSessionEventsResponse.js';
-import RawStatisticsListSessionsResponse from '../model/RawStatisticsListSessionsResponse.js';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import RawStatisticsListLiveStreamAnalyticsResponse from '../model/RawStatisticsListLiveStreamAnalyticsResponse';
+import RawStatisticsListPlayerSessionEventsResponse from '../model/RawStatisticsListPlayerSessionEventsResponse';
+import RawStatisticsListSessionsResponse from '../model/RawStatisticsListSessionsResponse';
 
 /**
  * no description

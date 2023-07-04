@@ -13,18 +13,18 @@ import path from 'path';
 import { existsSync, statSync, createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from '../ObjectSerializer.js';
-import HttpClient, { QueryOptions } from '../HttpClient.js';
-import ProgressiveSession from '../model/ProgressiveSession.js';
-import Video from '../model/Video.js';
-import VideoCreationPayload from '../model/VideoCreationPayload.js';
-import VideoStatus from '../model/VideoStatus.js';
-import VideoThumbnailPickPayload from '../model/VideoThumbnailPickPayload.js';
-import VideoUpdatePayload from '../model/VideoUpdatePayload.js';
-import VideosListResponse from '../model/VideosListResponse.js';
-import UploadProgressEvent from '../model/UploadProgressEvent.js';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import ProgressiveSession from '../model/ProgressiveSession';
+import Video from '../model/Video';
+import VideoCreationPayload from '../model/VideoCreationPayload';
+import VideoStatus from '../model/VideoStatus';
+import VideoThumbnailPickPayload from '../model/VideoThumbnailPickPayload';
+import VideoUpdatePayload from '../model/VideoUpdatePayload';
+import VideosListResponse from '../model/VideosListResponse';
+import UploadProgressEvent from '../model/UploadProgressEvent';
 import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient.js';
+import { readableToBuffer } from '../HttpClient';
 
 /**
  * no description
@@ -153,19 +153,22 @@ export default class VideosApi {
         queryParams.headers['Content-Range'] = `part ${this.currentPart}/${
           isLast ? this.currentPart : '*'
         }`;
-        const call = this.httpClient.call(localVarPath, queryParams);
+
         if (progressListener) {
-          call.on('uploadProgress', (progress: any) => {
+          queryParams.onUploadProgress = (progress) => {
             progressListener({
               chunksCount: 1,
               currentChunk: 0,
-              currentChunkUploadedBytes: progress.transferred,
+              currentChunkUploadedBytes: progress.loaded,
               currentChunkTotalBytes: progress.total || 0,
-              uploadedBytes: progress.transferred,
+              uploadedBytes: progress.loaded,
               totalBytes: progress.total || 0,
             });
-          });
+          };
         }
+
+        const call = this.httpClient.call(localVarPath, queryParams);
+
         this.currentPart++;
         return call.then(
           (response) =>
@@ -242,19 +245,22 @@ The latter allows you to split a video source into X chunks and send those chunk
       const filename = path.basename(file);
       formData.append(filename, createReadStream(file), filename);
       queryParams.body = formData;
-      const call = this.httpClient.call(localVarPath, queryParams);
+
       if (progressListener) {
-        call.on('uploadProgress', (progress) => {
+        queryParams.onUploadProgress = (progress) => {
           progressListener({
             chunksCount: 1,
             currentChunk: 0,
-            currentChunkUploadedBytes: progress.transferred,
+            currentChunkUploadedBytes: progress.loaded,
             currentChunkTotalBytes: progress.total || 0,
-            uploadedBytes: progress.transferred,
+            uploadedBytes: progress.loaded,
             totalBytes: progress.total || 0,
           });
-        });
+        };
       }
+
+      const call = this.httpClient.call(localVarPath, queryParams);
+
       return call.then(
         (response) =>
           ObjectSerializer.deserialize(
@@ -296,23 +302,22 @@ The latter allows you to split a video source into X chunks and send those chunk
       queryParams.headers['Content-Range'] = `part ${part}/${partsCount}`;
       part++;
 
-      const call = this.httpClient.call(localVarPath, queryParams);
-
       if (progressListener) {
-        call.on('uploadProgress', (progress) => {
+        queryParams.onUploadProgress = (progress) => {
           progressListener({
             chunksCount: Math.ceil(length / chunkSize),
             currentChunk: chunkNumber,
-            currentChunkUploadedBytes: progress.transferred,
+            currentChunkUploadedBytes: progress.loaded,
             currentChunkTotalBytes: progress.total || 0,
             uploadedBytes: Math.min(
               length,
-              chunkNumber * chunkSize + progress.transferred
+              chunkNumber * chunkSize + progress.loaded
             ),
             totalBytes: length,
           });
-        });
+        };
       }
+      const call = this.httpClient.call(localVarPath, queryParams);
 
       lastBody = await call.then(
         (response) =>
@@ -412,19 +417,22 @@ The latter allows you to split a video source into X chunks and send those chunk
         queryParams.headers['Content-Range'] = `part ${this.currentPart}/${
           isLast ? this.currentPart : '*'
         }`;
-        const call = this.httpClient.call(localVarPath, queryParams);
+
         if (progressListener) {
-          call.on('uploadProgress', (progress: any) => {
+          queryParams.onUploadProgress = (progress) => {
             progressListener({
               chunksCount: 1,
               currentChunk: 0,
-              currentChunkUploadedBytes: progress.transferred,
+              currentChunkUploadedBytes: progress.loaded,
               currentChunkTotalBytes: progress.total || 0,
-              uploadedBytes: progress.transferred,
+              uploadedBytes: progress.loaded,
               totalBytes: progress.total || 0,
             });
-          });
+          };
         }
+
+        const call = this.httpClient.call(localVarPath, queryParams);
+
         this.currentPart++;
         return call
           .then(
@@ -498,19 +506,22 @@ The latter allows you to split a video source into X chunks and send those chunk
       const filename = path.basename(file);
       formData.append(filename, createReadStream(file), filename);
       queryParams.body = formData;
-      const call = this.httpClient.call(localVarPath, queryParams);
+
       if (progressListener) {
-        call.on('uploadProgress', (progress) => {
+        queryParams.onUploadProgress = (progress) => {
           progressListener({
             chunksCount: 1,
             currentChunk: 0,
-            currentChunkUploadedBytes: progress.transferred,
+            currentChunkUploadedBytes: progress.loaded,
             currentChunkTotalBytes: progress.total || 0,
-            uploadedBytes: progress.transferred,
+            uploadedBytes: progress.loaded,
             totalBytes: progress.total || 0,
           });
-        });
+        };
       }
+
+      const call = this.httpClient.call(localVarPath, queryParams);
+
       return call.then(
         (response) =>
           ObjectSerializer.deserialize(
@@ -552,23 +563,22 @@ The latter allows you to split a video source into X chunks and send those chunk
       queryParams.headers['Content-Range'] = `part ${part}/${partsCount}`;
       part++;
 
-      const call = this.httpClient.call(localVarPath, queryParams);
-
       if (progressListener) {
-        call.on('uploadProgress', (progress) => {
+        queryParams.onUploadProgress = (progress) => {
           progressListener({
             chunksCount: Math.ceil(length / chunkSize),
             currentChunk: chunkNumber,
-            currentChunkUploadedBytes: progress.transferred,
+            currentChunkUploadedBytes: progress.loaded,
             currentChunkTotalBytes: progress.total || 0,
             uploadedBytes: Math.min(
               length,
-              chunkNumber * chunkSize + progress.transferred
+              chunkNumber * chunkSize + progress.loaded
             ),
             totalBytes: length,
           });
-        });
+        };
       }
+      const call = this.httpClient.call(localVarPath, queryParams);
 
       lastBody = await call.then(
         (response) =>

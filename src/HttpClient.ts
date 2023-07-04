@@ -9,28 +9,24 @@
  * Do not edit the class manually.
  */
 
-import got, {
-  AfterResponseHook,
-  ExtendOptions,
-  Got,
-  Headers,
-  RequestError,
-} from 'got';
-import ObjectSerializer from './ObjectSerializer.js';
-import ApiVideoError from './ApiVideoError.js';
-import AccessToken from './model/AccessToken.js';
+import axios, { AxiosError, AxiosHeaders, AxiosProgressEvent } from 'axios';
+import ApiVideoError from './ApiVideoError';
+import ProblemDetails from './model/ProblemDetails';
+import { encode } from 'js-base64';
 import { Readable, Stream } from 'stream';
-import FormData from 'form-data';
 
-export type QueryOptions = Got | ExtendOptions;
+export type QueryOptions = {
+  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  body?: any;
+  headers?: Record<string, string>;
+  searchParams?: URLSearchParams;
+  onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
+};
 
 export default class HttpClient {
   private apiKey?: string;
   private baseUri: string;
-  private tokenType: string;
-  private accessToken?: AccessToken;
-  private headers: Headers;
-  private baseRequest: Got;
+  private headers: AxiosHeaders;
   private chunkSize: number;
 
   constructor(params: {
@@ -45,10 +41,10 @@ export default class HttpClient {
     this.apiKey = params.apiKey;
     this.baseUri = params.baseUri;
     this.chunkSize = params.chunkSize;
-    this.tokenType = 'Bearer';
-    this.headers = {
+    this.headers = new AxiosHeaders({
       Accept: 'application/json, */*;q=0.8',
-      'AV-Origin-Client': 'nodejs:2.4.0',
+      'AV-Origin-Client': 'nodejs:2.5.0',
+      Authorization: this.apiKey ? `Basic ${encode(`${this.apiKey}:`)}` : '',
       ...(params.applicationName && params.applicationVersion
         ? {
             'AV-Origin-App': `${params.applicationName}:${params.applicationVersion}`,
@@ -59,52 +55,6 @@ export default class HttpClient {
             'AV-Origin-Sdk': `${params.sdkName}:${params.sdkVersion}`,
           }
         : {}),
-    };
-    this.baseRequest = got.extend({
-      prefixUrl: this.baseUri,
-      headers: this.headers,
-      mutableDefaults: true,
-      hooks: {
-        afterResponse: [this.isStillAuthenticated.bind(this)],
-        beforeRequest: [
-          async (options) => {
-            if (!options.headers.Authorization) {
-              if (!this.accessToken) {
-                await this.retrieveAccessToken.call(this);
-              }
-              // @ts-ignore
-              const { tokenType, accessToken } = this.accessToken;
-              // eslint-disable-next-line no-param-reassign
-              options.headers.Authorization = `${tokenType} ${accessToken}`;
-            }
-          },
-        ],
-      },
-      handlers: [
-        (options, next) => {
-          if (options.isStream) {
-            return next(options);
-          }
-
-          return (
-            next(options)
-              // @ts-ignore
-              .catch((error: Error) => {
-                if (error instanceof RequestError) {
-                  // @ts-ignore
-                  const { response } = error;
-                  const contentType = response?.headers['content-type'];
-                  if (contentType === 'application/problem+json') {
-                    // @ts-ignore
-                    throw new ApiVideoError(response);
-                  }
-                }
-
-                throw error;
-              })
-          );
-        },
-      ],
     });
   }
 
@@ -112,59 +62,43 @@ export default class HttpClient {
     return this.chunkSize;
   }
 
-  async getAccessToken() {
-    return this.accessToken || (await this.retrieveAccessToken());
+  public async getAccessToken(): Promise<string> {
+    const axiosRes = await axios.request({
+      url: `${this.baseUri}/auth/api-key`,
+      headers: this.headers,
+      method: 'POST',
+      data: {
+        apiKey: this.apiKey,
+      },
+    });
+
+    return axiosRes.data.access_token;
   }
 
-  async retrieveAccessToken(): Promise<AccessToken> {
-    const { statusCode, body } = await got.post(
-      `${this.baseUri}/auth/api-key`,
-      {
-        json: { apiKey: this.apiKey },
-        responseType: 'json',
-        headers: this.headers,
-      }
-    );
-    this.accessToken = ObjectSerializer.deserialize(
-      body,
-      'AccessToken',
-      ''
-    ) as AccessToken;
+  public async call(path: string, options: QueryOptions) {
+    if (!options.method) throw new Error('Method is required');
+    try {
+      const axiosRes = await axios.request({
+        url: `${this.baseUri}/${path}${
+          options.searchParams ? `?${options.searchParams.toString()}` : ''
+        }`,
+        headers: this.headers.concat(options.headers || {}),
+        method: options.method,
+        onUploadProgress: options.onUploadProgress,
+        data: options.body,
+      });
 
-    if (statusCode >= 400) {
-      throw new Error('Authentication Failed');
-    }
-
-    return this.accessToken;
-  }
-
-  isStillAuthenticated: AfterResponseHook = async (response, retry) => {
-    if (response.statusCode === 401) {
-      const { tokenType, accessToken } = await this.retrieveAccessToken.call(
-        this
-      );
-      const updatedOptions = {
-        headers: {
-          Authorization: `${tokenType} ${accessToken}`,
-        },
+      return {
+        headers: axiosRes.headers as any,
+        body: JSON.stringify(axiosRes.data),
       };
-
-      // Save for further requests
-      this.baseRequest.defaults.options = got.mergeOptions(
-        this.baseRequest.defaults.options,
-        updatedOptions
+    } catch (error: any) {
+      const axiosError = error as AxiosError;
+      throw new ApiVideoError(
+        axiosError.response?.status || 0,
+        axiosError.response?.data as ProblemDetails
       );
-
-      // Make a new retry
-      return retry(updatedOptions);
     }
-
-    // No changes otherwise
-    return response;
-  };
-
-  call(path: string, queryOptions?: QueryOptions) {
-    return this.baseRequest.extend(queryOptions || {})(path);
   }
 }
 
@@ -183,7 +117,6 @@ export async function readableToBuffer(readable: Readable): Promise<Buffer> {
       if (err) {
         reject(err);
       }
-      const form = new FormData();
 
       const buffer = Buffer.concat(data);
       resolve(buffer);

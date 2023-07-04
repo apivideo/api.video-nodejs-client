@@ -10,11 +10,11 @@
  */
 
 import { URLSearchParams } from 'url';
-import ObjectSerializer from '../ObjectSerializer.js';
-import HttpClient, { QueryOptions } from '../HttpClient.js';
-import TokenCreationPayload from '../model/TokenCreationPayload.js';
-import TokenListResponse from '../model/TokenListResponse.js';
-import UploadToken from '../model/UploadToken.js';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import TokenCreationPayload from '../model/TokenCreationPayload';
+import TokenListResponse from '../model/TokenListResponse';
+import UploadToken from '../model/UploadToken';
 
 /**
  * no description
