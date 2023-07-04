@@ -13,12 +13,12 @@ import path from 'path';
 import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from '../ObjectSerializer.js';
-import HttpClient, { QueryOptions } from '../HttpClient.js';
-import Chapter from '../model/Chapter.js';
-import ChaptersListResponse from '../model/ChaptersListResponse.js';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import Chapter from '../model/Chapter';
+import ChaptersListResponse from '../model/ChaptersListResponse';
 import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient.js';
+import { readableToBuffer } from '../HttpClient';
 
 /**
  * no description

@@ -13,14 +13,14 @@ import path from 'path';
 import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from '../ObjectSerializer.js';
-import HttpClient, { QueryOptions } from '../HttpClient.js';
-import LiveStream from '../model/LiveStream.js';
-import LiveStreamCreationPayload from '../model/LiveStreamCreationPayload.js';
-import LiveStreamListResponse from '../model/LiveStreamListResponse.js';
-import LiveStreamUpdatePayload from '../model/LiveStreamUpdatePayload.js';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import LiveStream from '../model/LiveStream';
+import LiveStreamCreationPayload from '../model/LiveStreamCreationPayload';
+import LiveStreamListResponse from '../model/LiveStreamListResponse';
+import LiveStreamUpdatePayload from '../model/LiveStreamUpdatePayload';
 import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient.js';
+import { readableToBuffer } from '../HttpClient';
 
 /**
  * no description

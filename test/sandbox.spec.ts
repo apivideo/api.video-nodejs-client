@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import { createReadStream } from 'fs';
 import PlayerTheme from '../src/model/PlayerTheme';
 import UploadToken from '../src/model/UploadToken';
@@ -9,7 +8,7 @@ import ApiVideoClient from '../src';
 const timeout = (ms = 100) =>
   new Promise((resolve) => {
     setTimeout(() => {
-      resolve();
+      resolve(undefined);
     }, ms);
   });
 
@@ -36,7 +35,7 @@ const client = new ApiVideoClient({
 });
 
 describe('ApiVideoClient', () => {
-  describe('Clean', async () => {
+  describe('Clean', () => {
     it('should clean all videos', async () => {
       const videos = await client.videos.list();
       await Promise.all(
@@ -45,40 +44,52 @@ describe('ApiVideoClient', () => {
     });
   });
 
-  describe('Watermarks', async () => {
+  describe('Watermarks', () => {
     let watermark: Watermark, watermarkVideo: Video;
-    it('should create a watermark', async () => {
-      watermark = await client.watermarks.upload('test/data/test.jpg');
-      expect(watermark.watermarkId).to.be.a('string');
+    it('should create a watermark', (done) => {
+      (async () => {
+        watermark = await client.watermarks.upload('test/data/test.jpg');
+        expect(typeof watermark.watermarkId).toBe('string');
+        done();
+      })();
     });
 
-    it('should list watermarks', async () => {
-      const watermarks = await client.watermarks.list({});
-      expect(watermarks.data).to.has.length.greaterThan(0);
+    it('should list watermarks', (done) => {
+      (async () => {
+        const watermarks = await client.watermarks.list({});
+        expect(watermarks.data.length).toBeGreaterThan(0);
+        done();
+      })();
     });
 
-    it('should create a video using the watermark', async () => {
-      watermarkVideo = await client.videos.create({
-        title: 'Nodejs - watermark',
-        watermark: {
-          id: watermark.watermarkId,
-          top: '0px',
-          left: '0px',
-          width: '100px',
-          height: '100px',
-        },
-      });
-      expect(watermarkVideo.title).to.be.eq('Nodejs - watermark');
+    it('should create a video using the watermark', (done) => {
+      (async () => {
+        watermarkVideo = await client.videos.create({
+          title: 'Nodejs - watermark',
+          watermark: {
+            id: watermark.watermarkId,
+            top: '0px',
+            left: '0px',
+            width: '100px',
+            height: '100px',
+          },
+        });
+        expect(watermarkVideo.title).toEqual('Nodejs - watermark');
+        done();
+      })();
     });
 
-    it('should delete watermarks', async () => {
-      await client.videos.delete(watermarkVideo.videoId);
-      await client.watermarks.delete(watermark.watermarkId!);
+    it('should delete watermarks', (done) => {
+      (async () => {
+        await client.videos.delete(watermarkVideo.videoId);
+        await client.watermarks.delete(watermark.watermarkId!);
+        done();
+      })();
     });
   });
 
-  describe('Progressive upload', async () => {
-    describe('Without upload token', async () => {
+  describe('Progressive upload', () => {
+    describe('Without upload token', () => {
       const progressiveUploadVideo = 'Nodejs - progressive upload';
       let video: Video;
 
@@ -97,7 +108,7 @@ describe('ApiVideoClient', () => {
         await progressiveUploadSession
           .uploadLastPart('test/data/10m.mp4.part.c')
           .then((video) => {
-            expect(video.title).to.equals(progressiveUploadVideo);
+            expect(video.title).toEqual(progressiveUploadVideo);
           });
       });
 
@@ -106,7 +117,7 @@ describe('ApiVideoClient', () => {
       });
     });
 
-    describe('With upload token', async () => {
+    describe('With upload token', () => {
       const progressiveUploadVideo = 'Nodejs - progressive upload';
       let uploadToken: UploadToken;
       let video: Video;
@@ -130,7 +141,7 @@ describe('ApiVideoClient', () => {
           'test/data/10m.mp4.part.c'
         );
 
-        expect(video.title).to.equals('10m.mp4.part.a');
+        expect(video.title).toEqual('10m.mp4.part.a');
       });
 
       it('should delete the video and the upload token', async () => {
@@ -140,8 +151,8 @@ describe('ApiVideoClient', () => {
     });
   });
 
-  describe('Regular upload', async () => {
-    describe('Without chunk', async () => {
+  describe('Regular upload', () => {
+    describe('Without chunk', () => {
       const regularUploadVideo = 'Nodejs - regular upload';
       let video: Video;
 
@@ -160,7 +171,7 @@ describe('ApiVideoClient', () => {
       });
     });
 
-    describe('With chunk', async () => {
+    describe('With chunk', () => {
       const regularUploadVideo = 'Nodejs - regular upload';
       let video: Video;
 
@@ -180,7 +191,7 @@ describe('ApiVideoClient', () => {
     });
   });
 
-  describe('Video tags', async () => {
+  describe('Video tags', () => {
     const videoTitle = 'Nodejs - video tags';
     let video: Video;
 
@@ -195,13 +206,13 @@ describe('ApiVideoClient', () => {
       const videos1 = await client.videos.list({
         tags: ['tag1'],
       });
-      expect(videos1.data).to.be.has.length(1);
+      expect(videos1.data).toHaveLength(1);
 
       const videos2 = await client.videos.list({
         tags: ['tag1', 'tag2'],
       });
 
-      expect(videos2.data).to.be.has.length(1);
+      expect(videos2.data).toHaveLength(1);
     });
 
     it('should update the tags', async () => {
@@ -215,7 +226,7 @@ describe('ApiVideoClient', () => {
         tags: ['tag1', 'tag2'],
       });
 
-      expect(videos2.data).to.be.empty;
+      expect(videos2.data).toHaveLength(0);
     });
 
     it('should delete the video', async () => {
@@ -223,7 +234,7 @@ describe('ApiVideoClient', () => {
     });
   });
 
-  describe('Thumbnails', async () => {
+  describe('Thumbnails', () => {
     let video: Video;
 
     it('should create a video', async () => {
@@ -238,7 +249,7 @@ describe('ApiVideoClient', () => {
         'test/data/test.jpg'
       );
 
-      expect(thumbnailVideo.videoId).to.equals(video.videoId);
+      expect(thumbnailVideo.videoId).toEqual(video.videoId);
     });
 
     it('upload the thumbnails using read stream', async () => {
@@ -247,14 +258,14 @@ describe('ApiVideoClient', () => {
         createReadStream('test/data/test.jpg')
       );
 
-      expect(thumbnailVideo.videoId).to.equals(video.videoId);
-    });
+      expect(thumbnailVideo.videoId).toEqual(video.videoId);
+    }, 10000);
 
     it('pick a thumbnail from the video', async () => {
       const thumbnailVideo = await client.videos.pickThumbnail(video.videoId, {
         timecode: '00:15:22.05',
       });
-      expect(thumbnailVideo.videoId).to.equals(video.videoId);
+      expect(thumbnailVideo.videoId).toEqual(video.videoId);
     });
 
     it('delete the video', async () => {
@@ -262,7 +273,7 @@ describe('ApiVideoClient', () => {
     });
   });
 
-  describe('Captions', async () => {
+  describe('Captions', () => {
     let video: Video;
 
     it('should create a video', async () => {
@@ -277,13 +288,13 @@ describe('ApiVideoClient', () => {
         'en',
         'test/data/en.vtt'
       );
-      expect(caption.srclang).to.equals('en');
+      expect(caption.srclang).toEqual('en');
       await timeout(1000);
     });
 
     it('retrieve video caption by language', async () => {
       const caption = await client.captions.get(video.videoId, 'en');
-      expect(caption.srclang).to.equals('en');
+      expect(caption.srclang).toEqual('en');
     });
 
     it('set caption to default', async () => {
@@ -291,8 +302,8 @@ describe('ApiVideoClient', () => {
         _default: true,
       });
 
-      expect(caption.srclang).to.equals('en');
-      expect(caption._default).to.equals(true);
+      expect(caption.srclang).toEqual('en');
+      expect(caption._default).toEqual(true);
     });
 
     it('delete the video', async () => {
@@ -300,7 +311,7 @@ describe('ApiVideoClient', () => {
     });
   });
 
-  describe('Player themes', async () => {
+  describe('Player themes', () => {
     let video: Video;
     let playerTheme: PlayerTheme;
 
@@ -315,7 +326,7 @@ describe('ApiVideoClient', () => {
         name: 'test',
       });
 
-      expect(playerTheme.playerId).to.be.a('string');
+      expect(typeof playerTheme.playerId).toBe('string');
     });
 
     it('update the player theme', async () => {
@@ -341,7 +352,7 @@ describe('ApiVideoClient', () => {
         }
       );
 
-      expect(updatedPlayerTheme.name).to.be.eq('test2');
+      expect(updatedPlayerTheme.name).toEqual('test2');
     });
 
     it('add a logo to the player theme', async () => {
@@ -351,7 +362,7 @@ describe('ApiVideoClient', () => {
         'https://api.video'
       );
 
-      expect(updatedPlayerTheme.assets?.link).to.be.eq('https://api.video');
+      expect(updatedPlayerTheme.assets?.link).toEqual('https://api.video');
     });
 
     it('delete the player theme', async () => {
@@ -360,7 +371,7 @@ describe('ApiVideoClient', () => {
     });
   });
 
-  describe('Raw statistics', async () => {
+  describe('Raw statistics', () => {
     let video: Video;
 
     it('should create a video', async () => {
@@ -376,7 +387,7 @@ describe('ApiVideoClient', () => {
         metadata: { user: 'username' },
       });
 
-      expect(sessions.data).to.be.an('array');
+      expect(typeof sessions.data).toBe('object');
     });
 
     it('delete the video', async () => {

@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import ApiVideoClient from '../src';
 import AnalyticsApi from '../src/api/AnalyticsApi';
 import CaptionsApi from '../src/api/CaptionsApi';
@@ -14,51 +13,49 @@ import WebhooksApi from '../src/api/WebhooksApi';
 describe('ApiVideoClient', () => {
   it('should use the AnalyticsApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.analytics).instanceOf(AnalyticsApi);
+    expect(client.analytics).toBeInstanceOf(AnalyticsApi);
   });
   it('should use the CaptionsApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.captions).instanceOf(CaptionsApi);
+    expect(client.captions).toBeInstanceOf(CaptionsApi);
   });
   it('should use the ChaptersApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.chapters).instanceOf(ChaptersApi);
+    expect(client.chapters).toBeInstanceOf(ChaptersApi);
   });
   it('should use the LiveStreamsApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.liveStreams).instanceOf(LiveStreamsApi);
+    expect(client.liveStreams).toBeInstanceOf(LiveStreamsApi);
   });
   it('should use the PlayerThemesApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.playerThemes).instanceOf(PlayerThemesApi);
+    expect(client.playerThemes).toBeInstanceOf(PlayerThemesApi);
   });
   it('should use the RawStatisticsApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.rawStatistics).instanceOf(RawStatisticsApi);
+    expect(client.rawStatistics).toBeInstanceOf(RawStatisticsApi);
   });
   it('should use the UploadTokensApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.uploadTokens).instanceOf(UploadTokensApi);
+    expect(client.uploadTokens).toBeInstanceOf(UploadTokensApi);
   });
   it('should use the VideosApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.videos).instanceOf(VideosApi);
+    expect(client.videos).toBeInstanceOf(VideosApi);
   });
   it('should use the WatermarksApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.watermarks).instanceOf(WatermarksApi);
+    expect(client.watermarks).toBeInstanceOf(WatermarksApi);
   });
   it('should use the WebhooksApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.webhooks).instanceOf(WebhooksApi);
+    expect(client.webhooks).toBeInstanceOf(WebhooksApi);
   });
 
   it('should validate the application name value', () => {
     expect(
       () => new ApiVideoClient({ applicationName: 'applicationname' })
-    ).to.throw(
-      'application version is mandatory when application name is set.'
-    );
+    ).toThrow('application version is mandatory when application name is set.');
 
     expect(
       () =>
@@ -66,7 +63,7 @@ describe('ApiVideoClient', () => {
           applicationName: 'application name',
           applicationVersion: '1.0.0',
         })
-    ).to.throw(
+    ).toThrow(
       "Invalid application name value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
     );
 
@@ -77,7 +74,7 @@ describe('ApiVideoClient', () => {
             '012345678901234567890123456789012345678901234567891',
           applicationVersion: '1.0.0',
         })
-    ).to.throw(
+    ).toThrow(
       "Invalid application name value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."
     );
 
@@ -87,9 +84,9 @@ describe('ApiVideoClient', () => {
           applicationName: 'my-great-application1',
           applicationVersion: '0.1.1',
         })
-    ).not.to.throw();
+    ).not.toThrow();
 
-    expect(() => new ApiVideoClient({ applicationVersion: '1.0.0' })).to.throw(
+    expect(() => new ApiVideoClient({ applicationVersion: '1.0.0' })).toThrow(
       'application name is mandatory when application version is set.'
     );
 
@@ -99,7 +96,7 @@ describe('ApiVideoClient', () => {
           applicationName: 'application',
           applicationVersion: '1.1234.0',
         })
-    ).to.throw(
+    ).toThrow(
       'Invalid application version value. The version should match the xxx[.yyy][.zzz] pattern.'
     );
 
@@ -109,6 +106,6 @@ describe('ApiVideoClient', () => {
           applicationName: 'application',
           applicationVersion: '1.123.0',
         })
-    ).not.to.throw();
+    ).not.toThrow();
   });
 });

@@ -10,9 +10,9 @@
  */
 
 import { URLSearchParams } from 'url';
-import ObjectSerializer from '../ObjectSerializer.js';
-import HttpClient, { QueryOptions } from '../HttpClient.js';
-import AnalyticsPlaysResponse from '../model/AnalyticsPlaysResponse.js';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import AnalyticsPlaysResponse from '../model/AnalyticsPlaysResponse';
 
 /**
  * no description

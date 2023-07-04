@@ -13,8 +13,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm install --no-save
-      - run: npm test
-      - name: Run sandbox test
-        run: npm run test:sandbox
+      - name: Run tests
+        run: npm run test
         env:
           API_KEY: ${{ secrets.API_KEY }}

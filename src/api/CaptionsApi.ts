@@ -13,13 +13,13 @@ import path from 'path';
 import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
-import ObjectSerializer from '../ObjectSerializer.js';
-import HttpClient, { QueryOptions } from '../HttpClient.js';
-import Caption from '../model/Caption.js';
-import CaptionsListResponse from '../model/CaptionsListResponse.js';
-import CaptionsUpdatePayload from '../model/CaptionsUpdatePayload.js';
+import ObjectSerializer from '../ObjectSerializer';
+import HttpClient, { QueryOptions } from '../HttpClient';
+import Caption from '../model/Caption';
+import CaptionsListResponse from '../model/CaptionsListResponse';
+import CaptionsUpdatePayload from '../model/CaptionsUpdatePayload';
 import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient.js';
+import { readableToBuffer } from '../HttpClient';
 
 /**
  * no description
