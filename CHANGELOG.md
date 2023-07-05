@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.5.1] - 2023-07-05
+- Fix getAccessToken() method
+
 ## [2.5.0] - 2023-07-05
 - Use Axios instead of Got
 
