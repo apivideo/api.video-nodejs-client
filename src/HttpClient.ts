@@ -14,6 +14,7 @@ import ApiVideoError from './ApiVideoError';
 import ProblemDetails from './model/ProblemDetails';
 import { encode } from 'js-base64';
 import { Readable, Stream } from 'stream';
+import AccessToken from './model/AccessToken';
 
 export type QueryOptions = {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -43,7 +44,7 @@ export default class HttpClient {
     this.chunkSize = params.chunkSize;
     this.headers = new AxiosHeaders({
       Accept: 'application/json, */*;q=0.8',
-      'AV-Origin-Client': 'nodejs:2.5.0',
+      'AV-Origin-Client': 'nodejs:2.5.1',
       Authorization: this.apiKey ? `Basic ${encode(`${this.apiKey}:`)}` : '',
       ...(params.applicationName && params.applicationVersion
         ? {
@@ -62,7 +63,7 @@ export default class HttpClient {
     return this.chunkSize;
   }
 
-  public async getAccessToken(): Promise<string> {
+  public async getAccessToken(): Promise<AccessToken> {
     const axiosRes = await axios.request({
       url: `${this.baseUri}/auth/api-key`,
       headers: this.headers,
@@ -72,7 +73,7 @@ export default class HttpClient {
       },
     });
 
-    return axiosRes.data.access_token;
+    return axiosRes.data;
   }
 
   public async call(path: string, options: QueryOptions) {

@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "api.video nodejs API client",
    "keywords": [
     "api.video",
@@ -20,6 +20,7 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "files": [
+    "src/",
     "lib/",
     "dist/",
     "doc/",

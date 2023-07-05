@@ -163,7 +163,7 @@ class ApiVideoClient {
     this._webhooks = new WebhooksApi(this.httpClient);
   }
 
-  public async getAccessToken() {
+  public async getAccessToken(): Promise<AccessToken> {
     return this.httpClient.getAccessToken();
   }
 
