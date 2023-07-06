@@ -44,7 +44,7 @@ export default class HttpClient {
     this.chunkSize = params.chunkSize;
     this.headers = new AxiosHeaders({
       Accept: 'application/json, */*;q=0.8',
-      'AV-Origin-Client': 'nodejs:2.5.1',
+      'AV-Origin-Client': 'nodejs:2.5.2',
       Authorization: this.apiKey ? `Basic ${encode(`${this.apiKey}:`)}` : '',
       ...(params.applicationName && params.applicationVersion
         ? {
@@ -73,7 +73,12 @@ export default class HttpClient {
       },
     });
 
-    return axiosRes.data;
+    return {
+      accessToken: axiosRes.data.access_token,
+      refreshToken: axiosRes.data.refresh_token,
+      tokenType: axiosRes.data.token_type,
+      expiresIn: axiosRes.data.expires_in,
+    };
   }
 
   public async call(path: string, options: QueryOptions) {

@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.5.2] - 2023-07-06
+- getAccessToken() response now contains properly named attributes
+
 ## [2.5.1] - 2023-07-05
 - Fix getAccessToken() method
 

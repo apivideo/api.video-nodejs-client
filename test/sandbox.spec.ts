@@ -35,6 +35,17 @@ const client = new ApiVideoClient({
 });
 
 describe('ApiVideoClient', () => {
+  describe('getAccessToken()', () => {
+    it('returns an access token', async () => {
+      const accessToken = await client.getAccessToken();
+
+      expect(accessToken).toHaveProperty('accessToken');
+      expect(accessToken).toHaveProperty('expiresIn');
+      expect(accessToken).toHaveProperty('refreshToken');
+      expect(accessToken).toHaveProperty('tokenType');
+    });
+  });
+
   describe('Clean', () => {
     it('should clean all videos', async () => {
       const videos = await client.videos.list();
