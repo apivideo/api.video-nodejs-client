@@ -343,10 +343,10 @@ This method returns a list of your videos (with all their details). With no para
  | **title** | **string**| no| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. |
  | **tags** | **Array&lt;string&gt;**| no| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. |
  | **metadata** | **{ [key: string]: string; }**| no| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. |
- | **description** | **string**| no| If you described a video with a term or sentence, you can add it here to return videos containing this string. |
- | **liveStreamId** | **string**| no| If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. |
- | **sortBy** | **string**| no| Allowed: publishedAt, title. You can search by the time videos were published at, or by title. |
- | **sortOrder** | **string**| no| Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. |
+ | **description** | **string**| no| Retrieve video objects by &#x60;description&#x60;. |
+ | **liveStreamId** | **string**| no| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. |
+ | **sortBy** | **&#39;title&#39; \| &#39;createdAt&#39; \| &#39;publishedAt&#39; \| &#39;updatedAt&#39;**| no| Use this parameter to sort videos by the their created time, published time, updated time, or by title. |
+ | **sortOrder** | **&#39;asc&#39; \| &#39;desc&#39;**| no| Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. |
  | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
  | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |
 
