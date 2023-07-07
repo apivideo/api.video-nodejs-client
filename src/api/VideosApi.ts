@@ -736,10 +736,10 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
    * @param { string } searchParams.title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
    * @param { Array&lt;string&gt; } searchParams.tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
    * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
-   * @param { string } searchParams.description If you described a video with a term or sentence, you can add it here to return videos containing this string.
-   * @param { string } searchParams.liveStreamId If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.
-   * @param { string } searchParams.sortBy Allowed: publishedAt, title. You can search by the time videos were published at, or by title.
-   * @param { string } searchParams.sortOrder Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A.
+   * @param { string } searchParams.description Retrieve video objects by &#x60;description&#x60;.
+   * @param { string } searchParams.liveStreamId Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
+   * @param { &#39;title&#39; | &#39;createdAt&#39; | &#39;publishedAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Use this parameter to sort videos by the their created time, published time, updated time, or by title.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
@@ -759,8 +759,8 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
     metadata?: { [key: string]: string };
     description?: string;
     liveStreamId?: string;
-    sortBy?: string;
-    sortOrder?: string;
+    sortBy?: 'title' | 'createdAt' | 'publishedAt' | 'updatedAt';
+    sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
   } = {}): Promise<VideosListResponse> {
@@ -814,13 +814,17 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
     if (sortBy !== undefined) {
       urlSearchParams.append(
         'sortBy',
-        ObjectSerializer.serialize(sortBy, 'string', '')
+        ObjectSerializer.serialize(
+          sortBy,
+          "'title' | 'createdAt' | 'publishedAt' | 'updatedAt'",
+          ''
+        )
       );
     }
     if (sortOrder !== undefined) {
       urlSearchParams.append(
         'sortOrder',
-        ObjectSerializer.serialize(sortOrder, 'string', '')
+        ObjectSerializer.serialize(sortOrder, "'asc' | 'desc'", '')
       );
     }
     if (currentPage !== undefined) {
