@@ -272,7 +272,7 @@ class ApiVideoClient {
   }
 }
 
-export {
+module.exports = {
   AnalyticsApi,
   CaptionsApi,
   ChaptersApi,
@@ -359,4 +359,4 @@ export {
   WebhooksListResponse,
 };
 
-export default ApiVideoClient;
+module.exports = ApiVideoClient;
