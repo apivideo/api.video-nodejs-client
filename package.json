@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "api.video nodejs API client",
    "keywords": [
     "api.video",
@@ -17,8 +17,8 @@
     "url": "https://github.com/apivideo/api.video-nodejs-client"
   },
   "main": "lib/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "src/",
     "lib/",
@@ -27,9 +27,7 @@
     "test/sandbox.spec.ts"
   ],
   "scripts": {
-    "build:cjs": "tsc --module commonjs --outDir lib",
-    "build:esm": "tsc",
-    "build": "npm run build:cjs && npm run build:esm",
+    "build": "tsc",
     "prepublishOnly": "npm run build",
     "clean": "rm -rf dist && rm -rf lib",
     "test": "jest",
