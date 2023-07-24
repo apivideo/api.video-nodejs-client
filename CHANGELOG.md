@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.5.3] - 2023-07-24
+- generate only CommonJS target
+
 ## [2.5.2] - 2023-07-06
 - getAccessToken() response now contains properly named attributes
 
