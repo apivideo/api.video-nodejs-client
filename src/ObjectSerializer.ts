@@ -204,10 +204,19 @@ export default class ObjectSerializer {
     return expectedType;
   }
 
-  public static serialize(data: any, type: string, format: string): any {
+  public static serialize(
+    data: any,
+    type: string,
+    format: string,
+    defaultValue?: any
+  ): any {
     if (data == undefined) {
-      return data;
-    } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
+      if (typeof defaultValue === 'undefined') {
+        return data;
+      }
+      data = defaultValue;
+    }
+    if (primitives.indexOf(type.toLowerCase()) !== -1) {
       return data;
     } else if (type.lastIndexOf('Array<', 0) === 0) {
       // string.startsWith pre es6
@@ -250,7 +259,8 @@ export default class ObjectSerializer {
         instance[attributeType.baseName] = ObjectSerializer.serialize(
           data[attributeType.name],
           attributeType.type,
-          attributeType.format
+          attributeType.format,
+          attributeType.defaultValue
         );
       }
       return instance;
