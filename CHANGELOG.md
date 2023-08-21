@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.5.4] - 2023-08-21
+- Set default values defined in the description
+
 ## [2.5.3] - 2023-07-24
 - generate only CommonJS target
 

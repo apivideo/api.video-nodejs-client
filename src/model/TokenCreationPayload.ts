@@ -25,6 +25,7 @@ export default class TokenCreationPayload {
       baseName: 'ttl',
       type: 'number',
       format: '',
+      defaultValue: 0,
     },
   ];
 

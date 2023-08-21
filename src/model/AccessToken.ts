@@ -43,6 +43,7 @@ export default class AccessToken {
       baseName: 'token_type',
       type: 'string',
       format: '',
+      defaultValue: 'bearer',
     },
     {
       name: 'refreshToken',

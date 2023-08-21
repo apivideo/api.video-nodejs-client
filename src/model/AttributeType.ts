@@ -3,4 +3,5 @@ export default interface AttributeType {
   baseName: string;
   type: string;
   format: string;
+  defaultValue?: any;
 }
