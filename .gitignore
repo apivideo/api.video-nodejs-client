@@ -4,3 +4,4 @@ lib
 node_modules
 licenseInfo
 post-generate.sh
+documentation.md

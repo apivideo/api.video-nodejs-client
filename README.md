@@ -51,7 +51,7 @@ yarn add @api.video/nodejs-client
 
 ## Migration
 
-If you're coming from [@api.video/nodejs-sdk](https://github.com/apivideo/nodejs-sdk) make sure to read our [Migration guide](./doc/MIGRATE.md) first.
+If you're coming from [@api.video/nodejs-sdk](https://github.com/apivideo/nodejs-sdk) make sure to read our [Migration guide](./docs/MIGRATE.md) first.
 
 ## Development
 
@@ -95,188 +95,188 @@ const ApiVideoClient = require('@api.video/nodejs-client');
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**getLiveStreamsPlays()**](doc/api/AnalyticsApi.md#getLiveStreamsPlays) | Get play events for live stream | **GET** /analytics/live-streams/plays
-[**getVideosPlays()**](doc/api/AnalyticsApi.md#getVideosPlays) | Get play events for video | **GET** /analytics/videos/plays
+[**getLiveStreamsPlays()**](docs/api/AnalyticsApi.md#getLiveStreamsPlays) | Get play events for live stream | **GET** /analytics/live-streams/plays
+[**getVideosPlays()**](docs/api/AnalyticsApi.md#getVideosPlays) | Get play events for video | **GET** /analytics/videos/plays
 
 
 ### CaptionsApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**upload()**](doc/api/CaptionsApi.md#upload) | Upload a caption | **POST** /videos/{videoId}/captions/{language}
-[**get()**](doc/api/CaptionsApi.md#get) | Retrieve a caption | **GET** /videos/{videoId}/captions/{language}
-[**update()**](doc/api/CaptionsApi.md#update) | Update a caption | **PATCH** /videos/{videoId}/captions/{language}
-[**delete()**](doc/api/CaptionsApi.md#delete) | Delete a caption | **DELETE** /videos/{videoId}/captions/{language}
-[**list()**](doc/api/CaptionsApi.md#list) | List video captions | **GET** /videos/{videoId}/captions
+[**upload()**](docs/api/CaptionsApi.md#upload) | Upload a caption | **POST** /videos/{videoId}/captions/{language}
+[**get()**](docs/api/CaptionsApi.md#get) | Retrieve a caption | **GET** /videos/{videoId}/captions/{language}
+[**update()**](docs/api/CaptionsApi.md#update) | Update a caption | **PATCH** /videos/{videoId}/captions/{language}
+[**delete()**](docs/api/CaptionsApi.md#delete) | Delete a caption | **DELETE** /videos/{videoId}/captions/{language}
+[**list()**](docs/api/CaptionsApi.md#list) | List video captions | **GET** /videos/{videoId}/captions
 
 
 ### ChaptersApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**upload()**](doc/api/ChaptersApi.md#upload) | Upload a chapter | **POST** /videos/{videoId}/chapters/{language}
-[**get()**](doc/api/ChaptersApi.md#get) | Retrieve a chapter | **GET** /videos/{videoId}/chapters/{language}
-[**delete()**](doc/api/ChaptersApi.md#delete) | Delete a chapter | **DELETE** /videos/{videoId}/chapters/{language}
-[**list()**](doc/api/ChaptersApi.md#list) | List video chapters | **GET** /videos/{videoId}/chapters
+[**upload()**](docs/api/ChaptersApi.md#upload) | Upload a chapter | **POST** /videos/{videoId}/chapters/{language}
+[**get()**](docs/api/ChaptersApi.md#get) | Retrieve a chapter | **GET** /videos/{videoId}/chapters/{language}
+[**delete()**](docs/api/ChaptersApi.md#delete) | Delete a chapter | **DELETE** /videos/{videoId}/chapters/{language}
+[**list()**](docs/api/ChaptersApi.md#list) | List video chapters | **GET** /videos/{videoId}/chapters
 
 
 ### LiveStreamsApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](doc/api/LiveStreamsApi.md#create) | Create live stream | **POST** /live-streams
-[**get()**](doc/api/LiveStreamsApi.md#get) | Retrieve live stream | **GET** /live-streams/{liveStreamId}
-[**update()**](doc/api/LiveStreamsApi.md#update) | Update a live stream | **PATCH** /live-streams/{liveStreamId}
-[**delete()**](doc/api/LiveStreamsApi.md#delete) | Delete a live stream | **DELETE** /live-streams/{liveStreamId}
-[**list()**](doc/api/LiveStreamsApi.md#list) | List all live streams | **GET** /live-streams
-[**uploadThumbnail()**](doc/api/LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /live-streams/{liveStreamId}/thumbnail
-[**deleteThumbnail()**](doc/api/LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** /live-streams/{liveStreamId}/thumbnail
+[**create()**](docs/api/LiveStreamsApi.md#create) | Create live stream | **POST** /live-streams
+[**get()**](docs/api/LiveStreamsApi.md#get) | Retrieve live stream | **GET** /live-streams/{liveStreamId}
+[**update()**](docs/api/LiveStreamsApi.md#update) | Update a live stream | **PATCH** /live-streams/{liveStreamId}
+[**delete()**](docs/api/LiveStreamsApi.md#delete) | Delete a live stream | **DELETE** /live-streams/{liveStreamId}
+[**list()**](docs/api/LiveStreamsApi.md#list) | List all live streams | **GET** /live-streams
+[**uploadThumbnail()**](docs/api/LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /live-streams/{liveStreamId}/thumbnail
+[**deleteThumbnail()**](docs/api/LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** /live-streams/{liveStreamId}/thumbnail
 
 
 ### PlayerThemesApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](doc/api/PlayerThemesApi.md#create) | Create a player | **POST** /players
-[**get()**](doc/api/PlayerThemesApi.md#get) | Retrieve a player | **GET** /players/{playerId}
-[**update()**](doc/api/PlayerThemesApi.md#update) | Update a player | **PATCH** /players/{playerId}
-[**delete()**](doc/api/PlayerThemesApi.md#delete) | Delete a player | **DELETE** /players/{playerId}
-[**list()**](doc/api/PlayerThemesApi.md#list) | List all player themes | **GET** /players
-[**uploadLogo()**](doc/api/PlayerThemesApi.md#uploadLogo) | Upload a logo | **POST** /players/{playerId}/logo
-[**deleteLogo()**](doc/api/PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** /players/{playerId}/logo
+[**create()**](docs/api/PlayerThemesApi.md#create) | Create a player | **POST** /players
+[**get()**](docs/api/PlayerThemesApi.md#get) | Retrieve a player | **GET** /players/{playerId}
+[**update()**](docs/api/PlayerThemesApi.md#update) | Update a player | **PATCH** /players/{playerId}
+[**delete()**](docs/api/PlayerThemesApi.md#delete) | Delete a player | **DELETE** /players/{playerId}
+[**list()**](docs/api/PlayerThemesApi.md#list) | List all player themes | **GET** /players
+[**uploadLogo()**](docs/api/PlayerThemesApi.md#uploadLogo) | Upload a logo | **POST** /players/{playerId}/logo
+[**deleteLogo()**](docs/api/PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** /players/{playerId}/logo
 
 
 ### RawStatisticsApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**listLiveStreamSessions()**](doc/api/RawStatisticsApi.md#listLiveStreamSessions) | List live stream player sessions | **GET** /analytics/live-streams/{liveStreamId}
-[**listSessionEvents()**](doc/api/RawStatisticsApi.md#listSessionEvents) | List player session events | **GET** /analytics/sessions/{sessionId}/events
-[**listVideoSessions()**](doc/api/RawStatisticsApi.md#listVideoSessions) | List video player sessions | **GET** /analytics/videos/{videoId}
+[**listLiveStreamSessions()**](docs/api/RawStatisticsApi.md#listLiveStreamSessions) | List live stream player sessions | **GET** /analytics/live-streams/{liveStreamId}
+[**listSessionEvents()**](docs/api/RawStatisticsApi.md#listSessionEvents) | List player session events | **GET** /analytics/sessions/{sessionId}/events
+[**listVideoSessions()**](docs/api/RawStatisticsApi.md#listVideoSessions) | List video player sessions | **GET** /analytics/videos/{videoId}
 
 
 ### UploadTokensApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**createToken()**](doc/api/UploadTokensApi.md#createToken) | Generate an upload token | **POST** /upload-tokens
-[**getToken()**](doc/api/UploadTokensApi.md#getToken) | Retrieve upload token | **GET** /upload-tokens/{uploadToken}
-[**deleteToken()**](doc/api/UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** /upload-tokens/{uploadToken}
-[**list()**](doc/api/UploadTokensApi.md#list) | List all active upload tokens | **GET** /upload-tokens
+[**createToken()**](docs/api/UploadTokensApi.md#createToken) | Generate an upload token | **POST** /upload-tokens
+[**getToken()**](docs/api/UploadTokensApi.md#getToken) | Retrieve upload token | **GET** /upload-tokens/{uploadToken}
+[**deleteToken()**](docs/api/UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** /upload-tokens/{uploadToken}
+[**list()**](docs/api/UploadTokensApi.md#list) | List all active upload tokens | **GET** /upload-tokens
 
 
 ### VideosApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](doc/api/VideosApi.md#create) | Create a video object | **POST** /videos
-[**upload()**](doc/api/VideosApi.md#upload) | Upload a video | **POST** /videos/{videoId}/source
-[**uploadWithUploadToken()**](doc/api/VideosApi.md#uploadWithUploadToken) | Upload with an delegated upload token | **POST** /upload
-[**get()**](doc/api/VideosApi.md#get) | Retrieve a video object | **GET** /videos/{videoId}
-[**update()**](doc/api/VideosApi.md#update) | Update a video object | **PATCH** /videos/{videoId}
-[**delete()**](doc/api/VideosApi.md#delete) | Delete a video object | **DELETE** /videos/{videoId}
-[**list()**](doc/api/VideosApi.md#list) | List all video objects | **GET** /videos
-[**uploadThumbnail()**](doc/api/VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /videos/{videoId}/thumbnail
-[**pickThumbnail()**](doc/api/VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** /videos/{videoId}/thumbnail
-[**getStatus()**](doc/api/VideosApi.md#getStatus) | Retrieve video status and details | **GET** /videos/{videoId}/status
+[**create()**](docs/api/VideosApi.md#create) | Create a video object | **POST** /videos
+[**upload()**](docs/api/VideosApi.md#upload) | Upload a video | **POST** /videos/{videoId}/source
+[**uploadWithUploadToken()**](docs/api/VideosApi.md#uploadWithUploadToken) | Upload with an delegated upload token | **POST** /upload
+[**get()**](docs/api/VideosApi.md#get) | Retrieve a video object | **GET** /videos/{videoId}
+[**update()**](docs/api/VideosApi.md#update) | Update a video object | **PATCH** /videos/{videoId}
+[**delete()**](docs/api/VideosApi.md#delete) | Delete a video object | **DELETE** /videos/{videoId}
+[**list()**](docs/api/VideosApi.md#list) | List all video objects | **GET** /videos
+[**uploadThumbnail()**](docs/api/VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /videos/{videoId}/thumbnail
+[**pickThumbnail()**](docs/api/VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** /videos/{videoId}/thumbnail
+[**getStatus()**](docs/api/VideosApi.md#getStatus) | Retrieve video status and details | **GET** /videos/{videoId}/status
 
 
 ### WatermarksApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**upload()**](doc/api/WatermarksApi.md#upload) | Upload a watermark | **POST** /watermarks
-[**delete()**](doc/api/WatermarksApi.md#delete) | Delete a watermark | **DELETE** /watermarks/{watermarkId}
-[**list()**](doc/api/WatermarksApi.md#list) | List all watermarks | **GET** /watermarks
+[**upload()**](docs/api/WatermarksApi.md#upload) | Upload a watermark | **POST** /watermarks
+[**delete()**](docs/api/WatermarksApi.md#delete) | Delete a watermark | **DELETE** /watermarks/{watermarkId}
+[**list()**](docs/api/WatermarksApi.md#list) | List all watermarks | **GET** /watermarks
 
 
 ### WebhooksApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](doc/api/WebhooksApi.md#create) | Create Webhook | **POST** /webhooks
-[**get()**](doc/api/WebhooksApi.md#get) | Retrieve Webhook details | **GET** /webhooks/{webhookId}
-[**delete()**](doc/api/WebhooksApi.md#delete) | Delete a Webhook | **DELETE** /webhooks/{webhookId}
-[**list()**](doc/api/WebhooksApi.md#list) | List all webhooks | **GET** /webhooks
+[**create()**](docs/api/WebhooksApi.md#create) | Create Webhook | **POST** /webhooks
+[**get()**](docs/api/WebhooksApi.md#get) | Retrieve Webhook details | **GET** /webhooks/{webhookId}
+[**delete()**](docs/api/WebhooksApi.md#delete) | Delete a Webhook | **DELETE** /webhooks/{webhookId}
+[**list()**](docs/api/WebhooksApi.md#list) | List all webhooks | **GET** /webhooks
 
 
 
 ## Models
 
- - [AccessToken](doc/model/AccessToken.md)
- - [AdditionalBadRequestErrors](doc/model/AdditionalBadRequestErrors.md)
- - [AnalyticsData](doc/model/AnalyticsData.md)
- - [AnalyticsPlays400Error](doc/model/AnalyticsPlays400Error.md)
- - [AnalyticsPlaysResponse](doc/model/AnalyticsPlaysResponse.md)
- - [AuthenticatePayload](doc/model/AuthenticatePayload.md)
- - [BadRequest](doc/model/BadRequest.md)
- - [BytesRange](doc/model/BytesRange.md)
- - [Caption](doc/model/Caption.md)
- - [CaptionsListResponse](doc/model/CaptionsListResponse.md)
- - [CaptionsUpdatePayload](doc/model/CaptionsUpdatePayload.md)
- - [Chapter](doc/model/Chapter.md)
- - [ChaptersListResponse](doc/model/ChaptersListResponse.md)
- - [Link](doc/model/Link.md)
- - [LiveStream](doc/model/LiveStream.md)
- - [LiveStreamAssets](doc/model/LiveStreamAssets.md)
- - [LiveStreamCreationPayload](doc/model/LiveStreamCreationPayload.md)
- - [LiveStreamListResponse](doc/model/LiveStreamListResponse.md)
- - [LiveStreamSession](doc/model/LiveStreamSession.md)
- - [LiveStreamSessionClient](doc/model/LiveStreamSessionClient.md)
- - [LiveStreamSessionDevice](doc/model/LiveStreamSessionDevice.md)
- - [LiveStreamSessionLocation](doc/model/LiveStreamSessionLocation.md)
- - [LiveStreamSessionReferrer](doc/model/LiveStreamSessionReferrer.md)
- - [LiveStreamSessionSession](doc/model/LiveStreamSessionSession.md)
- - [LiveStreamUpdatePayload](doc/model/LiveStreamUpdatePayload.md)
- - [Metadata](doc/model/Metadata.md)
- - [Model403ErrorSchema](doc/model/Model403ErrorSchema.md)
- - [NotFound](doc/model/NotFound.md)
- - [Pagination](doc/model/Pagination.md)
- - [PaginationLink](doc/model/PaginationLink.md)
- - [PlayerSessionEvent](doc/model/PlayerSessionEvent.md)
- - [PlayerTheme](doc/model/PlayerTheme.md)
- - [PlayerThemeAssets](doc/model/PlayerThemeAssets.md)
- - [PlayerThemeCreationPayload](doc/model/PlayerThemeCreationPayload.md)
- - [PlayerThemeUpdatePayload](doc/model/PlayerThemeUpdatePayload.md)
- - [PlayerThemesListResponse](doc/model/PlayerThemesListResponse.md)
- - [Quality](doc/model/Quality.md)
- - [RawStatisticsListLiveStreamAnalyticsResponse](doc/model/RawStatisticsListLiveStreamAnalyticsResponse.md)
- - [RawStatisticsListPlayerSessionEventsResponse](doc/model/RawStatisticsListPlayerSessionEventsResponse.md)
- - [RawStatisticsListSessionsResponse](doc/model/RawStatisticsListSessionsResponse.md)
- - [RefreshTokenPayload](doc/model/RefreshTokenPayload.md)
- - [RestreamsRequestObject](doc/model/RestreamsRequestObject.md)
- - [RestreamsResponseObject](doc/model/RestreamsResponseObject.md)
- - [TokenCreationPayload](doc/model/TokenCreationPayload.md)
- - [TokenListResponse](doc/model/TokenListResponse.md)
- - [UploadToken](doc/model/UploadToken.md)
- - [Video](doc/model/Video.md)
- - [VideoAssets](doc/model/VideoAssets.md)
- - [VideoClip](doc/model/VideoClip.md)
- - [VideoCreationPayload](doc/model/VideoCreationPayload.md)
- - [VideoSession](doc/model/VideoSession.md)
- - [VideoSessionClient](doc/model/VideoSessionClient.md)
- - [VideoSessionDevice](doc/model/VideoSessionDevice.md)
- - [VideoSessionLocation](doc/model/VideoSessionLocation.md)
- - [VideoSessionOs](doc/model/VideoSessionOs.md)
- - [VideoSessionReferrer](doc/model/VideoSessionReferrer.md)
- - [VideoSessionSession](doc/model/VideoSessionSession.md)
- - [VideoSource](doc/model/VideoSource.md)
- - [VideoSourceLiveStream](doc/model/VideoSourceLiveStream.md)
- - [VideoSourceLiveStreamLink](doc/model/VideoSourceLiveStreamLink.md)
- - [VideoStatus](doc/model/VideoStatus.md)
- - [VideoStatusEncoding](doc/model/VideoStatusEncoding.md)
- - [VideoStatusEncodingMetadata](doc/model/VideoStatusEncodingMetadata.md)
- - [VideoStatusIngest](doc/model/VideoStatusIngest.md)
- - [VideoStatusIngestReceivedParts](doc/model/VideoStatusIngestReceivedParts.md)
- - [VideoThumbnailPickPayload](doc/model/VideoThumbnailPickPayload.md)
- - [VideoUpdatePayload](doc/model/VideoUpdatePayload.md)
- - [VideoWatermark](doc/model/VideoWatermark.md)
- - [VideosListResponse](doc/model/VideosListResponse.md)
- - [Watermark](doc/model/Watermark.md)
- - [WatermarksListResponse](doc/model/WatermarksListResponse.md)
- - [Webhook](doc/model/Webhook.md)
- - [WebhooksCreationPayload](doc/model/WebhooksCreationPayload.md)
- - [WebhooksListResponse](doc/model/WebhooksListResponse.md)
+ - [AccessToken](docs/model/AccessToken.md)
+ - [AdditionalBadRequestErrors](docs/model/AdditionalBadRequestErrors.md)
+ - [AnalyticsData](docs/model/AnalyticsData.md)
+ - [AnalyticsPlays400Error](docs/model/AnalyticsPlays400Error.md)
+ - [AnalyticsPlaysResponse](docs/model/AnalyticsPlaysResponse.md)
+ - [AuthenticatePayload](docs/model/AuthenticatePayload.md)
+ - [BadRequest](docs/model/BadRequest.md)
+ - [BytesRange](docs/model/BytesRange.md)
+ - [Caption](docs/model/Caption.md)
+ - [CaptionsListResponse](docs/model/CaptionsListResponse.md)
+ - [CaptionsUpdatePayload](docs/model/CaptionsUpdatePayload.md)
+ - [Chapter](docs/model/Chapter.md)
+ - [ChaptersListResponse](docs/model/ChaptersListResponse.md)
+ - [Link](docs/model/Link.md)
+ - [LiveStream](docs/model/LiveStream.md)
+ - [LiveStreamAssets](docs/model/LiveStreamAssets.md)
+ - [LiveStreamCreationPayload](docs/model/LiveStreamCreationPayload.md)
+ - [LiveStreamListResponse](docs/model/LiveStreamListResponse.md)
+ - [LiveStreamSession](docs/model/LiveStreamSession.md)
+ - [LiveStreamSessionClient](docs/model/LiveStreamSessionClient.md)
+ - [LiveStreamSessionDevice](docs/model/LiveStreamSessionDevice.md)
+ - [LiveStreamSessionLocation](docs/model/LiveStreamSessionLocation.md)
+ - [LiveStreamSessionReferrer](docs/model/LiveStreamSessionReferrer.md)
+ - [LiveStreamSessionSession](docs/model/LiveStreamSessionSession.md)
+ - [LiveStreamUpdatePayload](docs/model/LiveStreamUpdatePayload.md)
+ - [Metadata](docs/model/Metadata.md)
+ - [Model403ErrorSchema](docs/model/Model403ErrorSchema.md)
+ - [NotFound](docs/model/NotFound.md)
+ - [Pagination](docs/model/Pagination.md)
+ - [PaginationLink](docs/model/PaginationLink.md)
+ - [PlayerSessionEvent](docs/model/PlayerSessionEvent.md)
+ - [PlayerTheme](docs/model/PlayerTheme.md)
+ - [PlayerThemeAssets](docs/model/PlayerThemeAssets.md)
+ - [PlayerThemeCreationPayload](docs/model/PlayerThemeCreationPayload.md)
+ - [PlayerThemeUpdatePayload](docs/model/PlayerThemeUpdatePayload.md)
+ - [PlayerThemesListResponse](docs/model/PlayerThemesListResponse.md)
+ - [Quality](docs/model/Quality.md)
+ - [RawStatisticsListLiveStreamAnalyticsResponse](docs/model/RawStatisticsListLiveStreamAnalyticsResponse.md)
+ - [RawStatisticsListPlayerSessionEventsResponse](docs/model/RawStatisticsListPlayerSessionEventsResponse.md)
+ - [RawStatisticsListSessionsResponse](docs/model/RawStatisticsListSessionsResponse.md)
+ - [RefreshTokenPayload](docs/model/RefreshTokenPayload.md)
+ - [RestreamsRequestObject](docs/model/RestreamsRequestObject.md)
+ - [RestreamsResponseObject](docs/model/RestreamsResponseObject.md)
+ - [TokenCreationPayload](docs/model/TokenCreationPayload.md)
+ - [TokenListResponse](docs/model/TokenListResponse.md)
+ - [UploadToken](docs/model/UploadToken.md)
+ - [Video](docs/model/Video.md)
+ - [VideoAssets](docs/model/VideoAssets.md)
+ - [VideoClip](docs/model/VideoClip.md)
+ - [VideoCreationPayload](docs/model/VideoCreationPayload.md)
+ - [VideoSession](docs/model/VideoSession.md)
+ - [VideoSessionClient](docs/model/VideoSessionClient.md)
+ - [VideoSessionDevice](docs/model/VideoSessionDevice.md)
+ - [VideoSessionLocation](docs/model/VideoSessionLocation.md)
+ - [VideoSessionOs](docs/model/VideoSessionOs.md)
+ - [VideoSessionReferrer](docs/model/VideoSessionReferrer.md)
+ - [VideoSessionSession](docs/model/VideoSessionSession.md)
+ - [VideoSource](docs/model/VideoSource.md)
+ - [VideoSourceLiveStream](docs/model/VideoSourceLiveStream.md)
+ - [VideoSourceLiveStreamLink](docs/model/VideoSourceLiveStreamLink.md)
+ - [VideoStatus](docs/model/VideoStatus.md)
+ - [VideoStatusEncoding](docs/model/VideoStatusEncoding.md)
+ - [VideoStatusEncodingMetadata](docs/model/VideoStatusEncodingMetadata.md)
+ - [VideoStatusIngest](docs/model/VideoStatusIngest.md)
+ - [VideoStatusIngestReceivedParts](docs/model/VideoStatusIngestReceivedParts.md)
+ - [VideoThumbnailPickPayload](docs/model/VideoThumbnailPickPayload.md)
+ - [VideoUpdatePayload](docs/model/VideoUpdatePayload.md)
+ - [VideoWatermark](docs/model/VideoWatermark.md)
+ - [VideosListResponse](docs/model/VideosListResponse.md)
+ - [Watermark](docs/model/Watermark.md)
+ - [WatermarksListResponse](docs/model/WatermarksListResponse.md)
+ - [Webhook](docs/model/Webhook.md)
+ - [WebhooksCreationPayload](docs/model/WebhooksCreationPayload.md)
+ - [WebhooksListResponse](docs/model/WebhooksListResponse.md)
 
 
 ## Authorization
