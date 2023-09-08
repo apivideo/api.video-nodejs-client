@@ -28,16 +28,6 @@ Generates an upload token that can be used to replace the API Key. More informat
 Promise<[**UploadToken**](../model/UploadToken.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
-
-const tokenCreationPayload = {
-  ttl: 56, // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
-}; 
-
-const uploadToken = await client.uploadTokens.createToken(tokenCreationPayload);
-```
 
 
 ---
@@ -60,14 +50,6 @@ Retrieve details about a specific upload token by id.
 Promise<[**UploadToken**](../model/UploadToken.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
-
-const uploadTokenId = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the token you want information about.
-
-const uploadToken = await client.uploadTokens.getToken(uploadTokenId);
-```
 
 
 ---
@@ -90,14 +72,6 @@ Delete an existing upload token. This is especially useful for tokens you may ha
 Promise<[**void**](../model/.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
-
-const uploadToken = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.
-  
-await client.uploadTokens.deleteToken(uploadToken); 
-```
 
 
 ---
@@ -123,13 +97,6 @@ Retrieve a list of all currently active delegated tokens.
 Promise<[**TokenListResponse**](../model/TokenListResponse.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
- 
-const uploadTokens = await client.uploadTokens.list();
-        
-```
 
 
 ---
