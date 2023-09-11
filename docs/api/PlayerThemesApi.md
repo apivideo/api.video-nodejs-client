@@ -31,29 +31,6 @@ Create a player for your video, and customise it.
 Promise<[**PlayerTheme**](../model/PlayerTheme.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const playerThemeCreationPayload = {
-  text: "rgba(255, 255, 255, 1)", // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
-  link: "rgba(255, 255, 255, 1)", // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
-  linkHover: "rgba(255, 255, 255, 1)", // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
-  trackPlayed: "rgba(255, 255, 255, 1)", // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
-  trackUnplayed: "rgba(255, 255, 255, 1)", // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
-  trackBackground: "rgba(255, 255, 255, 1)", // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
-  backgroundTop: "rgba(255, 255, 255, 1)", // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
-  backgroundBottom: "rgba(255, 255, 255, 1)", // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
-  backgroundText: "rgba(255, 255, 255, 1)", // RGBA color for title text. Default: rgba(255, 255, 255, 1)
-  enableApi: true, // enable/disable player SDK access. Default: true
-  enableControls: true, // enable/disable player controls. Default: true
-  forceAutoplay: true, // enable/disable player autoplay. Default: false
-  hideTitle: true, // enable/disable title. Default: false
-  forceLoop: true, // enable/disable looping. Default: false
-}; 
- 
-const playerTheme = await client.playerThemes.create(playerThemeCreationPayload); 
-```
 
 
 ---
@@ -76,13 +53,6 @@ Retreive a player theme by player id.
 Promise<[**PlayerTheme**](../model/PlayerTheme.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player you want to retrieve. 
-const playerTheme = await client.playerThemes.get(playerId); 
-```
 
 
 ---
@@ -108,30 +78,6 @@ NOTE: It may take up to 10 min before the new player configuration is available 
 Promise<[**PlayerTheme**](../model/PlayerTheme.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player.
-const playerThemeUpdatePayload = {
-  text: "rgba(255, 255, 255, 1)", // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
-  link: "rgba(255, 255, 255, 1)", // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
-  linkHover: "rgba(255, 255, 255, 1)", // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
-  trackPlayed: "rgba(255, 255, 255, 1)", // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
-  trackUnplayed: "rgba(255, 255, 255, 1)", // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
-  trackBackground: "rgba(255, 255, 255, 1)", // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
-  backgroundTop: "rgba(255, 255, 255, 1)", // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
-  backgroundBottom: "rgba(255, 255, 255, 1)", // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
-  backgroundText: "rgba(255, 255, 255, 1)", // RGBA color for title text. Default: rgba(255, 255, 255, 1)
-  enableApi: true, // enable/disable player SDK access. Default: true
-  enableControls: true, // enable/disable player controls. Default: true
-  forceAutoplay: true, // enable/disable player autoplay. Default: false
-  hideTitle: true, // enable/disable title. Default: false
-  forceLoop: true, // enable/disable looping. Default: false
-}; 
-
-const playerTheme = await client.playerThemes.update(playerId, playerThemeUpdatePayload); 
-```
 
 
 ---
@@ -154,13 +100,6 @@ Delete a player if you no longer need it. You can delete any player that you hav
 Promise<[**void**](../model/.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player you want to delete.
-await client.playerThemes.delete(playerId); 
-```
 
 
 ---
@@ -186,18 +125,6 @@ Retrieve a list of all the player themes you created, as well as details about e
 Promise<[**PlayerThemesListResponse**](../model/PlayerThemesListResponse.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const sortBy = 'createdAt'; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
-const sortOrder = 'asc'; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
-const currentPage = 2; // Choose the number of search results to return per page. Minimum value: 1
-const pageSize = 30; // Results per page. Allowed values 1-100, default is 25.
-
-// PlayerThemesListResponse
-const playerThemes = await client.playerThemes.list({ sortBy, sortOrder, currentPage, pageSize }); 
-```
 
 
 ---
@@ -222,16 +149,6 @@ Upload an image logo for a player.
 Promise<[**PlayerTheme**](../model/PlayerTheme.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const playerId = 'pl14Db6oMJRH6SRVoOwORacK'; // The unique identifier for the player.
-const file = './company-logo.jpg'; // The name of the file you want to use for your logo.
-const link = 'https://my-company.org'; // A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address.
-
-const playerTheme = await client.playerThemes.uploadLogo(playerId, file, link); 
-```
 
 
 ---
@@ -254,13 +171,6 @@ Delete the logo associated to a player.
 Promise<[**void**](../model/.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const playerId = 'pl45d5vFFGrfdsdsd156dGhh'; // The unique identifier for the player whose logo you want to delete.
-await client.playerThemes.deleteLogo(playerId); 
-```
 
 
 ---

@@ -31,26 +31,6 @@ Creates a livestream object.
 Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamCreationPayload = {
-    record: false, // Whether you are recording or not. True for record, false for not record.
-    name: "My Live Stream", // Add a name for your live stream here.
-    _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
-    playerId: "pl4f4ferf5erfr5zed4fsdd", // The unique identifier for the player.
-    restreams: [ // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
-      {
-        streamKey: "dw-dew8-q6w9-k67w-1ws8",
-        serverUrl: "rtmp://my.broadcast.example.com/app",
-        name: "My RTMP server",
-      },
-    ],
-}; 
-
-const liveStream = await client.liveStreams.create(liveStreamCreationPayload);
-```
 
 
 ---
@@ -73,14 +53,6 @@ Get a livestream by id.
 Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to retrieve.
-
-const liveStream = await client.liveStreams.get(liveStreamId);
-```
 
 
 ---
@@ -104,27 +76,6 @@ Updates the livestream object.
 Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
-const liveStreamUpdatePayload = {
-  name: "My Live Stream Video", // The name you want to use for your live stream.
-  _public: true, // Whether your video can be viewed by everyone, or requires authentication to see it. 
-  record: true, // Use this to indicate whether you want the recording on or off. On is true, off is false.
-  playerId: "pl45KFKdlddgk654dspkze", // The unique ID for the player associated with a live stream that you want to update.
-  restreams: [ // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
-    {
-      streamKey: "dw-dew8-q6w9-k67w-1ws8",
-      serverUrl: "rtmp://my.broadcast.example.com/app",
-      name: "My RTMP server",
-    },
-  ],
-};
-
-const liveStream = await client.liveStreams.update(liveStreamId, liveStreamUpdatePayload); 
-```
 
 
 ---
@@ -147,15 +98,6 @@ If you do not need a live stream any longer, you can send a request to delete it
 Promise<[**void**](../model/.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique identifier of the live stream whose thumbnail you want to delete.
-
-const liveStream = await client.liveStreams.deleteThumbnail(liveStreamId);
-    
-```
 
 
 ---
@@ -183,31 +125,6 @@ Get the list of livestreams on the workspace.
 Promise<[**LiveStreamListResponse**](../model/LiveStreamListResponse.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-// retrieve the first page of all livestreams
-const liveStreams = await client.liveStreams.list({ });
-
-// retrieve the livestreams having a given name
-const liveStreams2 = await client.liveStreams.list({
-  name: 'My livestream'
-});
-
-// retrieve the livestreams having a given stream key
-const liveStreams2 = await client.liveStreams.list({
-  streamKey:'30087931-229e-42cf-b5f9-e91bcc1f7332'
-});
-
-// retrieve the second page of 30 items sorted by name desc
-const liveStreams3 = await client.liveStreams.list({
-  sortBy: 'name',
-  sortOrder: 'desc',
-  currentPage: 2,
-  pageSize: 30
-});
-```
 
 
 ---
@@ -231,15 +148,6 @@ Upload the thumbnail for the livestream.
 Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique ID for the live stream you want to upload.
-const file = './thumbnail.jpg'; // The image to be added as a thumbnail.
-
-const livestream = await client.liveStreams.uploadThumbnail(liveStreamId, file);
-```
 
 
 ---
@@ -262,14 +170,6 @@ Send the unique identifier for a live stream to delete its thumbnail.
 Promise<[**LiveStream**](../model/LiveStream.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream whose thumbnail you want to delete.
-
-const liveStream = await client.liveStreams.deleteThumbnail(liveStreamId); 
-```
 
 
 ---
