@@ -67,7 +67,7 @@ Updates the livestream object.
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **liveStreamId** | **string**| **yes**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
+ | **liveStreamId** | **string**| **yes**| The unique ID for the live stream that you want to update information for such as player details. |
  | **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](../model/LiveStreamUpdatePayload.md)| **yes**|  |
 
 

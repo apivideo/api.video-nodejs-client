@@ -4,7 +4,6 @@ import CaptionsApi from '../src/api/CaptionsApi';
 import ChaptersApi from '../src/api/ChaptersApi';
 import LiveStreamsApi from '../src/api/LiveStreamsApi';
 import PlayerThemesApi from '../src/api/PlayerThemesApi';
-import RawStatisticsApi from '../src/api/RawStatisticsApi';
 import UploadTokensApi from '../src/api/UploadTokensApi';
 import VideosApi from '../src/api/VideosApi';
 import WatermarksApi from '../src/api/WatermarksApi';
@@ -30,10 +29,6 @@ describe('ApiVideoClient', () => {
   it('should use the PlayerThemesApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });
     expect(client.playerThemes).toBeInstanceOf(PlayerThemesApi);
-  });
-  it('should use the RawStatisticsApi class', () => {
-    const client = new ApiVideoClient({ apiKey: 'test' });
-    expect(client.rawStatistics).toBeInstanceOf(RawStatisticsApi);
   });
   it('should use the UploadTokensApi class', () => {
     const client = new ApiVideoClient({ apiKey: 'test' });

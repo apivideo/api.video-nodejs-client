@@ -47,9 +47,6 @@ import PlayerThemeCreationPayload from './model/PlayerThemeCreationPayload';
 import PlayerThemeUpdatePayload from './model/PlayerThemeUpdatePayload';
 import PlayerThemesListResponse from './model/PlayerThemesListResponse';
 import Quality from './model/Quality';
-import RawStatisticsListLiveStreamAnalyticsResponse from './model/RawStatisticsListLiveStreamAnalyticsResponse';
-import RawStatisticsListPlayerSessionEventsResponse from './model/RawStatisticsListPlayerSessionEventsResponse';
-import RawStatisticsListSessionsResponse from './model/RawStatisticsListSessionsResponse';
 import RefreshTokenPayload from './model/RefreshTokenPayload';
 import RestreamsRequestObject from './model/RestreamsRequestObject';
 import RestreamsResponseObject from './model/RestreamsResponseObject';
@@ -147,11 +144,6 @@ const typeMap: { [index: string]: any } = {
   PlayerThemeUpdatePayload: PlayerThemeUpdatePayload,
   PlayerThemesListResponse: PlayerThemesListResponse,
   Quality: Quality,
-  RawStatisticsListLiveStreamAnalyticsResponse:
-    RawStatisticsListLiveStreamAnalyticsResponse,
-  RawStatisticsListPlayerSessionEventsResponse:
-    RawStatisticsListPlayerSessionEventsResponse,
-  RawStatisticsListSessionsResponse: RawStatisticsListSessionsResponse,
   RefreshTokenPayload: RefreshTokenPayload,
   RestreamsRequestObject: RestreamsRequestObject,
   RestreamsResponseObject: RestreamsResponseObject,

@@ -79,16 +79,6 @@ __After:__
 await client.chapters.upload(videoId, 'en', 'test/data/en.vtt');
 ```
 
-### Get video analytics sessions for the current year
-__Before:__
-```js
-await client.analyticsVideo.get(videoId, new Date().getFullYear());
-```
-__After:__
-```ts
-await client.rawStatistics.listVideoSessions({ videoId, period: new Date().getFullYear().toString() });
-```
-
 ## Player theme
 
 The following properties are deprecated and can't be used in the payload anymore :
@@ -196,16 +186,6 @@ await client.lives.create('This is a private live', { public: false });
 __After:__
 ```ts
 await client.liveStreams.create({ name: 'This is a private live', _public: false });
-```
-
-### Get live Analytics Data for the current year
-__Before:__
-```js
-await client.analyticsLive.get(liveStreamId, new Date().getFullYear());
-```
-__After:__
-```ts
-await client.rawStatistics.listLiveStreamSessions({ liveStreamId, period: new Date().getFullYear().toString() });
 ```
 
 ## Tokens

@@ -381,28 +381,4 @@ describe('ApiVideoClient', () => {
       await client.videos.delete(video.videoId);
     });
   });
-
-  describe('Raw statistics', () => {
-    let video: Video;
-
-    it('should create a video', async () => {
-      video = await client.videos.create({
-        title: 'Nodejs - raw statistics',
-      });
-    });
-
-    it('list video sessions', async () => {
-      const sessions = await client.rawStatistics.listVideoSessions({
-        videoId: video.videoId,
-        period: new Date().getFullYear().toString(),
-        metadata: { user: 'username' },
-      });
-
-      expect(typeof sessions.data).toBe('object');
-    });
-
-    it('delete the video', async () => {
-      await client.videos.delete(video.videoId);
-    });
-  });
 });
