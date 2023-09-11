@@ -16,7 +16,6 @@ import CaptionsApi from './api/CaptionsApi';
 import ChaptersApi from './api/ChaptersApi';
 import LiveStreamsApi from './api/LiveStreamsApi';
 import PlayerThemesApi from './api/PlayerThemesApi';
-import RawStatisticsApi from './api/RawStatisticsApi';
 import UploadTokensApi from './api/UploadTokensApi';
 import VideosApi from './api/VideosApi';
 import WatermarksApi from './api/WatermarksApi';
@@ -36,7 +35,6 @@ class ApiVideoClient {
   private _chapters: ChaptersApi;
   private _liveStreams: LiveStreamsApi;
   private _playerThemes: PlayerThemesApi;
-  private _rawStatistics: RawStatisticsApi;
   private _uploadTokens: UploadTokensApi;
   private _videos: VideosApi;
   private _watermarks: WatermarksApi;
@@ -83,7 +81,6 @@ class ApiVideoClient {
     this._chapters = new ChaptersApi(this.httpClient);
     this._liveStreams = new LiveStreamsApi(this.httpClient);
     this._playerThemes = new PlayerThemesApi(this.httpClient);
-    this._rawStatistics = new RawStatisticsApi(this.httpClient);
     this._uploadTokens = new UploadTokensApi(this.httpClient);
     this._videos = new VideosApi(this.httpClient);
     this._watermarks = new WatermarksApi(this.httpClient);
@@ -132,14 +129,6 @@ class ApiVideoClient {
    */
   public get playerThemes(): PlayerThemesApi {
     return this._playerThemes;
-  }
-
-  /**
-   * Get an RawStatisticsApi instance
-   * @return RawStatisticsApi
-   */
-  public get rawStatistics(): RawStatisticsApi {
-    return this._rawStatistics;
   }
 
   /**

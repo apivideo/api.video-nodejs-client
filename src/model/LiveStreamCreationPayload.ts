@@ -18,10 +18,6 @@ export default class LiveStreamCreationPayload {
    */
   'name': string;
   /**
-   * Whether you are recording or not. True for record, false for not record.
-   */
-  'record'?: boolean;
-  /**
    * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
    */
   '_public'?: boolean;
@@ -41,12 +37,6 @@ export default class LiveStreamCreationPayload {
       name: 'name',
       baseName: 'name',
       type: 'string',
-      format: '',
-    },
-    {
-      name: 'record',
-      baseName: 'record',
-      type: 'boolean',
       format: '',
     },
     {

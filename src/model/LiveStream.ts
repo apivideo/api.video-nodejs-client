@@ -27,10 +27,6 @@ export default class LiveStream {
    */
   'streamKey'?: string;
   /**
-   * Whether you are recording or not.
-   */
-  'record'?: boolean;
-  /**
    * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
    */
   '_public'?: boolean;
@@ -75,12 +71,6 @@ export default class LiveStream {
       name: 'streamKey',
       baseName: 'streamKey',
       type: 'string',
-      format: '',
-    },
-    {
-      name: 'record',
-      baseName: 'record',
-      type: 'boolean',
       format: '',
     },
     {

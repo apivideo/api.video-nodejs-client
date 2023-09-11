@@ -15,7 +15,6 @@
     } ],
     "name" : "Live Stream From the browser",
     "public" : true,
-    "record" : true,
     "broadcasting" : false,
     "assets" : {
       "iframe" : "<iframe src=\"https://embed.api.video/live/li400mYKSgQ6xs7taUeSaEKr\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
@@ -39,7 +38,6 @@
     } ],
     "name" : "Live From New York",
     "public" : true,
-    "record" : true,
     "broadcasting" : false,
     "assets" : {
       "iframe" : "<iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",

@@ -126,7 +126,7 @@ export default class LiveStreamsApi {
   /**
    * Updates the livestream object.
    * Update a live stream
-   * @param liveStreamId The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
+   * @param liveStreamId The unique ID for the live stream that you want to update information for such as player details.
    * @param liveStreamUpdatePayload
    */
   public async update(

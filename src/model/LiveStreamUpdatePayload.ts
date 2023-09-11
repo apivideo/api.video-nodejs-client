@@ -22,10 +22,6 @@ export default class LiveStreamUpdatePayload {
    */
   '_public'?: boolean;
   /**
-   * Use this to indicate whether you want the recording on or off. On is true, off is false.
-   */
-  'record'?: boolean;
-  /**
    * The unique ID for the player associated with a live stream that you want to update.
    */
   'playerId'?: string;
@@ -46,12 +42,6 @@ export default class LiveStreamUpdatePayload {
     {
       name: '_public',
       baseName: 'public',
-      type: 'boolean',
-      format: '',
-    },
-    {
-      name: 'record',
-      baseName: 'record',
       type: 'boolean',
       format: '',
     },
