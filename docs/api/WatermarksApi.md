@@ -27,25 +27,6 @@ Create a new watermark by uploading a `JPG` or a `PNG` image.
 Promise<[**Watermark**](../model/Watermark.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-// Upload a watermark
-const watermark = await client.watermarks.upload('test/data/test.jpg');
-
-// create a video with watermark
-const watermarkVideo = await client.videos.create({
-  title: 'Nodejs - watermark',
-  watermark: {
-    id: watermark.watermarkId,
-    top: '0px',
-    left: '0px',
-    width: '100px',
-    height: '100px',
-  },
-});
-```
 
 
 ---
@@ -68,14 +49,6 @@ Delete a watermark.
 Promise<[**void**](../model/.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
-
-const watermarkId = 'watermark_1Bji68oeAAwR44dAb5ZhML'; // The watermark ID for the watermark you want to delete.
-
-client.watermarks.delete(watermarkId);
-```
 
 
 ---
@@ -101,17 +74,6 @@ List all watermarks associated with your workspace.
 Promise<[**WatermarksListResponse**](../model/WatermarksListResponse.md)>.
 
 
-### Example
-```js
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" }); 
-
-// retrieve the first page of all watermarks
-const watermarks = await client.watermarks.list({});
-
-// retrieve the 5 first watermarks, ordered by creation date
-const watermarks2 = await client.watermarks.list({});
-createdAt
-```
 
 
 ---
