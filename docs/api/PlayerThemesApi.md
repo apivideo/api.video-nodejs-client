@@ -133,7 +133,15 @@ Promise<[**PlayerThemesListResponse**](../model/PlayerThemesListResponse.md)>.
 ## **`uploadLogo()` - Upload a logo**
 
 
-Upload an image logo for a player.
+Upload an image file as a logo for your player. The image should fit within these constraints:
+
+- The image mime type must be `image/jpeg` or `image/png`. api.video recommends using `png` images with transparent background.
+
+- The image size should be a maximum of 200px width x 100px.
+
+- The file size should be a maximum of 100 KiB.
+
+
 
 ### Parameters
 
