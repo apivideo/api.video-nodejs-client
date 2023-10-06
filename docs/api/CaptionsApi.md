@@ -15,7 +15,7 @@ All URIs are relative to *https://ws.api.video*
 ## **`upload()` - Upload a caption**
 
 
-Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)
+Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
 
 ### Parameters
 

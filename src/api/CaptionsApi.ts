@@ -32,7 +32,7 @@ export default class CaptionsApi {
   }
 
   /**
-   * Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)
+   * Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
    * Upload a caption
    * @param videoId The unique identifier for the video you want to add a caption to.
    * @param language A valid BCP 47 language representation.
