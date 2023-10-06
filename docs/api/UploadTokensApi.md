@@ -14,7 +14,7 @@ All URIs are relative to *https://ws.api.video*
 ## **`createToken()` - Generate an upload token**
 
 
-Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/reference/upload-tokens)
+Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)
 
 ### Parameters
 

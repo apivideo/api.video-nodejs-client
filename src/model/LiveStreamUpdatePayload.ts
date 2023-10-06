@@ -18,7 +18,7 @@ export default class LiveStreamUpdatePayload {
    */
   'name'?: string;
   /**
-   * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
+   * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
    */
   '_public'?: boolean;
   /**

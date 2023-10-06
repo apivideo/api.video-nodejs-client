@@ -37,7 +37,7 @@ export default class VideosApi {
   }
 
   /**
-   * Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1).
+   * Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos).
    * Create a video object
    * @param videoCreationPayload video to create
    */
@@ -735,7 +735,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
    * @param {Object} searchParams
    * @param { string } searchParams.title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
    * @param { Array&lt;string&gt; } searchParams.tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
+   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
    * @param { string } searchParams.description Retrieve video objects by &#x60;description&#x60;.
    * @param { string } searchParams.liveStreamId Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
    * @param { &#39;title&#39; | &#39;createdAt&#39; | &#39;publishedAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Use this parameter to sort videos by the their created time, published time, updated time, or by title.

@@ -28,7 +28,7 @@ export default class VideoCreationPayload {
    */
   'source'?: string;
   /**
-   * Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/docs/private-videos)
+   * Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)
    */
   '_public'?: boolean;
   /**
@@ -48,7 +48,7 @@ export default class VideoCreationPayload {
    */
   'tags'?: Array<string>;
   /**
-   * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).
+   * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).
    */
   'metadata'?: Array<Metadata>;
   'clip'?: VideoClip;

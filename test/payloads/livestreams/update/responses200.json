@@ -19,6 +19,6 @@
     "iframe" : "<iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
     "player" : "https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5",
     "hls" : "https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8",
-    "thumbnail" : "https://cdn.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5/thumbnail.jpg"
+    "thumbnail" : "https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5/thumbnail.jpg"
   }
 }
