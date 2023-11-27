@@ -3,11 +3,13 @@
     "uri" : "/videos/vi3N6cDinStg3oBbN79GklWS/captions/en",
     "src" : "https://cdn.api.video/vod/vi3N6cDinStg3oBbN79GklWS/captions/en.vtt",
     "srclang" : "en",
+    "languageName" : "English",
     "default" : false
   }, {
     "uri" : "/videos/vi3N6cDinStg3oBbN79GklWS/captions/fr",
     "src" : "https://cdn.api.video/vod/vi3N6cDinStg3oBbN79GklWS/captions/fr.vtt",
     "srclang" : "fr",
+    "languageName" : "Française",
     "default" : false
   } ],
   "pagination" : {

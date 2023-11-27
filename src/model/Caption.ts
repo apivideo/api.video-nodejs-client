@@ -12,9 +12,22 @@
 import AttributeType from './AttributeType.js';
 
 export default class Caption {
+  /**
+   * The unique resource identifier of the uploaded caption.
+   */
   'uri'?: string;
+  /**
+   * A direct URL to the uploaded caption file.
+   */
   'src'?: string;
+  /**
+   * Indicates the language of the uploaded caption file using IETF language tags.
+   */
   'srclang'?: string;
+  /**
+   * Returns the native name of the caption language in UTF-8 encoding.
+   */
+  'languageName'?: string;
   /**
    * Whether you will have subtitles or not. True for yes you will have subtitles, false for no you will not have subtitles.
    */
@@ -38,6 +51,12 @@ export default class Caption {
     {
       name: 'srclang',
       baseName: 'srclang',
+      type: 'string',
+      format: '',
+    },
+    {
+      name: 'languageName',
+      baseName: 'languageName',
       type: 'string',
       format: '',
     },
