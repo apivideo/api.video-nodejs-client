@@ -1,7 +1,0 @@
-{
-  "type" : "string (required)",
-  "title" : "string (required)",
-  "name" : "string (required)",
-  "status" : "integer (required)",
-  "problems" : [ null ]
-}

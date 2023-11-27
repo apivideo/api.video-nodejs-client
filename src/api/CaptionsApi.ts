@@ -35,7 +35,7 @@ export default class CaptionsApi {
    * Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
    * Upload a caption
    * @param videoId The unique identifier for the video you want to add a caption to.
-   * @param language A valid BCP 47 language representation.
+   * @param language A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of supported language tags. You can find the list of supported tags [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
    * @param file The video text track (VTT) you want to upload.
    */
   public async upload(
@@ -99,7 +99,7 @@ export default class CaptionsApi {
 Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
    * Retrieve a caption
    * @param videoId The unique identifier for the video you want captions for.
-   * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
+   * @param language A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of supported language tags. You can find the list of supported tags [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
    */
   public async get(videoId: string, language: string): Promise<Caption> {
     const queryParams: QueryOptions = {};
@@ -141,7 +141,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
    * To have the captions on automatically, use this method to set default: true.
    * Update a caption
    * @param videoId The unique identifier for the video you want to have automatic captions for.
-   * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+   * @param language A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of supported language tags. You can find the list of supported tags [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
    * @param captionsUpdatePayload
    */
   public async update(
@@ -208,7 +208,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
    * Delete a caption in a specific language by by video id.
    * Delete a caption
    * @param videoId The unique identifier for the video you want to delete a caption from.
-   * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+   * @param language A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of supported language tags. You can find the list of supported tags [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
    */
   public async delete(videoId: string, language: string): Promise<void> {
     const queryParams: QueryOptions = {};
