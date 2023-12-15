@@ -65,7 +65,7 @@ export default class WatermarksApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Watermark',
             ''
@@ -103,7 +103,7 @@ export default class WatermarksApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'void',
             ''
@@ -175,7 +175,7 @@ export default class WatermarksApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'WatermarksListResponse',
             ''

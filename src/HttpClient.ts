@@ -15,6 +15,7 @@ import ProblemDetails from './model/ProblemDetails';
 import { encode } from 'js-base64';
 import { Readable, Stream } from 'stream';
 import AccessToken from './model/AccessToken';
+import FetchResponse from './model/FetchResponse';
 
 export type QueryOptions = {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -27,7 +28,7 @@ export type QueryOptions = {
 export default class HttpClient {
   private apiKey?: string;
   private baseUri: string;
-  private headers: AxiosHeaders;
+  private headers: Headers;
   private chunkSize: number;
 
   constructor(params: {
@@ -42,7 +43,7 @@ export default class HttpClient {
     this.apiKey = params.apiKey;
     this.baseUri = params.baseUri;
     this.chunkSize = params.chunkSize;
-    this.headers = new AxiosHeaders({
+    this.headers =  new Headers({
       Accept: 'application/json, */*;q=0.8',
       'AV-Origin-Client': 'nodejs:2.5.4',
       Authorization: this.apiKey ? `Basic ${encode(`${this.apiKey}:`)}` : '',
@@ -64,45 +65,67 @@ export default class HttpClient {
   }
 
   public async getAccessToken(): Promise<AccessToken> {
-    const axiosRes = await axios.request({
-      url: `${this.baseUri}/auth/api-key`,
+    const fetchRes = await fetch(`${this.baseUri}/auth/api-key`, {
       headers: this.headers,
       method: 'POST',
-      data: {
+      body: JSON.stringify({
         apiKey: this.apiKey,
-      },
+      }),
     });
-
+    const responseData = await fetchRes.json();
     return {
-      accessToken: axiosRes.data.access_token,
-      refreshToken: axiosRes.data.refresh_token,
-      tokenType: axiosRes.data.token_type,
-      expiresIn: axiosRes.data.expires_in,
+      accessToken: responseData.data.access_token,
+      refreshToken: responseData.data.refresh_token,
+      tokenType: responseData.data.token_type,
+      expiresIn: responseData.data.expires_in,
     };
   }
 
   public async call(path: string, options: QueryOptions) {
     if (!options.method) throw new Error('Method is required');
     try {
-      const axiosRes = await axios.request({
-        url: `${this.baseUri}/${path}${
-          options.searchParams ? `?${options.searchParams.toString()}` : ''
-        }`,
-        headers: this.headers.concat(options.headers || {}),
+      const fetchRes = await fetch(`${this.baseUri}/${path}${
+        options.searchParams ? `?${options.searchParams.toString()}` : ''
+      }`, {
+        headers: this.headers,
         method: options.method,
-        onUploadProgress: options.onUploadProgress,
-        data: options.body,
+        body: JSON.stringify(options.body),
       });
+      const responseJSON: FetchResponse = await fetchRes.clone().json();
+      console.log(`${this.baseUri}/${path}${
+        options.searchParams ? `?${options.searchParams.toString()}` : ''
+      }`);
+      if (!fetchRes.ok) {
+        throw new Error(`Upload failed with status ${fetchRes.status}`);
+      }
+      const reader = fetchRes.body?.getReader();
+      const contentLength = +Number.parseInt(fetchRes.headers?.get('Content-Length') || "0") || 0;
+      let receivedLength = 0;
 
+      await reader?.read().then(function processChunk({ done, value }: { done: boolean; value?: Uint8Array }): Promise<void> | undefined {
+        if (done) {
+          console.log('Fetch complete');
+          return;
+        }
+
+        if (value) {
+          receivedLength += value.length;
+        }
+        console.log(`Received ${receivedLength} of ${contentLength}`)
+
+        return reader.read().then(processChunk);
+      });
       return {
-        headers: axiosRes.headers as any,
-        body: JSON.stringify(axiosRes.data),
+        headers: fetchRes.headers,
+        body: JSON.stringify(responseJSON),
+        finishedUpload: fetchRes.ok
       };
+
     } catch (error: any) {
-      const axiosError = error as AxiosError;
+      console.log(error);
       throw new ApiVideoError(
-        axiosError.response?.status || 0,
-        axiosError.response?.data as ProblemDetails
+        error.response?.status || 0,
+        error.response?.data as ProblemDetails
       );
     }
   }

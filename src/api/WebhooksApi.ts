@@ -71,7 +71,7 @@ export default class WebhooksApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Webhook',
             ''
@@ -106,7 +106,7 @@ export default class WebhooksApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Webhook',
             ''
@@ -141,7 +141,7 @@ export default class WebhooksApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'void',
             ''
@@ -206,7 +206,7 @@ You can filter what the webhook list that the API returns using the parameters d
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'WebhooksListResponse',
             ''

@@ -74,7 +74,7 @@ npm run build
 ```
 
 ### Code sample
-
+#### For Production Usage
 ```typescript
 const ApiVideoClient = require('@api.video/nodejs-client');
 // or: import ApiVideoClient from '@api.video/nodejs-client';
@@ -96,6 +96,12 @@ const ApiVideoClient = require('@api.video/nodejs-client');
         console.error(e);
     }
 })();
+
+```
+#### For Development Usage
+For usage of the sandbox api, please change the default baseURI like given in the example:
+```typescript
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY", baseUri: "https://sandbox.api.video"  });
 ```
 
 ## Documentation

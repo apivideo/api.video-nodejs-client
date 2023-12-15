@@ -78,7 +78,7 @@ export default class VideosApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -175,7 +175,7 @@ export default class VideosApi {
             ObjectSerializer.deserialize(
               ObjectSerializer.parse(
                 response.body,
-                response.headers['content-type']
+                response.headers.get('content-type') || undefined,
               ),
               'Video',
               ''
@@ -266,7 +266,7 @@ The latter allows you to split a video source into X chunks and send those chunk
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -324,7 +324,7 @@ The latter allows you to split a video source into X chunks and send those chunk
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -440,7 +440,7 @@ The latter allows you to split a video source into X chunks and send those chunk
               ObjectSerializer.deserialize(
                 ObjectSerializer.parse(
                   response.body,
-                  response.headers['content-type']
+                  response.headers.get('content-type') || undefined,
                 ),
                 'Video',
                 ''
@@ -527,7 +527,7 @@ The latter allows you to split a video source into X chunks and send those chunk
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -585,7 +585,7 @@ The latter allows you to split a video source into X chunks and send those chunk
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -625,7 +625,7 @@ The latter allows you to split a video source into X chunks and send those chunk
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -686,7 +686,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -721,7 +721,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'void',
             ''
@@ -851,7 +851,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'VideosListResponse',
             ''
@@ -917,7 +917,7 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -989,7 +989,7 @@ There may be a short delay for the thumbnail to update.
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Video',
             ''
@@ -1024,7 +1024,7 @@ There may be a short delay for the thumbnail to update.
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'VideoStatus',
             ''

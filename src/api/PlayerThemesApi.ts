@@ -77,7 +77,7 @@ export default class PlayerThemesApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'PlayerTheme',
             ''
@@ -112,7 +112,7 @@ export default class PlayerThemesApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'PlayerTheme',
             ''
@@ -174,7 +174,7 @@ export default class PlayerThemesApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'PlayerTheme',
             ''
@@ -209,7 +209,7 @@ export default class PlayerThemesApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'void',
             ''
@@ -285,7 +285,7 @@ export default class PlayerThemesApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'PlayerThemesListResponse',
             ''
@@ -345,7 +345,7 @@ export default class PlayerThemesApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'PlayerTheme',
             ''
@@ -380,7 +380,7 @@ export default class PlayerThemesApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'void',
             ''
