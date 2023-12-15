@@ -74,10 +74,10 @@ export default class HttpClient {
     });
     const responseData = await fetchRes.json();
     return {
-      accessToken: responseData.data.access_token,
-      refreshToken: responseData.data.refresh_token,
-      tokenType: responseData.data.token_type,
-      expiresIn: responseData.data.expires_in,
+      accessToken: responseData.access_token,
+      refreshToken: responseData.refresh_token,
+      tokenType: responseData.token_type,
+      expiresIn: responseData.expires_in,
     };
   }
 
