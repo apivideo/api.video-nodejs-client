@@ -232,7 +232,7 @@ export default class LiveStreamsApi {
    * @param {Object} searchParams
    * @param { string } searchParams.streamKey The unique stream key that allows you to stream videos.
    * @param { string } searchParams.name You can filter live streams by their name or a part of their name.
-   * @param { string } searchParams.sortBy Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format.
+   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Enables you to sort live stream results. Allowed attributes: &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream. &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a live stream was last updated.  When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API sorts the results based on the ISO-8601 time format.
    * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
@@ -247,7 +247,7 @@ export default class LiveStreamsApi {
   }: {
     streamKey?: string;
     name?: string;
-    sortBy?: string;
+    sortBy?: 'name' | 'createdAt' | 'updatedAt';
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
@@ -275,7 +275,11 @@ export default class LiveStreamsApi {
     if (sortBy !== undefined) {
       urlSearchParams.append(
         'sortBy',
-        ObjectSerializer.serialize(sortBy, 'string', '')
+        ObjectSerializer.serialize(
+          sortBy,
+          "'name' | 'createdAt' | 'updatedAt'",
+          ''
+        )
       );
     }
     if (sortOrder !== undefined) {
