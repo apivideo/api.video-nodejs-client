@@ -126,7 +126,7 @@ export default class AnalyticsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'AnalyticsPlaysResponse',
             ''
@@ -236,7 +236,7 @@ export default class AnalyticsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'AnalyticsPlaysResponse',
             ''

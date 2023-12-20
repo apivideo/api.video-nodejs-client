@@ -85,7 +85,7 @@ export default class CaptionsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Caption',
             ''
@@ -129,7 +129,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Caption',
             ''
@@ -196,7 +196,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'Caption',
             ''
@@ -238,7 +238,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'void',
             ''
@@ -302,7 +302,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'CaptionsListResponse',
             ''

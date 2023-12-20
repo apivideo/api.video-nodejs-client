@@ -11,7 +11,6 @@
 
 import path from 'path';
 import { createReadStream } from 'fs';
-import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
@@ -77,7 +76,7 @@ export default class LiveStreamsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'LiveStream',
             ''
@@ -111,15 +110,17 @@ export default class LiveStreamsApi {
     return this.httpClient
       .call(localVarPath, queryParams)
       .then(
-        (response) =>
-          ObjectSerializer.deserialize(
+        (response) => {
+          console.log(JSON.stringify(response))
+          return ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'LiveStream',
             ''
           ) as LiveStream
+        }
       );
   }
 
@@ -180,7 +181,7 @@ export default class LiveStreamsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'LiveStream',
             ''
@@ -218,7 +219,7 @@ export default class LiveStreamsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'void',
             ''
@@ -312,12 +313,12 @@ export default class LiveStreamsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'LiveStreamListResponse',
             ''
           ) as LiveStreamListResponse
-      );
+        );
   }
 
   /**
@@ -369,7 +370,7 @@ export default class LiveStreamsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'LiveStream',
             ''
@@ -407,11 +408,12 @@ export default class LiveStreamsApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'LiveStream',
             ''
           ) as LiveStream
-      );
+
+        );
   }
 }

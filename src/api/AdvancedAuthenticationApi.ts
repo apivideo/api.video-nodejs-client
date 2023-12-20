@@ -67,7 +67,7 @@ export default class AdvancedAuthenticationApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'AccessToken',
             ''
@@ -117,7 +117,7 @@ export default class AdvancedAuthenticationApi {
           ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
-              response.headers['content-type']
+              response.headers.get('content-type') || undefined,
             ),
             'AccessToken',
             ''
