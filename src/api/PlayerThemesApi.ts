@@ -9,9 +9,6 @@
  * Do not edit the class manually.
  */
 
-import path from 'path';
-import { createReadStream } from 'fs';
-import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
@@ -19,8 +16,7 @@ import PlayerTheme from '../model/PlayerTheme';
 import PlayerThemeCreationPayload from '../model/PlayerThemeCreationPayload';
 import PlayerThemeUpdatePayload from '../model/PlayerThemeUpdatePayload';
 import PlayerThemesListResponse from '../model/PlayerThemesListResponse';
-import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient';
+import { createBufferFromPartialData } from '../utils';
 
 /**
  * no description
@@ -302,7 +298,7 @@ export default class PlayerThemesApi {
    */
   public async uploadLogo(
     playerId: string,
-    file: string | Readable | Buffer,
+    file: Buffer | Blob | ArrayBuffer,
     link?: string
   ): Promise<PlayerTheme> {
     const queryParams: QueryOptions = {};
@@ -312,15 +308,8 @@ export default class PlayerThemesApi {
         'Required parameter playerId was null or undefined when calling uploadLogo.'
       );
     }
-    let fileName = 'file';
-    let fileBuffer = file;
-    if (typeof file === 'string') {
-      fileName = path.basename(file);
-      fileBuffer = createReadStream(file);
-    }
-    if (file instanceof Readable) {
-      fileBuffer = await readableToBuffer(file);
-    }
+    const fileName = 'file';
+    const fileBuffer = createBufferFromPartialData(file);
 
     // Path Params
     const localVarPath = '/players/{playerId}/logo'

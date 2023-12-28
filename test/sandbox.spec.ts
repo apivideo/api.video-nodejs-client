@@ -1,9 +1,9 @@
-import { createReadStream } from 'fs';
+import { promises } from 'fs';
+import ApiVideoClient from '../src';
 import PlayerTheme from '../src/model/PlayerTheme';
 import UploadToken from '../src/model/UploadToken';
 import Video from '../src/model/Video';
 import Watermark from '../src/model/Watermark';
-import ApiVideoClient from '../src';
 
 const timeout = (ms = 100) =>
   new Promise((resolve) => {
@@ -59,7 +59,9 @@ describe('ApiVideoClient', () => {
     let watermark: Watermark, watermarkVideo: Video;
     it('should create a watermark', (done) => {
       (async () => {
-        watermark = await client.watermarks.upload('test/data/test.jpg');
+        watermark = await client.watermarks.upload(
+          await promises.readFile('test/data/test.jpg')
+        );
         expect(typeof watermark.watermarkId).toBe('string');
         done();
       })();
@@ -114,10 +116,14 @@ describe('ApiVideoClient', () => {
         const progressiveUploadSession =
           client.videos.createUploadProgressiveSession(video.videoId);
 
-        await progressiveUploadSession.uploadPart('test/data/10m.mp4.part.a');
-        await progressiveUploadSession.uploadPart('test/data/10m.mp4.part.b');
+        await progressiveUploadSession.uploadPart(
+          await await promises.readFile('test/data/10m.mp4.part.a')
+        );
+        await progressiveUploadSession.uploadPart(
+          await promises.readFile('test/data/10m.mp4.part.b')
+        );
         await progressiveUploadSession
-          .uploadLastPart('test/data/10m.mp4.part.c')
+          .uploadLastPart(await promises.readFile('test/data/10m.mp4.part.c'))
           .then((video) => {
             expect(video.title).toEqual(progressiveUploadVideo);
           });
@@ -143,16 +149,16 @@ describe('ApiVideoClient', () => {
             uploadToken.token!
           );
         await progressiveUploadWithTokenSession.uploadPart(
-          'test/data/10m.mp4.part.a'
+          await promises.readFile('test/data/10m.mp4.part.a')
         );
         await progressiveUploadWithTokenSession.uploadPart(
-          'test/data/10m.mp4.part.b'
+          await promises.readFile('test/data/10m.mp4.part.b')
         );
         video = await progressiveUploadWithTokenSession.uploadLastPart(
-          'test/data/10m.mp4.part.c'
+          await promises.readFile('test/data/10m.mp4.part.c')
         );
 
-        expect(video.title).toEqual('10m.mp4.part.a');
+        expect(video.title).toEqual('file');
       });
 
       it('should delete the video and the upload token', async () => {
@@ -174,7 +180,10 @@ describe('ApiVideoClient', () => {
       });
 
       it('should upload', async () => {
-        await client.videos.upload(video.videoId, 'test/data/558k.mp4');
+        await client.videos.upload(
+          video.videoId,
+          await promises.readFile('test/data/558k.mp4')
+        );
       });
 
       it('should delete the video', async () => {
@@ -193,7 +202,10 @@ describe('ApiVideoClient', () => {
       });
 
       it('should upload', async () => {
-        await client.videos.upload(video.videoId, 'test/data/10m.mp4');
+        await client.videos.upload(
+          video.videoId,
+          await promises.readFile('test/data/10m.mp4')
+        );
       });
 
       it('should delete the video', async () => {
@@ -257,7 +269,7 @@ describe('ApiVideoClient', () => {
     it('upload the thumbnails using file path', async () => {
       const thumbnailVideo = await client.videos.uploadThumbnail(
         video.videoId,
-        'test/data/test.jpg'
+        await promises.readFile('test/data/test.jpg')
       );
 
       expect(thumbnailVideo.videoId).toEqual(video.videoId);
@@ -266,7 +278,7 @@ describe('ApiVideoClient', () => {
     it('upload the thumbnails using read stream', async () => {
       const thumbnailVideo = await client.videos.uploadThumbnail(
         video.videoId,
-        createReadStream('test/data/test.jpg')
+        await promises.readFile('test/data/test.jpg')
       );
 
       expect(thumbnailVideo.videoId).toEqual(video.videoId);
@@ -297,7 +309,7 @@ describe('ApiVideoClient', () => {
       const caption = await client.captions.upload(
         video.videoId,
         'en',
-        'test/data/en.vtt'
+        await promises.readFile('test/data/en.vtt')
       );
       expect(caption.srclang).toEqual('en');
       await timeout(1000);
@@ -369,7 +381,7 @@ describe('ApiVideoClient', () => {
     it('add a logo to the player theme', async () => {
       const updatedPlayerTheme = await client.playerThemes.uploadLogo(
         playerTheme.playerId,
-        'test/data/test.png',
+        await promises.readFile('test/data/test.png'),
         'https://api.video'
       );
 
