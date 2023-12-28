@@ -9,17 +9,13 @@
  * Do not edit the class manually.
  */
 
-import path from 'path';
-import { createReadStream } from 'fs';
-import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
 import Caption from '../model/Caption';
 import CaptionsListResponse from '../model/CaptionsListResponse';
 import CaptionsUpdatePayload from '../model/CaptionsUpdatePayload';
-import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient';
+import { createBufferFromPartialData } from '../utils';
 
 /**
  * no description
@@ -41,7 +37,7 @@ export default class CaptionsApi {
   public async upload(
     videoId: string,
     language: string,
-    file: string | Readable | Buffer
+    file: Buffer | Blob | ArrayBuffer
   ): Promise<Caption> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
@@ -55,15 +51,8 @@ export default class CaptionsApi {
         'Required parameter language was null or undefined when calling upload.'
       );
     }
-    let fileName = 'file';
-    let fileBuffer = file;
-    if (typeof file === 'string') {
-      fileName = path.basename(file);
-      fileBuffer = createReadStream(file);
-    }
-    if (file instanceof Readable) {
-      fileBuffer = await readableToBuffer(file);
-    }
+    const fileName = 'file';
+    const fileBuffer = createBufferFromPartialData(file);
 
     // Path Params
     const localVarPath = '/videos/{videoId}/captions/{language}'

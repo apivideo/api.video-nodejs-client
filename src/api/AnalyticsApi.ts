@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-import { URLSearchParams } from 'url';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
 import AnalyticsPlaysResponse from '../model/AnalyticsPlaysResponse';

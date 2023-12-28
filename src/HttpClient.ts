@@ -13,7 +13,6 @@ import axios, { AxiosError, AxiosHeaders, AxiosProgressEvent } from 'axios';
 import ApiVideoError from './ApiVideoError';
 import ProblemDetails from './model/ProblemDetails';
 import { encode } from 'js-base64';
-import { Readable, Stream } from 'stream';
 import AccessToken from './model/AccessToken';
 
 export type QueryOptions = {
@@ -106,26 +105,4 @@ export default class HttpClient {
       );
     }
   }
-}
-
-export async function readableToBuffer(readable: Readable): Promise<Buffer> {
-  const writableStream = new Stream.Writable({
-    defaultEncoding: 'utf-8',
-  });
-  const data: Buffer[] = [];
-  writableStream._write = (chunk, encoding, next) => {
-    data.push(Buffer.from(chunk, encoding));
-    next();
-  };
-
-  return new Promise((resolve, reject) => {
-    Stream.pipeline(readable, writableStream, async (err) => {
-      if (err) {
-        reject(err);
-      }
-
-      const buffer = Buffer.concat(data);
-      resolve(buffer);
-    });
-  });
 }

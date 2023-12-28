@@ -1,4 +1,4 @@
 export default interface ProgressiveSession<T> {
-  uploadPart(file: string): Promise<T>;
-  uploadLastPart(file: string): Promise<T>;
+  uploadPart(file: Buffer | Blob | ArrayBuffer): Promise<T>;
+  uploadLastPart(file: Buffer | Blob | ArrayBuffer): Promise<T>;
 }
