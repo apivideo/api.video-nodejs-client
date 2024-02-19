@@ -18,7 +18,7 @@ import VideoStatusIngestReceivedParts from './VideoStatusIngestReceivedParts.js'
  */
 export default class VideoStatusIngest {
   /**
-   * There are three possible ingest statuses. missing - you are missing information required to ingest the video. uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.
+   * There are four possible statuses depending on how you provide a video file: - `uploading` - the API is gathering the video source file from an upload. - `uploaded` - the video file is fully uploaded. - `ingesting` - the API is gathering the video source file from either a URL, or from cloning. - `ingested` - the video file is fully stored.
    */
   'status'?: VideoStatusIngestStatusEnum;
   /**
@@ -65,4 +65,8 @@ export default class VideoStatusIngest {
   }
 }
 
-export type VideoStatusIngestStatusEnum = 'missing' | 'uploading' | 'uploaded';
+export type VideoStatusIngestStatusEnum =
+  | 'uploading'
+  | 'uploaded'
+  | 'ingesting'
+  | 'ingested';
