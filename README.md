@@ -248,6 +248,7 @@ Method | Description | HTTP request
  - [RestreamsResponseObject](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/RestreamsResponseObject.md)
  - [TokenCreationPayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TokenCreationPayload.md)
  - [TokenListResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TokenListResponse.md)
+ - [TooManyRequests](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TooManyRequests.md)
  - [UploadToken](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/UploadToken.md)
  - [Video](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Video.md)
  - [VideoAssets](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoAssets.md)
