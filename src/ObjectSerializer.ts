@@ -52,6 +52,7 @@ import RestreamsRequestObject from './model/RestreamsRequestObject';
 import RestreamsResponseObject from './model/RestreamsResponseObject';
 import TokenCreationPayload from './model/TokenCreationPayload';
 import TokenListResponse from './model/TokenListResponse';
+import TooManyRequests from './model/TooManyRequests';
 import UploadToken from './model/UploadToken';
 import Video from './model/Video';
 import VideoAssets from './model/VideoAssets';
@@ -149,6 +150,7 @@ const typeMap: { [index: string]: any } = {
   RestreamsResponseObject: RestreamsResponseObject,
   TokenCreationPayload: TokenCreationPayload,
   TokenListResponse: TokenListResponse,
+  TooManyRequests: TooManyRequests,
   UploadToken: UploadToken,
   Video: Video,
   VideoAssets: VideoAssets,
