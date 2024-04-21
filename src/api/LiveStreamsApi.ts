@@ -9,9 +9,6 @@
  * Do not edit the class manually.
  */
 
-import path from 'path';
-import { createReadStream } from 'fs';
-import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
@@ -19,8 +16,7 @@ import LiveStream from '../model/LiveStream';
 import LiveStreamCreationPayload from '../model/LiveStreamCreationPayload';
 import LiveStreamListResponse from '../model/LiveStreamListResponse';
 import LiveStreamUpdatePayload from '../model/LiveStreamUpdatePayload';
-import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient';
+import { createBufferFromPartialData } from '../utils';
 
 /**
  * no description
@@ -328,7 +324,7 @@ export default class LiveStreamsApi {
    */
   public async uploadThumbnail(
     liveStreamId: string,
-    file: string | Readable | Buffer
+    file: Buffer | Blob | ArrayBuffer
   ): Promise<LiveStream> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
@@ -337,15 +333,8 @@ export default class LiveStreamsApi {
         'Required parameter liveStreamId was null or undefined when calling uploadThumbnail.'
       );
     }
-    let fileName = 'file';
-    let fileBuffer = file;
-    if (typeof file === 'string') {
-      fileName = path.basename(file);
-      fileBuffer = createReadStream(file);
-    }
-    if (file instanceof Readable) {
-      fileBuffer = await readableToBuffer(file);
-    }
+    const fileName = 'file';
+    const fileBuffer = createBufferFromPartialData(file);
 
     // Path Params
     const localVarPath = '/live-streams/{liveStreamId}/thumbnail'

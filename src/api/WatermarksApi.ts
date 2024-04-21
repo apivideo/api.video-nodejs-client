@@ -9,16 +9,12 @@
  * Do not edit the class manually.
  */
 
-import path from 'path';
-import { createReadStream } from 'fs';
-import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
 import Watermark from '../model/Watermark';
 import WatermarksListResponse from '../model/WatermarksListResponse';
-import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient';
+import { createBufferFromPartialData } from '../utils';
 
 /**
  * no description
@@ -35,18 +31,11 @@ export default class WatermarksApi {
    * Upload a watermark
    * @param file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.
    */
-  public async upload(file: string | Readable | Buffer): Promise<Watermark> {
+  public async upload(file: Buffer | Blob | ArrayBuffer): Promise<Watermark> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
-    let fileName = 'file';
-    let fileBuffer = file;
-    if (typeof file === 'string') {
-      fileName = path.basename(file);
-      fileBuffer = createReadStream(file);
-    }
-    if (file instanceof Readable) {
-      fileBuffer = await readableToBuffer(file);
-    }
+    const fileName = 'file';
+    const fileBuffer = createBufferFromPartialData(file);
 
     // Path Params
     const localVarPath = '/watermarks'.substring(1);

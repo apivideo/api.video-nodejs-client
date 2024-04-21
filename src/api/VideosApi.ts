@@ -9,9 +9,6 @@
  * Do not edit the class manually.
  */
 
-import path from 'path';
-import { existsSync, statSync, createReadStream } from 'fs';
-import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions } from '../HttpClient';
@@ -23,8 +20,7 @@ import VideoThumbnailPickPayload from '../model/VideoThumbnailPickPayload';
 import VideoUpdatePayload from '../model/VideoUpdatePayload';
 import VideosListResponse from '../model/VideosListResponse';
 import UploadProgressEvent from '../model/UploadProgressEvent';
-import { Readable } from 'stream';
-import { readableToBuffer } from '../HttpClient';
+import { createBufferFromPartialData, getFileSize } from '../utils';
 
 /**
  * no description
@@ -103,21 +99,21 @@ export default class VideosApi {
       }
 
       uploadPart(
-        file: string,
+        file: Buffer | Blob | ArrayBuffer,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
         return this.upload(file, false, progressListener);
       }
 
       uploadLastPart(
-        file: string,
+        file: Buffer | Blob | ArrayBuffer,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
         return this.upload(file, true, progressListener);
       }
 
       upload(
-        file: string,
+        file: Buffer | Blob | ArrayBuffer,
         isLast: boolean,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
@@ -130,11 +126,7 @@ export default class VideosApi {
           );
         }
 
-        if (!existsSync(file)) {
-          throw new Error(`${file} must be a readable source file`);
-        }
-
-        const length = statSync(file).size;
+        const length = getFileSize(file);
         if (length <= 0) {
           throw new Error(`${file} is empty`);
         }
@@ -147,8 +139,8 @@ export default class VideosApi {
 
         const formData = new FormData();
 
-        const filename = path.basename(file);
-        formData.append(filename, createReadStream(file), filename);
+        const filename = 'file';
+        formData.append(filename, createBufferFromPartialData(file), filename);
         queryParams.body = formData;
         queryParams.headers['Content-Range'] = `part ${this.currentPart}/${
           isLast ? this.currentPart : '*'
@@ -212,7 +204,7 @@ The latter allows you to split a video source into X chunks and send those chunk
    */
   public async upload(
     videoId: string,
-    file: string,
+    file: Buffer | Blob | ArrayBuffer,
     progressListener?: (event: UploadProgressEvent) => void
   ): Promise<Video> {
     const queryParams: QueryOptions = {};
@@ -222,11 +214,7 @@ The latter allows you to split a video source into X chunks and send those chunk
         'Required parameter videoId was null or undefined when calling upload.'
       );
     }
-    if (!existsSync(file)) {
-      throw new Error(`${file} must be a readable source file`);
-    }
-
-    const length = statSync(file).size;
+    const length = getFileSize(file);
     if (length <= 0) {
       throw new Error(`${file} is empty`);
     }
@@ -242,8 +230,8 @@ The latter allows you to split a video source into X chunks and send those chunk
     const chunkSize = this.httpClient.getChunkSize();
     // Upload in a single request when file is small enough
     if (chunkSize > length) {
-      const filename = path.basename(file);
-      formData.append(filename, createReadStream(file), filename);
+      const filename = 'file';
+      formData.append(filename, createBufferFromPartialData(file), filename);
       queryParams.body = formData;
 
       if (progressListener) {
@@ -290,11 +278,11 @@ The latter allows you to split a video source into X chunks and send those chunk
         uploadChunkSize = length - offset;
       }
 
-      const filename = path.basename(file);
+      const filename = 'file';
       const chunkFormData = new FormData();
-      stream = createReadStream(file, {
+      stream = createBufferFromPartialData(file, {
         start: offset,
-        end: uploadChunkSize + offset - 1,
+        end: uploadChunkSize + offset,
       });
       chunkFormData.append(filename, stream, filename);
 
@@ -330,8 +318,6 @@ The latter allows you to split a video source into X chunks and send those chunk
             ''
           ) as Video
       );
-
-      stream.close();
     }
 
     return Promise.resolve(lastBody as Video);
@@ -355,21 +341,21 @@ The latter allows you to split a video source into X chunks and send those chunk
       }
 
       uploadPart(
-        file: string,
+        file: Buffer | Blob | ArrayBuffer,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
         return this.upload(file, false, progressListener);
       }
 
       uploadLastPart(
-        file: string,
+        file: Buffer | Blob | ArrayBuffer,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
         return this.upload(file, true, progressListener);
       }
 
       upload(
-        file: string,
+        file: Buffer | Blob | ArrayBuffer,
         isLast: boolean,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
@@ -382,11 +368,7 @@ The latter allows you to split a video source into X chunks and send those chunk
           );
         }
 
-        if (!existsSync(file)) {
-          throw new Error(`${file} must be a readable source file`);
-        }
-
-        const length = statSync(file).size;
+        const length = getFileSize(file);
         if (length <= 0) {
           throw new Error(`${file} is empty`);
         }
@@ -408,8 +390,8 @@ The latter allows you to split a video source into X chunks and send those chunk
 
         const formData = new FormData();
 
-        const filename = path.basename(file);
-        formData.append(filename, createReadStream(file), filename);
+        const filename = 'file';
+        formData.append(filename, createBufferFromPartialData(file), filename);
         if (this.videoId) {
           formData.append('videoId', this.videoId);
         }
@@ -463,7 +445,7 @@ The latter allows you to split a video source into X chunks and send those chunk
    */
   public async uploadWithUploadToken(
     token: string,
-    file: string,
+    file: Buffer | Blob | ArrayBuffer,
     progressListener?: (event: UploadProgressEvent) => void
   ): Promise<Video> {
     const queryParams: QueryOptions = {};
@@ -473,11 +455,7 @@ The latter allows you to split a video source into X chunks and send those chunk
         'Required parameter token was null or undefined when calling uploadWithUploadToken.'
       );
     }
-    if (!existsSync(file)) {
-      throw new Error(`${file} must be a readable source file`);
-    }
-
-    const length = statSync(file).size;
+    const length = getFileSize(file);
     if (length <= 0) {
       throw new Error(`${file} is empty`);
     }
@@ -503,8 +481,8 @@ The latter allows you to split a video source into X chunks and send those chunk
     const chunkSize = this.httpClient.getChunkSize();
     // Upload in a single request when file is small enough
     if (chunkSize > length) {
-      const filename = path.basename(file);
-      formData.append(filename, createReadStream(file), filename);
+      const filename = 'file';
+      formData.append(filename, createBufferFromPartialData(file), filename);
       queryParams.body = formData;
 
       if (progressListener) {
@@ -551,11 +529,11 @@ The latter allows you to split a video source into X chunks and send those chunk
         uploadChunkSize = length - offset;
       }
 
-      const filename = path.basename(file);
+      const filename = 'file';
       const chunkFormData = new FormData();
-      stream = createReadStream(file, {
+      stream = createBufferFromPartialData(file, {
         start: offset,
-        end: uploadChunkSize + offset - 1,
+        end: uploadChunkSize + offset,
       });
       chunkFormData.append(filename, stream, filename);
 
@@ -591,8 +569,6 @@ The latter allows you to split a video source into X chunks and send those chunk
             ''
           ) as Video
       );
-
-      stream.close();
     }
 
     return Promise.resolve(lastBody as Video);
@@ -879,7 +855,7 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
    */
   public async uploadThumbnail(
     videoId: string,
-    file: string | Readable | Buffer
+    file: Buffer | Blob | ArrayBuffer
   ): Promise<Video> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
@@ -888,15 +864,8 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
         'Required parameter videoId was null or undefined when calling uploadThumbnail.'
       );
     }
-    let fileName = 'file';
-    let fileBuffer = file;
-    if (typeof file === 'string') {
-      fileName = path.basename(file);
-      fileBuffer = createReadStream(file);
-    }
-    if (file instanceof Readable) {
-      fileBuffer = await readableToBuffer(file);
-    }
+    const fileName = 'file';
+    const fileBuffer = createBufferFromPartialData(file);
 
     // Path Params
     const localVarPath = '/videos/{videoId}/thumbnail'
