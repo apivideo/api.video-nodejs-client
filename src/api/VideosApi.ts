@@ -14,7 +14,7 @@ import { existsSync, statSync, createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
+import HttpClient, { QueryOptions, ApiResponseHeaders } from '../HttpClient';
 import ProgressiveSession from '../model/ProgressiveSession';
 import Video from '../model/Video';
 import VideoCreationPayload from '../model/VideoCreationPayload';
@@ -44,6 +44,19 @@ export default class VideosApi {
   public async create(
     videoCreationPayload: VideoCreationPayload
   ): Promise<Video> {
+    return this.createWithResponseHeaders(videoCreationPayload).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos).
+   * Create a video object
+   * @param videoCreationPayload video to create
+   */
+  public async createWithResponseHeaders(
+    videoCreationPayload: VideoCreationPayload
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoCreationPayload === null || videoCreationPayload === undefined) {
@@ -71,19 +84,19 @@ export default class VideosApi {
 
     queryParams.method = 'POST';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Video',
-            ''
-          ) as Video
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Video,
+      };
+    });
   }
 
   /**
@@ -106,6 +119,15 @@ export default class VideosApi {
         file: string,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
+        return this.upload(file, false, progressListener).then(
+          (res) => res.body
+        );
+      }
+
+      uploadPartWithResponseHeaders(
+        file: string,
+        progressListener?: (event: UploadProgressEvent) => void
+      ) {
         return this.upload(file, false, progressListener);
       }
 
@@ -113,10 +135,19 @@ export default class VideosApi {
         file: string,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
+        return this.upload(file, true, progressListener).then(
+          (res) => res.body
+        );
+      }
+
+      uploadLastPartWithResponseHeaders(
+        file: string,
+        progressListener?: (event: UploadProgressEvent) => void
+      ) {
         return this.upload(file, true, progressListener);
       }
 
-      upload(
+      async upload(
         file: string,
         isLast: boolean,
         progressListener?: (event: UploadProgressEvent) => void
@@ -167,25 +198,28 @@ export default class VideosApi {
           };
         }
 
-        const call = this.httpClient.call(localVarPath, queryParams);
+        const response = await this.httpClient.call(localVarPath, queryParams);
 
         this.currentPart++;
-        return call.then(
-          (response) =>
-            ObjectSerializer.deserialize(
-              ObjectSerializer.parse(
-                response.body,
-                response.headers['content-type']
-              ),
-              'Video',
-              ''
-            ) as Type
-        );
+        const responseBody = ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Type;
+
+        return {
+          body: responseBody,
+          headers: response.headers,
+        };
       }
     }
 
     return new UploadProgressiveSession<Video>(this.httpClient);
   }
+
   /**
    * To upload a video to the videoId you created. You can only upload your video to the videoId once.
 
@@ -215,6 +249,40 @@ The latter allows you to split a video source into X chunks and send those chunk
     file: string,
     progressListener?: (event: UploadProgressEvent) => void
   ): Promise<Video> {
+    return this.uploadWithResponseHeaders(videoId, file, progressListener).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * To upload a video to the videoId you created. You can only upload your video to the videoId once.
+
+
+
+We offer 2 types of upload: 
+
+* Regular upload 
+
+* Progressive upload
+
+The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+
+  * allow the upload of video sources > 200 MiB (200 MiB = the max. allowed file size for regular upload)
+
+  * allow to send a video source "progressively", i.e., before before knowing the total size of the video.
+
+  Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as "completely sent" when the "last" chunk is sent (i.e., the chunk that "completes" the upload).
+
+
+   * Upload a video
+   * @param videoId Enter the videoId you want to use to upload your video.
+   * @param file The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video.
+   */
+  public async uploadWithResponseHeaders(
+    videoId: string,
+    file: string,
+    progressListener?: (event: UploadProgressEvent) => void
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -261,20 +329,22 @@ The latter allows you to split a video source into X chunks and send those chunk
 
       const call = this.httpClient.call(localVarPath, queryParams);
 
-      return call.then(
-        (response) =>
-          ObjectSerializer.deserialize(
+      return call.then((response) => {
+        return {
+          headers: response.headers,
+          body: ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
               response.headers['content-type']
             ),
             'Video',
             ''
-          ) as Video
-      );
+          ) as Video,
+        };
+      });
     }
     let uploadChunkSize = chunkSize;
-    let lastBody;
+    let lastResponse;
     let stream;
     let chunkNumber = 0;
 
@@ -319,22 +389,24 @@ The latter allows you to split a video source into X chunks and send those chunk
       }
       const call = this.httpClient.call(localVarPath, queryParams);
 
-      lastBody = await call.then(
-        (response) =>
-          ObjectSerializer.deserialize(
+      lastResponse = await call.then((response) => {
+        return {
+          headers: response.headers,
+          body: ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
               response.headers['content-type']
             ),
             'Video',
             ''
-          ) as Video
-      );
+          ) as Video,
+        };
+      });
 
       stream.close();
     }
 
-    return Promise.resolve(lastBody as Video);
+    return Promise.resolve(lastResponse!);
   }
 
   /**
@@ -358,6 +430,15 @@ The latter allows you to split a video source into X chunks and send those chunk
         file: string,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
+        return this.upload(file, false, progressListener).then(
+          (res) => res.body
+        );
+      }
+
+      uploadPartWithResponseHeaders(
+        file: string,
+        progressListener?: (event: UploadProgressEvent) => void
+      ) {
         return this.upload(file, false, progressListener);
       }
 
@@ -365,10 +446,19 @@ The latter allows you to split a video source into X chunks and send those chunk
         file: string,
         progressListener?: (event: UploadProgressEvent) => void
       ) {
+        return this.upload(file, true, progressListener).then(
+          (res) => res.body
+        );
+      }
+
+      uploadLastPartWithResponseHeaders(
+        file: string,
+        progressListener?: (event: UploadProgressEvent) => void
+      ) {
         return this.upload(file, true, progressListener);
       }
 
-      upload(
+      async upload(
         file: string,
         isLast: boolean,
         progressListener?: (event: UploadProgressEvent) => void
@@ -431,30 +521,30 @@ The latter allows you to split a video source into X chunks and send those chunk
           };
         }
 
-        const call = this.httpClient.call(localVarPath, queryParams);
+        const response = await this.httpClient.call(localVarPath, queryParams);
 
         this.currentPart++;
-        return call
-          .then(
-            (response) =>
-              ObjectSerializer.deserialize(
-                ObjectSerializer.parse(
-                  response.body,
-                  response.headers['content-type']
-                ),
-                'Video',
-                ''
-              ) as Type
-          )
-          .then((res) => {
-            this.videoId = (res as any).videoId;
-            return res;
-          });
+        const responseBody = ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Type;
+
+        this.videoId = (responseBody as any).videoId;
+
+        return {
+          body: responseBody,
+          headers: response.headers,
+        };
       }
     }
 
     return new UploadWithUploadTokenProgressiveSession<Video>(this.httpClient);
   }
+
   /**
    * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).
    * Upload with an delegated upload token
@@ -466,6 +556,24 @@ The latter allows you to split a video source into X chunks and send those chunk
     file: string,
     progressListener?: (event: UploadProgressEvent) => void
   ): Promise<Video> {
+    return this.uploadWithUploadTokenWithResponseHeaders(
+      token,
+      file,
+      progressListener
+    ).then((res) => res.body);
+  }
+
+  /**
+   * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).
+   * Upload with an delegated upload token
+   * @param token The unique identifier for the token you want to use to upload a video.
+   * @param file The path to the video you want to upload.
+   */
+  public async uploadWithUploadTokenWithResponseHeaders(
+    token: string,
+    file: string,
+    progressListener?: (event: UploadProgressEvent) => void
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (token === null || token === undefined) {
@@ -522,20 +630,22 @@ The latter allows you to split a video source into X chunks and send those chunk
 
       const call = this.httpClient.call(localVarPath, queryParams);
 
-      return call.then(
-        (response) =>
-          ObjectSerializer.deserialize(
+      return call.then((response) => {
+        return {
+          headers: response.headers,
+          body: ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
               response.headers['content-type']
             ),
             'Video',
             ''
-          ) as Video
-      );
+          ) as Video,
+        };
+      });
     }
     let uploadChunkSize = chunkSize;
-    let lastBody;
+    let lastResponse;
     let stream;
     let chunkNumber = 0;
 
@@ -580,22 +690,24 @@ The latter allows you to split a video source into X chunks and send those chunk
       }
       const call = this.httpClient.call(localVarPath, queryParams);
 
-      lastBody = await call.then(
-        (response) =>
-          ObjectSerializer.deserialize(
+      lastResponse = await call.then((response) => {
+        return {
+          headers: response.headers,
+          body: ObjectSerializer.deserialize(
             ObjectSerializer.parse(
               response.body,
               response.headers['content-type']
             ),
             'Video',
             ''
-          ) as Video
-      );
+          ) as Video,
+        };
+      });
 
       stream.close();
     }
 
-    return Promise.resolve(lastBody as Video);
+    return Promise.resolve(lastResponse!);
   }
 
   /**
@@ -604,6 +716,17 @@ The latter allows you to split a video source into X chunks and send those chunk
    * @param videoId The unique identifier for the video you want details about.
    */
   public async get(videoId: string): Promise<Video> {
+    return this.getWithResponseHeaders(videoId).then((res) => res.body);
+  }
+
+  /**
+   * This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+   * Retrieve a video object
+   * @param videoId The unique identifier for the video you want details about.
+   */
+  public async getWithResponseHeaders(
+    videoId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -618,19 +741,19 @@ The latter allows you to split a video source into X chunks and send those chunk
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Video',
-            ''
-          ) as Video
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Video,
+      };
+    });
   }
 
   /**
@@ -649,6 +772,27 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
     videoId: string,
     videoUpdatePayload: VideoUpdatePayload = {}
   ): Promise<Video> {
+    return this.updateWithResponseHeaders(videoId, videoUpdatePayload).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
+
+
+
+NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+
+
+   * Update a video object
+   * @param videoId The video ID for the video you want to update.
+   * @param videoUpdatePayload 
+   */
+  public async updateWithResponseHeaders(
+    videoId: string,
+    videoUpdatePayload: VideoUpdatePayload = {}
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -679,19 +823,19 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
     queryParams.method = 'PATCH';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Video',
-            ''
-          ) as Video
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Video,
+      };
+    });
   }
 
   /**
@@ -700,6 +844,17 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
    * @param videoId The video ID for the video you want to delete.
    */
   public async delete(videoId: string): Promise<void> {
+    return this.deleteWithResponseHeaders(videoId).then((res) => res.body);
+  }
+
+  /**
+   * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+   * Delete a video object
+   * @param videoId The video ID for the video you want to delete.
+   */
+  public async deleteWithResponseHeaders(
+    videoId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: void }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -714,19 +869,19 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
     queryParams.method = 'DELETE';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'void',
+          ''
+        ) as void,
+      };
+    });
   }
 
   /**
@@ -743,7 +898,37 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
-  public async list({
+  public async list(
+    args: {
+      title?: string;
+      tags?: Array<string>;
+      metadata?: { [key: string]: string };
+      description?: string;
+      liveStreamId?: string;
+      sortBy?: 'title' | 'createdAt' | 'publishedAt' | 'updatedAt';
+      sortOrder?: 'asc' | 'desc';
+      currentPage?: number;
+      pageSize?: number;
+    } = {}
+  ): Promise<VideosListResponse> {
+    return this.listWithResponseHeaders(args).then((res) => res.body);
+  }
+
+  /**
+   * This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
+   * List all video objects
+   * @param {Object} searchParams
+   * @param { string } searchParams.title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
+   * @param { Array&lt;string&gt; } searchParams.tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
+   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
+   * @param { string } searchParams.description Retrieve video objects by &#x60;description&#x60;.
+   * @param { string } searchParams.liveStreamId Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
+   * @param { &#39;title&#39; | &#39;createdAt&#39; | &#39;publishedAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Use this parameter to sort videos by the their created time, published time, updated time, or by title.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async listWithResponseHeaders({
     title,
     tags,
     metadata,
@@ -763,7 +948,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
-  } = {}): Promise<VideosListResponse> {
+  } = {}): Promise<{ headers: ApiResponseHeaders; body: VideosListResponse }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params
@@ -844,19 +1029,19 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'VideosListResponse',
-            ''
-          ) as VideosListResponse
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'VideosListResponse',
+          ''
+        ) as VideosListResponse,
+      };
+    });
   }
 
   /**
@@ -881,6 +1066,33 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
     videoId: string,
     file: string | Readable | Buffer
   ): Promise<Video> {
+    return this.uploadThumbnailWithResponseHeaders(videoId, file).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * The thumbnail is the poster that appears in the player window before video playback begins.
+
+
+
+This endpoint allows you to upload an image for the thumbnail.
+
+
+
+To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+
+
+
+Note: There may be a short delay before the new thumbnail is delivered to our CDN.
+   * Upload a thumbnail
+   * @param videoId Unique identifier of the chosen video 
+   * @param file The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
+   */
+  public async uploadThumbnailWithResponseHeaders(
+    videoId: string,
+    file: string | Readable | Buffer
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -910,19 +1122,19 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
     formData.append(fileName, fileBuffer, fileName);
 
     queryParams.body = formData;
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Video',
-            ''
-          ) as Video
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Video,
+      };
+    });
   }
 
   /**
@@ -945,6 +1157,32 @@ There may be a short delay for the thumbnail to update.
     videoId: string,
     videoThumbnailPickPayload: VideoThumbnailPickPayload
   ): Promise<Video> {
+    return this.pickThumbnailWithResponseHeaders(
+      videoId,
+      videoThumbnailPickPayload
+    ).then((res) => res.body);
+  }
+
+  /**
+   * Pick a thumbnail from the given time code. 
+
+
+
+If you'd like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
+
+
+
+There may be a short delay for the thumbnail to update.
+
+
+   * Set a thumbnail
+   * @param videoId Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
+   * @param videoThumbnailPickPayload 
+   */
+  public async pickThumbnailWithResponseHeaders(
+    videoId: string,
+    videoThumbnailPickPayload: VideoThumbnailPickPayload
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -982,19 +1220,19 @@ There may be a short delay for the thumbnail to update.
 
     queryParams.method = 'PATCH';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Video',
-            ''
-          ) as Video
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Video,
+      };
+    });
   }
 
   /**
@@ -1003,6 +1241,17 @@ There may be a short delay for the thumbnail to update.
    * @param videoId The unique identifier for the video you want the status for.
    */
   public async getStatus(videoId: string): Promise<VideoStatus> {
+    return this.getStatusWithResponseHeaders(videoId).then((res) => res.body);
+  }
+
+  /**
+   * This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
+   * Retrieve video status and details
+   * @param videoId The unique identifier for the video you want the status for.
+   */
+  public async getStatusWithResponseHeaders(
+    videoId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: VideoStatus }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -1017,18 +1266,18 @@ There may be a short delay for the thumbnail to update.
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'VideoStatus',
-            ''
-          ) as VideoStatus
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'VideoStatus',
+          ''
+        ) as VideoStatus,
+      };
+    });
   }
 }

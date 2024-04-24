@@ -11,7 +11,7 @@
 
 import { URLSearchParams } from 'url';
 import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
+import HttpClient, { QueryOptions, ApiResponseHeaders } from '../HttpClient';
 import TokenCreationPayload from '../model/TokenCreationPayload';
 import TokenListResponse from '../model/TokenListResponse';
 import UploadToken from '../model/UploadToken';
@@ -34,6 +34,19 @@ export default class UploadTokensApi {
   public async createToken(
     tokenCreationPayload: TokenCreationPayload = {}
   ): Promise<UploadToken> {
+    return this.createTokenWithResponseHeaders(tokenCreationPayload).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)
+   * Generate an upload token
+   * @param tokenCreationPayload
+   */
+  public async createTokenWithResponseHeaders(
+    tokenCreationPayload: TokenCreationPayload = {}
+  ): Promise<{ headers: ApiResponseHeaders; body: UploadToken }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (tokenCreationPayload === null || tokenCreationPayload === undefined) {
@@ -61,19 +74,19 @@ export default class UploadTokensApi {
 
     queryParams.method = 'POST';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'UploadToken',
-            ''
-          ) as UploadToken
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'UploadToken',
+          ''
+        ) as UploadToken,
+      };
+    });
   }
 
   /**
@@ -82,6 +95,19 @@ export default class UploadTokensApi {
    * @param uploadToken The unique identifier for the token you want information about.
    */
   public async getToken(uploadToken: string): Promise<UploadToken> {
+    return this.getTokenWithResponseHeaders(uploadToken).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Retrieve details about a specific upload token by id.
+   * Retrieve upload token
+   * @param uploadToken The unique identifier for the token you want information about.
+   */
+  public async getTokenWithResponseHeaders(
+    uploadToken: string
+  ): Promise<{ headers: ApiResponseHeaders; body: UploadToken }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (uploadToken === null || uploadToken === undefined) {
@@ -99,19 +125,19 @@ export default class UploadTokensApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'UploadToken',
-            ''
-          ) as UploadToken
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'UploadToken',
+          ''
+        ) as UploadToken,
+      };
+    });
   }
 
   /**
@@ -120,6 +146,19 @@ export default class UploadTokensApi {
    * @param uploadToken The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.
    */
   public async deleteToken(uploadToken: string): Promise<void> {
+    return this.deleteTokenWithResponseHeaders(uploadToken).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
+   * Delete an upload token
+   * @param uploadToken The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.
+   */
+  public async deleteTokenWithResponseHeaders(
+    uploadToken: string
+  ): Promise<{ headers: ApiResponseHeaders; body: void }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (uploadToken === null || uploadToken === undefined) {
@@ -137,19 +176,19 @@ export default class UploadTokensApi {
 
     queryParams.method = 'DELETE';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'void',
+          ''
+        ) as void,
+      };
+    });
   }
 
   /**
@@ -161,7 +200,27 @@ export default class UploadTokensApi {
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
-  public async list({
+  public async list(
+    args: {
+      sortBy?: 'createdAt' | 'ttl';
+      sortOrder?: 'asc' | 'desc';
+      currentPage?: number;
+      pageSize?: number;
+    } = {}
+  ): Promise<TokenListResponse> {
+    return this.listWithResponseHeaders(args).then((res) => res.body);
+  }
+
+  /**
+   * Retrieve a list of all currently active delegated tokens.
+   * List all active upload tokens
+   * @param {Object} searchParams
+   * @param { &#39;createdAt&#39; | &#39;ttl&#39; } searchParams.sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async listWithResponseHeaders({
     sortBy,
     sortOrder,
     currentPage,
@@ -171,7 +230,7 @@ export default class UploadTokensApi {
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
-  } = {}): Promise<TokenListResponse> {
+  } = {}): Promise<{ headers: ApiResponseHeaders; body: TokenListResponse }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params
@@ -209,18 +268,18 @@ export default class UploadTokensApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'TokenListResponse',
-            ''
-          ) as TokenListResponse
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'TokenListResponse',
+          ''
+        ) as TokenListResponse,
+      };
+    });
   }
 }

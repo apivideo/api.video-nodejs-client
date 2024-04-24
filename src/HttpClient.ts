@@ -24,6 +24,21 @@ export type QueryOptions = {
   onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
 };
 
+export type ApiResponseHeaders = {
+  server: string;
+  'content-type': string;
+  'transfer-encoding': string;
+  connection: string;
+  'cache-control': string;
+  date: string;
+  'x-ratelimit-remaining': string;
+  'x-ratelimit-retry-after': string;
+  'x-ratelimit-limit': string;
+  'x-server': string;
+  'access-control-allow-origin': string;
+  'timing-allow-origin': string;
+};
+
 export default class HttpClient {
   private apiKey?: string;
   private baseUri: string;
@@ -44,7 +59,7 @@ export default class HttpClient {
     this.chunkSize = params.chunkSize;
     this.headers = new AxiosHeaders({
       Accept: 'application/json, */*;q=0.8',
-      'AV-Origin-Client': 'nodejs:2.5.6',
+      'AV-Origin-Client': 'nodejs:2.5.7',
       Authorization: this.apiKey ? `Basic ${encode(`${this.apiKey}:`)}` : '',
       ...(params.applicationName && params.applicationVersion
         ? {

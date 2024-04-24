@@ -14,7 +14,7 @@ import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
+import HttpClient, { QueryOptions, ApiResponseHeaders } from '../HttpClient';
 import Watermark from '../model/Watermark';
 import WatermarksListResponse from '../model/WatermarksListResponse';
 import { Readable } from 'stream';
@@ -36,6 +36,17 @@ export default class WatermarksApi {
    * @param file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.
    */
   public async upload(file: string | Readable | Buffer): Promise<Watermark> {
+    return this.uploadWithResponseHeaders(file).then((res) => res.body);
+  }
+
+  /**
+   * Create a new watermark by uploading a `JPG` or a `PNG` image.
+   * Upload a watermark
+   * @param file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.
+   */
+  public async uploadWithResponseHeaders(
+    file: string | Readable | Buffer
+  ): Promise<{ headers: ApiResponseHeaders; body: Watermark }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     let fileName = 'file';
@@ -58,19 +69,19 @@ export default class WatermarksApi {
     formData.append(fileName, fileBuffer, fileName);
 
     queryParams.body = formData;
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Watermark',
-            ''
-          ) as Watermark
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Watermark',
+          ''
+        ) as Watermark,
+      };
+    });
   }
 
   /**
@@ -79,6 +90,17 @@ export default class WatermarksApi {
    * @param watermarkId The watermark ID for the watermark you want to delete.
    */
   public async delete(watermarkId: string): Promise<void> {
+    return this.deleteWithResponseHeaders(watermarkId).then((res) => res.body);
+  }
+
+  /**
+   * Delete a watermark.
+   * Delete a watermark
+   * @param watermarkId The watermark ID for the watermark you want to delete.
+   */
+  public async deleteWithResponseHeaders(
+    watermarkId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: void }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (watermarkId === null || watermarkId === undefined) {
@@ -96,19 +118,19 @@ export default class WatermarksApi {
 
     queryParams.method = 'DELETE';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'void',
+          ''
+        ) as void,
+      };
+    });
   }
 
   /**
@@ -120,7 +142,25 @@ export default class WatermarksApi {
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
-  public async list({
+  public async list(args: {
+    sortBy?: string;
+    sortOrder?: string;
+    currentPage?: number;
+    pageSize?: number;
+  }): Promise<WatermarksListResponse> {
+    return this.listWithResponseHeaders(args).then((res) => res.body);
+  }
+
+  /**
+   * List all watermarks associated with your workspace.
+   * List all watermarks
+   * @param {Object} searchParams
+   * @param { string } searchParams.sortBy Allowed: createdAt. You can search by the time watermark were created at.
+   * @param { string } searchParams.sortOrder Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async listWithResponseHeaders({
     sortBy,
     sortOrder,
     currentPage,
@@ -130,7 +170,7 @@ export default class WatermarksApi {
     sortOrder?: string;
     currentPage?: number;
     pageSize?: number;
-  }): Promise<WatermarksListResponse> {
+  }): Promise<{ headers: ApiResponseHeaders; body: WatermarksListResponse }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params
@@ -168,18 +208,18 @@ export default class WatermarksApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'WatermarksListResponse',
-            ''
-          ) as WatermarksListResponse
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'WatermarksListResponse',
+          ''
+        ) as WatermarksListResponse,
+      };
+    });
   }
 }
