@@ -14,7 +14,7 @@ import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
+import HttpClient, { QueryOptions, ApiResponseHeaders } from '../HttpClient';
 import Chapter from '../model/Chapter';
 import ChaptersListResponse from '../model/ChaptersListResponse';
 import { Readable } from 'stream';
@@ -42,6 +42,23 @@ export default class ChaptersApi {
     language: string,
     file: string | Readable | Buffer
   ): Promise<Chapter> {
+    return this.uploadWithResponseHeaders(videoId, language, file).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
+   * Upload a chapter
+   * @param videoId The unique identifier for the video you want to upload a chapter for.
+   * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+   * @param file The VTT file describing the chapters you want to upload.
+   */
+  public async uploadWithResponseHeaders(
+    videoId: string,
+    language: string,
+    file: string | Readable | Buffer
+  ): Promise<{ headers: ApiResponseHeaders; body: Chapter }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -77,19 +94,19 @@ export default class ChaptersApi {
     formData.append(fileName, fileBuffer, fileName);
 
     queryParams.body = formData;
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Chapter',
-            ''
-          ) as Chapter
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Chapter',
+          ''
+        ) as Chapter,
+      };
+    });
   }
 
   /**
@@ -99,6 +116,21 @@ export default class ChaptersApi {
    * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
    */
   public async get(videoId: string, language: string): Promise<Chapter> {
+    return this.getWithResponseHeaders(videoId, language).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Retrieve a chapter for by video id in a specific language.
+   * Retrieve a chapter
+   * @param videoId The unique identifier for the video you want to show a chapter for.
+   * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+   */
+  public async getWithResponseHeaders(
+    videoId: string,
+    language: string
+  ): Promise<{ headers: ApiResponseHeaders; body: Chapter }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -119,19 +151,19 @@ export default class ChaptersApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'Chapter',
-            ''
-          ) as Chapter
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Chapter',
+          ''
+        ) as Chapter,
+      };
+    });
   }
 
   /**
@@ -141,6 +173,21 @@ export default class ChaptersApi {
    * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
    */
   public async delete(videoId: string, language: string): Promise<void> {
+    return this.deleteWithResponseHeaders(videoId, language).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
+   * Delete a chapter
+   * @param videoId The unique identifier for the video you want to delete a chapter from.
+   * @param language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+   */
+  public async deleteWithResponseHeaders(
+    videoId: string,
+    language: string
+  ): Promise<{ headers: ApiResponseHeaders; body: void }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -161,19 +208,19 @@ export default class ChaptersApi {
 
     queryParams.method = 'DELETE';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'void',
+          ''
+        ) as void,
+      };
+    });
   }
 
   /**
@@ -184,7 +231,23 @@ export default class ChaptersApi {
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
-  public async list({
+  public async list(args: {
+    videoId: string;
+    currentPage?: number;
+    pageSize?: number;
+  }): Promise<ChaptersListResponse> {
+    return this.listWithResponseHeaders(args).then((res) => res.body);
+  }
+
+  /**
+   * Retrieve a list of all chapters for by video id.
+   * List video chapters
+   * @param {Object} searchParams
+   * @param { string } searchParams.videoId The unique identifier for the video you want to retrieve a list of chapters for.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async listWithResponseHeaders({
     videoId,
     currentPage,
     pageSize,
@@ -192,7 +255,7 @@ export default class ChaptersApi {
     videoId: string;
     currentPage?: number;
     pageSize?: number;
-  }): Promise<ChaptersListResponse> {
+  }): Promise<{ headers: ApiResponseHeaders; body: ChaptersListResponse }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (videoId === null || videoId === undefined) {
@@ -225,18 +288,18 @@ export default class ChaptersApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'ChaptersListResponse',
-            ''
-          ) as ChaptersListResponse
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'ChaptersListResponse',
+          ''
+        ) as ChaptersListResponse,
+      };
+    });
   }
 }

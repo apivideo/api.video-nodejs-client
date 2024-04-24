@@ -55,6 +55,13 @@ describe('ApiVideoClient', () => {
     });
   });
 
+  describe('Response headers', () => {
+    it('should return response headers', async () => {
+      const videos = await client.videos.listWithResponseHeaders();
+      expect(videos.headers).toHaveProperty('content-type');
+    });
+  });
+
   describe('Watermarks', () => {
     let watermark: Watermark, watermarkVideo: Video;
     it('should create a watermark', (done) => {

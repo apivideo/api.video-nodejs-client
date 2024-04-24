@@ -14,7 +14,7 @@ import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
+import HttpClient, { QueryOptions, ApiResponseHeaders } from '../HttpClient';
 import PlayerTheme from '../model/PlayerTheme';
 import PlayerThemeCreationPayload from '../model/PlayerThemeCreationPayload';
 import PlayerThemeUpdatePayload from '../model/PlayerThemeUpdatePayload';
@@ -40,6 +40,19 @@ export default class PlayerThemesApi {
   public async create(
     playerThemeCreationPayload: PlayerThemeCreationPayload = {}
   ): Promise<PlayerTheme> {
+    return this.createWithResponseHeaders(playerThemeCreationPayload).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Create a player for your video, and customise it.
+   * Create a player
+   * @param playerThemeCreationPayload
+   */
+  public async createWithResponseHeaders(
+    playerThemeCreationPayload: PlayerThemeCreationPayload = {}
+  ): Promise<{ headers: ApiResponseHeaders; body: PlayerTheme }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (
@@ -70,19 +83,19 @@ export default class PlayerThemesApi {
 
     queryParams.method = 'POST';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'PlayerTheme',
-            ''
-          ) as PlayerTheme
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'PlayerTheme',
+          ''
+        ) as PlayerTheme,
+      };
+    });
   }
 
   /**
@@ -91,6 +104,17 @@ export default class PlayerThemesApi {
    * @param playerId The unique identifier for the player you want to retrieve.
    */
   public async get(playerId: string): Promise<PlayerTheme> {
+    return this.getWithResponseHeaders(playerId).then((res) => res.body);
+  }
+
+  /**
+   * Retreive a player theme by player id.
+   * Retrieve a player
+   * @param playerId The unique identifier for the player you want to retrieve.
+   */
+  public async getWithResponseHeaders(
+    playerId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: PlayerTheme }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (playerId === null || playerId === undefined) {
@@ -105,19 +129,19 @@ export default class PlayerThemesApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'PlayerTheme',
-            ''
-          ) as PlayerTheme
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'PlayerTheme',
+          ''
+        ) as PlayerTheme,
+      };
+    });
   }
 
   /**
@@ -130,6 +154,22 @@ export default class PlayerThemesApi {
     playerId: string,
     playerThemeUpdatePayload: PlayerThemeUpdatePayload = {}
   ): Promise<PlayerTheme> {
+    return this.updateWithResponseHeaders(
+      playerId,
+      playerThemeUpdatePayload
+    ).then((res) => res.body);
+  }
+
+  /**
+   * Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
+   * Update a player
+   * @param playerId The unique identifier for the player.
+   * @param playerThemeUpdatePayload
+   */
+  public async updateWithResponseHeaders(
+    playerId: string,
+    playerThemeUpdatePayload: PlayerThemeUpdatePayload = {}
+  ): Promise<{ headers: ApiResponseHeaders; body: PlayerTheme }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (playerId === null || playerId === undefined) {
@@ -167,19 +207,19 @@ export default class PlayerThemesApi {
 
     queryParams.method = 'PATCH';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'PlayerTheme',
-            ''
-          ) as PlayerTheme
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'PlayerTheme',
+          ''
+        ) as PlayerTheme,
+      };
+    });
   }
 
   /**
@@ -188,6 +228,17 @@ export default class PlayerThemesApi {
    * @param playerId The unique identifier for the player you want to delete.
    */
   public async delete(playerId: string): Promise<void> {
+    return this.deleteWithResponseHeaders(playerId).then((res) => res.body);
+  }
+
+  /**
+   * Delete a player if you no longer need it. You can delete any player that you have the player ID for.
+   * Delete a player
+   * @param playerId The unique identifier for the player you want to delete.
+   */
+  public async deleteWithResponseHeaders(
+    playerId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: void }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (playerId === null || playerId === undefined) {
@@ -202,19 +253,19 @@ export default class PlayerThemesApi {
 
     queryParams.method = 'DELETE';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'void',
+          ''
+        ) as void,
+      };
+    });
   }
 
   /**
@@ -226,7 +277,27 @@ export default class PlayerThemesApi {
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
-  public async list({
+  public async list(
+    args: {
+      sortBy?: 'name' | 'createdAt' | 'updatedAt';
+      sortOrder?: 'asc' | 'desc';
+      currentPage?: number;
+      pageSize?: number;
+    } = {}
+  ): Promise<PlayerThemesListResponse> {
+    return this.listWithResponseHeaders(args).then((res) => res.body);
+  }
+
+  /**
+   * Retrieve a list of all the player themes you created, as well as details about each one.
+   * List all player themes
+   * @param {Object} searchParams
+   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async listWithResponseHeaders({
     sortBy,
     sortOrder,
     currentPage,
@@ -236,7 +307,10 @@ export default class PlayerThemesApi {
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
-  } = {}): Promise<PlayerThemesListResponse> {
+  } = {}): Promise<{
+    headers: ApiResponseHeaders;
+    body: PlayerThemesListResponse;
+  }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params
@@ -278,19 +352,19 @@ export default class PlayerThemesApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'PlayerThemesListResponse',
-            ''
-          ) as PlayerThemesListResponse
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'PlayerThemesListResponse',
+          ''
+        ) as PlayerThemesListResponse,
+      };
+    });
   }
 
   /**
@@ -305,6 +379,23 @@ export default class PlayerThemesApi {
     file: string | Readable | Buffer,
     link?: string
   ): Promise<PlayerTheme> {
+    return this.uploadLogoWithResponseHeaders(playerId, file, link).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Upload an image file as a logo for your player. The image should fit within these constraints: - The image mime type must be `image/jpeg` or `image/png`. api.video recommends using `png` images with transparent background. - The image size should be a maximum of 200px width x 100px. - The file size should be a maximum of 100 KiB.
+   * Upload a logo
+   * @param playerId The unique identifier for the player.
+   * @param file The name of the file you want to use for your logo.
+   * @param link A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address.
+   */
+  public async uploadLogoWithResponseHeaders(
+    playerId: string,
+    file: string | Readable | Buffer,
+    link?: string
+  ): Promise<{ headers: ApiResponseHeaders; body: PlayerTheme }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (playerId === null || playerId === undefined) {
@@ -338,19 +429,19 @@ export default class PlayerThemesApi {
     }
 
     queryParams.body = formData;
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'PlayerTheme',
-            ''
-          ) as PlayerTheme
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'PlayerTheme',
+          ''
+        ) as PlayerTheme,
+      };
+    });
   }
 
   /**
@@ -359,6 +450,17 @@ export default class PlayerThemesApi {
    * @param playerId The unique identifier for the player.
    */
   public async deleteLogo(playerId: string): Promise<void> {
+    return this.deleteLogoWithResponseHeaders(playerId).then((res) => res.body);
+  }
+
+  /**
+   * Delete the logo associated to a player.
+   * Delete logo
+   * @param playerId The unique identifier for the player.
+   */
+  public async deleteLogoWithResponseHeaders(
+    playerId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: void }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (playerId === null || playerId === undefined) {
@@ -373,18 +475,18 @@ export default class PlayerThemesApi {
 
     queryParams.method = 'DELETE';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'void',
+          ''
+        ) as void,
+      };
+    });
   }
 }

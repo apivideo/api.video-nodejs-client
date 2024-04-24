@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.5.7] - 2024-04-23
+- Add *WithResponseHeaders() methods
+
 ## [2.5.6] - 2024-02-19
 - Update VideoStatusIngest enum
 

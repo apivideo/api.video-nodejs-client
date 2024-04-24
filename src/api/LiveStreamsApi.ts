@@ -14,7 +14,7 @@ import { createReadStream } from 'fs';
 import { URLSearchParams } from 'url';
 import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
+import HttpClient, { QueryOptions, ApiResponseHeaders } from '../HttpClient';
 import LiveStream from '../model/LiveStream';
 import LiveStreamCreationPayload from '../model/LiveStreamCreationPayload';
 import LiveStreamListResponse from '../model/LiveStreamListResponse';
@@ -40,6 +40,19 @@ export default class LiveStreamsApi {
   public async create(
     liveStreamCreationPayload: LiveStreamCreationPayload
   ): Promise<LiveStream> {
+    return this.createWithResponseHeaders(liveStreamCreationPayload).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Creates a livestream object.
+   * Create live stream
+   * @param liveStreamCreationPayload
+   */
+  public async createWithResponseHeaders(
+    liveStreamCreationPayload: LiveStreamCreationPayload
+  ): Promise<{ headers: ApiResponseHeaders; body: LiveStream }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (
@@ -70,19 +83,19 @@ export default class LiveStreamsApi {
 
     queryParams.method = 'POST';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'LiveStream',
-            ''
-          ) as LiveStream
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'LiveStream',
+          ''
+        ) as LiveStream,
+      };
+    });
   }
 
   /**
@@ -91,6 +104,17 @@ export default class LiveStreamsApi {
    * @param liveStreamId The unique ID for the live stream you want to watch.
    */
   public async get(liveStreamId: string): Promise<LiveStream> {
+    return this.getWithResponseHeaders(liveStreamId).then((res) => res.body);
+  }
+
+  /**
+   * Get a livestream by id.
+   * Retrieve live stream
+   * @param liveStreamId The unique ID for the live stream you want to watch.
+   */
+  public async getWithResponseHeaders(
+    liveStreamId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: LiveStream }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (liveStreamId === null || liveStreamId === undefined) {
@@ -108,19 +132,19 @@ export default class LiveStreamsApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'LiveStream',
-            ''
-          ) as LiveStream
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'LiveStream',
+          ''
+        ) as LiveStream,
+      };
+    });
   }
 
   /**
@@ -133,6 +157,22 @@ export default class LiveStreamsApi {
     liveStreamId: string,
     liveStreamUpdatePayload: LiveStreamUpdatePayload = {}
   ): Promise<LiveStream> {
+    return this.updateWithResponseHeaders(
+      liveStreamId,
+      liveStreamUpdatePayload
+    ).then((res) => res.body);
+  }
+
+  /**
+   * Updates the livestream object.
+   * Update a live stream
+   * @param liveStreamId The unique ID for the live stream that you want to update information for such as player details.
+   * @param liveStreamUpdatePayload
+   */
+  public async updateWithResponseHeaders(
+    liveStreamId: string,
+    liveStreamUpdatePayload: LiveStreamUpdatePayload = {}
+  ): Promise<{ headers: ApiResponseHeaders; body: LiveStream }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (liveStreamId === null || liveStreamId === undefined) {
@@ -173,19 +213,19 @@ export default class LiveStreamsApi {
 
     queryParams.method = 'PATCH';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'LiveStream',
-            ''
-          ) as LiveStream
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'LiveStream',
+          ''
+        ) as LiveStream,
+      };
+    });
   }
 
   /**
@@ -194,6 +234,17 @@ export default class LiveStreamsApi {
    * @param liveStreamId The unique ID for the live stream that you want to remove.
    */
   public async delete(liveStreamId: string): Promise<void> {
+    return this.deleteWithResponseHeaders(liveStreamId).then((res) => res.body);
+  }
+
+  /**
+   * If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
+   * Delete a live stream
+   * @param liveStreamId The unique ID for the live stream that you want to remove.
+   */
+  public async deleteWithResponseHeaders(
+    liveStreamId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: void }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (liveStreamId === null || liveStreamId === undefined) {
@@ -211,19 +262,19 @@ export default class LiveStreamsApi {
 
     queryParams.method = 'DELETE';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'void',
-            ''
-          ) as void
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'void',
+          ''
+        ) as void,
+      };
+    });
   }
 
   /**
@@ -237,7 +288,31 @@ export default class LiveStreamsApi {
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
    */
-  public async list({
+  public async list(
+    args: {
+      streamKey?: string;
+      name?: string;
+      sortBy?: 'name' | 'createdAt' | 'updatedAt';
+      sortOrder?: 'asc' | 'desc';
+      currentPage?: number;
+      pageSize?: number;
+    } = {}
+  ): Promise<LiveStreamListResponse> {
+    return this.listWithResponseHeaders(args).then((res) => res.body);
+  }
+
+  /**
+   * Get the list of livestreams on the workspace.
+   * List all live streams
+   * @param {Object} searchParams
+   * @param { string } searchParams.streamKey The unique stream key that allows you to stream videos.
+   * @param { string } searchParams.name You can filter live streams by their name or a part of their name.
+   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Enables you to sort live stream results. Allowed attributes: &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream. &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a live stream was last updated.  When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API sorts the results based on the ISO-8601 time format.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async listWithResponseHeaders({
     streamKey,
     name,
     sortBy,
@@ -251,7 +326,10 @@ export default class LiveStreamsApi {
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
-  } = {}): Promise<LiveStreamListResponse> {
+  } = {}): Promise<{
+    headers: ApiResponseHeaders;
+    body: LiveStreamListResponse;
+  }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     // Path Params
@@ -305,19 +383,19 @@ export default class LiveStreamsApi {
 
     queryParams.method = 'GET';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'LiveStreamListResponse',
-            ''
-          ) as LiveStreamListResponse
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'LiveStreamListResponse',
+          ''
+        ) as LiveStreamListResponse,
+      };
+    });
   }
 
   /**
@@ -330,6 +408,21 @@ export default class LiveStreamsApi {
     liveStreamId: string,
     file: string | Readable | Buffer
   ): Promise<LiveStream> {
+    return this.uploadThumbnailWithResponseHeaders(liveStreamId, file).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Upload the thumbnail for the livestream.
+   * Upload a thumbnail
+   * @param liveStreamId The unique ID for the live stream you want to upload.
+   * @param file The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
+   */
+  public async uploadThumbnailWithResponseHeaders(
+    liveStreamId: string,
+    file: string | Readable | Buffer
+  ): Promise<{ headers: ApiResponseHeaders; body: LiveStream }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (liveStreamId === null || liveStreamId === undefined) {
@@ -362,19 +455,19 @@ export default class LiveStreamsApi {
     formData.append(fileName, fileBuffer, fileName);
 
     queryParams.body = formData;
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'LiveStream',
-            ''
-          ) as LiveStream
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'LiveStream',
+          ''
+        ) as LiveStream,
+      };
+    });
   }
 
   /**
@@ -383,6 +476,19 @@ export default class LiveStreamsApi {
    * @param liveStreamId The unique identifier of the live stream whose thumbnail you want to delete.
    */
   public async deleteThumbnail(liveStreamId: string): Promise<LiveStream> {
+    return this.deleteThumbnailWithResponseHeaders(liveStreamId).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Send the unique identifier for a live stream to delete its thumbnail.
+   * Delete a thumbnail
+   * @param liveStreamId The unique identifier of the live stream whose thumbnail you want to delete.
+   */
+  public async deleteThumbnailWithResponseHeaders(
+    liveStreamId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: LiveStream }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (liveStreamId === null || liveStreamId === undefined) {
@@ -400,18 +506,18 @@ export default class LiveStreamsApi {
 
     queryParams.method = 'DELETE';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'LiveStream',
-            ''
-          ) as LiveStream
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'LiveStream',
+          ''
+        ) as LiveStream,
+      };
+    });
   }
 }

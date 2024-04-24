@@ -10,7 +10,7 @@
  */
 
 import ObjectSerializer from '../ObjectSerializer';
-import HttpClient, { QueryOptions } from '../HttpClient';
+import HttpClient, { QueryOptions, ApiResponseHeaders } from '../HttpClient';
 import AccessToken from '../model/AccessToken';
 import AuthenticatePayload from '../model/AuthenticatePayload';
 import RefreshTokenPayload from '../model/RefreshTokenPayload';
@@ -33,6 +33,19 @@ export default class AdvancedAuthenticationApi {
   public async authenticate(
     authenticatePayload: AuthenticatePayload
   ): Promise<AccessToken> {
+    return this.authenticateWithResponseHeaders(authenticatePayload).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+   * Get Bearer Token
+   * @param authenticatePayload
+   */
+  public async authenticateWithResponseHeaders(
+    authenticatePayload: AuthenticatePayload
+  ): Promise<{ headers: ApiResponseHeaders; body: AccessToken }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (authenticatePayload === null || authenticatePayload === undefined) {
@@ -60,19 +73,19 @@ export default class AdvancedAuthenticationApi {
 
     queryParams.method = 'POST';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'AccessToken',
-            ''
-          ) as AccessToken
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'AccessToken',
+          ''
+        ) as AccessToken,
+      };
+    });
   }
 
   /**
@@ -83,6 +96,19 @@ export default class AdvancedAuthenticationApi {
   public async refresh(
     refreshTokenPayload: RefreshTokenPayload
   ): Promise<AccessToken> {
+    return this.refreshWithResponseHeaders(refreshTokenPayload).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+   * Refresh Bearer Token
+   * @param refreshTokenPayload
+   */
+  public async refreshWithResponseHeaders(
+    refreshTokenPayload: RefreshTokenPayload
+  ): Promise<{ headers: ApiResponseHeaders; body: AccessToken }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (refreshTokenPayload === null || refreshTokenPayload === undefined) {
@@ -110,18 +136,18 @@ export default class AdvancedAuthenticationApi {
 
     queryParams.method = 'POST';
 
-    return this.httpClient
-      .call(localVarPath, queryParams)
-      .then(
-        (response) =>
-          ObjectSerializer.deserialize(
-            ObjectSerializer.parse(
-              response.body,
-              response.headers['content-type']
-            ),
-            'AccessToken',
-            ''
-          ) as AccessToken
-      );
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'AccessToken',
+          ''
+        ) as AccessToken,
+      };
+    });
   }
 }
