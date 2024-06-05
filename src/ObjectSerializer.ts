@@ -28,12 +28,6 @@ import LiveStream from './model/LiveStream';
 import LiveStreamAssets from './model/LiveStreamAssets';
 import LiveStreamCreationPayload from './model/LiveStreamCreationPayload';
 import LiveStreamListResponse from './model/LiveStreamListResponse';
-import LiveStreamSession from './model/LiveStreamSession';
-import LiveStreamSessionClient from './model/LiveStreamSessionClient';
-import LiveStreamSessionDevice from './model/LiveStreamSessionDevice';
-import LiveStreamSessionLocation from './model/LiveStreamSessionLocation';
-import LiveStreamSessionReferrer from './model/LiveStreamSessionReferrer';
-import LiveStreamSessionSession from './model/LiveStreamSessionSession';
 import LiveStreamUpdatePayload from './model/LiveStreamUpdatePayload';
 import Metadata from './model/Metadata';
 import Model403ErrorSchema from './model/Model403ErrorSchema';
@@ -53,18 +47,12 @@ import RestreamsResponseObject from './model/RestreamsResponseObject';
 import TokenCreationPayload from './model/TokenCreationPayload';
 import TokenListResponse from './model/TokenListResponse';
 import TooManyRequests from './model/TooManyRequests';
+import UnrecognizedRequestUrl from './model/UnrecognizedRequestUrl';
 import UploadToken from './model/UploadToken';
 import Video from './model/Video';
 import VideoAssets from './model/VideoAssets';
 import VideoClip from './model/VideoClip';
 import VideoCreationPayload from './model/VideoCreationPayload';
-import VideoSession from './model/VideoSession';
-import VideoSessionClient from './model/VideoSessionClient';
-import VideoSessionDevice from './model/VideoSessionDevice';
-import VideoSessionLocation from './model/VideoSessionLocation';
-import VideoSessionOs from './model/VideoSessionOs';
-import VideoSessionReferrer from './model/VideoSessionReferrer';
-import VideoSessionSession from './model/VideoSessionSession';
 import VideoSource from './model/VideoSource';
 import VideoSourceLiveStream from './model/VideoSourceLiveStream';
 import VideoSourceLiveStreamLink from './model/VideoSourceLiveStreamLink';
@@ -126,12 +114,6 @@ const typeMap: { [index: string]: any } = {
   LiveStreamAssets: LiveStreamAssets,
   LiveStreamCreationPayload: LiveStreamCreationPayload,
   LiveStreamListResponse: LiveStreamListResponse,
-  LiveStreamSession: LiveStreamSession,
-  LiveStreamSessionClient: LiveStreamSessionClient,
-  LiveStreamSessionDevice: LiveStreamSessionDevice,
-  LiveStreamSessionLocation: LiveStreamSessionLocation,
-  LiveStreamSessionReferrer: LiveStreamSessionReferrer,
-  LiveStreamSessionSession: LiveStreamSessionSession,
   LiveStreamUpdatePayload: LiveStreamUpdatePayload,
   Metadata: Metadata,
   Model403ErrorSchema: Model403ErrorSchema,
@@ -151,18 +133,12 @@ const typeMap: { [index: string]: any } = {
   TokenCreationPayload: TokenCreationPayload,
   TokenListResponse: TokenListResponse,
   TooManyRequests: TooManyRequests,
+  UnrecognizedRequestUrl: UnrecognizedRequestUrl,
   UploadToken: UploadToken,
   Video: Video,
   VideoAssets: VideoAssets,
   VideoClip: VideoClip,
   VideoCreationPayload: VideoCreationPayload,
-  VideoSession: VideoSession,
-  VideoSessionClient: VideoSessionClient,
-  VideoSessionDevice: VideoSessionDevice,
-  VideoSessionLocation: VideoSessionLocation,
-  VideoSessionOs: VideoSessionOs,
-  VideoSessionReferrer: VideoSessionReferrer,
-  VideoSessionSession: VideoSessionSession,
   VideoSource: VideoSource,
   VideoSourceLiveStream: VideoSourceLiveStream,
   VideoSourceLiveStreamLink: VideoSourceLiveStreamLink,

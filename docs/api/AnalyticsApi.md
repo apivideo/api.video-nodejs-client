@@ -14,6 +14,12 @@ All URIs are relative to *https://ws.api.video*
 
 Retrieve filtered analytics about the number of plays for your live streams in a project.
 
+
+
+This endpoint will be deprecated with the release of Analytics v2.0.
+
+
+
 ### Parameters
 
 | Name | Type | Required | Description |
@@ -40,6 +46,12 @@ Promise<[**AnalyticsPlaysResponse**](../model/AnalyticsPlaysResponse.md)>.
 
 
 Retrieve filtered analytics about the number of plays for your videos in a project.
+
+
+
+This endpoint will be deprecated with the release of Analytics v2.0.
+
+
 
 ### Parameters
 
