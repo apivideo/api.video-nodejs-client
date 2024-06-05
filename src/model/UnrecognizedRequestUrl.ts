@@ -11,47 +11,44 @@
 
 import AttributeType from './AttributeType.js';
 
-/**
- * The operating system the viewer is on.
- */
-export default class VideoSessionOs {
+export default class UnrecognizedRequestUrl {
   /**
-   * The name of the operating system.
+   * A link to the error documentation.
    */
-  'name'?: string;
+  'type'?: string;
   /**
-   * The nickname for the operating system, often representing the version.
+   * A description of the error that occurred.
    */
-  'shortname'?: string;
+  'title'?: string;
   /**
-   * The version of the operating system.
+   * The HTTP status code.
    */
-  'version'?: string;
+  'status'?: number;
 
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
     {
-      name: 'name',
-      baseName: 'name',
+      name: 'type',
+      baseName: 'type',
       type: 'string',
       format: '',
     },
     {
-      name: 'shortname',
-      baseName: 'shortname',
+      name: 'title',
+      baseName: 'title',
       type: 'string',
       format: '',
     },
     {
-      name: 'version',
-      baseName: 'version',
-      type: 'string',
+      name: 'status',
+      baseName: 'status',
+      type: 'number',
       format: '',
     },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
-    return VideoSessionOs.attributeTypeMap;
+    return UnrecognizedRequestUrl.attributeTypeMap;
   }
 }

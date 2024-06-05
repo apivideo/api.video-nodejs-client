@@ -25,7 +25,7 @@ export default class AnalyticsApi {
   }
 
   /**
-   * Retrieve filtered analytics about the number of plays for your live streams in a project.
+   * Retrieve filtered analytics about the number of plays for your live streams in a project.  This endpoint will be deprecated with the release of Analytics v2.0.
    * Get play events for live stream
    * @param {Object} searchParams
    * @param { string } searchParams.from Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.
@@ -55,7 +55,7 @@ export default class AnalyticsApi {
   }
 
   /**
-   * Retrieve filtered analytics about the number of plays for your live streams in a project.
+   * Retrieve filtered analytics about the number of plays for your live streams in a project.  This endpoint will be deprecated with the release of Analytics v2.0.
    * Get play events for live stream
    * @param {Object} searchParams
    * @param { string } searchParams.from Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.
@@ -165,7 +165,7 @@ export default class AnalyticsApi {
   }
 
   /**
-   * Retrieve filtered analytics about the number of plays for your videos in a project.
+   * Retrieve filtered analytics about the number of plays for your videos in a project.  This endpoint will be deprecated with the release of Analytics v2.0.
    * Get play events for video
    * @param {Object} searchParams
    * @param { string } searchParams.from Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.
@@ -193,7 +193,7 @@ export default class AnalyticsApi {
   }
 
   /**
-   * Retrieve filtered analytics about the number of plays for your videos in a project.
+   * Retrieve filtered analytics about the number of plays for your videos in a project.  This endpoint will be deprecated with the release of Analytics v2.0.
    * Get play events for video
    * @param {Object} searchParams
    * @param { string } searchParams.from Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.
