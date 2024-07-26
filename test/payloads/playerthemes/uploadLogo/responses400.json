@@ -1,6 +1,6 @@
 {
   "status" : 400,
-  "type" : "https://docs.api.video/docs/fileextension",
+  "type" : "https://docs.api.video/reference/uploaded-file-extension-invalid",
   "title" : "Only ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG'] extensions are supported.",
   "name" : "file"
 }

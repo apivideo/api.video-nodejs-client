@@ -27,7 +27,7 @@ export default class LiveStream {
    */
   'streamKey'?: string;
   /**
-   * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+   * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).
    */
   '_public'?: boolean;
   'assets'?: LiveStreamAssets;
@@ -40,7 +40,7 @@ export default class LiveStream {
    */
   'broadcasting'?: boolean;
   /**
-   * Returns the list of RTMP restream destinations.
+   * Returns the list of restream destinations.
    */
   'restreams': Array<RestreamsResponseObject>;
   /**

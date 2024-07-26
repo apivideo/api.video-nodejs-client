@@ -12,7 +12,16 @@
 
 import AccessToken from './model/AccessToken';
 import AdditionalBadRequestErrors from './model/AdditionalBadRequestErrors';
+import AnalyticsAggregatedMetricsResponse from './model/AnalyticsAggregatedMetricsResponse';
+import AnalyticsAggregatedMetricsResponseContext from './model/AnalyticsAggregatedMetricsResponseContext';
+import AnalyticsAggregatedMetricsResponseContextTimeframe from './model/AnalyticsAggregatedMetricsResponseContextTimeframe';
 import AnalyticsData from './model/AnalyticsData';
+import AnalyticsMetricsBreakdownResponse from './model/AnalyticsMetricsBreakdownResponse';
+import AnalyticsMetricsBreakdownResponseContext from './model/AnalyticsMetricsBreakdownResponseContext';
+import AnalyticsMetricsBreakdownResponseData from './model/AnalyticsMetricsBreakdownResponseData';
+import AnalyticsMetricsOverTimeResponse from './model/AnalyticsMetricsOverTimeResponse';
+import AnalyticsMetricsOverTimeResponseContext from './model/AnalyticsMetricsOverTimeResponseContext';
+import AnalyticsMetricsOverTimeResponseData from './model/AnalyticsMetricsOverTimeResponseData';
 import AnalyticsPlays400Error from './model/AnalyticsPlays400Error';
 import AnalyticsPlaysResponse from './model/AnalyticsPlaysResponse';
 import AuthenticatePayload from './model/AuthenticatePayload';
@@ -23,17 +32,14 @@ import CaptionsListResponse from './model/CaptionsListResponse';
 import CaptionsUpdatePayload from './model/CaptionsUpdatePayload';
 import Chapter from './model/Chapter';
 import ChaptersListResponse from './model/ChaptersListResponse';
+import FilterBy from './model/FilterBy';
+import FilterBy1 from './model/FilterBy1';
+import FilterBy2 from './model/FilterBy2';
 import Link from './model/Link';
 import LiveStream from './model/LiveStream';
 import LiveStreamAssets from './model/LiveStreamAssets';
 import LiveStreamCreationPayload from './model/LiveStreamCreationPayload';
 import LiveStreamListResponse from './model/LiveStreamListResponse';
-import LiveStreamSession from './model/LiveStreamSession';
-import LiveStreamSessionClient from './model/LiveStreamSessionClient';
-import LiveStreamSessionDevice from './model/LiveStreamSessionDevice';
-import LiveStreamSessionLocation from './model/LiveStreamSessionLocation';
-import LiveStreamSessionReferrer from './model/LiveStreamSessionReferrer';
-import LiveStreamSessionSession from './model/LiveStreamSessionSession';
 import LiveStreamUpdatePayload from './model/LiveStreamUpdatePayload';
 import Metadata from './model/Metadata';
 import Model403ErrorSchema from './model/Model403ErrorSchema';
@@ -53,18 +59,12 @@ import RestreamsResponseObject from './model/RestreamsResponseObject';
 import TokenCreationPayload from './model/TokenCreationPayload';
 import TokenListResponse from './model/TokenListResponse';
 import TooManyRequests from './model/TooManyRequests';
+import UnrecognizedRequestUrl from './model/UnrecognizedRequestUrl';
 import UploadToken from './model/UploadToken';
 import Video from './model/Video';
 import VideoAssets from './model/VideoAssets';
 import VideoClip from './model/VideoClip';
 import VideoCreationPayload from './model/VideoCreationPayload';
-import VideoSession from './model/VideoSession';
-import VideoSessionClient from './model/VideoSessionClient';
-import VideoSessionDevice from './model/VideoSessionDevice';
-import VideoSessionLocation from './model/VideoSessionLocation';
-import VideoSessionOs from './model/VideoSessionOs';
-import VideoSessionReferrer from './model/VideoSessionReferrer';
-import VideoSessionSession from './model/VideoSessionSession';
 import VideoSource from './model/VideoSource';
 import VideoSourceLiveStream from './model/VideoSourceLiveStream';
 import VideoSourceLiveStreamLink from './model/VideoSourceLiveStreamLink';
@@ -101,6 +101,18 @@ const supportedMediaTypes: { [mediaType: string]: number } = {
 };
 
 const enumsMap: Set<string> = new Set<string>([
+  'AnalyticsAggregatedMetricsResponseContextMetricEnum',
+  'AnalyticsAggregatedMetricsResponseContextAggregationEnum',
+  'AnalyticsMetricsBreakdownResponseContextMetricEnum',
+  'AnalyticsMetricsBreakdownResponseContextBreakdownEnum',
+  'AnalyticsMetricsOverTimeResponseContextMetricEnum',
+  'AnalyticsMetricsOverTimeResponseContextIntervalEnum',
+  'FilterByMediaTypeEnum',
+  'FilterByContinentEnum',
+  'FilterBy1MediaTypeEnum',
+  'FilterBy1ContinentEnum',
+  'FilterBy2MediaTypeEnum',
+  'FilterBy2ContinentEnum',
   'QualityTypeEnum',
   'QualityQualityEnum',
   'QualityStatusEnum',
@@ -110,7 +122,20 @@ const enumsMap: Set<string> = new Set<string>([
 const typeMap: { [index: string]: any } = {
   AccessToken: AccessToken,
   AdditionalBadRequestErrors: AdditionalBadRequestErrors,
+  AnalyticsAggregatedMetricsResponse: AnalyticsAggregatedMetricsResponse,
+  AnalyticsAggregatedMetricsResponseContext:
+    AnalyticsAggregatedMetricsResponseContext,
+  AnalyticsAggregatedMetricsResponseContextTimeframe:
+    AnalyticsAggregatedMetricsResponseContextTimeframe,
   AnalyticsData: AnalyticsData,
+  AnalyticsMetricsBreakdownResponse: AnalyticsMetricsBreakdownResponse,
+  AnalyticsMetricsBreakdownResponseContext:
+    AnalyticsMetricsBreakdownResponseContext,
+  AnalyticsMetricsBreakdownResponseData: AnalyticsMetricsBreakdownResponseData,
+  AnalyticsMetricsOverTimeResponse: AnalyticsMetricsOverTimeResponse,
+  AnalyticsMetricsOverTimeResponseContext:
+    AnalyticsMetricsOverTimeResponseContext,
+  AnalyticsMetricsOverTimeResponseData: AnalyticsMetricsOverTimeResponseData,
   AnalyticsPlays400Error: AnalyticsPlays400Error,
   AnalyticsPlaysResponse: AnalyticsPlaysResponse,
   AuthenticatePayload: AuthenticatePayload,
@@ -121,17 +146,14 @@ const typeMap: { [index: string]: any } = {
   CaptionsUpdatePayload: CaptionsUpdatePayload,
   Chapter: Chapter,
   ChaptersListResponse: ChaptersListResponse,
+  FilterBy: FilterBy,
+  FilterBy1: FilterBy1,
+  FilterBy2: FilterBy2,
   Link: Link,
   LiveStream: LiveStream,
   LiveStreamAssets: LiveStreamAssets,
   LiveStreamCreationPayload: LiveStreamCreationPayload,
   LiveStreamListResponse: LiveStreamListResponse,
-  LiveStreamSession: LiveStreamSession,
-  LiveStreamSessionClient: LiveStreamSessionClient,
-  LiveStreamSessionDevice: LiveStreamSessionDevice,
-  LiveStreamSessionLocation: LiveStreamSessionLocation,
-  LiveStreamSessionReferrer: LiveStreamSessionReferrer,
-  LiveStreamSessionSession: LiveStreamSessionSession,
   LiveStreamUpdatePayload: LiveStreamUpdatePayload,
   Metadata: Metadata,
   Model403ErrorSchema: Model403ErrorSchema,
@@ -151,18 +173,12 @@ const typeMap: { [index: string]: any } = {
   TokenCreationPayload: TokenCreationPayload,
   TokenListResponse: TokenListResponse,
   TooManyRequests: TooManyRequests,
+  UnrecognizedRequestUrl: UnrecognizedRequestUrl,
   UploadToken: UploadToken,
   Video: Video,
   VideoAssets: VideoAssets,
   VideoClip: VideoClip,
   VideoCreationPayload: VideoCreationPayload,
-  VideoSession: VideoSession,
-  VideoSessionClient: VideoSessionClient,
-  VideoSessionDevice: VideoSessionDevice,
-  VideoSessionLocation: VideoSessionLocation,
-  VideoSessionOs: VideoSessionOs,
-  VideoSessionReferrer: VideoSessionReferrer,
-  VideoSessionSession: VideoSessionSession,
   VideoSource: VideoSource,
   VideoSourceLiveStream: VideoSourceLiveStream,
   VideoSourceLiveStreamLink: VideoSourceLiveStreamLink,
@@ -231,7 +247,7 @@ export default class ObjectSerializer {
 
         return data.getFullYear() + '-' + month + '-' + day;
       } else {
-        return data.toISOString();
+        return data.toISOString().split('.')[0] + 'Z';
       }
     } else {
       if (enumsMap.has(type)) {

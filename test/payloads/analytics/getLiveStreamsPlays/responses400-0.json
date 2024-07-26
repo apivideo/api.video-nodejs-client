@@ -1,7 +1,0 @@
-{
-  "type" : "https://docs.api.video/reference/invalid-attribute",
-  "title" : "An attribute is invalid.",
-  "status" : 400,
-  "detail" : "This value must be of type string.",
-  "name" : "dimension"
-}

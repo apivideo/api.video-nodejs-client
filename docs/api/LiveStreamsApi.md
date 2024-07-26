@@ -11,6 +11,7 @@ All URIs are relative to *https://ws.api.video*
 | [**list()**](LiveStreamsApi.md#list) | List all live streams | **GET** /live-streams |
 | [**uploadThumbnail()**](LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /live-streams/{liveStreamId}/thumbnail |
 | [**deleteThumbnail()**](LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** /live-streams/{liveStreamId}/thumbnail |
+| [**complete()**](LiveStreamsApi.md#complete) | Complete a live stream | **PUT** /live-streams/{liveStreamId}/complete |
 
 
 <a name="create"></a>
@@ -168,6 +169,34 @@ Send the unique identifier for a live stream to delete its thumbnail.
 ### Return type
 
 Promise<[**LiveStream**](../model/LiveStream.md)>.
+
+
+
+
+---
+
+<a name="complete"></a>
+## **`complete()` - Complete a live stream**
+
+
+Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds. 
+
+
+
+The API adds the `EXT-X-ENDLIST` tag to the live stream's HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream.
+
+
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **liveStreamId** | **string**| **yes**| The unique ID for the live stream you want to complete. |
+
+
+### Return type
+
+Promise<[**void**](../model/.md)>.
 
 
 

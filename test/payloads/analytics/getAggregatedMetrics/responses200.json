@@ -1,0 +1,11 @@
+{
+  "context" : {
+    "metric" : "impression",
+    "aggregation" : "count",
+    "timeframe" : {
+      "from" : "2024-05-28T11:15:07+00:00",
+      "to" : "2024-05-29T11:15:07+00:00"
+    }
+  },
+  "data" : 346.5
+}

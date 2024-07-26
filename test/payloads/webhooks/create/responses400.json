@@ -1,18 +1,18 @@
 {
-  "type" : "https://docs.api.video/docs/attributerequired",
+  "type" : "https://docs.api.video/reference/attribute-required",
   "events" : "This attribute is required.",
   "name" : "events",
   "status" : 400,
   "problems" : [ {
-    "type" : "https://docs.api.video/docs/attributerequired",
+    "type" : "https://docs.api.video/reference/attribute-required",
     "title" : "This attribute is required.",
     "name" : "events"
   }, {
-    "type" : "https://docs.api.video/docs/attributerequired",
+    "type" : "https://docs.api.video/reference/attribute-required",
     "title" : "This attribute is required.",
     "name" : "url"
   }, {
-    "type" : "https://docs.api.video/docs/attributeinvalid",
+    "type" : "https://docs.api.video/reference/invalid-attribute",
     "title" : "This attribute must be an array.",
     "name" : "events"
   } ]

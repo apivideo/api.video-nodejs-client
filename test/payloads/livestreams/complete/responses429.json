@@ -1,0 +1,5 @@
+{
+  "type" : "https://docs.api.video/reference/too-many-requests",
+  "title" : "Too many requests.",
+  "status" : 429
+}

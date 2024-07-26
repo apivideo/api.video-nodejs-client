@@ -1,5 +1,5 @@
 {
-  "type" : "https://docs.api.video/docs/resourcenot_found",
+  "type" : "https://docs.api.video/reference/resource-not-found",
   "title" : "The requested resource was not found.",
   "name" : "playerId",
   "status" : 404

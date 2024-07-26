@@ -18,7 +18,7 @@ export default class LiveStreamCreationPayload {
    */
   'name': string;
   /**
-   * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+   * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).
    */
   '_public'?: boolean;
   /**
@@ -26,7 +26,7 @@ export default class LiveStreamCreationPayload {
    */
   'playerId'?: string;
   /**
-   * Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
+   * Use this parameter to add, edit, or remove `RTMPS` or `RTMP` services where you want to restream a live stream. The list can only contain up to 5 destinations.
    */
   'restreams'?: Array<RestreamsRequestObject>;
 
