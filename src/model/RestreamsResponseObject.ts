@@ -17,7 +17,7 @@ export default class RestreamsResponseObject {
    */
   'name'?: string;
   /**
-   * Returns the RTMP URL of a restream destination.
+   * Returns the server URL of a restream destination.
    */
   'serverUrl'?: string;
   /**

@@ -977,12 +977,25 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
       if (typeof metadata !== 'object') {
         throw new Error(`${metadata} is not an object`);
       }
-      Object.keys(metadata).forEach((k) =>
-        urlSearchParams.append(
-          'metadata[' + k + ']',
-          ObjectSerializer.serialize(metadata[k], 'string', '')
-        )
-      );
+      Object.keys(metadata).forEach((k) => {
+        if ((metadata as any)[k] instanceof Object) {
+          Object.keys((metadata as any)[k]).forEach((key) => {
+            urlSearchParams.append(
+              `metadata[${k}][${key}]`,
+              ObjectSerializer.serialize(
+                (metadata as any)[k][key],
+                'string',
+                ''
+              )
+            );
+          });
+        } else {
+          urlSearchParams.append(
+            'metadata[' + k + ']',
+            ObjectSerializer.serialize((metadata as any)[k], 'string', '')
+          );
+        }
+      });
     }
     if (description !== undefined) {
       urlSearchParams.append(

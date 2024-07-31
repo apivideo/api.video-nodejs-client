@@ -520,4 +520,55 @@ export default class LiveStreamsApi {
       };
     });
   }
+
+  /**
+   * Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the `EXT-X-ENDLIST` tag to the live stream's HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream.
+   * Complete a live stream
+   * @param liveStreamId The unique ID for the live stream you want to complete.
+   */
+  public async complete(liveStreamId: string): Promise<void> {
+    return this.completeWithResponseHeaders(liveStreamId).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the `EXT-X-ENDLIST` tag to the live stream's HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream.
+   * Complete a live stream
+   * @param liveStreamId The unique ID for the live stream you want to complete.
+   */
+  public async completeWithResponseHeaders(
+    liveStreamId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: void }> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (liveStreamId === null || liveStreamId === undefined) {
+      throw new Error(
+        'Required parameter liveStreamId was null or undefined when calling complete.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/live-streams/{liveStreamId}/complete'
+      .substring(1)
+      .replace(
+        '{' + 'liveStreamId' + '}',
+        encodeURIComponent(String(liveStreamId))
+      );
+
+    queryParams.method = 'PUT';
+
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'void',
+          ''
+        ) as void,
+      };
+    });
+  }
 }

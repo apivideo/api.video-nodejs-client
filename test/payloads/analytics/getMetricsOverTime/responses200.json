@@ -1,0 +1,37 @@
+{
+  "context" : {
+    "metric" : "play",
+    "interval" : "hour",
+    "timeframe" : {
+      "from" : "2024-05-28T11:08:39+00:00",
+      "to" : "2024-05-29T11:08:39+00:00"
+    }
+  },
+  "data" : [ {
+    "emittedAt" : "2024-05-29T07:00:00+00:00",
+    "metricValue" : 2
+  }, {
+    "emittedAt" : "2024-05-29T08:00:00+00:00",
+    "metricValue" : 1
+  }, {
+    "emittedAt" : "2024-05-29T09:00:00+00:00",
+    "metricValue" : 1
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "currentPageItems" : 3,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 3,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "/data/timeseries/play?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "first",
+      "uri" : "/data/timeseries/play?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "last",
+      "uri" : "/data/timeseries/play?currentPage=1&pageSize=25"
+    } ]
+  }
+}

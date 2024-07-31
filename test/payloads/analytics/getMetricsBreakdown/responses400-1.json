@@ -1,0 +1,7 @@
+{
+  "type" : "https://docs.api.video/reference/request-invalid-query-parameter",
+  "title" : "A query parameter is invalid.",
+  "status" : 400,
+  "detail" : "This field was not expected.",
+  "name" : "from:2024-05-20T09:15:05+02:00"
+}

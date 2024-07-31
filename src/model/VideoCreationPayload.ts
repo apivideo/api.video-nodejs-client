@@ -28,7 +28,7 @@ export default class VideoCreationPayload {
    */
   'source'?: string;
   /**
-   * Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)
+   * Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery/video-privacy-access-management)
    */
   '_public'?: boolean;
   /**

@@ -108,8 +108,9 @@ const ApiVideoClient = require('@api.video/nodejs-client');
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**getLiveStreamsPlays()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/AnalyticsApi.md#getLiveStreamsPlays) | Get play events for live stream | **GET** `/analytics/live-streams/plays`
-[**getVideosPlays()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/AnalyticsApi.md#getVideosPlays) | Get play events for video | **GET** `/analytics/videos/plays`
+[**getAggregatedMetrics()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/AnalyticsApi.md#getAggregatedMetrics) | Retrieve aggregated metrics | **GET** `/data/metrics/{metric}/{aggregation}`
+[**getMetricsBreakdown()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/AnalyticsApi.md#getMetricsBreakdown) | Retrieve metrics in a breakdown of dimensions | **GET** `/data/buckets/{metric}/{breakdown}`
+[**getMetricsOverTime()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/AnalyticsApi.md#getMetricsOverTime) | Retrieve metrics over time | **GET** `/data/timeseries/{metric}`
 
 
 #### CaptionsApi
@@ -144,6 +145,7 @@ Method | Description | HTTP request
 [**list()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/LiveStreamsApi.md#list) | List all live streams | **GET** `/live-streams`
 [**uploadThumbnail()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/live-streams/{liveStreamId}/thumbnail`
 [**deleteThumbnail()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** `/live-streams/{liveStreamId}/thumbnail`
+[**complete()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/LiveStreamsApi.md#complete) | Complete a live stream | **PUT** `/live-streams/{liveStreamId}/complete`
 
 
 #### PlayerThemesApi
@@ -209,7 +211,16 @@ Method | Description | HTTP request
 
  - [AccessToken](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AccessToken.md)
  - [AdditionalBadRequestErrors](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AdditionalBadRequestErrors.md)
+ - [AnalyticsAggregatedMetricsResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsAggregatedMetricsResponse.md)
+ - [AnalyticsAggregatedMetricsResponseContext](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsAggregatedMetricsResponseContext.md)
+ - [AnalyticsAggregatedMetricsResponseContextTimeframe](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsAggregatedMetricsResponseContextTimeframe.md)
  - [AnalyticsData](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsData.md)
+ - [AnalyticsMetricsBreakdownResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsMetricsBreakdownResponse.md)
+ - [AnalyticsMetricsBreakdownResponseContext](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsMetricsBreakdownResponseContext.md)
+ - [AnalyticsMetricsBreakdownResponseData](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsMetricsBreakdownResponseData.md)
+ - [AnalyticsMetricsOverTimeResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsMetricsOverTimeResponse.md)
+ - [AnalyticsMetricsOverTimeResponseContext](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsMetricsOverTimeResponseContext.md)
+ - [AnalyticsMetricsOverTimeResponseData](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsMetricsOverTimeResponseData.md)
  - [AnalyticsPlays400Error](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsPlays400Error.md)
  - [AnalyticsPlaysResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AnalyticsPlaysResponse.md)
  - [AuthenticatePayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/AuthenticatePayload.md)
@@ -220,17 +231,14 @@ Method | Description | HTTP request
  - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Chapter.md)
  - [ChaptersListResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/ChaptersListResponse.md)
+ - [FilterBy](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy.md)
+ - [FilterBy1](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy1.md)
+ - [FilterBy2](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy2.md)
  - [Link](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Link.md)
  - [LiveStream](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStream.md)
  - [LiveStreamAssets](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamAssets.md)
  - [LiveStreamCreationPayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamCreationPayload.md)
  - [LiveStreamListResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamListResponse.md)
- - [LiveStreamSession](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamSession.md)
- - [LiveStreamSessionClient](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamSessionClient.md)
- - [LiveStreamSessionDevice](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamSessionDevice.md)
- - [LiveStreamSessionLocation](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamSessionLocation.md)
- - [LiveStreamSessionReferrer](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamSessionReferrer.md)
- - [LiveStreamSessionSession](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamSessionSession.md)
  - [LiveStreamUpdatePayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamUpdatePayload.md)
  - [Metadata](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Metadata.md)
  - [Model403ErrorSchema](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Model403ErrorSchema.md)
@@ -250,18 +258,12 @@ Method | Description | HTTP request
  - [TokenCreationPayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TokenCreationPayload.md)
  - [TokenListResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TokenListResponse.md)
  - [TooManyRequests](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TooManyRequests.md)
+ - [UnrecognizedRequestUrl](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/UnrecognizedRequestUrl.md)
  - [UploadToken](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/UploadToken.md)
  - [Video](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Video.md)
  - [VideoAssets](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoAssets.md)
  - [VideoClip](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoClip.md)
  - [VideoCreationPayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoCreationPayload.md)
- - [VideoSession](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSession.md)
- - [VideoSessionClient](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSessionClient.md)
- - [VideoSessionDevice](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSessionDevice.md)
- - [VideoSessionLocation](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSessionLocation.md)
- - [VideoSessionOs](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSessionOs.md)
- - [VideoSessionReferrer](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSessionReferrer.md)
- - [VideoSessionSession](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSessionSession.md)
  - [VideoSource](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSource.md)
  - [VideoSourceLiveStream](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSourceLiveStream.md)
  - [VideoSourceLiveStreamLink](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/VideoSourceLiveStreamLink.md)

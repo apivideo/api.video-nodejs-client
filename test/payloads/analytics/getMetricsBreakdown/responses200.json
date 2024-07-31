@@ -1,0 +1,31 @@
+{
+  "context" : {
+    "metric" : "play",
+    "breakdown" : "country",
+    "timeframe" : {
+      "from" : "2024-04-28T07:15:05+00:00",
+      "to" : "2024-05-29T11:25:37+00:00"
+    }
+  },
+  "data" : [ {
+    "metricValue" : 7,
+    "dimensionValue" : "FR"
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "currentPageItems" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 1,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "/data/buckets/play/country?from=2024-04-28T09%3A15%3A05%2B02%3A00&currentPage=1&pageSize=25"
+    }, {
+      "rel" : "first",
+      "uri" : "/data/buckets/play/country?from=2024-04-28T09%3A15%3A05%2B02%3A00&currentPage=1&pageSize=25"
+    }, {
+      "rel" : "last",
+      "uri" : "/data/buckets/play/country?from=2024-04-28T09%3A15%3A05%2B02%3A00&currentPage=1&pageSize=25"
+    } ]
+  }
+}

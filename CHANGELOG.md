@@ -1,6 +1,10 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.6.0] - 2024-07-29
+- Add new analytics methods
+- Add livestream complete() method
+
 ## [2.5.7] - 2024-04-23
 - Add *WithResponseHeaders() methods
 
