@@ -909,6 +909,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
       sortOrder?: 'asc' | 'desc';
       currentPage?: number;
       pageSize?: number;
+      removed?: boolean;
     } = {}
   ): Promise<VideosListResponse> {
     return this.listWithResponseHeaders(args).then((res) => res.body);
@@ -938,6 +939,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
     sortOrder,
     currentPage,
     pageSize,
+    removed,
   }: {
     title?: string;
     tags?: Array<string>;
@@ -948,6 +950,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
     sortOrder?: 'asc' | 'desc';
     currentPage?: number;
     pageSize?: number;
+    removed?: boolean;
   } = {}): Promise<{ headers: ApiResponseHeaders; body: VideosListResponse }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
@@ -1035,6 +1038,12 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
       urlSearchParams.append(
         'pageSize',
         ObjectSerializer.serialize(pageSize, 'number', '')
+      );
+    }
+    if (removed !== undefined) {
+      urlSearchParams.append(
+        'removed',
+        ObjectSerializer.serialize(removed, 'boolean', '')
       );
     }
 
