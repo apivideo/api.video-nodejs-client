@@ -897,6 +897,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
    * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   * @param { boolean } searchParams.removed Use this parameter to get removed videos.
    */
   public async list(
     args: {
@@ -928,6 +929,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
    * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   * @param { boolean } searchParams.removed Use this parameter to get removed videos
    */
   public async listWithResponseHeaders({
     title,
