@@ -32,6 +32,7 @@ import CaptionsListResponse from './model/CaptionsListResponse';
 import CaptionsUpdatePayload from './model/CaptionsUpdatePayload';
 import Chapter from './model/Chapter';
 import ChaptersListResponse from './model/ChaptersListResponse';
+import DiscardedVideoUpdatePayload from './model/DiscardedVideoUpdatePayload';
 import FilterBy from './model/FilterBy';
 import FilterBy1 from './model/FilterBy1';
 import FilterBy2 from './model/FilterBy2';
@@ -146,6 +147,7 @@ const typeMap: { [index: string]: any } = {
   CaptionsUpdatePayload: CaptionsUpdatePayload,
   Chapter: Chapter,
   ChaptersListResponse: ChaptersListResponse,
+  DiscardedVideoUpdatePayload: DiscardedVideoUpdatePayload,
   FilterBy: FilterBy,
   FilterBy1: FilterBy1,
   FilterBy2: FilterBy2,

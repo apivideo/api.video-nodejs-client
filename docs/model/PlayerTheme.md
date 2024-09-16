@@ -22,8 +22,8 @@ Name | Type | Description | Notes
 **hideTitle** | **boolean** | enable/disable title. Default: false |  [optional]
 **forceLoop** | **boolean** | enable/disable looping. Default: false |  [optional]
 **playerId** | **string** |  | 
-**createdAt** | **Date** | When the player was created, presented in ISO-8601 format. |  [optional]
-**updatedAt** | **Date** | When the player was last updated, presented in ISO-8601 format. |  [optional]
+**createdAt** | **Date** | When the player was created, presented in ATOM UTC format. |  [optional]
+**updatedAt** | **Date** | When the player was last updated, presented in ATOM UTC format. |  [optional]
 **assets** | [**PlayerThemeAssets**](PlayerThemeAssets.md) |  |  [optional]
 
 

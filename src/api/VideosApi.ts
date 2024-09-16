@@ -16,6 +16,7 @@ import FormData from 'form-data';
 import ObjectSerializer from '../ObjectSerializer';
 import HttpClient, { QueryOptions, ApiResponseHeaders } from '../HttpClient';
 import ProgressiveSession from '../model/ProgressiveSession';
+import DiscardedVideoUpdatePayload from '../model/DiscardedVideoUpdatePayload';
 import Video from '../model/Video';
 import VideoCreationPayload from '../model/VideoCreationPayload';
 import VideoStatus from '../model/VideoStatus';
@@ -839,7 +840,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
   }
 
   /**
-   * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+   * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
    * Delete a video object
    * @param videoId The video ID for the video you want to delete.
    */
@@ -848,7 +849,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
   }
 
   /**
-   * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+   * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
    * Delete a video object
    * @param videoId The video ID for the video you want to delete.
    */
@@ -890,7 +891,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
    * @param {Object} searchParams
    * @param { string } searchParams.title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
    * @param { Array&lt;string&gt; } searchParams.tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
+   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
    * @param { string } searchParams.description Retrieve video objects by &#x60;description&#x60;.
    * @param { string } searchParams.liveStreamId Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
    * @param { &#39;title&#39; | &#39;createdAt&#39; | &#39;publishedAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Use this parameter to sort videos by the their created time, published time, updated time, or by title.
@@ -920,7 +921,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
    * @param {Object} searchParams
    * @param { string } searchParams.title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
    * @param { Array&lt;string&gt; } searchParams.tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
+   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
    * @param { string } searchParams.description Retrieve video objects by &#x60;description&#x60;.
    * @param { string } searchParams.liveStreamId Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
    * @param { &#39;title&#39; | &#39;createdAt&#39; | &#39;publishedAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Use this parameter to sort videos by the their created time, published time, updated time, or by title.
@@ -1249,6 +1250,54 @@ There may be a short delay for the thumbnail to update.
   }
 
   /**
+   * This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+   * Retrieve a discarded video object
+   * @param videoId The unique identifier for the video you want details about.
+   */
+  public async getDiscarded(videoId: string): Promise<Video> {
+    return this.getDiscardedWithResponseHeaders(videoId).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+   * Retrieve a discarded video object
+   * @param videoId The unique identifier for the video you want details about.
+   */
+  public async getDiscardedWithResponseHeaders(
+    videoId: string
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (videoId === null || videoId === undefined) {
+      throw new Error(
+        'Required parameter videoId was null or undefined when calling getDiscarded.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/discarded/videos/{videoId}'
+      .substring(1)
+      .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)));
+
+    queryParams.method = 'GET';
+
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Video,
+      };
+    });
+  }
+
+  /**
    * This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
    * Retrieve video status and details
    * @param videoId The unique identifier for the video you want the status for.
@@ -1290,6 +1339,261 @@ There may be a short delay for the thumbnail to update.
           'VideoStatus',
           ''
         ) as VideoStatus,
+      };
+    });
+  }
+
+  /**
+   * This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+   * List all discarded video objects
+   * @param {Object} searchParams
+   * @param { string } searchParams.title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
+   * @param { Array&lt;string&gt; } searchParams.tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
+   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
+   * @param { string } searchParams.description Retrieve video objects by &#x60;description&#x60;.
+   * @param { string } searchParams.liveStreamId Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
+   * @param { &#39;title&#39; | &#39;createdAt&#39; | &#39;publishedAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Use this parameter to sort videos by the their created time, published time, updated time, or by title.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async listDiscarded(
+    args: {
+      title?: string;
+      tags?: Array<string>;
+      metadata?: { [key: string]: string };
+      description?: string;
+      liveStreamId?: string;
+      sortBy?: 'title' | 'createdAt' | 'publishedAt' | 'updatedAt';
+      sortOrder?: 'asc' | 'desc';
+      currentPage?: number;
+      pageSize?: number;
+    } = {}
+  ): Promise<VideosListResponse> {
+    return this.listDiscardedWithResponseHeaders(args).then((res) => res.body);
+  }
+
+  /**
+   * This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+   * List all discarded video objects
+   * @param {Object} searchParams
+   * @param { string } searchParams.title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
+   * @param { Array&lt;string&gt; } searchParams.tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
+   * @param { { [key: string]: string; } } searchParams.metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
+   * @param { string } searchParams.description Retrieve video objects by &#x60;description&#x60;.
+   * @param { string } searchParams.liveStreamId Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
+   * @param { &#39;title&#39; | &#39;createdAt&#39; | &#39;publishedAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy Use this parameter to sort videos by the their created time, published time, updated time, or by title.
+   * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A.
+   * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
+   * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
+   */
+  public async listDiscardedWithResponseHeaders({
+    title,
+    tags,
+    metadata,
+    description,
+    liveStreamId,
+    sortBy,
+    sortOrder,
+    currentPage,
+    pageSize,
+  }: {
+    title?: string;
+    tags?: Array<string>;
+    metadata?: { [key: string]: string };
+    description?: string;
+    liveStreamId?: string;
+    sortBy?: 'title' | 'createdAt' | 'publishedAt' | 'updatedAt';
+    sortOrder?: 'asc' | 'desc';
+    currentPage?: number;
+    pageSize?: number;
+  } = {}): Promise<{ headers: ApiResponseHeaders; body: VideosListResponse }> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    // Path Params
+    const localVarPath = '/discarded/videos'.substring(1);
+
+    // Query Params
+    const urlSearchParams = new URLSearchParams();
+
+    if (title !== undefined) {
+      urlSearchParams.append(
+        'title',
+        ObjectSerializer.serialize(title, 'string', '')
+      );
+    }
+    if (tags !== undefined) {
+      const tagsSerialized = ObjectSerializer.serialize(
+        tags,
+        'Array<string>',
+        ''
+      );
+      tagsSerialized.forEach((v: string) =>
+        urlSearchParams.append('tags[]', v)
+      );
+    }
+    if (metadata !== undefined) {
+      if (typeof metadata !== 'object') {
+        throw new Error(`${metadata} is not an object`);
+      }
+      Object.keys(metadata).forEach((k) => {
+        if ((metadata as any)[k] instanceof Object) {
+          Object.keys((metadata as any)[k]).forEach((key) => {
+            urlSearchParams.append(
+              `metadata[${k}][${key}]`,
+              ObjectSerializer.serialize(
+                (metadata as any)[k][key],
+                'string',
+                ''
+              )
+            );
+          });
+        } else {
+          urlSearchParams.append(
+            'metadata[' + k + ']',
+            ObjectSerializer.serialize((metadata as any)[k], 'string', '')
+          );
+        }
+      });
+    }
+    if (description !== undefined) {
+      urlSearchParams.append(
+        'description',
+        ObjectSerializer.serialize(description, 'string', '')
+      );
+    }
+    if (liveStreamId !== undefined) {
+      urlSearchParams.append(
+        'liveStreamId',
+        ObjectSerializer.serialize(liveStreamId, 'string', '')
+      );
+    }
+    if (sortBy !== undefined) {
+      urlSearchParams.append(
+        'sortBy',
+        ObjectSerializer.serialize(
+          sortBy,
+          "'title' | 'createdAt' | 'publishedAt' | 'updatedAt'",
+          ''
+        )
+      );
+    }
+    if (sortOrder !== undefined) {
+      urlSearchParams.append(
+        'sortOrder',
+        ObjectSerializer.serialize(sortOrder, "'asc' | 'desc'", '')
+      );
+    }
+    if (currentPage !== undefined) {
+      urlSearchParams.append(
+        'currentPage',
+        ObjectSerializer.serialize(currentPage, 'number', '')
+      );
+    }
+    if (pageSize !== undefined) {
+      urlSearchParams.append(
+        'pageSize',
+        ObjectSerializer.serialize(pageSize, 'number', '')
+      );
+    }
+
+    queryParams.searchParams = urlSearchParams;
+
+    queryParams.method = 'GET';
+
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'VideosListResponse',
+          ''
+        ) as VideosListResponse,
+      };
+    });
+  }
+
+  /**
+   * Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+
+
+   * Update a discarded video object
+   * @param videoId The video ID for the video you want to restore.
+   * @param discardedVideoUpdatePayload 
+   */
+  public async updateDiscarded(
+    videoId: string,
+    discardedVideoUpdatePayload: DiscardedVideoUpdatePayload = {}
+  ): Promise<Video> {
+    return this.updateDiscardedWithResponseHeaders(
+      videoId,
+      discardedVideoUpdatePayload
+    ).then((res) => res.body);
+  }
+
+  /**
+   * Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+
+
+   * Update a discarded video object
+   * @param videoId The video ID for the video you want to restore.
+   * @param discardedVideoUpdatePayload 
+   */
+  public async updateDiscardedWithResponseHeaders(
+    videoId: string,
+    discardedVideoUpdatePayload: DiscardedVideoUpdatePayload = {}
+  ): Promise<{ headers: ApiResponseHeaders; body: Video }> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (videoId === null || videoId === undefined) {
+      throw new Error(
+        'Required parameter videoId was null or undefined when calling updateDiscarded.'
+      );
+    }
+    if (
+      discardedVideoUpdatePayload === null ||
+      discardedVideoUpdatePayload === undefined
+    ) {
+      throw new Error(
+        'Required parameter discardedVideoUpdatePayload was null or undefined when calling updateDiscarded.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/discarded/videos/{videoId}'
+      .substring(1)
+      .replace('{' + 'videoId' + '}', encodeURIComponent(String(videoId)));
+
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      'application/json',
+    ]);
+    queryParams.headers['Content-Type'] = contentType;
+
+    queryParams.body = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(
+        discardedVideoUpdatePayload,
+        'DiscardedVideoUpdatePayload',
+        ''
+      ),
+      contentType
+    );
+
+    queryParams.method = 'PATCH';
+
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'Video',
+          ''
+        ) as Video,
       };
     });
   }

@@ -272,7 +272,7 @@ export default class PlayerThemesApi {
    * Retrieve a list of all the player themes you created, as well as details about each one.
    * List all player themes
    * @param {Object} searchParams
-   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
+   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format.
    * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
@@ -292,7 +292,7 @@ export default class PlayerThemesApi {
    * Retrieve a list of all the player themes you created, as well as details about each one.
    * List all player themes
    * @param {Object} searchParams
-   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
+   * @param { &#39;name&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39; } searchParams.sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format.
    * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.

@@ -17,7 +17,7 @@ export default class Webhook {
    */
   'webhookId'?: string;
   /**
-   * When an webhook was created, presented in ISO-8601 format.
+   * When an webhook was created, presented in ATOM UTC format.
    */
   'createdAt'?: Date;
   /**

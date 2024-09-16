@@ -1,0 +1,7 @@
+{
+  "type" : "https://docs.api.video/reference/invalid-attribute",
+  "title" : "An attribute is invalid.",
+  "detail" : "Value must be false.",
+  "name" : "discarded",
+  "status" : 400
+}

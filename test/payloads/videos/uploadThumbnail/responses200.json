@@ -14,8 +14,9 @@
     "key" : "Format",
     "value" : "Tutorial"
   } ],
-  "createdAt" : "2020-03-03T12:52:03.085Z",
-  "publishedAt" : "2020-07-14T23:36:18.598Z",
+  "createdAt" : "2020-03-03T12:52:03+00:00",
+  "publishedAt" : "2020-07-14T23:36:07+00:00",
+  "discarded" : false,
   "source" : {
     "uri" : "/videos/vi4blUQJFrYWbaG44NChkH27/source"
   },

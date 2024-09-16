@@ -11,34 +11,24 @@
 
 import AttributeType from './AttributeType.js';
 
-export default class Watermark {
+export default class DiscardedVideoUpdatePayload {
   /**
-   * The unique identifier of the watermark.
+   * Use this parameter to restore a discarded video when you have the Video Restore feature enabled. This parameter only accepts `false` as a value!
    */
-  'watermarkId'?: string;
-  /**
-   * When the watermark was created, presented in ATOM UTC format.
-   */
-  'createdAt'?: Date;
+  'discarded'?: boolean;
 
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
     {
-      name: 'watermarkId',
-      baseName: 'watermarkId',
-      type: 'string',
+      name: 'discarded',
+      baseName: 'discarded',
+      type: 'boolean',
       format: '',
-    },
-    {
-      name: 'createdAt',
-      baseName: 'createdAt',
-      type: 'Date',
-      format: 'date-time',
     },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
-    return Watermark.attributeTypeMap;
+    return DiscardedVideoUpdatePayload.attributeTypeMap;
   }
 }

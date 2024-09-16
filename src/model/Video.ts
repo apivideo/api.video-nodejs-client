@@ -20,7 +20,7 @@ export default class Video {
    */
   'videoId': string;
   /**
-   * When a video was created, presented in ISO-8601 format.
+   * When a video was created, presented in ATOM UTC format.
    */
   'createdAt'?: Date;
   /**
@@ -32,19 +32,31 @@ export default class Video {
    */
   'description'?: string;
   /**
-   * The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.
+   * The date and time the API created the video. Date and time are provided using ATOM UTC format.
    */
   'publishedAt'?: Date;
   /**
-   * The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.
+   * The date and time the video was updated. Date and time are provided using ATOM UTC format.
    */
   'updatedAt'?: Date;
+  /**
+   * The date and time the video was discarded. The API populates this field only if you have the Video Restore feature enabled and discard a video. Date and time are provided using ATOM UTC format.
+   */
+  'discardedAt'?: Date;
+  /**
+   * The date and time the video will be permanently deleted. The API populates this field only if you have the Video Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time are provided using ATOM UTC format.
+   */
+  'deletesAt'?: Date;
+  /**
+   * Returns `true` for videos you discarded when you have the Video Restore feature enabled. Returns `false` for every other video.
+   */
+  'discarded'?: boolean;
   /**
    * One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.
    */
   'tags'?: Array<string>;
   /**
-   * Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
+   * Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.
    */
   'metadata'?: Array<Metadata>;
   'source'?: VideoSource;
@@ -104,6 +116,24 @@ export default class Video {
       baseName: 'updatedAt',
       type: 'Date',
       format: 'date-time',
+    },
+    {
+      name: 'discardedAt',
+      baseName: 'discardedAt',
+      type: 'Date',
+      format: 'date-time',
+    },
+    {
+      name: 'deletesAt',
+      baseName: 'deletesAt',
+      type: 'Date',
+      format: 'date-time',
+    },
+    {
+      name: 'discarded',
+      baseName: 'discarded',
+      type: 'boolean',
+      format: '',
     },
     {
       name: 'tags',

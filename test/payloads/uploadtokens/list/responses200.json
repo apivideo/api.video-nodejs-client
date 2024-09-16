@@ -2,12 +2,12 @@
   "data" : [ {
     "token" : "to37YfoPDRR2pcDKa6LsUE0M",
     "ttl" : 3600,
-    "createdAt" : "2020-12-02T10:26:46.000Z",
-    "expiresAt" : "2020-12-02T11:26:46.000Z"
+    "createdAt" : "2020-12-02T10:26:46+00:00",
+    "expiresAt" : "2020-12-02T11:26:46+00:00"
   }, {
     "token" : "to1W3ZS9PdUBZWzzTEZr1B79",
     "ttl" : 0,
-    "createdAt" : "2020-12-02T10:26:28.000Z"
+    "createdAt" : "2020-12-02T10:26:28+00:00"
   } ],
   "pagination" : {
     "currentPage" : 1,

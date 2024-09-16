@@ -44,11 +44,11 @@ export default class LiveStream {
    */
   'restreams': Array<RestreamsResponseObject>;
   /**
-   * When the player was created, presented in ISO-8601 format.
+   * When the player was created, presented in ATOM UTC format.
    */
   'createdAt'?: Date;
   /**
-   * When the player was last updated, presented in ISO-8601 format.
+   * When the player was last updated, presented in ATOM UTC format.
    */
   'updatedAt'?: Date;
 
