@@ -8,13 +8,13 @@
     }
   },
   "data" : [ {
-    "emittedAt" : "2024-05-29T07:00:00+00:00",
+    "emittedAt" : "2024-05-29T07+00:00:00:00",
     "metricValue" : 2
   }, {
-    "emittedAt" : "2024-05-29T08:00:00+00:00",
+    "emittedAt" : "2024-05-29T08+00:00:00:00",
     "metricValue" : 1
   }, {
-    "emittedAt" : "2024-05-29T09:00:00+00:00",
+    "emittedAt" : "2024-05-29T09+00:00:00:00",
     "metricValue" : 1
   } ],
   "pagination" : {

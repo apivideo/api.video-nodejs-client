@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "api.video nodejs API client",
    "keywords": [
     "api.video",
@@ -24,7 +24,8 @@
     "lib/",
     "dist/",
     "doc/",
-    "test/sandbox.spec.ts"
+    "test/sandbox.spec.ts",
+    "tsconfig.json"
   ],
   "scripts": {
     "build": "tsc",
@@ -32,7 +33,8 @@
     "clean": "rm -rf dist && rm -rf lib",
     "test": "jest",
     "eslint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
-    "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\" && npx eslint src/ test/ --fix"
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\" && npx eslint src/ test/ --fix",
+    "postinstall": "if [ ! -d \"lib\" ]; then npm run build; fi"
   },
   "dependencies": {
     "axios": "^1.4.0",

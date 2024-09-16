@@ -17,16 +17,11 @@
     } ],
     "publishedAt" : "2019-12-16T08:25:51+00:00",
     "updatedAt" : "2019-12-16T08:48:49+00:00",
-    "discarded" : false,
+    "discarded" : true,
+    "discardedAt" : "2024-10-16T08:48:49+00:00",
+    "deletesAt" : "2024-11-16T08:48:49+00:00",
     "source" : {
       "uri" : "/videos/c188ed58-3403-46a2-b91b-44603d10b2c9/source"
-    },
-    "assets" : {
-      "iframe" : "<iframe src=\"https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
-      "player" : "https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27",
-      "hls" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/hls/manifest.m3u8",
-      "thumbnail" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/thumbnail.jpg",
-      "mp4" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/mp4/source.mp4"
     }
   }, {
     "videoId" : "vi4blUQJFrYWbaG44NChkH27",
@@ -48,16 +43,11 @@
     } ],
     "publishedAt" : "2019-12-16T08:25:51+00:00",
     "updatedAt" : "2019-12-16T08:48:49+00:00",
-    "discarded" : false,
+    "discarded" : true,
+    "discardedAt" : "2024-10-16T08:48:49+00:00",
+    "deletesAt" : "2024-11-16T08:48:49+00:00",
     "source" : {
       "uri" : "/videos/vi4blUQJFrYWbaG44NChkH27/source"
-    },
-    "assets" : {
-      "iframe" : "<iframe src=\"https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
-      "player" : "https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27",
-      "hls" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/hls/manifest.m3u8",
-      "thumbnail" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/thumbnail.jpg",
-      "mp4" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/mp4/source.mp4"
     }
   }, {
     "videoId" : "vi4blUQJFrYWbaG44NChkH27",
@@ -74,16 +64,11 @@
     } ],
     "publishedAt" : "2019-12-16T08:25:51+00:00",
     "updatedAt" : "2019-12-16T08:48:49+00:00",
-    "discarded" : false,
+    "discarded" : true,
+    "discardedAt" : "2024-10-16T08:48:49+00:00",
+    "deletesAt" : "2024-11-16T08:48:49+00:00",
     "source" : {
       "uri" : "/videos/vi4blUQJFrYWbaG44NChkH27/source"
-    },
-    "assets" : {
-      "iframe" : "<iframe src=\"https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>",
-      "player" : "https://embed.api.video/vod/vi4blUQJFrYWbaG44NChkH27",
-      "hls" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/hls/manifest.m3u8",
-      "thumbnail" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/thumbnail.jpg",
-      "mp4" : "https://cdn.api.video/vod/vi4blUQJFrYWbaG44NChkH27/mp4/source.mp4"
     }
   } ],
   "pagination" : {

@@ -9,7 +9,7 @@
     "name" : "title"
   }, {
     "type" : "https://docs.api.video/reference/invalid-attribute",
-    "title" : "This attribute must be a ISO8601 date.",
+    "title" : "This attribute must be a ISO-8601 date.",
     "name" : "scheduledAt"
   }, {
     "type" : "https://docs.api.video/reference/invalid-attribute",

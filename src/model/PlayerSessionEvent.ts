@@ -17,7 +17,7 @@ export default class PlayerSessionEvent {
    */
   'type'?: string;
   /**
-   * When an event occurred, presented in ISO-8601 format.
+   * When an event occurred, presented in ATOM UTC format.
    */
   'emittedAt'?: Date;
   'at'?: number;

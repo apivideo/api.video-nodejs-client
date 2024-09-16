@@ -195,7 +195,7 @@ export default class UploadTokensApi {
    * Retrieve a list of all currently active delegated tokens.
    * List all active upload tokens
    * @param {Object} searchParams
-   * @param { &#39;createdAt&#39; | &#39;ttl&#39; } searchParams.sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.
+   * @param { &#39;createdAt&#39; | &#39;ttl&#39; } searchParams.sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ATOM UTC format.
    * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.
@@ -215,7 +215,7 @@ export default class UploadTokensApi {
    * Retrieve a list of all currently active delegated tokens.
    * List all active upload tokens
    * @param {Object} searchParams
-   * @param { &#39;createdAt&#39; | &#39;ttl&#39; } searchParams.sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.
+   * @param { &#39;createdAt&#39; | &#39;ttl&#39; } searchParams.sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ATOM UTC format.
    * @param { &#39;asc&#39; | &#39;desc&#39; } searchParams.sortOrder Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A.
    * @param { number } searchParams.currentPage Choose the number of search results to return per page. Minimum value: 1
    * @param { number } searchParams.pageSize Results per page. Allowed values 1-100, default is 25.

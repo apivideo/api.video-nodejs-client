@@ -48,7 +48,7 @@ export default class VideoCreationPayload {
    */
   'tags'?: Array<string>;
   /**
-   * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).
+   * A list of key value pairs that you use to provide metadata for your video.
    */
   'metadata'?: Array<Metadata>;
   'clip'?: VideoClip;

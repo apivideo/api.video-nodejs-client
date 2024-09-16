@@ -86,7 +86,7 @@ Retrieve a list of all currently active delegated tokens.
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **sortBy** | **&#39;createdAt&#39; \| &#39;ttl&#39;**| no| Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. |
+ | **sortBy** | **&#39;createdAt&#39; \| &#39;ttl&#39;**| no| Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ATOM UTC format. |
  | **sortOrder** | **&#39;asc&#39; \| &#39;desc&#39;**| no| Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. |
  | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
  | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |

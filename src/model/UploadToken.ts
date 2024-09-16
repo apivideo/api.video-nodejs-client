@@ -21,11 +21,11 @@ export default class UploadToken {
    */
   'ttl'?: number;
   /**
-   * When the token was created, displayed in ISO-8601 format.
+   * When the token was created, displayed in ATOM UTC format.
    */
   'createdAt'?: Date;
   /**
-   * When the token expires, displayed in ISO-8601 format.
+   * When the token expires, displayed in ATOM UTC format.
    */
   'expiresAt'?: Date;
 

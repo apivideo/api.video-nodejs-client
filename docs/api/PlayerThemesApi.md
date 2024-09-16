@@ -114,7 +114,7 @@ Retrieve a list of all the player themes you created, as well as details about e
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **sortBy** | **&#39;name&#39; \| &#39;createdAt&#39; \| &#39;updatedAt&#39;**| no| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. |
+ | **sortBy** | **&#39;name&#39; \| &#39;createdAt&#39; \| &#39;updatedAt&#39;**| no| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format. |
  | **sortOrder** | **&#39;asc&#39; \| &#39;desc&#39;**| no| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. |
  | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
  | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |

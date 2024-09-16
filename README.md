@@ -184,7 +184,10 @@ Method | Description | HTTP request
 [**list()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/VideosApi.md#list) | List all video objects | **GET** `/videos`
 [**uploadThumbnail()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/videos/{videoId}/thumbnail`
 [**pickThumbnail()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** `/videos/{videoId}/thumbnail`
+[**getDiscarded()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/VideosApi.md#getDiscarded) | Retrieve a discarded video object | **GET** `/discarded/videos/{videoId}`
 [**getStatus()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/VideosApi.md#getStatus) | Retrieve video status and details | **GET** `/videos/{videoId}/status`
+[**listDiscarded()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/VideosApi.md#listDiscarded) | List all discarded video objects | **GET** `/discarded/videos`
+[**updateDiscarded()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/VideosApi.md#updateDiscarded) | Update a discarded video object | **PATCH** `/discarded/videos/{videoId}`
 
 
 #### WatermarksApi
@@ -231,6 +234,7 @@ Method | Description | HTTP request
  - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Chapter.md)
  - [ChaptersListResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/ChaptersListResponse.md)
+ - [DiscardedVideoUpdatePayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/DiscardedVideoUpdatePayload.md)
  - [FilterBy](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy.md)
  - [FilterBy1](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy1.md)
  - [FilterBy2](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy2.md)

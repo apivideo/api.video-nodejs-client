@@ -13,7 +13,10 @@ All URIs are relative to *https://ws.api.video*
 | [**list()**](VideosApi.md#list) | List all video objects | **GET** /videos |
 | [**uploadThumbnail()**](VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /videos/{videoId}/thumbnail |
 | [**pickThumbnail()**](VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** /videos/{videoId}/thumbnail |
+| [**getDiscarded()**](VideosApi.md#getDiscarded) | Retrieve a discarded video object | **GET** /discarded/videos/{videoId} |
 | [**getStatus()**](VideosApi.md#getStatus) | Retrieve video status and details | **GET** /videos/{videoId}/status |
+| [**listDiscarded()**](VideosApi.md#listDiscarded) | List all discarded video objects | **GET** /discarded/videos |
+| [**updateDiscarded()**](VideosApi.md#updateDiscarded) | Update a discarded video object | **PATCH** /discarded/videos/{videoId} |
 
 
 <a name="create"></a>
@@ -217,7 +220,7 @@ Promise<[**Video**](../model/Video.md)>.
 ## **`delete()` - Delete a video object**
 
 
-If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
 
 ### Parameters
 
@@ -247,7 +250,7 @@ This method returns a list of your videos (with all their details). With no para
 | ------------- | ------------- | ------------- | ------------- |
  | **title** | **string**| no| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. |
  | **tags** | **Array&lt;string&gt;**| no| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. |
- | **metadata** | **{ [key: string]: string; }**| no| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. |
+ | **metadata** | **{ [key: string]: string; }**| no| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. |
  | **description** | **string**| no| Retrieve video objects by &#x60;description&#x60;. |
  | **liveStreamId** | **string**| no| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. |
  | **sortBy** | **&#39;title&#39; \| &#39;createdAt&#39; \| &#39;publishedAt&#39; \| &#39;updatedAt&#39;**| no| Use this parameter to sort videos by the their created time, published time, updated time, or by title. |
@@ -333,6 +336,28 @@ Promise<[**Video**](../model/Video.md)>.
 
 ---
 
+<a name="getDiscarded"></a>
+## **`getDiscarded()` - Retrieve a discarded video object**
+
+
+This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **videoId** | **string**| **yes**| The unique identifier for the video you want details about. |
+
+
+### Return type
+
+Promise<[**Video**](../model/Video.md)>.
+
+
+
+
+---
+
 <a name="getStatus"></a>
 ## **`getStatus()` - Retrieve video status and details**
 
@@ -349,6 +374,61 @@ This method provides upload status &amp; encoding status to determine when the v
 ### Return type
 
 Promise<[**VideoStatus**](../model/VideoStatus.md)>.
+
+
+
+
+---
+
+<a name="listDiscarded"></a>
+## **`listDiscarded()` - List all discarded video objects**
+
+
+This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **title** | **string**| no| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. |
+ | **tags** | **Array&lt;string&gt;**| no| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. |
+ | **metadata** | **{ [key: string]: string; }**| no| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. |
+ | **description** | **string**| no| Retrieve video objects by &#x60;description&#x60;. |
+ | **liveStreamId** | **string**| no| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. |
+ | **sortBy** | **&#39;title&#39; \| &#39;createdAt&#39; \| &#39;publishedAt&#39; \| &#39;updatedAt&#39;**| no| Use this parameter to sort videos by the their created time, published time, updated time, or by title. |
+ | **sortOrder** | **&#39;asc&#39; \| &#39;desc&#39;**| no| Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. |
+ | **currentPage** | **number**| no| Choose the number of search results to return per page. Minimum value: 1 |
+ | **pageSize** | **number**| no| Results per page. Allowed values 1-100, default is 25. |
+
+
+### Return type
+
+Promise<[**VideosListResponse**](../model/VideosListResponse.md)>.
+
+
+
+
+---
+
+<a name="updateDiscarded"></a>
+## **`updateDiscarded()` - Update a discarded video object**
+
+
+Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+
+
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **videoId** | **string**| **yes**| The video ID for the video you want to restore. |
+ | **discardedVideoUpdatePayload** | [**DiscardedVideoUpdatePayload**](../model/DiscardedVideoUpdatePayload.md)| **yes**|  |
+
+
+### Return type
+
+Promise<[**Video**](../model/Video.md)>.
 
 
 
