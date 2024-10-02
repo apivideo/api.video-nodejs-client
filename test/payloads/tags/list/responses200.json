@@ -1,0 +1,26 @@
+{
+  "data" : [ {
+    "value" : "maths",
+    "videoCount" : "33"
+  }, {
+    "value" : "tutorials",
+    "videoCount" : "10"
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 2,
+    "currentPageItems" : 2,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "/tags?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "first",
+      "uri" : "/tags?currentPage=1&pageSize=25"
+    }, {
+      "rel" : "last",
+      "uri" : "/tags?currentPage=1&pageSize=25"
+    } ]
+  }
+}

@@ -37,6 +37,8 @@ import FilterBy from './model/FilterBy';
 import FilterBy1 from './model/FilterBy1';
 import FilterBy2 from './model/FilterBy2';
 import Link from './model/Link';
+import ListTagsResponse from './model/ListTagsResponse';
+import ListTagsResponseData from './model/ListTagsResponseData';
 import LiveStream from './model/LiveStream';
 import LiveStreamAssets from './model/LiveStreamAssets';
 import LiveStreamCreationPayload from './model/LiveStreamCreationPayload';
@@ -152,6 +154,8 @@ const typeMap: { [index: string]: any } = {
   FilterBy1: FilterBy1,
   FilterBy2: FilterBy2,
   Link: Link,
+  ListTagsResponse: ListTagsResponse,
+  ListTagsResponseData: ListTagsResponseData,
   LiveStream: LiveStream,
   LiveStreamAssets: LiveStreamAssets,
   LiveStreamCreationPayload: LiveStreamCreationPayload,

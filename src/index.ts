@@ -16,6 +16,7 @@ import CaptionsApi from './api/CaptionsApi';
 import ChaptersApi from './api/ChaptersApi';
 import LiveStreamsApi from './api/LiveStreamsApi';
 import PlayerThemesApi from './api/PlayerThemesApi';
+import TagsApi from './api/TagsApi';
 import UploadTokensApi from './api/UploadTokensApi';
 import VideosApi from './api/VideosApi';
 import WatermarksApi from './api/WatermarksApi';
@@ -35,6 +36,7 @@ class ApiVideoClient {
   private _chapters: ChaptersApi;
   private _liveStreams: LiveStreamsApi;
   private _playerThemes: PlayerThemesApi;
+  private _tags: TagsApi;
   private _uploadTokens: UploadTokensApi;
   private _videos: VideosApi;
   private _watermarks: WatermarksApi;
@@ -81,6 +83,7 @@ class ApiVideoClient {
     this._chapters = new ChaptersApi(this.httpClient);
     this._liveStreams = new LiveStreamsApi(this.httpClient);
     this._playerThemes = new PlayerThemesApi(this.httpClient);
+    this._tags = new TagsApi(this.httpClient);
     this._uploadTokens = new UploadTokensApi(this.httpClient);
     this._videos = new VideosApi(this.httpClient);
     this._watermarks = new WatermarksApi(this.httpClient);
@@ -129,6 +132,14 @@ class ApiVideoClient {
    */
   public get playerThemes(): PlayerThemesApi {
     return this._playerThemes;
+  }
+
+  /**
+   * Get an TagsApi instance
+   * @return TagsApi
+   */
+  public get tags(): TagsApi {
+    return this._tags;
   }
 
   /**

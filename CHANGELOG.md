@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.6.3] - 2024-09-30
+- Add /tags API endpoint
+
 ## [2.6.2] - 2024-09-16
 - Add discarded video endpoints
 
