@@ -13,21 +13,25 @@ import AttributeType from './AttributeType.js';
 
 export default class Webhook {
   /**
-   * Unique identifier of the webhook
+   * A unique identifier of the webhook you subscribed to.
    */
   'webhookId'?: string;
   /**
-   * When an webhook was created, presented in ATOM UTC format.
+   * The time and date when you created this webhook subscription, in ATOM UTC format.
    */
   'createdAt'?: Date;
   /**
-   * A list of events that will trigger the webhook.
+   * A list of events that you subscribed to. When these events occur, the API triggers a webhook call to the URL you provided.
    */
   'events'?: Array<string>;
   /**
-   * URL of the webhook
+   * The URL where the API sends the webhook.
    */
   'url'?: string;
+  /**
+   * A secret key for the webhook you subscribed to. You can use it to verify the origin of the webhook call that you receive.
+   */
+  'signatureSecret'?: string;
 
   static readonly discriminator?: string = undefined;
 
@@ -53,6 +57,12 @@ export default class Webhook {
     {
       name: 'url',
       baseName: 'url',
+      type: 'string',
+      format: '',
+    },
+    {
+      name: 'signatureSecret',
+      baseName: 'signatureSecret',
       type: 'string',
       format: '',
     },

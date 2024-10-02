@@ -20,6 +20,7 @@
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
     - [PlayerThemesApi](#playerthemesapi)
+    - [TagsApi](#tagsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
     - [WatermarksApi](#watermarksapi)
@@ -161,6 +162,13 @@ Method | Description | HTTP request
 [**deleteLogo()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** `/players/{playerId}/logo`
 
 
+#### TagsApi
+
+Method | Description | HTTP request
+------------- | ------------- | -------------
+[**list()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/TagsApi.md#list) | List all video tags | **GET** `/tags`
+
+
 #### UploadTokensApi
 
 Method | Description | HTTP request
@@ -239,6 +247,8 @@ Method | Description | HTTP request
  - [FilterBy1](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy1.md)
  - [FilterBy2](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy2.md)
  - [Link](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Link.md)
+ - [ListTagsResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/ListTagsResponse.md)
+ - [ListTagsResponseData](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/ListTagsResponseData.md)
  - [LiveStream](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStream.md)
  - [LiveStreamAssets](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamAssets.md)
  - [LiveStreamCreationPayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/LiveStreamCreationPayload.md)

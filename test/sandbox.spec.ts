@@ -5,6 +5,8 @@ import Video from '../src/model/Video';
 import Watermark from '../src/model/Watermark';
 import ApiVideoClient from '../src';
 
+jest.setTimeout(30000);
+
 const timeout = (ms = 100) =>
   new Promise((resolve) => {
     setTimeout(() => {
