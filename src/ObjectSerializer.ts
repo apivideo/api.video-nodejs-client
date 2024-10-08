@@ -119,7 +119,10 @@ const enumsMap: Set<string> = new Set<string>([
   'QualityTypeEnum',
   'QualityQualityEnum',
   'QualityStatusEnum',
+  'VideoLanguageOriginEnum',
+  'VideoCreationPayloadLanguageEnum',
   'VideoStatusIngestStatusEnum',
+  'VideoUpdatePayloadLanguageEnum',
 ]);
 
 const typeMap: { [index: string]: any } = {

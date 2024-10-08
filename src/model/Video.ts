@@ -52,6 +52,14 @@ export default class Video {
    */
   'discarded'?: boolean;
   /**
+   * Returns the language of a video in [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format. You can set the language during video creation via the API, otherwise it is detected automatically.
+   */
+  'language'?: string;
+  /**
+   * Returns the origin of the last update on the video's `language` attribute.  - `api` means that the last update was requested from the API. - `auto` means that the last update was done automatically by the API.
+   */
+  'languageOrigin'?: VideoLanguageOriginEnum;
+  /**
    * One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.
    */
   'tags'?: Array<string>;
@@ -136,6 +144,18 @@ export default class Video {
       format: '',
     },
     {
+      name: 'language',
+      baseName: 'language',
+      type: 'string',
+      format: '',
+    },
+    {
+      name: 'languageOrigin',
+      baseName: 'languageOrigin',
+      type: 'VideoLanguageOriginEnum',
+      format: '',
+    },
+    {
       name: 'tags',
       baseName: 'tags',
       type: 'Array<string>',
@@ -189,3 +209,5 @@ export default class Video {
     return Video.attributeTypeMap;
   }
 }
+
+export type VideoLanguageOriginEnum = 'api' | 'auto';
