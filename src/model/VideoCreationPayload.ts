@@ -53,6 +53,14 @@ export default class VideoCreationPayload {
   'metadata'?: Array<Metadata>;
   'clip'?: VideoClip;
   'watermark'?: VideoWatermark;
+  /**
+   * Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.  `language` is a permanent attribute of the video. You can update it to another language using the [`PATCH /videos/{videoId}`](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.
+   */
+  'language'?: VideoCreationPayloadLanguageEnum;
+  /**
+   * Use this parameter to enable transcription.   - When `true`, the API generates a transcript for the video. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video.
+   */
+  'transcript'?: boolean;
 
   static readonly discriminator?: string = undefined;
 
@@ -123,9 +131,56 @@ export default class VideoCreationPayload {
       type: 'VideoWatermark',
       format: '',
     },
+    {
+      name: 'language',
+      baseName: 'language',
+      type: 'VideoCreationPayloadLanguageEnum',
+      format: '',
+    },
+    {
+      name: 'transcript',
+      baseName: 'transcript',
+      type: 'boolean',
+      format: '',
+    },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
     return VideoCreationPayload.attributeTypeMap;
   }
 }
+
+export type VideoCreationPayloadLanguageEnum =
+  | 'ar'
+  | 'ca'
+  | 'cs'
+  | 'da'
+  | 'de'
+  | 'el'
+  | 'en'
+  | 'es'
+  | 'fa'
+  | 'fi'
+  | 'fr'
+  | 'he'
+  | 'hi'
+  | 'hr'
+  | 'hu'
+  | 'it'
+  | 'ja'
+  | 'ko'
+  | 'ml'
+  | 'nl'
+  | 'nn'
+  | 'false'
+  | 'pl'
+  | 'pt'
+  | 'ru'
+  | 'sk'
+  | 'sl'
+  | 'te'
+  | 'tr'
+  | 'uk'
+  | 'ur'
+  | 'vi'
+  | 'zh';

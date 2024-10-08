@@ -1,0 +1,7 @@
+{
+  "type" : "https://docs.api.video/reference/invalid-attribute",
+  "title" : "An attribute is invalid.",
+  "status" : 400,
+  "detail" : "The \"language\" attribute must contain only letters and dashes (for example \"fr\", \"fr-BE\").",
+  "name" : "language"
+}

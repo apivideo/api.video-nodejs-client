@@ -3,6 +3,8 @@
   "playerId" : "pl45KFKdlddgk654dspkze",
   "title" : "Maths video",
   "description" : "An amazing video explaining string theory",
+  "language" : "en",
+  "languageOrigin" : "api",
   "public" : false,
   "panoramic" : false,
   "mp4Support" : true,

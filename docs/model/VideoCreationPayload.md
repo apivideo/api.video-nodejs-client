@@ -16,6 +16,48 @@ Name | Type | Description | Notes
 **metadata** | [**Array&lt;Metadata&gt;**](Metadata.md) | A list of key value pairs that you use to provide metadata for your video. |  [optional]
 **clip** | [**VideoClip**](VideoClip.md) |  |  [optional]
 **watermark** | [**VideoWatermark**](VideoWatermark.md) |  |  [optional]
+**language** | [**VideoCreationPayloadLanguageEnum**](#VideoCreationPayloadLanguageEnum) | Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.  &#x60;language&#x60; is a permanent attribute of the video. You can update it to another language using the [&#x60;PATCH /videos/{videoId}&#x60;](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language. |  [optional]
+**transcript** | **boolean** | Use this parameter to enable transcription.   - When &#x60;true&#x60;, the API generates a transcript for the video. - The default value is &#x60;false&#x60;. - If you define a video language using the &#x60;language&#x60; parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video. |  [optional]
+
+
+
+## Enum: VideoCreationPayloadLanguageEnum
+
+Name | Value
+---- | -----
+Ar | &#39;ar&#39;
+Ca | &#39;ca&#39;
+Cs | &#39;cs&#39;
+Da | &#39;da&#39;
+De | &#39;de&#39;
+El | &#39;el&#39;
+En | &#39;en&#39;
+Es | &#39;es&#39;
+Fa | &#39;fa&#39;
+Fi | &#39;fi&#39;
+Fr | &#39;fr&#39;
+He | &#39;he&#39;
+Hi | &#39;hi&#39;
+Hr | &#39;hr&#39;
+Hu | &#39;hu&#39;
+It | &#39;it&#39;
+Ja | &#39;ja&#39;
+Ko | &#39;ko&#39;
+Ml | &#39;ml&#39;
+Nl | &#39;nl&#39;
+Nn | &#39;nn&#39;
+False | &#39;false&#39;
+Pl | &#39;pl&#39;
+Pt | &#39;pt&#39;
+Ru | &#39;ru&#39;
+Sk | &#39;sk&#39;
+Sl | &#39;sl&#39;
+Te | &#39;te&#39;
+Tr | &#39;tr&#39;
+Uk | &#39;uk&#39;
+Ur | &#39;ur&#39;
+Vi | &#39;vi&#39;
+Zh | &#39;zh&#39;
 
 
 
