@@ -12,6 +12,9 @@
 import AttributeType from './AttributeType.js';
 
 export default class CaptionsUpdatePayload {
+  /**
+   * Set this parameter to `true` to define a caption as the default for a video.
+   */
   '_default'?: boolean;
 
   static readonly discriminator?: string = undefined;
