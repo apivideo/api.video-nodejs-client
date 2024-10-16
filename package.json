@@ -2,12 +2,7 @@
   "name": "@api.video/nodejs-client",
   "version": "2.6.4",
   "description": "api.video nodejs API client",
-   "keywords": [
-    "api.video",
-    "api",
-    "video",
-    "client"
-  ],
+  "keywords": ["api.video", "api", "video", "client"],
   "homepage": "https://github.com/apivideo/api.video-nodejs-client#readme",
   "bugs:": "https://github.com/apivideo/api.video-nodejs-client/issues",
   "license": "MIT",
@@ -34,7 +29,7 @@
     "test": "jest",
     "eslint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\" && npx eslint src/ test/ --fix",
-    "postinstall": "if [ ! -d \"lib\" ]; then npm run build; fi"
+    "postinstall": "node -e \"const { execSync } = require('child_process'); const { existsSync } = require('fs'); if (!existsSync('lib')) execSync('npm run build', { stdio: 'inherit' });\""
   },
   "dependencies": {
     "axios": "^1.4.0",
