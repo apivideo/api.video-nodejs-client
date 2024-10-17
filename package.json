@@ -1,6 +1,6 @@
 {
   "name": "@api.video/nodejs-client",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "api.video nodejs API client",
    "keywords": [
     "api.video",
@@ -34,7 +34,7 @@
     "test": "jest",
     "eslint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\" && npx eslint src/ test/ --fix",
-    "postinstall": "if [ ! -d \"lib\" ]; then npm run build; fi"
+    "postinstall": "node -e \"const { execSync } = require('child_process'); const { existsSync } = require('fs'); if (!existsSync('lib')) execSync('npm run build', { stdio: 'inherit' });\""
   },
   "dependencies": {
     "axios": "^1.4.0",
