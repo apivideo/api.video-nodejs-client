@@ -11,7 +11,7 @@
 
 import AttributeType from './AttributeType.js';
 
-export default class NotFound {
+export default class ConflictError {
   /**
    * A link to the error documentation.
    */
@@ -28,6 +28,10 @@ export default class NotFound {
    * The HTTP status code.
    */
   'status'?: number;
+  /**
+   * A solution for the error.
+   */
+  'detail'?: string;
 
   static readonly discriminator?: string = undefined;
 
@@ -56,9 +60,15 @@ export default class NotFound {
       type: 'number',
       format: '',
     },
+    {
+      name: 'detail',
+      baseName: 'detail',
+      type: 'string',
+      format: '',
+    },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
-    return NotFound.attributeTypeMap;
+    return ConflictError.attributeTypeMap;
   }
 }

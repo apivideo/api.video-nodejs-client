@@ -53,6 +53,10 @@ export default class VideoUpdatePayload {
    * Use this parameter to enable transcription.   - When `true`, the API generates a transcript for the video. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video.
    */
   'transcript'?: boolean;
+  /**
+   * Use this parameter to enable summarization.   - When `true`, the API generates a summary for the video, based on the transcription. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.
+   */
+  'transcriptSummary'?: boolean;
 
   static readonly discriminator?: string = undefined;
 
@@ -114,6 +118,12 @@ export default class VideoUpdatePayload {
     {
       name: 'transcript',
       baseName: 'transcript',
+      type: 'boolean',
+      format: '',
+    },
+    {
+      name: 'transcriptSummary',
+      baseName: 'transcriptSummary',
       type: 'boolean',
       format: '',
     },

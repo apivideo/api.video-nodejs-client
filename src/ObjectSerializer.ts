@@ -32,10 +32,13 @@ import CaptionsListResponse from './model/CaptionsListResponse';
 import CaptionsUpdatePayload from './model/CaptionsUpdatePayload';
 import Chapter from './model/Chapter';
 import ChaptersListResponse from './model/ChaptersListResponse';
+import ConflictError from './model/ConflictError';
 import DiscardedVideoUpdatePayload from './model/DiscardedVideoUpdatePayload';
 import FilterBy from './model/FilterBy';
 import FilterBy1 from './model/FilterBy1';
 import FilterBy2 from './model/FilterBy2';
+import GetSummaries from './model/GetSummaries';
+import InlineObject from './model/InlineObject';
 import Link from './model/Link';
 import ListTagsResponse from './model/ListTagsResponse';
 import ListTagsResponseData from './model/ListTagsResponseData';
@@ -59,10 +62,13 @@ import Quality from './model/Quality';
 import RefreshTokenPayload from './model/RefreshTokenPayload';
 import RestreamsRequestObject from './model/RestreamsRequestObject';
 import RestreamsResponseObject from './model/RestreamsResponseObject';
+import SummaryObject from './model/SummaryObject';
+import SummarySource from './model/SummarySource';
 import TokenCreationPayload from './model/TokenCreationPayload';
 import TokenListResponse from './model/TokenListResponse';
 import TooManyRequests from './model/TooManyRequests';
 import UnrecognizedRequestUrl from './model/UnrecognizedRequestUrl';
+import UpdateSummaryRequest from './model/UpdateSummaryRequest';
 import UploadToken from './model/UploadToken';
 import Video from './model/Video';
 import VideoAssets from './model/VideoAssets';
@@ -116,9 +122,11 @@ const enumsMap: Set<string> = new Set<string>([
   'FilterBy1ContinentEnum',
   'FilterBy2MediaTypeEnum',
   'FilterBy2ContinentEnum',
+  'InlineObjectOriginEnum',
   'QualityTypeEnum',
   'QualityQualityEnum',
   'QualityStatusEnum',
+  'SummaryObjectSourceStatusEnum',
   'VideoLanguageOriginEnum',
   'VideoCreationPayloadLanguageEnum',
   'VideoStatusIngestStatusEnum',
@@ -152,10 +160,13 @@ const typeMap: { [index: string]: any } = {
   CaptionsUpdatePayload: CaptionsUpdatePayload,
   Chapter: Chapter,
   ChaptersListResponse: ChaptersListResponse,
+  ConflictError: ConflictError,
   DiscardedVideoUpdatePayload: DiscardedVideoUpdatePayload,
   FilterBy: FilterBy,
   FilterBy1: FilterBy1,
   FilterBy2: FilterBy2,
+  GetSummaries: GetSummaries,
+  InlineObject: InlineObject,
   Link: Link,
   ListTagsResponse: ListTagsResponse,
   ListTagsResponseData: ListTagsResponseData,
@@ -179,10 +190,13 @@ const typeMap: { [index: string]: any } = {
   RefreshTokenPayload: RefreshTokenPayload,
   RestreamsRequestObject: RestreamsRequestObject,
   RestreamsResponseObject: RestreamsResponseObject,
+  SummaryObject: SummaryObject,
+  SummarySource: SummarySource,
   TokenCreationPayload: TokenCreationPayload,
   TokenListResponse: TokenListResponse,
   TooManyRequests: TooManyRequests,
   UnrecognizedRequestUrl: UnrecognizedRequestUrl,
+  UpdateSummaryRequest: UpdateSummaryRequest,
   UploadToken: UploadToken,
   Video: Video,
   VideoAssets: VideoAssets,
