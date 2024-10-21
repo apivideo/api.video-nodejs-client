@@ -1,0 +1,6 @@
+{
+  "type" : "https://docs.api.video/reference/summary-already-exists",
+  "title" : "A summary already exists or is being created on this video.",
+  "status" : 409,
+  "detail" : "You can delete the existing summary and generate a new one."
+}

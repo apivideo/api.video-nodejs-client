@@ -1,5 +1,5 @@
 
-# NotFound
+# ConflictError
 
 ## Properties
 
@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **title** | **string** | A description of the error that occurred. |  [optional]
 **name** | **string** | The name of the parameter that caused the error. |  [optional]
 **status** | **number** | The HTTP status code. |  [optional]
+**detail** | **string** | A solution for the error. |  [optional]
 
 
 

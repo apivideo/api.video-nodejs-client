@@ -10,55 +10,34 @@
  */
 
 import AttributeType from './AttributeType.js';
+import Pagination from './Pagination.js';
+import Summary from './Summary.js';
 
-export default class NotFound {
+export default class SummariesListResponse {
   /**
-   * A link to the error documentation.
+   * An array of summary objects.
    */
-  'type'?: string;
-  /**
-   * A description of the error that occurred.
-   */
-  'title'?: string;
-  /**
-   * The name of the parameter that caused the error.
-   */
-  'name'?: string;
-  /**
-   * The HTTP status code.
-   */
-  'status'?: number;
+  'data': Array<Summary>;
+  'pagination': Pagination;
 
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
     {
-      name: 'type',
-      baseName: 'type',
-      type: 'string',
+      name: 'data',
+      baseName: 'data',
+      type: 'Array<Summary>',
       format: '',
     },
     {
-      name: 'title',
-      baseName: 'title',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'name',
-      baseName: 'name',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'status',
-      baseName: 'status',
-      type: 'number',
+      name: 'pagination',
+      baseName: 'pagination',
+      type: 'Pagination',
       format: '',
     },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
-    return NotFound.attributeTypeMap;
+    return SummariesListResponse.attributeTypeMap;
   }
 }

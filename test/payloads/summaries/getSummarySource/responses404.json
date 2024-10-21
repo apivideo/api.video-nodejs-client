@@ -1,0 +1,6 @@
+{
+  "type" : "https://docs.api.video/reference/resource-not-found",
+  "title" : "The requested resource was not found.",
+  "name" : "summaryId",
+  "status" : 404
+}

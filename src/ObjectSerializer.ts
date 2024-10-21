@@ -32,6 +32,7 @@ import CaptionsListResponse from './model/CaptionsListResponse';
 import CaptionsUpdatePayload from './model/CaptionsUpdatePayload';
 import Chapter from './model/Chapter';
 import ChaptersListResponse from './model/ChaptersListResponse';
+import ConflictError from './model/ConflictError';
 import DiscardedVideoUpdatePayload from './model/DiscardedVideoUpdatePayload';
 import FilterBy from './model/FilterBy';
 import FilterBy1 from './model/FilterBy1';
@@ -59,6 +60,11 @@ import Quality from './model/Quality';
 import RefreshTokenPayload from './model/RefreshTokenPayload';
 import RestreamsRequestObject from './model/RestreamsRequestObject';
 import RestreamsResponseObject from './model/RestreamsResponseObject';
+import SummariesListResponse from './model/SummariesListResponse';
+import Summary from './model/Summary';
+import SummaryCreationPayload from './model/SummaryCreationPayload';
+import SummarySource from './model/SummarySource';
+import SummaryUpdatePayload from './model/SummaryUpdatePayload';
 import TokenCreationPayload from './model/TokenCreationPayload';
 import TokenListResponse from './model/TokenListResponse';
 import TooManyRequests from './model/TooManyRequests';
@@ -119,6 +125,9 @@ const enumsMap: Set<string> = new Set<string>([
   'QualityTypeEnum',
   'QualityQualityEnum',
   'QualityStatusEnum',
+  'SummaryOriginEnum',
+  'SummarySourceStatusEnum',
+  'SummaryCreationPayloadOriginEnum',
   'VideoLanguageOriginEnum',
   'VideoCreationPayloadLanguageEnum',
   'VideoStatusIngestStatusEnum',
@@ -152,6 +161,7 @@ const typeMap: { [index: string]: any } = {
   CaptionsUpdatePayload: CaptionsUpdatePayload,
   Chapter: Chapter,
   ChaptersListResponse: ChaptersListResponse,
+  ConflictError: ConflictError,
   DiscardedVideoUpdatePayload: DiscardedVideoUpdatePayload,
   FilterBy: FilterBy,
   FilterBy1: FilterBy1,
@@ -179,6 +189,11 @@ const typeMap: { [index: string]: any } = {
   RefreshTokenPayload: RefreshTokenPayload,
   RestreamsRequestObject: RestreamsRequestObject,
   RestreamsResponseObject: RestreamsResponseObject,
+  SummariesListResponse: SummariesListResponse,
+  Summary: Summary,
+  SummaryCreationPayload: SummaryCreationPayload,
+  SummarySource: SummarySource,
+  SummaryUpdatePayload: SummaryUpdatePayload,
   TokenCreationPayload: TokenCreationPayload,
   TokenListResponse: TokenListResponse,
   TooManyRequests: TooManyRequests,
