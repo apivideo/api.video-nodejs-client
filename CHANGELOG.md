@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [2.6.6] - 2024-10-21
+- Add summary feature
+
 ## [2.6.5] - 2024-10-17
 - Fix postinstall script
 

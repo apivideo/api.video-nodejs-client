@@ -20,6 +20,7 @@
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
     - [PlayerThemesApi](#playerthemesapi)
+    - [SummariesApi](#summariesapi)
     - [TagsApi](#tagsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
@@ -162,6 +163,17 @@ Method | Description | HTTP request
 [**deleteLogo()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** `/players/{playerId}/logo`
 
 
+#### SummariesApi
+
+Method | Description | HTTP request
+------------- | ------------- | -------------
+[**create()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/SummariesApi.md#create) | Generate video summary | **POST** `/summaries`
+[**update()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/SummariesApi.md#update) | Update summary details | **PATCH** `/summaries/{summaryId}/source`
+[**delete()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/SummariesApi.md#delete) | Delete video summary | **DELETE** `/summaries/{summaryId}`
+[**list()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/SummariesApi.md#list) | List summaries | **GET** `/summaries`
+[**getSummarySource()**](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/api/SummariesApi.md#getSummarySource) | Get summary details | **GET** `/summaries/{summaryId}/source`
+
+
 #### TagsApi
 
 Method | Description | HTTP request
@@ -242,6 +254,7 @@ Method | Description | HTTP request
  - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Chapter.md)
  - [ChaptersListResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/ChaptersListResponse.md)
+ - [ConflictError](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/ConflictError.md)
  - [DiscardedVideoUpdatePayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/DiscardedVideoUpdatePayload.md)
  - [FilterBy](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy.md)
  - [FilterBy1](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/FilterBy1.md)
@@ -269,6 +282,11 @@ Method | Description | HTTP request
  - [RefreshTokenPayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/RefreshTokenPayload.md)
  - [RestreamsRequestObject](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/RestreamsRequestObject.md)
  - [RestreamsResponseObject](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/RestreamsResponseObject.md)
+ - [SummariesListResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/SummariesListResponse.md)
+ - [Summary](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/Summary.md)
+ - [SummaryCreationPayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/SummaryCreationPayload.md)
+ - [SummarySource](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/SummarySource.md)
+ - [SummaryUpdatePayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/SummaryUpdatePayload.md)
  - [TokenCreationPayload](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TokenCreationPayload.md)
  - [TokenListResponse](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TokenListResponse.md)
  - [TooManyRequests](https://github.com/apivideo/api.video-nodejs-client/blob/main/docs/model/TooManyRequests.md)

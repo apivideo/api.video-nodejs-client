@@ -11,33 +11,23 @@
 
 import AttributeType from './AttributeType.js';
 
-export default class NotFound {
+export default class SummaryUpdatePayload {
   /**
-   * A link to the error documentation.
-   */
-  'type'?: string;
-  /**
-   * A description of the error that occurred.
+   * A video title, based on the contents of the video.
    */
   'title'?: string;
   /**
-   * The name of the parameter that caused the error.
+   * A short outline of the contents of the video.
    */
-  'name'?: string;
+  '_abstract'?: string;
   /**
-   * The HTTP status code.
+   * A list of 3 key points from the video, in chronological order.
    */
-  'status'?: number;
+  'takeaways'?: Array<string>;
 
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
-    {
-      name: 'type',
-      baseName: 'type',
-      type: 'string',
-      format: '',
-    },
     {
       name: 'title',
       baseName: 'title',
@@ -45,20 +35,20 @@ export default class NotFound {
       format: '',
     },
     {
-      name: 'name',
-      baseName: 'name',
+      name: '_abstract',
+      baseName: 'abstract',
       type: 'string',
       format: '',
     },
     {
-      name: 'status',
-      baseName: 'status',
-      type: 'number',
+      name: 'takeaways',
+      baseName: 'takeaways',
+      type: 'Array<string>',
       format: '',
     },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
-    return NotFound.attributeTypeMap;
+    return SummaryUpdatePayload.attributeTypeMap;
   }
 }

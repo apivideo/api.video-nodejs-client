@@ -1,0 +1,34 @@
+{
+  "data" : [ {
+    "summaryId" : "summary_1CGHWuXjhxmeH4WiZ51234",
+    "createdAt" : "2024-07-14T23:36:07+00:00",
+    "updatedAt" : "2024-07-14T23:36:07+00:00",
+    "videoId" : "vilkR8K3N7yrRcxcMt91234",
+    "origin" : "auto",
+    "sourceStatus" : "completed"
+  }, {
+    "summaryId" : "summary_123HWuXjhxmeH4WiZ55678",
+    "createdAt" : "2024-07-15T23:36:07+00:00",
+    "updatedAt" : "2024-07-15T23:36:07+00:00",
+    "videoId" : "vibaBXK3N7yrRcxcMt95678",
+    "origin" : "auto",
+    "sourceStatus" : "waiting"
+  } ],
+  "pagination" : {
+    "currentPage" : 1,
+    "pageSize" : 25,
+    "pagesTotal" : 1,
+    "itemsTotal" : 11,
+    "currentPageItems" : 11,
+    "links" : [ {
+      "rel" : "self",
+      "uri" : "https://ws.api.video/summaries?currentPage=1"
+    }, {
+      "rel" : "first",
+      "uri" : "https://ws.api.video/summaries?currentPage=1"
+    }, {
+      "rel" : "last",
+      "uri" : "https://ws.api.video/summaries?currentPage=1"
+    } ]
+  }
+}
